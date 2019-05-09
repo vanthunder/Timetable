@@ -19,8 +19,8 @@ public class Appointment extends Base {
 	boolean floating;
 	
 	public Appointment(String title, Date startpoint, Date endpoint, boolean allDay, boolean regularlyOnOff, 
-			int regularlyType, String description, boolean alarmOnOff, Date alarmtime, int notePinned, 
-			ArrayList<Note> noteLink, boolean floating){
+			int regularlyType, String description, boolean alarmOnOff, Date alarmtime, int notesPinned, 
+			ArrayList<Note> notesLink, boolean floating){
 		super(title);
 		this.title = title;
 		this.startpoint = startpoint; 
@@ -31,8 +31,8 @@ public class Appointment extends Base {
 		this.description = description; 
 		this.alarmOnOff = alarmOnOff; 
 		this.alarmTime = alarmTime;
-		this.notePinned = notePinned;
-		this.noteLink = noteLink; 
+		this.notesPinned = notesPinned;
+		this.notesLink = notesLink; 
 		this.floating = floating;
 	}
 }
