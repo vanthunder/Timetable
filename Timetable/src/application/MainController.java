@@ -1,8 +1,9 @@
 package application;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import category.CategoriesController;
 import javafx.fxml.FXML;
-import Kategorien.CategoriesController;
 import javafx.fxml.Initializable;
 
 

@@ -1,11 +1,12 @@
-package Notiz;
+package note;
 
 import java.util.ArrayList;
+import base.Base;
 
-public class Notiz extends Konstrukt {
+public class Note extends Base {
 	
 	private int angeheftet;
-	private ArrayList<Termin> angeheftetAn;
+	private ArrayList<Appointment> angeheftetAn;
 	private ArrayList externList;
 	private ArrayList fotoList;
 	private ArrayList gifList;
@@ -13,7 +14,7 @@ public class Notiz extends Konstrukt {
 	private String textfeld;
 	private ArrayList videoList;
 	
-	public Notiz(boolean angeheftet, ArrayList angeheftetAn, ArrayList externList, ArrayList fotoList, ArrayList gifList, ArrayList soundList, String textfeld, ArrayList videoList) {
+	public Note(boolean angeheftet, ArrayList angeheftetAn, ArrayList externList, ArrayList fotoList, ArrayList gifList, ArrayList soundList, String textfeld, ArrayList videoList) {
 		this.angeheftet = angeheftet;
 		this.angeheftetAn = angeheftetAn;
 		this.externList = externList;

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package Kategorien;
+package category;
 
 import java.util.ArrayList;
 

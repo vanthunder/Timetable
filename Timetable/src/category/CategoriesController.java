@@ -1,7 +1,7 @@
 /**
  * 
  */
-package Kategorien;
+package category;
 
 import java.net.URL;
 import java.util.ArrayList;
