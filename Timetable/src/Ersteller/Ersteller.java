@@ -24,10 +24,5 @@ public class Ersteller {
 		
 	}
 	
-	public static void main(String[] args) {
-		Date startpunkt = new Date(0h, 2, 1);
-		
-		
-		System.out.print(startpunkt);
-	}
+	
 }
