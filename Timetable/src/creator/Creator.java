@@ -47,8 +47,8 @@ public class Creator {
 			*/
 			
 			//Save.save(); as soon as the appointment is created, the program will save the data
-		
-			//Testreturn to proof if the Appointment object got the data it should:
+			
+			//Testreturn to proof if the Appointment object got the data it should have:
 		return newAppointment.toString();
 	}
 	
