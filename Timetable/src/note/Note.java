@@ -5,23 +5,26 @@ import base.Base;
 
 public class Note extends Base {
 	
-	private int angeheftet;
-	private ArrayList<Appointment> angeheftetAn;
+	String title;
+	private int pinned;
+	private ArrayList pinnedat;
 	private ArrayList externList;
-	private ArrayList fotoList;
+	private ArrayList photoList;
 	private ArrayList gifList;
 	private ArrayList soundList;
-	private String textfeld;
+	private String textbox;
 	private ArrayList videoList;
 	
-	public Note(boolean angeheftet, ArrayList angeheftetAn, ArrayList externList, ArrayList fotoList, ArrayList gifList, ArrayList soundList, String textfeld, ArrayList videoList) {
-		this.angeheftet = angeheftet;
-		this.angeheftetAn = angeheftetAn;
+	public Note(String title, int pinned, ArrayList pinnedat, ArrayList externList, ArrayList photoList, ArrayList gifList, ArrayList soundList, String textbox, ArrayList videoList) {
+		super(title);
+		this.title = title;
+		this.pinned = pinned;
+		this.pinnedat = pinnedat;
 		this.externList = externList;
-		this.fotoList = fotoList;
+		this.photoList = photoList;
 		this.gifList = gifList;
 		this.soundList = soundList;
-		this.textfeld = textfeld;
+		this.textbox = textbox;
 		this.videoList = videoList;
 	}
 
