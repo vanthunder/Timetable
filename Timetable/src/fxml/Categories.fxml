@@ -3,7 +3,7 @@
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Kategorien.CategoriesController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="category.CategoriesController">
    <center>
       <TreeView fx:id="treeView" BorderPane.alignment="CENTER" />
    </center>

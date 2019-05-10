@@ -12,7 +12,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("/FXML/calendarMain.fxml"));
+			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("/fxml/calendarMain.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/CSS/application.css").toExternalForm());
 			primaryStage.getIcons().add(new Image("/images/Kalender.png"));
