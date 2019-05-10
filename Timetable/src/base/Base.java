@@ -1,9 +1,19 @@
 package base;
 
 public abstract class Base {
-	String titel;
+	String title;
 	
-	public Base(String titel){
-		this.titel = titel;
+	public Base(String title){
+		this.title = title;
 	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	
 }
