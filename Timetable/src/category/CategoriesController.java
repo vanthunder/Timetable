@@ -45,7 +45,7 @@ public class CategoriesController implements Initializable
     //Import an icon image for the treeView structure
     Image icon = new Image(
             getClass().getResourceAsStream("/images/Folder.png"));
-    String text;
+    String text = "";
     String value;
     boolean i = false;
     CategoriesHelper helper = new CategoriesHelper();
@@ -99,12 +99,22 @@ public class CategoriesController implements Initializable
     public void insertCategoryPress(ActionEvent event)
     {
         text=categoryName.getText();
-        i = true;
-        System.out.println(text);
-        System.out.println("Button insertCategory pressed!");
-        TreeItem parent = new TreeItem(text);
-        root.getChildren().addAll(parent);
-        treeView.setRoot(root);
+        if(text.equals(""))
+        {
+            writeMessage("Das Textfeld darf nicht leer sein!"); 
+        }     
+        else
+        if(!text.equals(""))
+        {
+            text=categoryName.getText();
+            System.out.println(text);
+            System.out.println("Button insertCategory pressed!");
+            TreeItem parent = new TreeItem(text, new ImageView(icon));
+            root.getChildren().addAll(parent);
+            treeView.setRoot(root);
+            text = "";
+            categoryName.setText("");
+        }    
     }
     // Helper Methods for the Event Handlers
     private void editStart(TreeView.EditEvent event) 
