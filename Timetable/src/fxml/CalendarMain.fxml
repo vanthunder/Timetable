@@ -141,7 +141,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <BorderPane prefHeight="200.0" prefWidth="200.0">
+                        <BorderPane prefHeight="415.0" prefWidth="277.0">
                            <center>
                               <fx:include source="Categories.fxml" />
                            </center>
