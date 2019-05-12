@@ -35,8 +35,6 @@ public class Appointment extends Base {
 	}
 	
 	
-	
-	
 
 
 	public Date getStartpoint() {
