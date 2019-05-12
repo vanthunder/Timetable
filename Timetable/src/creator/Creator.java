@@ -1,10 +1,12 @@
 package creator;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
 import category.Category;
 import appointment.Appointment;
-import base.Base;
 import note.Note;
+import task.Task;
 
 public class Creator {
 	/**This method is called by createAppointmentUI() which is located in a Controller.
@@ -54,6 +56,32 @@ public class Creator {
 		return newAppointment.toString();
 	}
 	
+	public static String createTask(String title, Date startpoint, Date endpoint, boolean allDay, boolean regularlyOnOff, 
+			int regularlyType, String description, boolean alarmOnOff, Date alarmtime, int notesPinned, 
+			ArrayList<Note> notesLink, boolean floating,boolean autoSortOnOff,int duration,boolean done,int feasibleTimeStart,int feasibleTimeEnd,Date periodStart, Date periodEnd) {
+		if(allDay) {
+			startpoint.setHours(0);
+			endpoint.setHours(24);
+		}
+		
+		floating = false;
+		if(startpoint == endpoint) {
+			floating = true;
+		}
+
+		
+		if(periodStart.compareTo(periodEnd)<0){
+			
+			long diffInMinutes = Math.abs(periodEnd.getTime() - periodStart.getTime());
+		    long diff = TimeUnit.DAYS.convert(diffInMinutes, TimeUnit.MINUTES);
+		    duration = (int) diff;
+		};
+		
+		Task newTask = new Task(title,startpoint,endpoint,allDay,regularlyOnOff,regularlyType,description,alarmOnOff,alarmtime,notesPinned,notesLink,floating,autoSortOnOff,duration,done,feasibleTimeStart,feasibleTimeEnd,periodStart,periodEnd );
+		
+		return newTask.toString();
+	}
+		
 	
 	
 	/**This method is called by createNoteUI() which is located in a Controller.
@@ -70,3 +98,5 @@ public class Creator {
 		return newNote.toString();
 	}
 }
+	
+
