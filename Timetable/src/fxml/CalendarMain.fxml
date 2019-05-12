@@ -134,6 +134,7 @@
             </HBox>
             <HBox>
                <children>
+                  <Pane prefHeight="467.0" prefWidth="10.0" />
                   <VBox>
                      <children>
                         <Label text="Kategorie">
@@ -141,7 +142,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <BorderPane prefHeight="200.0" prefWidth="200.0">
+                        <BorderPane prefHeight="415.0" prefWidth="388.0">
                            <center>
                               <fx:include source="Categories.fxml" />
                            </center>
@@ -149,6 +150,7 @@
                         <ColorPicker />
                      </children>
                   </VBox>
+                  <Pane prefHeight="467.0" prefWidth="10.0" />
                </children>
             </HBox>
             <Pane prefHeight="188.0" prefWidth="218.0">

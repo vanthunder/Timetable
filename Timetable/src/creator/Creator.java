@@ -82,6 +82,20 @@ public class Creator {
 	}
 		
 	
+	
+	/**This method is called by createNoteUI() which is located in a Controller.
+	 * createNoteUI opens the note-creation-menu. As soon as the user clicks on "save note" in that menu, 
+	 * the data that the user gave in the note creation menu, will be convertedand transferred to this method. 
+	 * This method creates a note out of the data and saves it in the chosen category.
+	 */
+	public static String createNote(String title, int pinned, ArrayList pinnedAt, ArrayList externList, ArrayList photoList, ArrayList gifList, 
+			ArrayList soundList, String textbox, ArrayList videoList, Category chosenCategory) {
+		
+			Note newNote = new Note(title, pinned, pinnedAt, externList, photoList, gifList, soundList, textbox, videoList);
+		
+	
+		return newNote.toString();
+	}
 }
 	
 
