@@ -7,7 +7,7 @@ public class Note extends Base {
 	
 	String title;
 	private int pinned;
-	private ArrayList pinnedat;
+	private ArrayList pinnedAt;
 	private ArrayList externList;
 	private ArrayList photoList;
 	private ArrayList gifList;
@@ -15,11 +15,11 @@ public class Note extends Base {
 	private String textbox;
 	private ArrayList videoList;
 	
-	public Note(String title, int pinned, ArrayList pinnedat, ArrayList externList, ArrayList photoList, ArrayList gifList, ArrayList soundList, String textbox, ArrayList videoList) {
+	public Note(String title, int pinned, ArrayList pinnedAt, ArrayList externList, ArrayList photoList, ArrayList gifList, ArrayList soundList, String textbox, ArrayList videoList) {
 		super(title);
 		this.title = title;
 		this.pinned = pinned;
-		this.pinnedat = pinnedat;
+		this.pinnedAt = pinnedAt;
 		this.externList = externList;
 		this.photoList = photoList;
 		this.gifList = gifList;

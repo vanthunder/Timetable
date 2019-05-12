@@ -15,6 +15,7 @@ public class Main extends Application {
 			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("/fxml/calendarMain.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/CSS/application.css").toExternalForm());
+			primaryStage = primaryStage;
 			primaryStage.getIcons().add(new Image("/images/Kalender.png"));
 			primaryStage.setTitle("Kalender");
 			primaryStage.setScene(scene);
