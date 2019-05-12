@@ -27,6 +27,7 @@ public class Creator {
 			endpoint.setSeconds(59);
 		}
 		
+		//its better to have a method that does that in controller
 		boolean floating = false;
 		if(startpoint.equals(endpoint)) {
 			floating = true;
@@ -44,6 +45,7 @@ public class Creator {
 			*chosenCategory.setContentlist(tempContentlist);
 			*/
 			
+			//newAppointment is only added to calendar if floating is false
 			/*
 			*ArrayList<Base/event> tempCalendarList = Calendar.getCalendarList();
 			*tempCalendarList.add(newAppointment);
