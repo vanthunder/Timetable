@@ -18,7 +18,7 @@ public class Appointment extends Base {
 	private boolean floating;
 	
 	public Appointment(String title, Date startpoint, Date endpoint, boolean allDay, boolean regularlyOnOff, 
-			int regularlyType, String description, boolean alarmOnOff, Date alarmtime, int notesPinned, 
+			int regularlyType, String description, boolean alarmOnOff, Date alarmTime, int notesPinned, 
 			ArrayList<Note> notesLink, boolean floating){
 		super(title);
 		this.startpoint = startpoint; 
@@ -174,7 +174,7 @@ public class Appointment extends Base {
 	public String toString(){
 		return new String("title: "+this.getTitle()+" startpoint: "+startpoint+" endpoint: "+endpoint+" allDay: "+allDay+" regularlyOnOff: "+regularlyOnOff+
 				" regularlyType: "+regularlyType+" description: "+description+" alarmOnOff: "+alarmOnOff+
-				" alarmTime: "+alarmTime+" notesPinned: "+notesPinned+" notesLink "+notesLink+" floating: "+floating);
+				" alarmTime: "+alarmTime+" notesPinned: "+notesPinned+" notesLink: "+notesLink+" floating: "+floating);
 	}
 		
 }

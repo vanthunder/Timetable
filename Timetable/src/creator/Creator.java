@@ -20,11 +20,13 @@ public class Creator {
 		
 		if(allDay) {
 			startpoint.setHours(0);
-			endpoint.setHours(24);
+			endpoint.setHours(23);
+			endpoint.setMinutes(59);
+			endpoint.setSeconds(59);
 		}
 		
 		boolean floating = false;
-		if(startpoint == endpoint) {
+		if(startpoint.equals(endpoint)) {
 			floating = true;
 		}
 			
