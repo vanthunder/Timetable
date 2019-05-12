@@ -9,7 +9,7 @@ import note.Note;
 public class Creator {
 	/**This method is called by createAppointmentUI() which is located in a Controller.
 	 * createAppointmentUI opens the appointment-creation-menu. As soon as the user clicks on "save appointment" in that menu, 
-	 * the data that the user gave in the appointment creation menu, will be convertedand transferred to this method. 
+	 * the data that the user gave in the appointment creation menu, will be converted and transferred to this method. 
 	 * This method creates an appointment out of that data and saves it in the chosen category and in the calendar.
 	 */
 	public static String createAppointment(String title, Date startpoint, Date endpoint, boolean allDay, boolean regularlyOnOff, 
@@ -56,7 +56,7 @@ public class Creator {
 	
 	/**This method is called by createNoteUI() which is located in a Controller.
 	 * createNoteUI opens the note-creation-menu. As soon as the user clicks on "save note" in that menu, 
-	 * the data that the user gave in the note creation menu, will be convertedand transferred to this method. 
+	 * the data that the user gave in the note creation menu, will be converted and transferred to this method. 
 	 * This method creates a note out of the data and saves it in the chosen category.
 	 */
 	public static String createNote(String title, int pinned, ArrayList pinnedAt, ArrayList externList, ArrayList photoList, ArrayList gifList, 
