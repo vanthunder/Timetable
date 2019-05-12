@@ -47,7 +47,7 @@ class CreatorTests {
 				Creator.createAppointment("sexy Appointment", startpoint, endpoint, false, false, 0, "beautiful from start to end", false, alarmTime, 0, notesLink, chosenCategory));
 	}
 	
-	//AllDay activated so startpoints time should be 00:00:00 and enpoints 24:00:00
+	//AllDay activated so startpoint's time should be 00:00:00 and enpoint's 24:00:00
 	@Test
 	void testAllDay() {
 		Date startpoint = new Date(1998, 0, 14);
