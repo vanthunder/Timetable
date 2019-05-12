@@ -47,7 +47,9 @@ public class Creator {
 			/*
 			*ArrayList<Base/event> tempCalendarList = Calendar.getCalendarList();
 			*tempCalendarList.add(newAppointment);
+			*tempCalendarList.sort();
 			*Calendar.setCalendarList(tempCalendarList);
+			*
 			*/
 			
 			//Save.save(); as soon as the appointment is created, the program will save the data
