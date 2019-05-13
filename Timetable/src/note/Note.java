@@ -2,12 +2,14 @@ package note;
 
 import java.util.ArrayList;
 import base.Base;
+import task.Task;
+import appointment.Appointment;
 
 public class Note extends Base {
 	
 	String title;
 	private int pinned;
-	private ArrayList pinnedAt;
+	private ArrayList <Task> pinnedAt;
 	private ArrayList externList;
 	private ArrayList photoList;
 	private ArrayList gifList;
