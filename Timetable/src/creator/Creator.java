@@ -93,10 +93,10 @@ public class Creator {
 	 * the data that the user gave in the note creation menu, will be converted and transferred to this method. 
 	 * This method creates a note out of the data and saves it in the chosen category.
 	 */
-	public static String createNote(String title, int pinned, ArrayList pinnedAt, ArrayList externList, ArrayList photoList, ArrayList gifList, 
+	public static String createNote(String title, int pinned, ArrayList pinnedAt, ArrayList photoList, ArrayList gifList, 
 			ArrayList soundList, String textbox, ArrayList videoList, Category chosenCategory) {
 		
-			Note newNote = new Note(title, pinned, pinnedAt, externList, photoList, gifList, soundList, textbox, videoList);
+			Note newNote = new Note(title, pinned, pinnedAt, photoList, gifList, soundList, textbox, videoList);
 		
 	
 		return newNote.toString();

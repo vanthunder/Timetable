@@ -10,7 +10,6 @@ public class Note extends Base {
 	String title;
 	private int pinned;
 	private ArrayList <Appointment> pinnedAt;
-	private ArrayList externList;
 	private ArrayList photoList;
 	private ArrayList gifList;
 	private ArrayList soundList;
@@ -31,14 +30,6 @@ public class Note extends Base {
 
 	public void setPinnedAt(ArrayList pinnedAt) {
 		this.pinnedAt = pinnedAt;
-	}
-
-	public ArrayList getExternList() {
-		return externList;
-	}
-
-	public void setExternList(ArrayList externList) {
-		this.externList = externList;
 	}
 
 	public ArrayList getPhotoList() {
@@ -81,12 +72,11 @@ public class Note extends Base {
 		this.videoList = videoList;
 	}
 
-	public Note(String title, int pinned, ArrayList pinnedAt, ArrayList externList, ArrayList photoList, ArrayList gifList, ArrayList soundList, String textbox, ArrayList videoList) {
+	public Note(String title, int pinned, ArrayList pinnedAt, ArrayList photoList, ArrayList gifList, ArrayList soundList, String textbox, ArrayList videoList) {
 		super(title);
 		this.title = title;
 		this.setPinned(pinned);
 		this.setPinnedAt(pinnedAt);
-		this.setExternList(externList);
 		this.setPhotoList(photoList);
 		this.setGifList(gifList);
 		this.setSoundList(soundList);
