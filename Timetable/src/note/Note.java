@@ -9,7 +9,7 @@ public class Note extends Base {
 	
 	String title;
 	private int pinned;
-	private ArrayList <Task> pinnedAt;
+	private ArrayList <Appointment> pinnedAt;
 	private ArrayList externList;
 	private ArrayList photoList;
 	private ArrayList gifList;
