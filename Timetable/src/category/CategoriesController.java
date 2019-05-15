@@ -3,13 +3,18 @@
  */
 package category;
 import java.net.URL;
+
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
@@ -18,6 +23,8 @@ import javafx.scene.control.TreeView.EditEvent;
 import javafx.scene.control.cell.TextFieldTreeCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+
 /**
  * @author Marvin
  * @param <T>
@@ -39,6 +46,10 @@ public class CategoriesController<T> implements Initializable
     Button insertCategory = new Button();
     @FXML
     TextField categoryName = new TextField();
+    @FXML
+    ColorPicker colorPicker = new ColorPicker();
+    @FXML
+    Label logLabel = new Label();
     //Import an icon image for the treeView structure
     Image icon = new Image(
             getClass().getResourceAsStream("/images/Folder.png"));
@@ -139,6 +150,29 @@ public class CategoriesController<T> implements Initializable
             }
         }    
     }
+    //Method for the colorpicker
+    public void colorPick(ActionEvent event)
+    {
+    	TreeItem newValue = null;
+    	String newName = "TEST";
+    	String Text = "\u001B[47m";
+    	Color newColor;
+    	newColor = colorPicker.getValue();
+    	newName=newColor.toString();
+    	TreeItem<TreeItem> parent = (TreeItem<TreeItem>) treeView.getSelectionModel().getSelectedItem();
+    	Log.setText(Text);
+    	//parent.setStyle("-fx-background-color: #0093ff;");
+    	//System.out.println(parent.getValue());
+    	//parent.getValue().setValue();
+    	//newValue.setFill
+    	
+    	//newValue.setGraphic(colorPicker);
+    	//newValue.setGraphic(colorPicker);
+    	System.out.println(newName+"Text");
+        Log.setText(("<html><font color=\"red\">hello world!</font></html>"));
+    	
+    	System.out.println(Text+"hello world!");
+    }
     // Helper Methods for the Event Handlers
     public void eraseCategoryPress(ActionEvent event)
     {
@@ -192,12 +226,22 @@ public class CategoriesController<T> implements Initializable
      
     // Method for Logging
     private void writeMessage(String msg)
-    {
-        this.Log.appendText(msg + "\n");
+    {   Long millis = new Long(11);
+    	Duration.ofMillis(millis);
+    	this.Log.appendText(msg + "\n");
+        this.logLabel.setText(msg);
+    	PauseTransition wait = new PauseTransition(javafx.util.Duration.seconds(2));
+    	wait.setOnFinished((e) -> {
+            this.Log.setText("");;
+            this.logLabel.setText("");
+            //wait.playFromStart();
+        });
+        wait.play();
     } 
      //Initialize the treeview with all its components
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) 
-    {createTree();
-}
+    {
+    	createTree();
+    }
 }
