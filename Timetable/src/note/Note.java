@@ -84,6 +84,12 @@ public class Note extends Base {
 		this.setVideoList(videoList);
 	}
 	
+	/** states all Note attributes in a String*/
+	@Override
+	public String toString(){
+		return new String("title: " + this.getTitle() +" pinned: " + pinned + " pinnedAt: " + pinnedAt + " photoList: " + photoList + " gifList: " + gifList +
+				" soundList: " + soundList + " textbox: " + textbox + " videoList: " + videoList);
+	}
 	
 
 }

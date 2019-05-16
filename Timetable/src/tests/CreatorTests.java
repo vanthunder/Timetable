@@ -88,6 +88,27 @@ class CreatorTests {
 			assertEquals("title: sexy Appointment startpoint: "+new Date()+" endpoint: "+new Date()+" allDay: false regularlyOnOff: false regularlyType: 0 description: beautiful from start to end alarmOnOff: false alarmTime: Sun Jan 16 00:00:00 CET 3898 notesPinned: 0 notesLink: [] floating: true", 
 					Creator.createAppointment("sexy Appointment", startpoint, endpoint, false, false, 0, "beautiful from start to end", false, alarmTime, 0, notesLink, chosenCategory));
 		}
+		
+		
+		
+		
+		//AB HIER NOTES
+		
+		
+		
+		@Test
+		void testnotecreation () {
+			
+			ArrayList pinnedAt = new ArrayList();
+			ArrayList photoList = new ArrayList();
+			ArrayList gifList = new ArrayList();
+			ArrayList soundList = new ArrayList();
+			ArrayList videoList = new ArrayList();
+			Category chosenCategory = new Category();
+			
+			assertEquals("title: Stupid Note pinned: 0 pinnedAt: [] photoList: [] gifList: [] soundList: [] textbox: Some stupid text videoList: []",
+		            Creator.createNote("Stupid Note", 0, pinnedAt, photoList, gifList, soundList, "Some stupid text", videoList, chosenCategory));
+		}
 	
 
 }
