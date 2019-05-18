@@ -13,7 +13,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="category.CategoriesController">
    <center>
-      <TreeView fx:id="treeView" BorderPane.alignment="CENTER" />
+      <TreeView fx:id="treeView" editable="true" BorderPane.alignment="CENTER" />
    </center>
    <bottom>
       <BorderPane prefHeight="90.0" prefWidth="478.0" BorderPane.alignment="CENTER">
@@ -51,6 +51,7 @@
                   <Button fx:id="eraseCategory" mnemonicParsing="false" onAction="#eraseCategoryPress" prefHeight="25.0" prefWidth="149.0" text="Löschen" />
                   <Pane prefHeight="14.0" prefWidth="128.0" />
                   <ColorPicker fx:id="colorPicker" onAction="#colorPick" />
+                  <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetButtonPress" prefHeight="25.0" prefWidth="130.0" text="Standart" />
                   <Pane prefHeight="14.0" prefWidth="128.0" />
                </children>
             </VBox>
