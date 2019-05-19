@@ -5,7 +5,6 @@ package note;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,7 +18,7 @@ import javafx.scene.control.Button;
 public class NoteController implements Initializable
 {
 	@FXML
-	Button noteButton = new Button();
+	Button linkButton = new Button();
 	//Event for the link button
 	public void linkButtonPress(ActionEvent event)
 	{
