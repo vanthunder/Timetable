@@ -3,62 +3,29 @@
  */
 package category;
 
-import java.awt.Rectangle;
 import java.net.URL;
-import java.sql.Savepoint;
-import java.text.NumberFormat;
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.Collection;
 import java.util.ResourceBundle;
-
-import javax.management.loading.PrivateMLet;
-import javax.sound.sampled.LineUnavailableException;
-import javax.swing.text.View;
-
-import org.omg.CORBA.Current;
-import org.omg.CORBA.PRIVATE_MEMBER;
-
-import javafx.event.*;
-import java.awt.color.*;
-import java.awt.image.ColorConvertOp;
 import javafx.animation.PauseTransition;
-import javafx.css.PseudoClass;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Cell;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.Labeled;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.MultipleSelectionModel;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.TextFieldTreeCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.DataFormat;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TransferMode;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.text.Text;
-import javafx.util.Callback;
-import junit.framework.Test;
+
 
 /**
  * @author Marvin
@@ -86,17 +53,8 @@ public class CategoriesController<T> implements Initializable
     @FXML
     Label logLabel = new Label();
     @FXML
-    SplitMenuButton Color = new SplitMenuButton();
-    @FXML
-    MenuItem Red = new MenuItem();
-    @FXML
-    MenuItem green = new MenuItem();
-    @FXML
-    MenuItem blue = new MenuItem();
-    @FXML
-    MenuItem yellow = new MenuItem();
-    @FXML
     Button restButton = new Button();
+    Category category = new Category();
      //Import an icon image for the treeView structure
     Image icon = new Image(
             getClass().getResourceAsStream("/images/Folder.png"));
@@ -110,6 +68,9 @@ public class CategoriesController<T> implements Initializable
     //Method to create an treeView
     public void createTree(String... rootItem) 
     {
+    //category.setContentlist(mainCategories);
+    //mainCategories.addAll(category.getContentlist());
+    //System.out.println(mainCategories);
     treeView.setCellFactory(TextFieldTreeCell.forTreeView());
     treeView.setEditable(true);
     treeView.getSelectionModel().selectFirst();
@@ -131,6 +92,7 @@ public class CategoriesController<T> implements Initializable
     {
      return treeView;   
     }
+    
     //Method for inserting an Item
     public void insertCategoryPress(ActionEvent event)
     {
