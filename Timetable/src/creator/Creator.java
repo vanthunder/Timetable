@@ -15,7 +15,7 @@ public class Creator {
 	 * This method creates an appointment out of that data and saves it in the chosen category and in the calendar.
 	 */
 	public static String createAppointment(String title, Date startpoint, Date endpoint, boolean allDay, boolean regularlyOnOff, 
-			int regularlyType, String description, boolean alarmOnOff, Date alarmTime, int notesPinned, ArrayList<Note> notesLink, Category chosenCategory) {
+			int regularlyType, String description, boolean alarmOnOff, Date alarmTime, int notesPinned, ArrayList<Note> notesLink, boolean floating, Category chosenCategory) {
 		
 		
 		
@@ -28,10 +28,10 @@ public class Creator {
 		}
 		
 		//its better to have a method that does that in controller
-		boolean floating = false;
+		/*boolean floating = false;
 		if(startpoint.equals(endpoint)) {
 			floating = true;
-		}
+		}*/
 			
 		
 			Appointment newAppointment = new Appointment(title, startpoint, endpoint, allDay, regularlyOnOff, 
