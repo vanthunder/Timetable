@@ -93,5 +93,14 @@ public class Note extends Base {
 		return new String("title: " + this.getTitle() +" pinned: " + pinned + " pinnedAt: " + pinnedAt + " photoList: " + photoList + " gifList: " + gifList +
 				" soundList: " + soundList + " textbox: " + textbox + " videoList: " + videoList);
 	}	
+	
+	
+	/*	
+	 * public calendarPinning{
+	 * 		//calendarChoosing opens calendar overview and the user chooses the appointment/terminated task to pin the note to. 
+	 * 		//The Calendarlist-index of the appointment/terminated task is returned.
+		       this.pinnedAt.add(Calendar.CalendarList[calendarChoosing()]);
+		       this.pinned++;
+		 }*/
 
 }

@@ -23,15 +23,7 @@ public class NoteController implements Initializable
 	Button linkButton = new Button();
 	//Event for the link button
 	public void linkButtonPress(ActionEvent event) {
-		
-	/**	Class<? extends ActionEvent> clazz = event.getClass();
-
-		   for(Field field : clazz.getDeclaredFields()) {
-		       //you can also use .toGenericString() instead of .getName(). This will
-		       //give you the type information as well.
-
-		       System.out.println(field.getName());
-		       Calendar.CalendarList[p];*/
+	
 	} 
 	//Initialize the NoteView with all its components
 	@Override
