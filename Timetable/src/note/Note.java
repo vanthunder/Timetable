@@ -96,11 +96,22 @@ public class Note extends Base {
 	
 	
 	/*	
-	 * public calendarPinning{
+	 * public noteCalendarPinning{
 	 * 		//calendarChoosing opens calendar overview and the user chooses the appointment/terminated task to pin the note to. 
 	 * 		//The Calendarlist-index of the appointment/terminated task is returned.
-		       this.pinnedAt.add(Calendar.CalendarList[calendarChoosing()]);
+	 * 			int calendarChoosingIndex = calendarChoosing();
+		        ArrayList<Appointment> tempPinnedAt = this.getPinnedAt();
+		       ArrayList<Appointment> tempCalendarList = Calendar.getCalendarList();
+		       tempPinnedAt.add(tempCalendarList[calendarChoosingIndex]));
+		       this.setPinnedAt(tempPinnedAt());
 		       this.pinned++;
+		       
+		       tempNotesLink = tempCalendarList[calendarChoosingIndex].getNotesLink;
+		       tempNotesList = NotesOverview.getNotesList();
+		       tempNotesLink.add(tempNotesList[currentNote()]);
+		       tempCalendarList[calendarChoosingIndex].setNotesLink(tempNotesLink);
+		       // current note calls the index of the current opened note in NoteOverview.notesList
+		       
 		 }*/
 
 }
