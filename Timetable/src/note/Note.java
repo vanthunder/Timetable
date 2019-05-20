@@ -1,6 +1,9 @@
 package note;
 
 import java.util.ArrayList;
+
+import javax.swing.JButton;
+
 import base.Base;
 import task.Task;
 import appointment.Appointment;
@@ -84,6 +87,11 @@ public class Note extends Base {
 		this.setVideoList(videoList);
 	}
 	
-	
+	/** states all Note attributes in a String*/
+	@Override
+	public String toString(){
+		return new String("title: " + this.getTitle() +" pinned: " + pinned + " pinnedAt: " + pinnedAt + " photoList: " + photoList + " gifList: " + gifList +
+				" soundList: " + soundList + " textbox: " + textbox + " videoList: " + videoList);
+	}	
 
 }

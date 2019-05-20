@@ -2,28 +2,30 @@
  * 
  */
 package category;
-import java.net.URL;
 
+import java.net.URL;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.ResourceBundle;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import javafx.scene.control.TreeView.EditEvent;
 import javafx.scene.control.cell.TextFieldTreeCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+
 
 /**
  * @author Marvin
@@ -37,7 +39,7 @@ public class CategoriesController<T> implements Initializable
      */
     //Call the treeView component
     @FXML
-    TreeView treeView = new TreeView();
+    TreeView<String> treeView = new TreeView<String>();
     @FXML
     TextArea Log = new TextArea();
     @FXML
@@ -50,59 +52,47 @@ public class CategoriesController<T> implements Initializable
     ColorPicker colorPicker = new ColorPicker();
     @FXML
     Label logLabel = new Label();
-    //Import an icon image for the treeView structure
+    @FXML
+    Button restButton = new Button();
+    Category category = new Category();
+     //Import an icon image for the treeView structure
     Image icon = new Image(
             getClass().getResourceAsStream("/images/Folder.png"));
     String text = "";
     String value;
     CategoriesHelper helper = new CategoriesHelper();
     ArrayList<TreeItem> mainCategories = helper.getMainCategories();
-    TreeItem root = new TreeItem("Kategorien", new ImageView(icon));
+    TreeItem root = new TreeItem("Kategorien",new ImageView(icon));
+	private TreeItem<String> newItem;
+    
     //Method to create an treeView
     public void createTree(String... rootItem) 
     {
-    treeView.setEditable(true);
+    //category.setContentlist(mainCategories);
+    //mainCategories.addAll(category.getContentlist());
+    //System.out.println(mainCategories);
     treeView.setCellFactory(TextFieldTreeCell.forTreeView());
+    treeView.setEditable(true);
     treeView.getSelectionModel().selectFirst();
     root.getChildren().addAll(mainCategories);
     treeView.setRoot(root);
+    TreeItem<String> parent = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
      // Set editing related event handlers (OnEditStart)
-        treeView.setOnEditStart(new EventHandler<TreeView.EditEvent>()
-        {
-            @Override
-            public void handle(EditEvent event) 
-            {
-                editStart(event);
-            }
-        });
+        treeView.setOnEditStart(event -> editStart(event));
  
         // Set editing related event handlers (OnEditCommit)
-        treeView.setOnEditCommit(new EventHandler<TreeView.EditEvent>()
-        {
-            @Override
-            public void handle(EditEvent event) 
-            {
-                editCommit(event);
-            }
-        });
+        treeView.setOnEditCommit(event -> editCommit(event));
  
         // Set editing related event handlers (OnEditCancel)
-        treeView.setOnEditCancel(new EventHandler<TreeView.EditEvent>()
-        {
-            @Override
-            public void handle(EditEvent event) 
-            {
-                editCancel(event);
-            }
-        });
-    Log.setPrefRowCount(15);
-    Log.setPrefColumnCount(25);
+        treeView.setOnEditCancel(event -> editCancel(event));
     }
-    //Returns the tree
-    public TreeView initialize() 
+    
+	//Returns the tree
+    public TreeView<String> initialize() 
     {
      return treeView;   
     }
+    
     //Method for inserting an Item
     public void insertCategoryPress(ActionEvent event)
     {
@@ -115,7 +105,7 @@ public class CategoriesController<T> implements Initializable
         if(!text.equals(""))
         {   boolean check = true;
             text=categoryName.getText();
-            TreeItem<TreeItem> parent = (TreeItem<TreeItem>) treeView.getSelectionModel().getSelectedItem();
+            TreeItem<String> parent = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
             if(parent == null)
             {
                 writeMessage("Bitte wähle eine Kategorie aus\nder du eine Unterkategorie annhängen willst!");
@@ -123,7 +113,7 @@ public class CategoriesController<T> implements Initializable
             else
             if(!(parent == null))    
             {
-                for(TreeItem child : parent.getChildren())
+                for(TreeItem<String> child : parent.getChildren())
                 {
                     if(child.getValue().equals(text))
                     {
@@ -134,8 +124,9 @@ public class CategoriesController<T> implements Initializable
                 if(check == true && !text.equals("Sonstiges") && !text.equals("sonstiges"))
                 {
                     System.out.println("true");
-                    TreeItem newCategory = new TreeItem(text, new ImageView(icon));
+                    TreeItem<String> newCategory = new TreeItem<String>(text, new ImageView(icon));
                     parent.getChildren().add(newCategory);
+                    writeMessage("Es wurde eine neue Kategorie mit dem Namen: "+"'"+newCategory.getValue().toString()+"'"+" erstellt!");
                     if(!parent.isExpanded())
                     {
                         parent.setExpanded(true);
@@ -150,30 +141,40 @@ public class CategoriesController<T> implements Initializable
             }
         }    
     }
-    //Method for the colorpicker
-    public void colorPick(ActionEvent event)
+    
+    public void resetButtonPress (ActionEvent event)
     {
-    	TreeItem newValue = null;
-    	String newName = "TEST";
-    	String Text = "\u001B[47m";
+    	System.out.println("Die Farbe wurde zurückgesetzt!");
+    	TreeItem<String> current = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
+    	TreeItem<String> reset = new TreeItem<String>("test",new ImageView(icon));
+    	current.setGraphic(reset.getGraphic());
+        writeMessage("Die Farbe wurde zurückgesetzt!");
+    }
+    //Method for the colorpicker
+     public void colorPick(ActionEvent event)
+    {
+        String hex = "#" + Integer.toHexString(colorPicker.getValue().hashCode()); 
     	Color newColor;
     	newColor = colorPicker.getValue();
-    	newName=newColor.toString();
-    	TreeItem<TreeItem> parent = (TreeItem<TreeItem>) treeView.getSelectionModel().getSelectedItem();
-    	Log.setText(Text);
-    	//parent.setStyle("-fx-background-color: #0093ff;");
-    	//System.out.println(parent.getValue());
-    	//parent.getValue().setValue();
-    	//newValue.setFill
-    	
-    	//newValue.setGraphic(colorPicker);
-    	//newValue.setGraphic(colorPicker);
-    	System.out.println(newName+"Text");
-        Log.setText(("<html><font color=\"red\">hello world!</font></html>"));
-    	
-    	System.out.println(Text+"hello world!");
+    	TreeItem<String> parent = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
+    	Label label = new Label();
+    	if(parent == null)
+    	{
+    		System.out.println("TEST");
+    		writeMessage("Du musst eine Kategorie auswählen!");
+    	}
+    	else
+        if(!(parent == null))
+        {	
+    	    label.setText("  ");
+            label.setTextFill(newColor);
+            parent.setGraphic(label);
+            label.setGraphic(new ImageView(icon));
+            parent.getGraphic().setStyle("-fx-background-color:"+hex+";");
+            writeMessage("Eine Farbe wurde für die Kategorie: "+"'"+parent.getValue().toString()+"'"+" ausgewählt!");
+        }
     }
-    // Helper Methods for the Event Handlers
+     // Helper Methods for the Event Handlers
     public void eraseCategoryPress(ActionEvent event)
     {
         TreeItem<T> currentCategory = (TreeItem<T>) treeView.getSelectionModel().getSelectedItem();

@@ -42,9 +42,9 @@ class CreatorTests {
 		ArrayList<Note> notesLink = new ArrayList<Note>();
 		Category chosenCategory = new Category();
 		
-		
+		Creator.createAppointment("sexy Appointment", startpoint, endpoint, false, false, 0, "beautiful from start to end", false, alarmTime, 0, notesLink, chosenCategory);
 		assertEquals("title: sexy Appointment startpoint: Fri Jan 14 00:00:00 CET 3898 endpoint: Sat Jan 15 00:00:00 CET 3898 allDay: false regularlyOnOff: false regularlyType: 0 description: beautiful from start to end alarmOnOff: false alarmTime: Sun Jan 16 00:00:00 CET 3898 notesPinned: 0 notesLink: [] floating: false", 
-				Creator.createAppointment("sexy Appointment", startpoint, endpoint, false, false, 0, "beautiful from start to end", false, alarmTime, 0, notesLink, false, chosenCategory));
+				Creator.createAppointment("sexy Appointment", startpoint, endpoint, false, false, 0, "beautiful from start to end", false, alarmTime, 0, notesLink, chosenCategory));
 	}
 	
 	//AllDay activated so startpoint's time should be 00:00:00 and enpoint's 24:00:00
@@ -56,12 +56,59 @@ class CreatorTests {
 		ArrayList<Note> notesLink = new ArrayList<Note>();
 		Category chosenCategory = new Category();
 		
-		
+		Creator.createAppointment("sexy Appointment", startpoint, endpoint, false, false, 0, "beautiful from start to end", false, alarmTime, 0, notesLink, chosenCategory);
 		assertEquals("title: sexy Appointment startpoint: Fri Jan 14 00:00:00 CET 3898 endpoint: Sat Jan 15 23:59:59 CET 3898 allDay: true regularlyOnOff: false regularlyType: 0 description: beautiful from start to end alarmOnOff: false alarmTime: Sun Jan 16 00:00:00 CET 3898 notesPinned: 0 notesLink: [] floating: false", 
-				Creator.createAppointment("sexy Appointment", startpoint, endpoint, true, false, 0, "beautiful from start to end", false, alarmTime, 0, notesLink, false, chosenCategory));
+				Creator.createAppointment("sexy Appointment", startpoint, endpoint, true, false, 0, "beautiful from start to end", false, alarmTime, 0, notesLink, chosenCategory));
 	}
 	
+	//startpoint = endpoint so floating should be true
+	@Test
+	void testfloating() {
+		Date startpoint = new Date(1998, 0, 14);
+		Date endpoint = new Date(1998, 0, 14);
+		Date alarmTime = new Date(1998, 0, 16);
+		ArrayList<Note> notesLink = new ArrayList<Note>();
+		Category chosenCategory = new Category();
+		
+		Creator.createAppointment("sexy Appointment", startpoint, endpoint, false, false, 0, "beautiful from start to end", false, alarmTime, 0, notesLink, chosenCategory);
+		assertEquals("title: sexy Appointment startpoint: Fri Jan 14 00:00:00 CET 3898 endpoint: Fri Jan 14 00:00:00 CET 3898 allDay: false regularlyOnOff: false regularlyType: 0 description: beautiful from start to end alarmOnOff: false alarmTime: Sun Jan 16 00:00:00 CET 3898 notesPinned: 0 notesLink: [] floating: true", 
+				Creator.createAppointment("sexy Appointment", startpoint, endpoint, false, false, 0, "beautiful from start to end", false, alarmTime, 0, notesLink, chosenCategory));
+	}
 	
+	//startpoint = endpoint so floating should be true
+		@Test
+		void testfloating2() {
+			Date startpoint = new Date();
+			Date endpoint = new Date();
+			Date alarmTime = new Date(1998, 0, 16);
+			ArrayList<Note> notesLink = new ArrayList<Note>();
+			Category chosenCategory = new Category();
+			
+			Creator.createAppointment("sexy Appointment", startpoint, endpoint, false, false, 0, "beautiful from start to end", false, alarmTime, 0, notesLink, chosenCategory);
+			assertEquals("title: sexy Appointment startpoint: "+new Date()+" endpoint: "+new Date()+" allDay: false regularlyOnOff: false regularlyType: 0 description: beautiful from start to end alarmOnOff: false alarmTime: Sun Jan 16 00:00:00 CET 3898 notesPinned: 0 notesLink: [] floating: true", 
+					Creator.createAppointment("sexy Appointment", startpoint, endpoint, false, false, 0, "beautiful from start to end", false, alarmTime, 0, notesLink, chosenCategory));
+		}
+		
+		
+		
+		
+		//AB HIER NOTES
+		
+		
+		
+		@Test
+		void testnotecreation () {
+			
+			ArrayList pinnedAt = new ArrayList();
+			ArrayList photoList = new ArrayList();
+			ArrayList gifList = new ArrayList();
+			ArrayList soundList = new ArrayList();
+			ArrayList videoList = new ArrayList();
+			Category chosenCategory = new Category();
+			
+			assertEquals("title: Stupid Note pinned: 0 pinnedAt: [] photoList: [] gifList: [] soundList: [] textbox: Some stupid text videoList: []",
+		            Creator.createNote("Stupid Note", 0, pinnedAt, photoList, gifList, soundList, "Some stupid text", videoList, chosenCategory));
+		}
 	
 
 }
