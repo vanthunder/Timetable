@@ -10,7 +10,7 @@ public class CreateAppointmentUIController {
 	
 	public static void createAppointmentUI() {
 		if(floating == true && notesLink != null) {
-		
+			//Fehlermeldung Log
 		}
 	}
 
