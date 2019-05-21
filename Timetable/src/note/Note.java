@@ -97,9 +97,9 @@ public class Note extends Base {
 	
 	/*	
 	 * public noteCalendarPinning{
-	 * 		//calendarChoosing opens calendar overview and the user chooses the appointment/terminated task to pin the note to. 
+	 * 		//The method calendarChoosing from CalendarController opens calendar overview and the user chooses the appointment/terminated task to pin the note to. 
 	 * 		//The Calendarlist-index of the appointment/terminated task is returned.
-	 * 			int calendarChoosingIndex = calendarChoosing();
+	 * 			int calendarChoosingIndex = CalendarController.calendarChoosing();
 		        ArrayList<Appointment> tempPinnedAt = this.getPinnedAt();
 		       ArrayList<Appointment> tempCalendarList = Calendar.getCalendarList();
 		       tempPinnedAt.add(tempCalendarList[calendarChoosingIndex]));
