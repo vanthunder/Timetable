@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import base.Base;
 import task.Task;
 import appointment.Appointment;
+import javafx.scene.image.Image;
 
 public class Note extends Base {
 	
