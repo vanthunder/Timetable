@@ -9,9 +9,9 @@ public class CreateAppointmentUIController {
     Label createrLogLabel = new Label();
 	
 	public static void createAppointmentUI() {
-		if(floating == true && notesLink != null) {
+		//if(floating == true && notesLink != null) {
 			//Fehlermeldung Log
-		}
+		//}
 	}
 
 }
