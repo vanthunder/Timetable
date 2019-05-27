@@ -3,10 +3,12 @@
  */
 package category;
 
+import java.awt.Desktop.Action;
 import java.net.URL;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
@@ -54,6 +56,10 @@ public class CategoriesController<T> implements Initializable
     Label logLabel = new Label();
     @FXML
     Button restButton = new Button();
+    @FXML
+    Button UpButton = new Button();
+    @FXML
+    Button DownButton = new Button();
     Category category = new Category();
      //Import an icon image for the treeView structure
     Image icon = new Image(
@@ -178,7 +184,8 @@ public class CategoriesController<T> implements Initializable
     public void eraseCategoryPress(ActionEvent event)
     {
         TreeItem<T> currentCategory = (TreeItem<T>) treeView.getSelectionModel().getSelectedItem();
-        
+        TreeItem<T> parent1 = (TreeItem<T>) treeView.getSelectionModel().getSelectedItem();
+        TreeItem<T> moveItem = (TreeItem<T>) treeView.getTreeItem(3);
         if(currentCategory == null)
         {
             writeMessage("Wähle eine Kategorie aus um sie zu löschen!");
@@ -201,11 +208,73 @@ public class CategoriesController<T> implements Initializable
                 else
                 if(!currentCategory.getValue().equals("Sonstiges"))
                 {
-                  parent.getChildren().remove(currentCategory);
-                  writeMessage("Die Kategorie "+currentCategory.getValue()+" wurde gelöscht!");
+                 
+                if(currentCategory.isLeaf())
+                {
+                	System.out.println("TRUE");
+                	parent.getChildren().remove(currentCategory);
+                	
+                }
+                else
+                if(!currentCategory.isLeaf())
+                {   
+                	System.out.println(currentCategory.getValue().toString());
+                	//moveItem.getChildren().addAll(currentCategory.getChildren());
+                	//parent.getChildren().remove(parent1);
+                	int index = parent.getChildren().indexOf(currentCategory); 
+                	parent.getChildren().remove(index);
+                	moveItem.getChildren().add(parent1);
+                	parent1.getChildren().add(index+3, currentCategory);
+                }
+                  
+                    currentCategory = (TreeItem<T>) treeView.getSelectionModel().getSelectedItem();
+                    writeMessage("Die Kategorie "+currentCategory.getValue()+" wurde gelöscht!");
                 }
             }
         }
+    }
+    
+    
+    
+    public void UpButtonPress(ActionEvent event)
+    {   TreeItem<T> parent1 = (TreeItem<T>) treeView.getSelectionModel().getSelectedItem();
+    	System.out.println("UP");
+    	moveUp(parent1);
+    }
+    
+    static void moveUp(TreeItem item) {
+        if (item.getParent() instanceof TreeItem) {
+            TreeItem parent = item.getParent();
+            List<TreeItem> list = new ArrayList<TreeItem>();
+            Object prev = null;
+            for (Object child : parent.getChildren()) {
+                if (child == item) {
+                    list.add((TreeItem)child);
+                } else {
+                    if (prev != null) list.add((TreeItem)prev);
+                    prev = child;
+                }
+            }
+            if (prev != null) list.add((TreeItem)prev);
+            parent.getChildren().clear();
+            parent.getChildren().addAll(list);
+        }
+    }
+    public void DownButtonPress(ActionEvent event)
+    {   TreeItem<T> parent1 = (TreeItem<T>) treeView.getSelectionModel().getSelectedItem();
+    	System.out.println("Down");
+    	if (parent1 != null) 
+    	{
+            TreeItem item = parent1;
+            int index = item.getParent().getChildren().indexOf(item);
+            if(index != item.getParent().getChildren().size()-1)
+            {
+                TreeItem safeItem = (TreeItem) item.getParent().getChildren().get(index+1);
+                item.getParent().getChildren().set(index+1, item);
+                item.getParent().getChildren().set(index, safeItem);
+            }
+        }
+    	    
     }
     private void editStart(TreeView.EditEvent event) 
     {
