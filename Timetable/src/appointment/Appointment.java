@@ -1,24 +1,27 @@
 package appointment;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import base.Base;
 import note.Note;
 
 public class Appointment extends Base {
-	private Date startpoint;
-	private Date endpoint;
+	private LocalDateTime startpoint;
+	private LocalDateTime endpoint;
 	private boolean allDay;
 	private boolean regularlyOnOff;
 	private int regularlyType;
 	private String description;
 	private boolean alarmOnOff;
-	private Date alarmTime;
+	private LocalDateTime alarmTime;
 	private int notesPinned;
 	private ArrayList<Note> notesLink;
 	private boolean floating;
+	public final DateTimeFormatter dateWithTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
 	
-	public Appointment(String title, Date startpoint, Date endpoint, boolean allDay, boolean regularlyOnOff, 
-			int regularlyType, String description, boolean alarmOnOff, Date alarmTime, int notesPinned, 
+	public Appointment(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay, boolean regularlyOnOff, 
+			int regularlyType, String description, boolean alarmOnOff, LocalDateTime alarmTime, int notesPinned, 
 			ArrayList<Note> notesLink, boolean floating){
 		super(title);
 		this.startpoint = startpoint; 
@@ -37,25 +40,25 @@ public class Appointment extends Base {
 	
 
 
-	public Date getStartpoint() {
+	public LocalDateTime getStartpoint() {
 		return startpoint;
 	}
 
 
 
-	public void setStartpoint(Date startpoint) {
+	public void setStartpoint(LocalDateTime startpoint) {
 		this.startpoint = startpoint;
 	}
 
 
 
-	public Date getEndpoint() {
+	public LocalDateTime getEndpoint() {
 		return endpoint;
 	}
 
 
 
-	public void setEndpoint(Date endpoint) {
+	public void setEndpoint(LocalDateTime endpoint) {
 		this.endpoint = endpoint;
 	}
 
@@ -121,13 +124,13 @@ public class Appointment extends Base {
 
 
 
-	public Date getAlarmTime() {
+	public LocalDateTime getAlarmTime() {
 		return alarmTime;
 	}
 
 
 
-	public void setAlarmTime(Date alarmTime) {
+	public void setAlarmTime(LocalDateTime alarmTime) {
 		this.alarmTime = alarmTime;
 	}
 
@@ -172,9 +175,9 @@ public class Appointment extends Base {
 	/** states all Appointment attributes in a String*/
 	@Override
 	public String toString(){
-		return new String("title: "+this.getTitle()+" startpoint: "+startpoint+" endpoint: "+endpoint+" allDay: "+allDay+" regularlyOnOff: "+regularlyOnOff+
+		return new String("title: "+this.getTitle()+" startpoint: "+startpoint.format(dateWithTimeFormatter)+" endpoint: "+endpoint.format(dateWithTimeFormatter)+" allDay: "+allDay+" regularlyOnOff: "+regularlyOnOff+
 				" regularlyType: "+regularlyType+" description: "+description+" alarmOnOff: "+alarmOnOff+
-				" alarmTime: "+alarmTime+" notesPinned: "+notesPinned+" notesLink: "+notesLink+" floating: "+floating);
+				" alarmTime: "+alarmTime.format(dateWithTimeFormatter)+" notesPinned: "+notesPinned+" notesLink: "+notesLink+" floating: "+floating);
 	}
 	
 	/*	
