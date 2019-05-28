@@ -1,10 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
 <BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <Pane prefHeight="267.0" prefWidth="312.0" BorderPane.alignment="CENTER" />
+      <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="312.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <TextField prefWidth="312.0" promptText="Titel">
+                     <HBox.margin>
+                        <Insets bottom="20.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <DatePicker promptText="Datum" />
+                  <TextField promptText="Uhrzeit" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <DatePicker promptText="Datum" />
+                  <TextField promptText="Uhrzeit" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="80.0">
+               <children>
+                  <CheckBox mnemonicParsing="false" text="regelmäßig" />
+                  <ChoiceBox disable="true" prefWidth="150.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="142.0">
+               <children>
+                  <CheckBox contentDisplay="CENTER" mnemonicParsing="false" text="ganztägig" />
+                  <Button alignment="CENTER" mnemonicParsing="false" text="Notiz anheften" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <CheckBox mnemonicParsing="false" text="Alarm">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </CheckBox>
+                  <DatePicker disable="true" promptText="Datum" />
+                  <TextField disable="true" promptText="Uhrzeit" />
+               </children>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+      </VBox>
    </center>
 </BorderPane>
