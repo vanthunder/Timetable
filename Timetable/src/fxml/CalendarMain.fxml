@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -62,7 +61,7 @@
           </Tab>
             <Tab text="Notizen">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <fx:include source="Notes.fxml" />
                </content>
             </Tab>
         </tabs>
@@ -73,62 +72,7 @@
          <children>
             <HBox>
                <children>
-                  <VBox prefHeight="121.0" prefWidth="93.0">
-                     <children>
-                        <Label prefHeight="35.0" prefWidth="93.0" text="Titel">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="27.0" prefWidth="56.0" text="Start">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="37.0" prefWidth="58.0" text="Ende">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="110.0" prefWidth="125.0">
-                     <children>
-                        <TextField>
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </TextField>
-                        <TextField>
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </TextField>
-                        <TextField>
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <HBox>
-               <children>
-                  <VBox prefHeight="138.0" prefWidth="200.0">
-                     <children>
-                        <Label text="Beschreibung">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <TextArea prefHeight="98.0" prefWidth="200.0">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </TextArea>
-                     </children>
-                  </VBox>
+                  <fx:include source="Creator.fxml" />
                </children>
             </HBox>
             <HBox>

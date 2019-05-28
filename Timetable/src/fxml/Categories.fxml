@@ -6,6 +6,8 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TreeView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -13,7 +15,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="category.CategoriesController">
    <center>
-      <TreeView fx:id="treeView" BorderPane.alignment="CENTER" />
+      <TreeView fx:id="treeView" editable="true" BorderPane.alignment="CENTER" />
    </center>
    <bottom>
       <BorderPane prefHeight="90.0" prefWidth="478.0" BorderPane.alignment="CENTER">
@@ -50,7 +52,41 @@
                   <Pane prefHeight="21.0" prefWidth="133.0" />
                   <Button fx:id="eraseCategory" mnemonicParsing="false" onAction="#eraseCategoryPress" prefHeight="25.0" prefWidth="149.0" text="Löschen" />
                   <Pane prefHeight="14.0" prefWidth="128.0" />
-                  <ColorPicker fx:id="colorPicker" onAction="#colorPick" />
+                  <BorderPane>
+                     <right>
+                        <VBox prefHeight="80.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <VBox prefHeight="113.0" prefWidth="100.0">
+                                 <children>
+                                    <Button fx:id="UpButton" mnemonicParsing="false" onAction="#UpButtonPress">
+                                       <graphic>
+                                          <ImageView fitHeight="24.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/up.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Pane prefHeight="28.0" prefWidth="100.0" />
+                                    <Button fx:id="DownButton" mnemonicParsing="false" onAction="#DownButtonPress">
+                                       <graphic>
+                                          <ImageView fitHeight="24.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/down.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </right>
+                  </BorderPane>
+                  <Pane prefHeight="15.0" prefWidth="128.0" />
+                  <ColorPicker fx:id="colorPicker" onAction="#colorPick" prefHeight="31.0" prefWidth="128.0" />
+                  <Pane prefHeight="14.0" prefWidth="128.0" />
+                  <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetButtonPress" prefHeight="25.0" prefWidth="130.0" text="Standart" />
                   <Pane prefHeight="14.0" prefWidth="128.0" />
                </children>
             </VBox>

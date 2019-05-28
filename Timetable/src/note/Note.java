@@ -1,9 +1,13 @@
 package note;
 
 import java.util.ArrayList;
+
+import javax.swing.JButton;
+
 import base.Base;
 import task.Task;
 import appointment.Appointment;
+import javafx.scene.image.Image;
 
 public class Note extends Base {
 	
@@ -89,7 +93,26 @@ public class Note extends Base {
 	public String toString(){
 		return new String("title: " + this.getTitle() +" pinned: " + pinned + " pinnedAt: " + pinnedAt + " photoList: " + photoList + " gifList: " + gifList +
 				" soundList: " + soundList + " textbox: " + textbox + " videoList: " + videoList);
-	}
+	}	
 	
+	
+	/*	
+	 * public noteCalendarPinning{
+	 * 		//The method calendarChoosing from CalendarController opens calendar overview and the user chooses the appointment/terminated task to pin the note to. 
+	 * 		//The Calendarlist-index of the appointment/terminated task is returned.
+	 * 			int calendarChoosingIndex = CalendarController.calendarChoosing();
+		        ArrayList<Appointment> tempPinnedAt = this.getPinnedAt();
+		       ArrayList<Appointment> tempCalendarList = Calendar.getCalendarList();
+		       tempPinnedAt.add(tempCalendarList[calendarChoosingIndex]));
+		       this.setPinnedAt(tempPinnedAt());
+		       this.pinned++;
+		       
+		       tempNotesLink = tempCalendarList[calendarChoosingIndex].getNotesLink;
+		       tempNotesList = NotesOverview.getNotesList();
+		       tempNotesLink.add(tempNotesList[currentNote()]);
+		       tempCalendarList[calendarChoosingIndex].setNotesLink(tempNotesLink);
+		       // current note calls the index of the current opened note in NoteOverview.notesList
+		       
+		 }*/
 
 }

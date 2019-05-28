@@ -1,4 +1,5 @@
 package creator;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -14,24 +15,24 @@ public class Creator {
 	 * the data that the user gave in the appointment creation menu, will be converted and transferred to this method. 
 	 * This method creates an appointment out of that data and saves it in the chosen category and in the calendar.
 	 */
-	public static String createAppointment(String title, Date startpoint, Date endpoint, boolean allDay, boolean regularlyOnOff, 
-			int regularlyType, String description, boolean alarmOnOff, Date alarmTime, int notesPinned, ArrayList<Note> notesLink, Category chosenCategory) {
+	public static String createAppointment(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay, boolean regularlyOnOff, 
+			int regularlyType, String description, boolean alarmOnOff, LocalDateTime alarmTime, int notesPinned, ArrayList<Note> notesLink, boolean floating, Category chosenCategory) {
 		
 		
 		
 		
 		if(allDay) {
-			startpoint.setHours(0);
-			endpoint.setHours(23);
-			endpoint.setMinutes(59);
-			endpoint.setSeconds(59);
+			startpoint = startpoint.withHour(0).withMinute(0);
+			endpoint = endpoint.withHour(23).withMinute(59);
+			
+			
 		}
 		
 		//its better to have a method that does that in controller
-		boolean floating = false;
+		/*boolean floating = false;
 		if(startpoint.equals(endpoint)) {
 			floating = true;
-		}
+		}*/
 			
 		
 			Appointment newAppointment = new Appointment(title, startpoint, endpoint, allDay, regularlyOnOff, 
