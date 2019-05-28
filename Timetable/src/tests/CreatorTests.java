@@ -88,8 +88,20 @@ class CreatorTests {
 			assertEquals("title: sexy Appointment startpoint: "+new Date()+" endpoint: "+new Date()+" allDay: false regularlyOnOff: false regularlyType: 0 description: beautiful from start to end alarmOnOff: false alarmTime: Sun Jan 16 00:00:00 CET 3898 notesPinned: 0 notesLink: [] floating: true", 
 					Creator.createAppointment("sexy Appointment", startpoint, endpoint, false, false, 0, "beautiful from start to end", false, alarmTime, 0, notesLink, chosenCategory));
 		}
+		//Tasks 
+		@Test
+		void testTaskregular() {
+		Date startpoint = new Date(2002,0,10);
+		Date endpoint = new Date(2002,0,14);
+		Date alarmTime = new Date (2002,0,12);
+		ArrayList<Note> notesLink = new ArrayList<Note>();
+		Category chosenCategory = new Category();
 		
+		Creator.createTask("TaskTester1", startpoint, endpoint,false, false, 0, "erster Test",false, alarmTime, notesLink, chosenCategory, duration, done, feasibleTimeStart, feasibleTimeEnd, periodStart, periodEnd);
+		assertEquals("title: TaskTester1"+new Date()+" endpoint:"+newDate()+" allDay: false regularlyOnOff: false regularType: 0 description: erster Test alarmOnOff: false alarmTime: Mon Jan 12 00:00:00 CET 3898 notePinned: 0 noteLink: [] floating: true",
+				Creator.createTask("TaskTester1", startpoint, endpoint, false, false, 0, "erster Test", false, alarmTime, noteLink, chosenCategory))
 		
+		}
 		
 		
 		//AB HIER NOTES

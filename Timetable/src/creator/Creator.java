@@ -63,10 +63,6 @@ public class Creator {
 	public static String createTask(String title, Date startpoint, Date endpoint, boolean allDay, boolean regularlyOnOff, 
 			int regularlyType, String description, boolean alarmOnOff, Date alarmtime, int notesPinned, 
 			ArrayList<Note> notesLink, boolean floating,boolean autoSortOnOff,int duration,boolean done,int feasibleTimeStart,int feasibleTimeEnd,Date periodStart, Date periodEnd) {
-		if(allDay) {
-			startpoint.setHours(0);
-			endpoint.setHours(24);
-		}
 		
 		floating = false;
 		if(startpoint == endpoint) {
@@ -76,7 +72,7 @@ public class Creator {
 		
 		if(periodStart.compareTo(periodEnd)<0){
 			
-			long diffInMinutes = Math.abs(periodEnd.getTime() - periodStart.getTime());
+			long diffInMinutes = Math.abs(endpoint.getTime() - startpoint.getTime());
 		    long diff = TimeUnit.DAYS.convert(diffInMinutes, TimeUnit.MINUTES);
 		    duration = (int) diff;
 		};

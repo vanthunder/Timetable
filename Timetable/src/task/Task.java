@@ -103,8 +103,9 @@ public class Task extends Appointment{
 	}
 	public String toString(){
 		return new String("title: "+this.getTitle()+" startpoint: "+getStartpoint()+" endpoint: "+getEndpoint()+" allDay: "+isAllDay()+" regularlyOnOff: "+isRegularlyOnOff()+
-				" regularlyType: "+getRegularlyType()+" description: "+getDescription()+" alarmOnOff: "+isAlarmOnOff()+
-				" alarmTime: "+getAlarmTime()+" notesPinned: "+getNotesPinned()+" notesLink "+getNotesLink()+" floating: "+isFloating()+" autosort: "+getAutoSortOnOff()+" duration: "+getDuration()+" finished: "+getDone()+" feasibleTimeStart: "+getFeasibleTimeStart()+" feasibleTimeEnd: "+getFeasibleTimeEnd()+" periodStart: "+getPeriodStart()+" Period End: "+getPeriodEnd());
+				" regularlyType: "+getRegularlyType()+" description: "+getDescription()+" alarmOnOff: "+isAlarmOnOff()+" alarmTime: "+getAlarmTime()+" notesPinned: "+
+				getNotesPinned()+" notesLink "+getNotesLink()+" floating: "+isFloating()+" autosort: "+getAutoSortOnOff()+" duration: "+getDuration()+" finished: "+getDone()+
+				" feasibleTimeStart: "+getFeasibleTimeStart()+" feasibleTimeEnd: "+getFeasibleTimeEnd()+" periodStart: "+getPeriodStart()+" Period End: "+getPeriodEnd());
 
 	}
 	
