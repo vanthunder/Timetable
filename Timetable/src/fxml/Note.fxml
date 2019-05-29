@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="868.0" maxWidth="758.0" prefHeight="868.0" prefWidth="758.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextArea layoutX="2.0" layoutY="4.0" prefHeight="660.0" prefWidth="505.0" />
-      <HBox alignment="CENTER" layoutY="626.0" prefHeight="38.0" prefWidth="507.0" spacing="15.0" style="-fx-background-color: CCC8C7;">
+      <TextArea layoutX="3.0" layoutY="56.0" prefHeight="755.0" prefWidth="752.0" />
+      <HBox alignment="CENTER" layoutX="158.0" layoutY="811.0" prefHeight="55.0" prefWidth="443.0" spacing="15.0" style="-fx-background-color: CCC8C7;">
          <children>
-            <Button mnemonicParsing="false" text="Remove" />
-            <Button mnemonicParsing="false" text="Attach" />
+            <Button mnemonicParsing="false" text="Abheften" />
+            <Button mnemonicParsing="false" text="Anpinnen" />
          </children>
       </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="4.0" layoutY="811.0" prefHeight="55.0" prefWidth="155.0" style="-fx-background-color: CCC8C7;">
+         <children>
+            <Button mnemonicParsing="false" text="Bearbeiten" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" layoutX="601.0" layoutY="811.0" prefHeight="55.0" prefWidth="155.0" style="-fx-background-color: CCC8C7;">
+         <children>
+            <Button mnemonicParsing="false" text="Speichern" />
+         </children>
+      </HBox>
+      <Label alignment="CENTER" layoutX="4.0" layoutY="7.0" prefHeight="55.0" prefWidth="751.0" text="Titel">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
