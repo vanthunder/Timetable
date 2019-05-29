@@ -2,7 +2,7 @@ package category;
 
 import java.util.ArrayList;
 
-import base.Base;
+import base.base;
 import javafx.scene.control.TreeItem;
 
 public interface CategoryInterface {

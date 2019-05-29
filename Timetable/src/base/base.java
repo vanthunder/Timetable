@@ -1,9 +1,9 @@
 package base;
 
-public abstract class Base {
+public abstract class base {
 	String title;
 	
-	public Base(String title){
+	public base(String title){
 		this.title = title;
 	}
 

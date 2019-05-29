@@ -3,22 +3,20 @@
  */
 package category;
 
-import java.awt.Desktop.Action;
+
 import java.net.URL;
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
@@ -42,8 +40,6 @@ public class CategoriesController<T> implements Initializable
     //Call the treeView component
     @FXML
     TreeView<String> treeView = new TreeView<String>();
-    @FXML
-    TextArea Log = new TextArea();
     @FXML
     TextField newCategory = new TextField(); 
     @FXML
@@ -77,6 +73,7 @@ public class CategoriesController<T> implements Initializable
     //category.setContentlist(mainCategories);
     //mainCategories.addAll(category.getContentlist());
     //System.out.println(mainCategories);
+    root.setExpanded(true);
     treeView.setCellFactory(TextFieldTreeCell.forTreeView());
     treeView.setEditable(true);
     treeView.getSelectionModel().selectFirst();
@@ -238,30 +235,30 @@ public class CategoriesController<T> implements Initializable
     
     public void UpButtonPress(ActionEvent event)
     {   TreeItem<T> parent1 = (TreeItem<T>) treeView.getSelectionModel().getSelectedItem();
-    	System.out.println("UP");
-    	moveUp(parent1);
+    TreeItem<T> parent12 = new  TreeItem<T>();
+    parent12 = parent1;
+	System.out.println("Down");
+	if (parent1 != null) 
+	{
+        TreeItem item = parent1;
+        int index = item.getParent().getChildren().indexOf(item);
+        if(index != item.getParent().getChildren().size()+1)
+        {
+            TreeItem safeItem = (TreeItem) item.getParent().getChildren().get(index-1);
+            item.getParent().getChildren().set(index-1, item);
+            item.getParent().getChildren().set(index, safeItem);
+            
+        }
+        treeView.getSelectionModel().select(item);
+    }
+	
+    System.out.println(parent1.toString());
     }
     
-    static void moveUp(TreeItem item) {
-        if (item.getParent() instanceof TreeItem) {
-            TreeItem parent = item.getParent();
-            List<TreeItem> list = new ArrayList<TreeItem>();
-            Object prev = null;
-            for (Object child : parent.getChildren()) {
-                if (child == item) {
-                    list.add((TreeItem)child);
-                } else {
-                    if (prev != null) list.add((TreeItem)prev);
-                    prev = child;
-                }
-            }
-            if (prev != null) list.add((TreeItem)prev);
-            parent.getChildren().clear();
-            parent.getChildren().addAll(list);
-        }
-    }
     public void DownButtonPress(ActionEvent event)
     {   TreeItem<T> parent1 = (TreeItem<T>) treeView.getSelectionModel().getSelectedItem();
+        TreeItem<T> parent12 = new  TreeItem<T>();
+        parent12 = parent1;
     	System.out.println("Down");
     	if (parent1 != null) 
     	{
@@ -272,9 +269,12 @@ public class CategoriesController<T> implements Initializable
                 TreeItem safeItem = (TreeItem) item.getParent().getChildren().get(index+1);
                 item.getParent().getChildren().set(index+1, item);
                 item.getParent().getChildren().set(index, safeItem);
+                
             }
+            treeView.getSelectionModel().select(item);
         }
-    	    
+    	
+        System.out.println(parent1.toString());
     }
     private void editStart(TreeView.EditEvent event) 
     {
@@ -298,11 +298,9 @@ public class CategoriesController<T> implements Initializable
     private void writeMessage(String msg)
     {   Long millis = new Long(11);
     	Duration.ofMillis(millis);
-    	this.Log.appendText(msg + "\n");
         this.logLabel.setText(msg);
     	PauseTransition wait = new PauseTransition(javafx.util.Duration.seconds(2));
     	wait.setOnFinished((e) -> {
-            this.Log.setText("");;
             this.logLabel.setText("");
             //wait.playFromStart();
         });

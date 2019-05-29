@@ -2,17 +2,14 @@ package category;
 
 import java.util.ArrayList;
 
-import javax.sound.midi.ControllerEventListener;
-
-import base.Base;
+import base.base;
 import javafx.scene.control.TreeItem;
 
 public class Category implements CategoryInterface
 {
 	
-	
-	private ArrayList<TreeItem> contentlist = new ArrayList<TreeItem>();
 
+	private ArrayList<TreeItem> contentlist = new ArrayList<TreeItem>();
     
 	
 	public ArrayList<TreeItem> getContentlist() 
