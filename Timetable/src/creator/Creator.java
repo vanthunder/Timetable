@@ -16,7 +16,7 @@ public class Creator {
 	 * This method creates an appointment out of that data and saves it in the chosen category and in the calendar.
 	 */
 	public static String createAppointment(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay, boolean regularlyOnOff, 
-			int regularlyType, String description, boolean alarmOnOff, LocalDateTime alarmTime, int notesPinned, ArrayList<Note> notesLink, boolean floating, Category chosenCategory) {
+			int regularlyType,LocalDateTime regularlzAmount, String description, boolean alarmOnOff, LocalDateTime alarmTime, int notesPinned, ArrayList<Note> notesLink, boolean floating, Category chosenCategory) {
 		
 		
 		
