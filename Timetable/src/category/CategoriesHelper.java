@@ -5,6 +5,7 @@ package category;
 
 import java.util.ArrayList;
 
+import base.Base;
 import javafx.scene.control.TreeItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,6 +28,9 @@ public class CategoriesHelper
 	  
 	  Image icon = new Image(
 				getClass().getResourceAsStream("/images/Folder.png"));
+	  Base Base1 = new Base("!! Debug Item !!")	
+	  {};
+	  ToObject toObject = new ToObject(Base1);
 	  
 	  //Diese Methode erstellt die Oberkategorien
 	  public ArrayList<TreeItem> getMainCategories()
@@ -43,9 +47,12 @@ public class CategoriesHelper
 		  sonstiges.getChildren().addAll(getSonstiges());
 		  
 		  
+		  
 		  mainCategories.add(uni);
 		  mainCategories.add(freizeit);
 		  mainCategories.add(sonstiges);
+		  mainCategories.add(toObject.getRootItem());
+		  
 		  
 		  return mainCategories;
 	  }

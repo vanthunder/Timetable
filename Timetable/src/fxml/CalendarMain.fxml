@@ -70,7 +70,7 @@
    <left>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <HBox>
+            <HBox prefHeight="362.0" prefWidth="408.0">
                <children>
                   <fx:include source="Creator.fxml" />
                </children>
@@ -95,7 +95,7 @@
                   <Pane prefHeight="467.0" prefWidth="10.0" />
                </children>
             </HBox>
-            <Pane prefHeight="188.0" prefWidth="218.0">
+            <Pane prefHeight="67.0" prefWidth="408.0">
                <children>
                   <Label prefHeight="100.0" prefWidth="100.0" text="Live Feed" />
                </children>
