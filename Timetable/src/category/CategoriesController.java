@@ -25,6 +25,7 @@ import javafx.scene.control.cell.TextFieldTreeCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Ellipse;
 
 
 /**
@@ -146,12 +147,17 @@ public class CategoriesController<T> implements Initializable
     }
     
     public void resetButtonPress (ActionEvent event)
-    {
+    {   TreeItem<String> parent = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
+    	if (!(parent == null))
+	    {
     	System.out.println("Die Farbe wurde zurückgesetzt!");
     	TreeItem<String> current = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
     	TreeItem<String> reset = new TreeItem<String>("test",new ImageView(icon));
     	current.setGraphic(reset.getGraphic());
         writeMessage("Die Farbe wurde zurückgesetzt!");
+	    }
+    	else
+        writeMessage("Bitte wähle eine Kategorie aus um die Farbe zu reseten!");
     }
     //Method for the colorpicker
      public void colorPick(ActionEvent event)
@@ -234,40 +240,19 @@ public class CategoriesController<T> implements Initializable
     
     
     public void UpButtonPress(ActionEvent event)
-    {   TreeItem<T> parent1 = (TreeItem<T>) treeView.getSelectionModel().getSelectedItem();
-    TreeItem<T> parent12 = new  TreeItem<T>();
-    parent12 = parent1;
-	System.out.println("Down");
-	if (parent1 != null) 
+    {
+    TreeItem<T> parent1 = (TreeItem<T>) treeView.getSelectionModel().getSelectedItem();
+    if (!(parent1 == null))
 	{
-        TreeItem item = parent1;
-        int index = item.getParent().getChildren().indexOf(item);
-        if(index != item.getParent().getChildren().size()+1)
-        {
-            TreeItem safeItem = (TreeItem) item.getParent().getChildren().get(index-1);
-            item.getParent().getChildren().set(index-1, item);
-            item.getParent().getChildren().set(index, safeItem);
-            
-        }
-        treeView.getSelectionModel().select(item);
-    }
-	
-    System.out.println(parent1.toString());
-    }
-    
-    public void DownButtonPress(ActionEvent event)
-    {   TreeItem<T> parent1 = (TreeItem<T>) treeView.getSelectionModel().getSelectedItem();
-        TreeItem<T> parent12 = new  TreeItem<T>();
-        parent12 = parent1;
     	System.out.println("Down");
     	if (parent1 != null) 
     	{
             TreeItem item = parent1;
             int index = item.getParent().getChildren().indexOf(item);
-            if(index != item.getParent().getChildren().size()-1)
+            if(index != item.getParent().getChildren().size()+1)
             {
-                TreeItem safeItem = (TreeItem) item.getParent().getChildren().get(index+1);
-                item.getParent().getChildren().set(index+1, item);
+                TreeItem safeItem = (TreeItem) item.getParent().getChildren().get(index-1);
+                item.getParent().getChildren().set(index-1, item);
                 item.getParent().getChildren().set(index, safeItem);
                 
             }
@@ -275,6 +260,36 @@ public class CategoriesController<T> implements Initializable
         }
     	
         System.out.println(parent1.toString());
+        }
+    else
+    	writeMessage("Bitte wähle eine Kategorie aus,\num sie nach oben zu verschieben!");
+	}
+  
+	
+    
+    public void DownButtonPress(ActionEvent event)
+    {   TreeItem<T> parent1 = (TreeItem<T>) treeView.getSelectionModel().getSelectedItem();
+        if (!(parent1 == null))
+		{
+        	System.out.println("Down");
+        	if (parent1 != null) 
+        	{
+                TreeItem item = parent1;
+                int index = item.getParent().getChildren().indexOf(item);
+                if(index != item.getParent().getChildren().size()-1)
+                {
+                    TreeItem safeItem = (TreeItem) item.getParent().getChildren().get(index+1);
+                    item.getParent().getChildren().set(index+1, item);
+                    item.getParent().getChildren().set(index, safeItem);
+                    
+                }
+                treeView.getSelectionModel().select(item);
+            }
+        	
+            System.out.println(parent1.toString());
+		}
+        else
+        	writeMessage("Bitte wähle eine Kategorie aus,\num sie nach unten zu verschieben!");
     }
     private void editStart(TreeView.EditEvent event) 
     {

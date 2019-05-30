@@ -8,6 +8,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -22,7 +23,7 @@
             <VBox BorderPane.alignment="CENTER">
                <children>
                   <Label text="Log: " textAlignment="CENTER" />
-                  <Label fx:id="logLabel" alignment="TOP_LEFT" prefHeight="19.0" prefWidth="499.0" textFill="#900200">
+                  <Label fx:id="logLabel" alignment="TOP_LEFT" prefHeight="38.0" prefWidth="478.0" textFill="#900200">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -48,29 +49,34 @@
                      <right>
                         <VBox prefHeight="80.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                            <children>
-                              <VBox prefHeight="113.0" prefWidth="100.0">
+                              <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Button fx:id="UpButton" mnemonicParsing="false" onAction="#UpButtonPress">
-                                       <graphic>
-                                          <ImageView fitHeight="24.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/up.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                    <Pane prefHeight="28.0" prefWidth="100.0" />
-                                    <Button fx:id="DownButton" mnemonicParsing="false" onAction="#DownButtonPress">
-                                       <graphic>
-                                          <ImageView fitHeight="24.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/down.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
+                                    <Pane prefHeight="80.0" prefWidth="56.0" />
+                                    <VBox prefHeight="80.0" prefWidth="41.0">
+                                       <children>
+                                          <Button fx:id="UpButton" mnemonicParsing="false" onAction="#UpButtonPress">
+                                             <graphic>
+                                                <ImageView fitHeight="24.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/up.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Pane prefHeight="28.0" prefWidth="100.0" />
+                                          <Button fx:id="DownButton" mnemonicParsing="false" onAction="#DownButtonPress">
+                                             <graphic>
+                                                <ImageView fitHeight="24.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/down.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </VBox>
                                  </children>
-                              </VBox>
+                              </HBox>
                            </children>
                         </VBox>
                      </right>
@@ -78,7 +84,7 @@
                   <Pane prefHeight="15.0" prefWidth="128.0" />
                   <ColorPicker fx:id="colorPicker" onAction="#colorPick" prefHeight="31.0" prefWidth="128.0" />
                   <Pane prefHeight="14.0" prefWidth="128.0" />
-                  <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetButtonPress" prefHeight="25.0" prefWidth="130.0" text="Standart" />
+                  <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetButtonPress" prefHeight="25.0" prefWidth="130.0" text="Standart Farbe" />
                   <Pane prefHeight="14.0" prefWidth="128.0" />
                </children>
             </VBox>

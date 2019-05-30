@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -53,16 +55,37 @@
                      </center>
                   </BorderPane>
                </content>
+               <graphic>
+                  <ImageView fitHeight="127.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Kalender.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
           </Tab>
           <Tab text="Aufgaben">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
+               <graphic>
+                  <ImageView fitHeight="56.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Aufgabe.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
           </Tab>
             <Tab text="Notizen">
                <content>
                   <fx:include source="Notes.fxml" />
                </content>
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Notiz.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Tab>
         </tabs>
       </TabPane>
@@ -70,9 +93,41 @@
    <left>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="362.0" prefWidth="408.0">
+            <HBox>
                <children>
-                  <fx:include source="Creator.fxml" />
+                  <Pane prefHeight="47.0" prefWidth="11.0" />
+                  <Button fx:id="appointmentButton" mnemonicParsing="false" onAction="#appointmentButtonPress">
+                     <font>
+                        <Font name="Nirmala UI" size="14.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="36.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/neuerTermin.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Pane prefHeight="47.0" prefWidth="11.0" />
+                  <Button fx:id="taskButton" mnemonicParsing="false" onAction="#taskButtonPress">
+                     <graphic>
+                        <ImageView fitHeight="39.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/neueAufgabe.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Pane prefHeight="47.0" prefWidth="11.0" />
+                  <Button fx:id="notesButton" mnemonicParsing="false" onAction="#notesButtonPress">
+                     <graphic>
+                        <ImageView fitHeight="39.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/neueNotiz.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </HBox>
             <HBox>
@@ -106,12 +161,29 @@
    <top>
       <BorderPane BorderPane.alignment="CENTER">
          <right>
-            <Button mnemonicParsing="false" text="Suchen" BorderPane.alignment="CENTER">
-               <graphic>
-                  <TextField />
-               </graphic>
-            </Button>
+            <HBox BorderPane.alignment="CENTER">
+               <children>
+                  <TextField opacity="0.88" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-border-color: silver; -fx-border-width: 2;" />
+                  <Pane prefHeight="29.0" prefWidth="6.0" />
+                  <Button mnemonicParsing="false" style="-fx-background-radius: 4;">
+                     <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Suche.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Pane prefHeight="29.0" prefWidth="6.0" />
+               </children>
+            </HBox>
          </right>
+         <top>
+            <Pane prefHeight="8.0" prefWidth="1133.0" BorderPane.alignment="CENTER" />
+         </top>
+         <bottom>
+            <Pane prefHeight="5.0" prefWidth="1133.0" BorderPane.alignment="CENTER" />
+         </bottom>
       </BorderPane>
    </top>
 </BorderPane>
