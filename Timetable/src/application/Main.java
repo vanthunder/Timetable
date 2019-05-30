@@ -26,6 +26,7 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
+		// add creator method for temporary list with all Calendar-Objects  
 		launch(args);
 	}
 }
