@@ -163,7 +163,7 @@
          <right>
             <HBox BorderPane.alignment="CENTER">
                <children>
-                  <TextField opacity="0.88" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-border-color: silver; -fx-border-width: 2;" />
+                  <TextField fx:id="Search" onKeyPressed="#searchKey" onMouseEntered="#searchClicked" onMouseExited="#searchExit" opacity="0.88" prefWidth="150.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-border-color: silver; -fx-border-width: 2;" />
                   <Pane prefHeight="29.0" prefWidth="6.0" />
                   <Button mnemonicParsing="false" style="-fx-background-radius: 4;">
                      <graphic>

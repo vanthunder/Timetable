@@ -1,5 +1,9 @@
 package application;
+import java.awt.RenderingHints.Key;
 import java.io.IOException;
+
+import org.junit.runner.Computer;
+
 import category.CategoriesController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,7 +11,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Control;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import note.NoteController;
@@ -27,7 +35,8 @@ public class MainController extends Main
     Button taskButton = new Button();
     @FXML
     Button notesButton = new Button();
-    
+    @FXML
+    TextField Search = new TextField();
     
     public void appointmentButtonPress (ActionEvent event)
     {
@@ -92,7 +101,27 @@ public class MainController extends Main
 			
 		}
     }
-  
+    public void searchClicked (MouseEvent event)
+    {
+    	Search.setPrefWidth(250);	
+    }
+    public void searchKey (KeyEvent event)
+    {if (Search.getText().isEmpty())
+	{
+		Search.setPrefWidth(150);
+	}
+    	Search.setPrefWidth(250);
+    	
+    }
+    
+	public void searchExit (MouseEvent event)
+    {     
+    	if(Search.getText().isEmpty())
+     {
+        Search.setPrefWidth(150);
+     }
+     
+    }
 	public void initialize() 
     {
         
