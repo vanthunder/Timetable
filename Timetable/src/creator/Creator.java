@@ -1,11 +1,14 @@
 package creator;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import category.Category;
 import appointment.Appointment;
+import base.Base;
+import calendar.Calendar;
 import note.Note;
 import task.Task;
 
@@ -16,7 +19,8 @@ public class Creator {
 	 * This method creates an appointment out of that data and saves it in the chosen category and in the calendar.
 	 */
 	public static String createAppointment(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay, boolean regularlyOnOff, 
-			int regularlyType, String description, boolean alarmOnOff, LocalDateTime alarmTime, int notesPinned, ArrayList<Note> notesLink, boolean floating, Category chosenCategory) {
+			int regularlyType, int regularlyAmount, String description, boolean alarmOnOff, LocalDateTime alarmTime, int notesPinned, ArrayList<Note> notesLink, boolean floating, Category chosenCategory) {
+
 		
 		
 		
@@ -47,27 +51,23 @@ public class Creator {
 			*/
 			
 			//newAppointment is only added to calendar if floating is false
-			/*
-			*ArrayList<Base/event> tempCalendarList = Calendar.getCalendarList();
-			*tempCalendarList.add(newAppointment);
-			*tempCalendarList.sort();
-			*Calendar.setCalendarList(tempCalendarList);
-			*
-			*/
+
+			ArrayList<Base> tempCalendarList = Calendar.getCalendarList();
+			tempCalendarList.add(newAppointment);
+			//tempCalendarList.sort();
+			Calendar.setCalendarList(tempCalendarList);
+			
 			
 			//Save.save(); as soon as the appointment is created, the program will save the data
 			
 			//Testreturn to proof if the Appointment object got the data it should have:
-		return newAppointment.toString();
+		//return newAppointment.toString();
+			return newAppointment.toString();
 	}
 	
-	public static String createTask(String title, Date startpoint, Date endpoint, boolean allDay, boolean regularlyOnOff, 
+	/*public static String createTask(String title, Date startpoint, Date endpoint, boolean allDay, boolean regularlyOnOff, 
 			int regularlyType, String description, boolean alarmOnOff, Date alarmtime, int notesPinned, 
 			ArrayList<Note> notesLink, boolean floating,boolean autoSortOnOff,int duration,boolean done,int feasibleTimeStart,int feasibleTimeEnd,Date periodStart, Date periodEnd) {
-		if(allDay) {
-			startpoint.setHours(0);
-			endpoint.setHours(24);
-		}
 		
 		floating = false;
 		if(startpoint == endpoint) {
@@ -77,7 +77,7 @@ public class Creator {
 		
 		if(periodStart.compareTo(periodEnd)<0){
 			
-			long diffInMinutes = Math.abs(periodEnd.getTime() - periodStart.getTime());
+			long diffInMinutes = Math.abs(endpoint.getTime() - startpoint.getTime());
 		    long diff = TimeUnit.DAYS.convert(diffInMinutes, TimeUnit.MINUTES);
 		    duration = (int) diff;
 		};
@@ -85,7 +85,7 @@ public class Creator {
 		Task newTask = new Task(title,startpoint,endpoint,allDay,regularlyOnOff,regularlyType,description,alarmOnOff,alarmtime,notesPinned,notesLink,floating,autoSortOnOff,duration,done,feasibleTimeStart,feasibleTimeEnd,periodStart,periodEnd );
 		
 		return newTask.toString();
-	}
+	}*/
 		
 	
 	

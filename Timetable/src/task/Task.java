@@ -12,11 +12,10 @@ public class Task extends Appointment{
 	private boolean done;
 	private int feasibleTimeStart;
 	private int feasibleTimeEnd;
-	private Date periodStart;
-	private Date periodEnd;;
-	public Task(String title, Date startpoint, Date endpoint, boolean allDay, boolean regularlyOnOff, 
-			int regularlyType, String description, boolean alarmOnOff, Date alarmtime, int notesPinned, 
-			ArrayList<Note> notesLink, boolean floating,boolean autoSortOnOff,int duration,boolean done,int feasibleTimeStart,int feasibleTimeEnd,Date periodStart, Date periodEnd){
+	private LocalDateTime periodStart;
+	private LocalDateTime periodEnd;;
+	public Task(title,startpoint,endpoint, allDay,regularlyOnOff,regularlyType,description, alarmOnOff, alarmtime, notesPinned, 
+			notesLink, floating,autoSortOnOff,duration,done,feasibleTimeStart,feasibleTimeEnd,periodStart,periodEnd){
 		
 		super(title, periodEnd, periodEnd, done, done, feasibleTimeEnd, description, done, periodEnd, feasibleTimeEnd, notesLink, done);
 		
