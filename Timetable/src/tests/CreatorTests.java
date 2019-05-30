@@ -66,9 +66,9 @@ class CreatorTests {
 		//Tasks 
 		@Test
 		void testTaskregular() {
-		Date startpoint = new Date(2002,0,10);
-		Date endpoint = new Date(2002,0,14);
-		Date alarmTime = new Date (2002,0,12);
+		LocalDateTime startpoint = LocalDateTime.of(2002,0,10,0,0);
+		LocalDateTime endpoint = LocalDateTime.of(2002,0,14,0,0);
+		LocalDateTime alarmTime = LocalDateTime.of2002,0,12,0,0);
 		ArrayList<Note> notesLink = new ArrayList<Note>();
 		Category chosenCategory = new Category();
 		
