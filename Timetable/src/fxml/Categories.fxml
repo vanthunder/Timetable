@@ -22,8 +22,8 @@
          <top>
             <VBox BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Log: " textAlignment="CENTER" />
-                  <Label fx:id="logLabel" alignment="TOP_LEFT" prefHeight="38.0" prefWidth="478.0" textFill="#900200">
+                  <Label prefHeight="17.0" prefWidth="216.0" text="Log: " textAlignment="CENTER" />
+                  <Label fx:id="logLabel" alignment="TOP_LEFT" prefHeight="38.0" prefWidth="478.0" style="-fx-border-color: silver;" textFill="#900200">
                      <font>
                         <Font size="14.0" />
                      </font>

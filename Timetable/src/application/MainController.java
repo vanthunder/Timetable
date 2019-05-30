@@ -18,6 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import junit.framework.Test;
 import note.NoteController;
 
 
@@ -37,6 +38,8 @@ public class MainController extends Main
     Button notesButton = new Button();
     @FXML
     TextField Search = new TextField();
+    @FXML
+    Button Test = new Button();
     
     public void appointmentButtonPress (ActionEvent event)
     {
