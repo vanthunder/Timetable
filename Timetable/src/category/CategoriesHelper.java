@@ -5,7 +5,7 @@ package category;
 
 import java.util.ArrayList;
 
-import base.base;
+import base.Base;
 import javafx.scene.control.TreeItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,7 +28,7 @@ public class CategoriesHelper
 	  
 	  Image icon = new Image(
 				getClass().getResourceAsStream("/images/Folder.png"));
-	  base Base1 = new base("!! Debug Item !!")	
+	  Base Base1 = new Base("!! Debug Item !!")	
 	  {};
 	  ToObject toObject = new ToObject(Base1);
 	  

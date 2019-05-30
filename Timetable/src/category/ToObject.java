@@ -3,7 +3,7 @@
  */
 package category;
 
-import base.base;
+import base.Base;
 import javafx.scene.control.TreeItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -18,7 +18,7 @@ public class ToObject
 			getClass().getResourceAsStream("/images/Folder.png"));
 	 private final TreeItem<String> rootItem = new TreeItem();
 
-	    public ToObject(base Base)
+	    public ToObject(Base Base)
 	    {
 	        rootItem.setValue(Base.getTitle());
 	        rootItem.setGraphic(new ImageView(icon));
