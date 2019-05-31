@@ -51,7 +51,7 @@
                      </graphic>
                   </Button>
                   <Pane prefHeight="25.0" prefWidth="10.0" />
-                  <Label fx:id="timeformat" alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="29.0" prefWidth="212.0" style="-fx-border-color: silver; -fx-border-radius: 10; -fx-background-radius: 10; -fx-alignment: center; -fx-background-color: white;" text="Standart Datumsansicht" textAlignment="CENTER" textFill="#1aafff">
+                  <Label fx:id="timeformat" alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="29.0" prefWidth="212.0" style="-fx-border-color: silver; -fx-border-radius: 10; -fx-background-radius: 10; -fx-alignment: center; -fx-background-color: white;" text="Monat" textAlignment="CENTER" textFill="#1aafff">
                      <font>
                         <Font size="18.0" />
                      </font>

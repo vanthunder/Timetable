@@ -1,6 +1,7 @@
 package calendar;
 
 import java.net.URL;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ListIterator;
@@ -26,6 +27,9 @@ public class CalendarController implements CalendarControllerInterface
 	private Label selectTime;
 	@FXML
 	private Button downRigtButton;
+	
+	String Month = new String("Monat");
+	String Day = new String("Tag");
 	ArrayList<String> TFormat = new ArrayList<>(Arrays.asList("Monat",
                                                               "Tag"));
     ListIterator<String> currentTFormat = TFormat.listIterator();
@@ -33,22 +37,28 @@ public class CalendarController implements CalendarControllerInterface
    // Event Listener on Button[#upLeftButton].onAction
 	@FXML
 	public void urlPress(ActionEvent event) 
-	{   
-		if(currentTFormat.hasPrevious())
-	    {
-			String previous = currentTFormat.previous();
-		    timeformat.setText("  "+previous+"  ");
-	    }
-		
+	{   if(timeformat.getText().equals(Month))
+		{
+			timeformat.setText(Day);
+		}
+		else
+		if (timeformat.getText().equals(Day))
+		{
+			timeformat.setText(Month);
+		}
 	}
 	// Event Listener on Button[#upRightButton].onAction
 	@FXML
 	public void urbPress(ActionEvent event) 
 	{
-		if(currentTFormat.hasNext())
-		{   
-			String next = currentTFormat.next();
-			timeformat.setText("  "+next+"  ");
+		if(timeformat.getText().equals(Month))
+		{
+			timeformat.setText(Day);
+		}
+		else
+		if (timeformat.getText().equals(Day))
+		{
+			timeformat.setText(Month);
 		}
 	}
 	// Event Listener on Button[#downLeftButton].onAction

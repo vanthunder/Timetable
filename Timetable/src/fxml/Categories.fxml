@@ -84,7 +84,7 @@
                   <Pane prefHeight="15.0" prefWidth="128.0" />
                   <ColorPicker fx:id="colorPicker" onAction="#colorPick" prefHeight="31.0" prefWidth="128.0" />
                   <Pane prefHeight="14.0" prefWidth="128.0" />
-                  <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetButtonPress" prefHeight="25.0" prefWidth="130.0" text="Standart Farbe" />
+                  <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetButtonPress" prefHeight="25.0" prefWidth="130.0" text="Standard Farbe" />
                   <Pane prefHeight="14.0" prefWidth="128.0" />
                </children>
             </VBox>
