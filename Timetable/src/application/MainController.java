@@ -109,17 +109,20 @@ public class MainController extends Main
     	Search.setPrefWidth(250);	
     }
     public void searchKey (KeyEvent event)
-    {if (Search.getText().isEmpty())
-	{
+    {
+       
+       if (Search.getText().isEmpty())
+	   {
 		Search.setPrefWidth(150);
-	}
+	   }
+    	else
     	Search.setPrefWidth(250);
     	
     }
     
 	public void searchExit (MouseEvent event)
     {     
-    	if(Search.getText().isEmpty())
+    	if(Search.getText().isEmpty() && !Search.isFocused())
      {
         Search.setPrefWidth(150);
      }

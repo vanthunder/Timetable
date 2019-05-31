@@ -9,12 +9,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="849.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="note.NoteController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="note.NoteController">
    <center>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <GridPane fx:id="NoteCategory" gridLinesVisible="true" opacity="0.5" prefHeight="853.0" prefWidth="102.0">
+            <GridPane fx:id="NoteCategory" gridLinesVisible="true" opacity="0.5" prefHeight="328.0" prefWidth="136.0" HBox.hgrow="SOMETIMES">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -32,7 +31,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
-            <GridPane fx:id="NoteContent" gridLinesVisible="true" prefHeight="412.0" prefWidth="627.0">
+            <GridPane fx:id="NoteContent" gridLinesVisible="true" prefHeight="330.0" prefWidth="437.0" HBox.hgrow="ALWAYS">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -53,14 +52,14 @@
          </children>
       </HBox>
    </center>
-   <right>
-      <Button fx:id="linkButton" mnemonicParsing="false" onAction="#linkButtonPress" text="Link" BorderPane.alignment="CENTER" />
-   </right>
    <top>
-      <Label prefHeight="17.0" prefWidth="736.0" text="Kategorie            Notiz" BorderPane.alignment="CENTER">
+      <Label prefHeight="27.0" prefWidth="187.0" text="Kategorie             Notiz" BorderPane.alignment="TOP_LEFT">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </Label>
    </top>
+   <right>
+      <Button fx:id="linkButton" mnemonicParsing="false" onAction="#linkButtonPress" text="Link" BorderPane.alignment="CENTER" />
+   </right>
 </BorderPane>
