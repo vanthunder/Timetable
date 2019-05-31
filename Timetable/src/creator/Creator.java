@@ -2,7 +2,6 @@ package creator;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import category.Category;
@@ -65,27 +64,32 @@ public class Creator {
 			return newAppointment.toString();
 	}
 	
-	/*public static String createTask(String title, Date startpoint, Date endpoint, boolean allDay, boolean regularlyOnOff, 
-			int regularlyType, String description, boolean alarmOnOff, Date alarmtime, int notesPinned, 
-			ArrayList<Note> notesLink, boolean floating,boolean autoSortOnOff,int duration,boolean done,int feasibleTimeStart,int feasibleTimeEnd,Date periodStart, Date periodEnd) {
+	public static String createTask(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay,
+			boolean regularlyOnOff, int regularlyType, String description, boolean alarmOnOff, LocalDateTime alarmTime,
+			int notesPinned, ArrayList<Note> notesLink, boolean floating, boolean autoSortOnOff, int duration,
+			boolean done, LocalDateTime feasibleTimeStart, LocalDateTime feasibleTimeEnd, LocalDateTime periodStart, LocalDateTime periodEnd) {
+
+
+	
 		
 		floating = false;
 		if(startpoint == endpoint) {
 			floating = true;
-		}
+
 
 		
-		if(periodStart.compareTo(periodEnd)<0){
+		if(periodEnd.isAfter(periodStart)==true){
 			
-			long diffInMinutes = Math.abs(endpoint.getTime() - startpoint.getTime());
+			long diffInMinutes = Math.abs(endpoint.getMinute() - startpoint.getMinute());
 		    long diff = TimeUnit.DAYS.convert(diffInMinutes, TimeUnit.MINUTES);
 		    duration = (int) diff;
-		};
-		
-		Task newTask = new Task(title,startpoint,endpoint,allDay,regularlyOnOff,regularlyType,description,alarmOnOff,alarmtime,notesPinned,notesLink,floating,autoSortOnOff,duration,done,feasibleTimeStart,feasibleTimeEnd,periodStart,periodEnd );
+		}
+	}
+		Task newTask = new Task(title, startpoint, endpoint, allDay, regularlyOnOff, regularlyType, description, alarmOnOff, alarmTime,
+				notesPinned, notesLink, floating, done, duration, done, duration, duration, periodEnd, periodEnd);
 		
 		return newTask.toString();
-	}*/
+}
 		
 	
 	
@@ -102,6 +106,8 @@ public class Creator {
 	
 		return newNote.toString();
 	}
+
+
 }
 	
 

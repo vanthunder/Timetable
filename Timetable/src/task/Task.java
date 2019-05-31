@@ -1,7 +1,7 @@
 package task;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 import appointment.Appointment;
 import note.Note;
@@ -14,21 +14,26 @@ public class Task extends Appointment{
 	private int feasibleTimeEnd;
 	private LocalDateTime periodStart;
 	private LocalDateTime periodEnd;;
-	public Task(title,startpoint,endpoint, allDay,regularlyOnOff,regularlyType,description, alarmOnOff, alarmtime, notesPinned, 
-			notesLink, floating,autoSortOnOff,duration,done,feasibleTimeStart,feasibleTimeEnd,periodStart,periodEnd){
-		
-		super(title, periodEnd, periodEnd, done, done, feasibleTimeEnd, description, done, periodEnd, feasibleTimeEnd, notesLink, done);
-		
+
+
+	public Task(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay, boolean regularlyOnOff,
+			int regularlyType, String description, boolean alarmOnOff, LocalDateTime alarmTime, int notesPinned,
+			ArrayList<Note> notesLink, boolean floating, boolean autoSortOnOff, int duration, boolean done,
+			int feasibleTimeStart, int feasibleTimeEnd, LocalDateTime periodStart, LocalDateTime periodEnd) {
+		super(title, startpoint, endpoint, allDay, regularlyOnOff, regularlyType, description, alarmOnOff, alarmTime,
+				notesPinned, notesLink, floating);
 		this.autoSortOnOff = autoSortOnOff;
-		this.done = done;
 		this.duration = duration;
-		this.feasibleTimeEnd = feasibleTimeEnd;
+		this.done = done;
 		this.feasibleTimeStart = feasibleTimeStart;
-		this.periodEnd = periodEnd;
+		this.feasibleTimeEnd = feasibleTimeEnd;
 		this.periodStart = periodStart;
-		
-		
+		this.periodEnd = periodEnd;
 	}
+
+
+
+
 
 
 	public boolean getAutoSortOnOff() {
@@ -81,31 +86,38 @@ public class Task extends Appointment{
 	}
 
 
-	public Date getPeriodStart() {
+	public LocalDateTime getPeriodStart() {
 		return periodStart;
 	}
 
 
-	public void setPeriodStart(Date periodStart) {
+	public void setPeriodStart(LocalDateTime periodStart) {
 		this.periodStart = periodStart;
 	}
 
 
-	public Date getPeriodEnd() {
+	public LocalDateTime getPeriodEnd() {
 		return periodEnd;
 	}
 
 
-	public void setPeriodEnd(Date periodEnd) {
+	public void setPeriodEnd(LocalDateTime periodEnd) {
 		this.periodEnd = periodEnd;
 		
 	}
-	public String toString(){
-		return new String("title: "+this.getTitle()+" startpoint: "+getStartpoint()+" endpoint: "+getEndpoint()+" allDay: "+isAllDay()+" regularlyOnOff: "+isRegularlyOnOff()+
-				" regularlyType: "+getRegularlyType()+" description: "+getDescription()+" alarmOnOff: "+isAlarmOnOff()+
-				" alarmTime: "+getAlarmTime()+" notesPinned: "+getNotesPinned()+" notesLink "+getNotesLink()+" floating: "+isFloating()+" autosort: "+getAutoSortOnOff()+" duration: "+getDuration()+" finished: "+getDone()+" feasibleTimeStart: "+getFeasibleTimeStart()+" feasibleTimeEnd: "+getFeasibleTimeEnd()+" periodStart: "+getPeriodStart()+" Period End: "+getPeriodEnd());
 
+
+	@Override
+	public String toString() {
+		return "Task [toString()=" + super.toString() + ", getStartpoint()=" + getStartpoint() + ", getEndpoint()="
+				+ getEndpoint() + ", isAllDay()=" + isAllDay() + ", isRegularlyOnOff()=" + isRegularlyOnOff()
+				+ ", getRegularlyType()=" + getRegularlyType() + ", getDescription()=" + getDescription()
+				+ ", isAlarmOnOff()=" + isAlarmOnOff() + ", getAlarmTime()=" + getAlarmTime() + ", getNotesPinned()="
+				+ getNotesPinned() + ", getNotesLink()=" + getNotesLink() + ", isFloating()=" + isFloating()
+				+ ", getTitle()=" + getTitle() + ", getClass()=" + getClass() + ", autoSortOnOff=" + autoSortOnOff
+				+ ", duration=" + duration + ", done=" + done + ", feasibleTimeStart=" + feasibleTimeStart
+				+ ", feasibleTimeEnd=" + feasibleTimeEnd + ", periodStart=" + periodStart + ", periodEnd=" + periodEnd
+				+ "]";
 	}
-	
 
 }
