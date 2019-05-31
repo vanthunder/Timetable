@@ -12,18 +12,14 @@
       <TextArea layoutX="3.0" layoutY="56.0" prefHeight="755.0" prefWidth="752.0" />
       <HBox alignment="CENTER" layoutX="158.0" layoutY="811.0" prefHeight="55.0" prefWidth="443.0" spacing="15.0" style="-fx-background-color: CCC8C7;">
          <children>
-            <Button mnemonicParsing="false" text="Abheften" />
-            <Button mnemonicParsing="false" text="Anpinnen" />
+            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="99.0" text="Speichern" />
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="4.0" layoutY="811.0" prefHeight="55.0" prefWidth="155.0" style="-fx-background-color: CCC8C7;">
+      <HBox alignment="CENTER_LEFT" layoutX="4.0" layoutY="811.0" prefHeight="55.0" prefWidth="155.0" style="-fx-background-color: CCC8C7;" />
+      <HBox alignment="CENTER_RIGHT" layoutX="601.0" layoutY="811.0" prefHeight="55.0" prefWidth="155.0" spacing="5.0" style="-fx-background-color: CCC8C7;">
          <children>
-            <Button mnemonicParsing="false" text="Bearbeiten" />
-         </children>
-      </HBox>
-      <HBox alignment="CENTER_RIGHT" layoutX="601.0" layoutY="811.0" prefHeight="55.0" prefWidth="155.0" style="-fx-background-color: CCC8C7;">
-         <children>
-            <Button mnemonicParsing="false" text="Speichern" />
+            <Button mnemonicParsing="false" style="-fx-background-color: #47B7FF;" text="Abheften" />
+            <Button mnemonicParsing="false" style="-fx-background-color: #47B7FF;" text="Anpinnen" />
          </children>
       </HBox>
       <Label alignment="CENTER" layoutX="4.0" layoutY="7.0" prefHeight="55.0" prefWidth="751.0" text="Titel">
