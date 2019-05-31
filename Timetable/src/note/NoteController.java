@@ -22,7 +22,8 @@ public class NoteController implements Initializable
 	@FXML
 	Button linkButton = new Button();
 	//Event for the link button
-	public void linkButtonPress(ActionEvent event) {
+	public void linkButtonPress(ActionEvent event) 
+	{
 	
 	} 
 	//Initialize the NoteView with all its components

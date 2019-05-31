@@ -26,9 +26,7 @@ public class CalendarController implements CalendarControllerInterface
 	private Label selectTime;
 	@FXML
 	private Button downRigtButton;
-	ArrayList<String> TFormat = new ArrayList<>(Arrays.asList("Jahr",
-                                                              "Monat",
-                                                              "Woche",
+	ArrayList<String> TFormat = new ArrayList<>(Arrays.asList("Monat",
                                                               "Tag"));
     ListIterator<String> currentTFormat = TFormat.listIterator();
     
