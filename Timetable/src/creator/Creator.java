@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import category.Category;
+import event.Event;
 import appointment.Appointment;
 import base.Base;
 import calendar.Calendar;
@@ -12,6 +13,15 @@ import note.Note;
 import task.Task;
 
 public class Creator {
+	
+	public String createEvent(String title, LocalDateTime startpoint, LocalDateTime endpoint, String description) {
+		//event exists always the whole day
+		startpoint = startpoint.withHour(0).withMinute(0);
+		endpoint = endpoint.withHour(23).withMinute(59);
+		Event newEvent = new Event(title, startpoint, endpoint, true, description);
+		return newEvent.toString();
+	}
+	
 	/**This method is called by createAppointmentUI() which is located in a Controller.
 	 * createAppointmentUI opens the appointment-creation-menu. As soon as the user clicks on "save appointment" in that menu, 
 	 * the data that the user gave in the appointment creation menu, will be converted and transferred to this method. 

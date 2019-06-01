@@ -7,12 +7,14 @@ import base.Base;
 public class Event extends Base {
 	//ganztag start description
 	private LocalDateTime startpoint;
+	private LocalDateTime endpoint;
 	private boolean allDay;
 	private String description;
 	
-	public Event(String title, LocalDateTime startpoint, boolean allDay, String description) {
+	public Event(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay, String description) {
 		super(title);
 		this.startpoint = startpoint;
+		this.endpoint = endpoint;
 		this.allDay = allDay;
 		this.description = description;
 	}
@@ -23,6 +25,14 @@ public class Event extends Base {
 
 	public void setStartpoint(LocalDateTime startpoint) {
 		this.startpoint = startpoint;
+	}
+
+	public LocalDateTime getEndpoint() {
+		return endpoint;
+	}
+
+	public void setEndpoint(LocalDateTime endpoint) {
+		this.endpoint = endpoint;
 	}
 
 	public boolean isAllDay() {
@@ -43,8 +53,8 @@ public class Event extends Base {
 
 	@Override
 	public String toString() {
-		return "Event [startpoint=" + startpoint + ", allDay=" + allDay + ", description=" + description + ", title="
-				+ getTitle() + "]";
+		return "startpoint: " + startpoint + "endpoint: " + endpoint + ", allDay: " + allDay + ", description: " + description + ", title: "
+				+ getTitle();
 	}
 	
 	

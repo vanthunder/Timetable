@@ -8,12 +8,8 @@ import event.Event;
 import note.Note;
 
 public class Appointment extends Event {
-	
-	private LocalDateTime endpoint;
-	
 	private boolean regularlyOnOff;
 	private int regularlyType;
-	
 	private boolean alarmOnOff;
 	private LocalDateTime alarmTime;
 	private int notesPinned;
@@ -24,8 +20,7 @@ public class Appointment extends Event {
 	public Appointment(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay, boolean regularlyOnOff, 
 			int regularlyType, String description, boolean alarmOnOff, LocalDateTime alarmTime, int notesPinned, 
 			ArrayList<Note> notesLink, boolean floating){
-		super(title, startpoint, allDay, description);
-		this.endpoint = endpoint;
+		super(title, startpoint, endpoint, allDay, description);
 		this.regularlyOnOff = regularlyOnOff;
 		this.regularlyType = regularlyType;
 		this.alarmOnOff = alarmOnOff; 
@@ -43,7 +38,7 @@ public class Appointment extends Event {
 	/** states all Appointment attributes in a String*/
 	@Override
 	public String toString(){
-		return new String("title: "+this.getTitle()+" startpoint: "+getStartpoint().format(dateWithTimeFormatter)+" endpoint: "+endpoint.format(dateWithTimeFormatter)+" allDay: "+isAllDay()+" regularlyOnOff: "+regularlyOnOff+
+		return new String("title: "+this.getTitle()+" startpoint: "+getStartpoint().format(dateWithTimeFormatter)+" endpoint: "+getEndpoint().format(dateWithTimeFormatter)+" allDay: "+isAllDay()+" regularlyOnOff: "+regularlyOnOff+
 				" regularlyType: "+regularlyType+" description: "+getDescription()+" alarmOnOff: "+alarmOnOff+
 				" alarmTime: "+alarmTime.format(dateWithTimeFormatter)+" notesPinned: "+notesPinned+" notesLink: "+notesLink+" floating: "+floating);
 	}
@@ -70,24 +65,6 @@ public class Appointment extends Event {
 
 
 
-
-
-	
-	
-
-
-
-
-
-	public LocalDateTime getEndpoint() {
-		return endpoint;
-	}
-
-
-
-	public void setEndpoint(LocalDateTime endpoint) {
-		this.endpoint = endpoint;
-	}
 
 
 
