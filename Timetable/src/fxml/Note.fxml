@@ -15,8 +15,8 @@
             <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="99.0" text="Speichern" />
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="4.0" layoutY="811.0" prefHeight="55.0" prefWidth="155.0" style="-fx-background-color: CCC8C7;" />
-      <HBox alignment="CENTER_RIGHT" layoutX="601.0" layoutY="811.0" prefHeight="55.0" prefWidth="155.0" spacing="5.0" style="-fx-background-color: CCC8C7;">
+      <HBox alignment="CENTER_LEFT" layoutX="601.0" layoutY="811.0" prefHeight="55.0" prefWidth="155.0" style="-fx-background-color: CCC8C7;" />
+      <HBox alignment="CENTER_RIGHT" layoutX="4.0" layoutY="811.0" prefHeight="55.0" prefWidth="155.0" spacing="5.0" style="-fx-background-color: CCC8C7;">
          <children>
             <Button mnemonicParsing="false" style="-fx-background-color: #47B7FF;" text="Abheften" />
             <Button mnemonicParsing="false" style="-fx-background-color: #47B7FF;" text="Anpinnen" />
