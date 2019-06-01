@@ -13,6 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import appointment.Appointment;
+import calendar.Calendar;
 import category.Category;
 import creator.Creator;
 import note.Note;
@@ -64,6 +65,23 @@ class CreatorTests {
 				Creator.createAppointment("sexy Appointment", startpoint, endpoint, true, false, 0, 0, "beautiful from start to end", false, alarmTime, 0, notesLink, false, chosenCategory));
 		
 		
+	}
+	
+	@Test
+	void testAppointmentCalendarTransfer() {
+		LocalDateTime startpoint = LocalDateTime.of(1998, 1, 14, 0, 0);
+		LocalDateTime endpoint = LocalDateTime.of(1998, 1, 15, 0, 0);
+		LocalDateTime alarmTime = LocalDateTime.of(1998, 1, 16, 0, 0);
+		ArrayList<Note> notesLink = new ArrayList<Note>();
+		Category chosenCategory = new Category();
+		Creator.createAppointment("sexy Appointment", startpoint, endpoint, false, false, 0, 0, 
+				"beautiful from start to end", false, alarmTime, 0, notesLink, false, chosenCategory);
+		
+		
+		assertEquals("title: sexy Appointment startpoint: 14.01.1998 00:00 endpoint: 15.01.1998 00:00 "
+				+ "allDay: false regularlyOnOff: false regularlyType: 0 description: beautiful from start to end "
+				+ "alarmOnOff: false alarmTime: 16.01.1998 00:00 notesPinned: 0 notesLink: [] floating: false", 
+				Calendar.getCalendarList().get(0).toString());
 	}
 	
 	

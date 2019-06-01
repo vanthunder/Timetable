@@ -4,15 +4,16 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import base.Base;
+import event.Event;
 import note.Note;
 
-public class Appointment extends Base {
-	private LocalDateTime startpoint;
+public class Appointment extends Event {
+	
 	private LocalDateTime endpoint;
-	private boolean allDay;
+	
 	private boolean regularlyOnOff;
 	private int regularlyType;
-	private String description;
+	
 	private boolean alarmOnOff;
 	private LocalDateTime alarmTime;
 	private int notesPinned;
@@ -23,13 +24,10 @@ public class Appointment extends Base {
 	public Appointment(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay, boolean regularlyOnOff, 
 			int regularlyType, String description, boolean alarmOnOff, LocalDateTime alarmTime, int notesPinned, 
 			ArrayList<Note> notesLink, boolean floating){
-		super(title);
-		this.startpoint = startpoint; 
+		super(title, startpoint, allDay, description);
 		this.endpoint = endpoint;
-		this.allDay = allDay;
 		this.regularlyOnOff = regularlyOnOff;
 		this.regularlyType = regularlyType;
-		this.description = description; 
 		this.alarmOnOff = alarmOnOff; 
 		this.alarmTime = alarmTime;
 		this.notesPinned = notesPinned;
@@ -45,8 +43,8 @@ public class Appointment extends Base {
 	/** states all Appointment attributes in a String*/
 	@Override
 	public String toString(){
-		return new String("title: "+this.getTitle()+" startpoint: "+startpoint.format(dateWithTimeFormatter)+" endpoint: "+endpoint.format(dateWithTimeFormatter)+" allDay: "+allDay+" regularlyOnOff: "+regularlyOnOff+
-				" regularlyType: "+regularlyType+" description: "+description+" alarmOnOff: "+alarmOnOff+
+		return new String("title: "+this.getTitle()+" startpoint: "+getStartpoint().format(dateWithTimeFormatter)+" endpoint: "+endpoint.format(dateWithTimeFormatter)+" allDay: "+isAllDay()+" regularlyOnOff: "+regularlyOnOff+
+				" regularlyType: "+regularlyType+" description: "+getDescription()+" alarmOnOff: "+alarmOnOff+
 				" alarmTime: "+alarmTime.format(dateWithTimeFormatter)+" notesPinned: "+notesPinned+" notesLink: "+notesLink+" floating: "+floating);
 	}
 	
@@ -69,92 +67,15 @@ public class Appointment extends Base {
 		       // currentAppointment calls the index of the current opened appointment/terminated task in Calendar.calenderList
 		 }*/
 	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (alarmOnOff ? 1231 : 1237);
-		result = prime * result + ((alarmTime == null) ? 0 : alarmTime.hashCode());
-		result = prime * result + (allDay ? 1231 : 1237);
-		result = prime * result + ((dateWithTimeFormatter == null) ? 0 : dateWithTimeFormatter.hashCode());
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((endpoint == null) ? 0 : endpoint.hashCode());
-		result = prime * result + (floating ? 1231 : 1237);
-		result = prime * result + ((notesLink == null) ? 0 : notesLink.hashCode());
-		result = prime * result + notesPinned;
-		result = prime * result + (regularlyOnOff ? 1231 : 1237);
-		result = prime * result + regularlyType;
-		result = prime * result + ((startpoint == null) ? 0 : startpoint.hashCode());
-		return result;
-	}
 
 
 
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Appointment other = (Appointment) obj;
-		if (alarmOnOff != other.alarmOnOff)
-			return false;
-		if (alarmTime == null) {
-			if (other.alarmTime != null)
-				return false;
-		} else if (!alarmTime.equals(other.alarmTime))
-			return false;
-		if (allDay != other.allDay)
-			return false;
-		if (dateWithTimeFormatter == null) {
-			if (other.dateWithTimeFormatter != null)
-				return false;
-		} else if (!dateWithTimeFormatter.equals(other.dateWithTimeFormatter))
-			return false;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-		if (endpoint == null) {
-			if (other.endpoint != null)
-				return false;
-		} else if (!endpoint.equals(other.endpoint))
-			return false;
-		if (floating != other.floating)
-			return false;
-		if (notesLink == null) {
-			if (other.notesLink != null)
-				return false;
-		} else if (!notesLink.equals(other.notesLink))
-			return false;
-		if (notesPinned != other.notesPinned)
-			return false;
-		if (regularlyOnOff != other.regularlyOnOff)
-			return false;
-		if (regularlyType != other.regularlyType)
-			return false;
-		if (startpoint == null) {
-			if (other.startpoint != null)
-				return false;
-		} else if (!startpoint.equals(other.startpoint))
-			return false;
-		return true;
-	}
+
+	
 	
 
-	public LocalDateTime getStartpoint() {
-		return startpoint;
-	}
 
-
-
-	public void setStartpoint(LocalDateTime startpoint) {
-		this.startpoint = startpoint;
-	}
 
 
 
@@ -166,18 +87,6 @@ public class Appointment extends Base {
 
 	public void setEndpoint(LocalDateTime endpoint) {
 		this.endpoint = endpoint;
-	}
-
-
-
-	public boolean isAllDay() {
-		return allDay;
-	}
-
-
-
-	public void setAllDay(boolean allDay) {
-		this.allDay = allDay;
 	}
 
 
@@ -205,19 +114,7 @@ public class Appointment extends Base {
 	}
 
 
-
-	public String getDescription() {
-		return description;
-	}
-
-
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-
-
+	
 	public boolean isAlarmOnOff() {
 		return alarmOnOff;
 	}
