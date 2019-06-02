@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 import base.Base;
 
-public class Event extends Base {
+public class Event extends Base implements Cloneable {
 	//ganztag start description
 	private LocalDateTime startpoint;
 	private LocalDateTime endpoint;
@@ -13,6 +13,7 @@ public class Event extends Base {
 	private String description;
 	private boolean regularlyOnOff;
 	private int regularlyType;
+	private int regularlyID;
 	private boolean alarmOnOff;
 	private LocalDateTime alarmTime;
 	public final DateTimeFormatter dateWithTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
@@ -20,7 +21,7 @@ public class Event extends Base {
 	
 
 	public Event(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay, String description,
-			boolean regularlyOnOff, int regularlyType, boolean alarmOnOff, LocalDateTime alarmTime) {
+			boolean regularlyOnOff, int regularlyType, int regularlyID, boolean alarmOnOff, LocalDateTime alarmTime) {
 		super(title);
 		this.startpoint = startpoint;
 		this.endpoint = endpoint;
@@ -28,6 +29,7 @@ public class Event extends Base {
 		this.description = description;
 		this.regularlyOnOff = regularlyOnOff;
 		this.regularlyType = regularlyType;
+		this.regularlyID = regularlyID;
 		this.alarmOnOff = alarmOnOff;
 		this.alarmTime = alarmTime;
 	}
@@ -96,14 +98,24 @@ public class Event extends Base {
 		this.alarmTime = alarmTime;
 	}
 
+	public int getRegularlyID() {
+		return regularlyID;
+	}
+
+	public void setRegularlyID(int regularlyID) {
+		this.regularlyID = regularlyID;
+	}
+
 	@Override
 	public String toString() {
 		return "title: " + getTitle()+", startpoint: " + startpoint.format(dateWithTimeFormatter) + ", endpoint: " 
 				+ endpoint.format(dateWithTimeFormatter) + ", allDay: " + allDay + ", description: "
 				+ description + ", regularlyOnOff: " + regularlyOnOff + ", regularlyType: " + regularlyType
-				+ ", alarmOnOff: " + alarmOnOff + ", alarmTime: " + alarmTime.format(dateWithTimeFormatter);
+				+ ", regularlyID: " + regularlyID + ", alarmOnOff: " + alarmOnOff + ", alarmTime: " 
+				+ alarmTime.format(dateWithTimeFormatter);
 	}
-
+	
+	
 	
 	
 	

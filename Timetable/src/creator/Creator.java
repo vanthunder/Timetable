@@ -1,7 +1,7 @@
 package creator;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import category.Category;
@@ -15,11 +15,12 @@ import task.Task;
 public class Creator {
 	
 	public static String createEvent(String title, LocalDateTime startpoint, LocalDateTime endpoint, String description, 
-			boolean regularlyOnOff, int regularlyType, boolean alarmOnOff, LocalDateTime alarmTime) {
+			boolean regularlyOnOff, int regularlyType, int regularlyID, boolean alarmOnOff, LocalDateTime alarmTime) {
 		//event exists always the whole day
 		startpoint = startpoint.withHour(0).withMinute(0);
 		endpoint = endpoint.withHour(23).withMinute(59);
-		Event newEvent = new Event(title, startpoint, endpoint, true, description, regularlyOnOff, regularlyType, alarmOnOff, alarmTime);
+		Event newEvent = new Event(title, startpoint, endpoint, true, description, 
+				regularlyOnOff, regularlyType, regularlyID, alarmOnOff, alarmTime);
 		
 		//event is saved in Calendar
 		ArrayList<Event> tempEventList = Calendar.getEventList();
@@ -41,9 +42,11 @@ public class Creator {
 	 * createAppointmentUI opens the appointment-creation-menu. As soon as the user clicks on "save appointment" in that menu, 
 	 * the data that the user gave in the appointment creation menu, will be converted and transferred to this method. 
 	 * This method creates an appointment out of that data and saves it in the chosen category and in the calendar.
+	 * 
 	 */
 	public static String createAppointment(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay, boolean regularlyOnOff, 
-			int regularlyType, int regularlyAmount, String description, boolean alarmOnOff, LocalDateTime alarmTime, int notesPinned, ArrayList<Note> notesLink, boolean floating, Category chosenCategory) {
+			int regularlyType, int regularlyAmount, String description, boolean alarmOnOff, 
+			LocalDateTime alarmTime, int notesPinned, ArrayList<Note> notesLink, boolean floating, Category chosenCategory) throws CloneNotSupportedException {
 
 		
 		
@@ -64,7 +67,7 @@ public class Creator {
 			
 		
 			Appointment newAppointment = new Appointment(title, startpoint, endpoint, allDay, regularlyOnOff, 
-					regularlyType, description, alarmOnOff, alarmTime, notesPinned, notesLink, floating);
+					regularlyType, 0, description, alarmOnOff, alarmTime, notesPinned, notesLink, floating);
 			
 			//the appointment will be saved in the Category:
 			/*chosenCategory.contentlist.add(newAppointment);	<- this would be much easier than the way I've done it below, 
@@ -80,6 +83,29 @@ public class Creator {
 			tempCalendarList.add(newAppointment);
 			//tempCalendarList.sort();
 			Calendar.setCalendarList(tempCalendarList);
+			
+			int regularlyID = 0;
+			if(regularlyOnOff) {
+				HashMap<Integer, ArrayList<Base>> tempRegularlyList = Calendar.getRegularlyList();
+				ArrayList<Base> regularlyInnerList = new ArrayList<Base>();
+				
+				//täglich
+				if(newAppointment.getRegularlyType() == 0) {
+					for(int i=0; i<regularlyAmount; i++) {
+						if(i==0) {
+							regularlyInnerList.add(newAppointment);
+						}
+						else {
+							Event copy = (Event) newAppointment.clone();
+							copy.setStartpoint(copy.getStartpoint().plusDays(i));
+							//has to be transferred to calenderList and category
+						}
+					}
+				}
+				
+				
+				tempRegularlyList.put(regularlyID, regularlyInnerList);
+			}
 			
 			
 			//Save.save(); as soon as the appointment is created, the program will save the data
@@ -133,6 +159,19 @@ public class Creator {
 	}
 
 
+	public static int getRegularlyID(){
+		int regularlyID = 0;
+		// get regularlyID
+		for(int j=0; j<Calendar.getRegularlyList().size(); j++) {
+			if (Calendar.getRegularlyList().get(j)== null) {
+				regularlyID = j;
+				return j;
+			}
+		}
+		return 0;
+	}
+	
+	
 }
 	
 

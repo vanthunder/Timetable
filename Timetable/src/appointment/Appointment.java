@@ -6,16 +6,17 @@ import java.util.Date;
 import base.Base;
 import event.Event;
 import note.Note;
+import java.io.*;
 
-public class Appointment extends Event {
+public class Appointment extends Event implements Cloneable {
 	private int notesPinned;
 	private ArrayList<Note> notesLink;
 	private boolean floating;
 	
 	public Appointment(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay,
-			boolean regularlyOnOff, int regularlyType, String description, boolean alarmOnOff, LocalDateTime alarmTime,
+			boolean regularlyOnOff, int regularlyType, int regularlyID, String description, boolean alarmOnOff, LocalDateTime alarmTime,
 			int notesPinned, ArrayList<Note> notesLink, boolean floating) {
-		super(title, startpoint, endpoint, allDay, description, regularlyOnOff, regularlyType, alarmOnOff, alarmTime);
+		super(title, startpoint, endpoint, allDay, description, regularlyOnOff, regularlyType, regularlyID, alarmOnOff, alarmTime);
 		this.notesPinned = notesPinned;
 		this.notesLink = notesLink;
 		this.floating = floating;
@@ -86,8 +87,28 @@ public class Appointment extends Event {
 	public void setFloating(boolean floating) {
 		this.floating = floating;
 	}
-
+	
+	
+	@Override
+	public Appointment clone() throws CloneNotSupportedException{
+		Appointment clonedAppointment = (Appointment) super.clone();
+		clonedAppointment.setTitle(this.getTitle());
+		clonedAppointment.setStartpoint(this.getStartpoint());
+		clonedAppointment.setEndpoint(this.getEndpoint());
+		clonedAppointment.setAllDay(this.isAllDay());
+		clonedAppointment.setRegularlyOnOff(this.isRegularlyOnOff());
+		clonedAppointment.setRegularlyType(this.getRegularlyType());
+		clonedAppointment.setRegularlyID(this.getRegularlyID());
+		clonedAppointment.setDescription(this.getDescription());
+		clonedAppointment.setAlarmOnOff(this.isAlarmOnOff());
+		clonedAppointment.setAlarmTime(this.getAlarmTime());
+		clonedAppointment.setNotesPinned(this.getNotesPinned());
+		clonedAppointment.setNotesLink(this.getNotesLink());
+		clonedAppointment.setFloating(this.isFloating());
 		
+		return clonedAppointment;
+		
+	}
 }
 
 
