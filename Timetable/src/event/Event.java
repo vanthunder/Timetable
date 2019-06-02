@@ -1,6 +1,7 @@
 package event;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import base.Base;
 
@@ -10,13 +11,25 @@ public class Event extends Base {
 	private LocalDateTime endpoint;
 	private boolean allDay;
 	private String description;
+	private boolean regularlyOnOff;
+	private int regularlyType;
+	private boolean alarmOnOff;
+	private LocalDateTime alarmTime;
+	public final DateTimeFormatter dateWithTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
 	
-	public Event(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay, String description) {
+	
+
+	public Event(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay, String description,
+			boolean regularlyOnOff, int regularlyType, boolean alarmOnOff, LocalDateTime alarmTime) {
 		super(title);
 		this.startpoint = startpoint;
 		this.endpoint = endpoint;
 		this.allDay = allDay;
 		this.description = description;
+		this.regularlyOnOff = regularlyOnOff;
+		this.regularlyType = regularlyType;
+		this.alarmOnOff = alarmOnOff;
+		this.alarmTime = alarmTime;
 	}
 
 	public LocalDateTime getStartpoint() {
@@ -51,11 +64,47 @@ public class Event extends Base {
 		this.description = description;
 	}
 
+	public boolean isRegularlyOnOff() {
+		return regularlyOnOff;
+	}
+
+	public void setRegularlyOnOff(boolean regularlyOnOff) {
+		this.regularlyOnOff = regularlyOnOff;
+	}
+
+	public int getRegularlyType() {
+		return regularlyType;
+	}
+
+	public void setRegularlyType(int regularlyType) {
+		this.regularlyType = regularlyType;
+	}
+
+	public boolean isAlarmOnOff() {
+		return alarmOnOff;
+	}
+
+	public void setAlarmOnOff(boolean alarmOnOff) {
+		this.alarmOnOff = alarmOnOff;
+	}
+
+	public LocalDateTime getAlarmTime() {
+		return alarmTime;
+	}
+
+	public void setAlarmTime(LocalDateTime alarmTime) {
+		this.alarmTime = alarmTime;
+	}
+
 	@Override
 	public String toString() {
-		return "startpoint: " + startpoint + "endpoint: " + endpoint + ", allDay: " + allDay + ", description: " + description + ", title: "
-				+ getTitle();
+		return "title: " + getTitle()+", startpoint: " + startpoint.format(dateWithTimeFormatter) + ", endpoint: " 
+				+ endpoint.format(dateWithTimeFormatter) + ", allDay: " + allDay + ", description: "
+				+ description + ", regularlyOnOff: " + regularlyOnOff + ", regularlyType: " + regularlyType
+				+ ", alarmOnOff: " + alarmOnOff + ", alarmTime: " + alarmTime.format(dateWithTimeFormatter);
 	}
+
+	
 	
 	
 	

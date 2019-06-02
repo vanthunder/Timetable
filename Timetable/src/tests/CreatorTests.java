@@ -38,8 +38,33 @@ class CreatorTests {
 	void tearDown() throws Exception {
 	}
 
+	
 	@Test
-	void testRegular() {
+	void testEventRegular() {
+		LocalDateTime startpoint = LocalDateTime.of(1998, 1, 14, 0, 0);
+		LocalDateTime endpoint = LocalDateTime.of(1998, 1, 15, 0, 0);
+		LocalDateTime alarmTime = LocalDateTime.of(1998, 1, 16, 0, 0);
+		
+		
+		assertEquals("title: hi, startpoint: 14.01.1998 00:00, endpoint: 15.01.1998 23:59, allDay: true, description: best event of the year, "
+				+ "regularlyOnOff: false, regularlyType: 0, alarmOnOff: false, alarmTime: 16.01.1998 00:00", 
+				Creator.createEvent("hi", startpoint, endpoint, "best event of the year", false, 0, false, alarmTime));
+	}
+	
+	@Test
+	void testEventCalendarTransfer() {
+		LocalDateTime startpoint = LocalDateTime.of(1998, 1, 14, 0, 0);
+		LocalDateTime endpoint = LocalDateTime.of(1998, 1, 15, 0, 0);
+		LocalDateTime alarmTime = LocalDateTime.of(1998, 1, 16, 0, 0);
+		
+		Creator.createEvent("hi", startpoint, endpoint, "best event of the year", false, 0, false, alarmTime);
+		assertEquals("title: hi, startpoint: 14.01.1998 00:00, endpoint: 15.01.1998 23:59, allDay: true, description: best event of the year, "
+				+ "regularlyOnOff: false, regularlyType: 0, alarmOnOff: false, alarmTime: 16.01.1998 00:00", 
+				Calendar.getEventList().get(0).toString());
+	}
+	
+	@Test
+	void testAppointmentRegular() {
 		LocalDateTime startpoint = LocalDateTime.of(1998, 1, 14, 0, 0);
 		LocalDateTime endpoint = LocalDateTime.of(1998, 1, 15, 0, 0);
 		LocalDateTime alarmTime = LocalDateTime.of(1998, 1, 16, 0, 0);
@@ -53,7 +78,7 @@ class CreatorTests {
 	
 	//AllDay activated so startpoint's time should be 00:00:00 and enpoint's 24:00:00
 	@Test
-	void testAllDay() {
+	void testAppointmentAllDay() {
 		LocalDateTime startpoint = LocalDateTime.of(1998, 1, 14, 0, 0);
 		LocalDateTime endpoint = LocalDateTime.of(1998, 1, 15, 0, 0);
 		LocalDateTime alarmTime = LocalDateTime.of(1998, 1, 16, 0, 0);

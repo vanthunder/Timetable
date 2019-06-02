@@ -14,11 +14,26 @@ import task.Task;
 
 public class Creator {
 	
-	public String createEvent(String title, LocalDateTime startpoint, LocalDateTime endpoint, String description) {
+	public static String createEvent(String title, LocalDateTime startpoint, LocalDateTime endpoint, String description, 
+			boolean regularlyOnOff, int regularlyType, boolean alarmOnOff, LocalDateTime alarmTime) {
 		//event exists always the whole day
 		startpoint = startpoint.withHour(0).withMinute(0);
 		endpoint = endpoint.withHour(23).withMinute(59);
-		Event newEvent = new Event(title, startpoint, endpoint, true, description);
+		Event newEvent = new Event(title, startpoint, endpoint, true, description, regularlyOnOff, regularlyType, alarmOnOff, alarmTime);
+		
+		//event is saved in Calendar
+		ArrayList<Event> tempEventList = Calendar.getEventList();
+		tempEventList.add(newEvent);
+		//tempCalendarList.sort();
+		Calendar.setEventList(tempEventList);
+		
+		//the event will be saved in the chosen Category:
+		/*
+		*ArrayList<Base> tempContentlist = chosenCategory.getContentlist();
+		*tempContentlist.add(newEvent);
+		*chosenCategory.setContentlist(tempContentlist);
+		*/
+		
 		return newEvent.toString();
 	}
 	

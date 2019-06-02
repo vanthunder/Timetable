@@ -8,39 +8,25 @@ import event.Event;
 import note.Note;
 
 public class Appointment extends Event {
-	private boolean regularlyOnOff;
-	private int regularlyType;
-	private boolean alarmOnOff;
-	private LocalDateTime alarmTime;
 	private int notesPinned;
 	private ArrayList<Note> notesLink;
 	private boolean floating;
-	public final DateTimeFormatter dateWithTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
 	
-	public Appointment(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay, boolean regularlyOnOff, 
-			int regularlyType, String description, boolean alarmOnOff, LocalDateTime alarmTime, int notesPinned, 
-			ArrayList<Note> notesLink, boolean floating){
-		super(title, startpoint, endpoint, allDay, description);
-		this.regularlyOnOff = regularlyOnOff;
-		this.regularlyType = regularlyType;
-		this.alarmOnOff = alarmOnOff; 
-		this.alarmTime = alarmTime;
+	public Appointment(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay,
+			boolean regularlyOnOff, int regularlyType, String description, boolean alarmOnOff, LocalDateTime alarmTime,
+			int notesPinned, ArrayList<Note> notesLink, boolean floating) {
+		super(title, startpoint, endpoint, allDay, description, regularlyOnOff, regularlyType, alarmOnOff, alarmTime);
 		this.notesPinned = notesPinned;
-		this.notesLink = notesLink; 
+		this.notesLink = notesLink;
 		this.floating = floating;
 	}
-	
-	
-
-
-
 
 	/** states all Appointment attributes in a String*/
 	@Override
 	public String toString(){
-		return new String("title: "+this.getTitle()+" startpoint: "+getStartpoint().format(dateWithTimeFormatter)+" endpoint: "+getEndpoint().format(dateWithTimeFormatter)+" allDay: "+isAllDay()+" regularlyOnOff: "+regularlyOnOff+
-				" regularlyType: "+regularlyType+" description: "+getDescription()+" alarmOnOff: "+alarmOnOff+
-				" alarmTime: "+alarmTime.format(dateWithTimeFormatter)+" notesPinned: "+notesPinned+" notesLink: "+notesLink+" floating: "+floating);
+		return new String("title: "+this.getTitle()+" startpoint: "+getStartpoint().format(dateWithTimeFormatter)+" endpoint: "+getEndpoint().format(dateWithTimeFormatter)+" allDay: "+isAllDay()+" regularlyOnOff: "+isRegularlyOnOff()+
+				" regularlyType: "+getRegularlyType()+" description: "+getDescription()+" alarmOnOff: "+isAlarmOnOff()+
+				" alarmTime: "+getAlarmTime().format(dateWithTimeFormatter)+" notesPinned: "+notesPinned+" notesLink: "+notesLink+" floating: "+floating);
 	}
 	
 	/*	
@@ -64,55 +50,6 @@ public class Appointment extends Event {
 	
 
 
-
-
-
-
-	public boolean isRegularlyOnOff() {
-		return regularlyOnOff;
-	}
-
-
-
-	public void setRegularlyOnOff(boolean regularlyOnOff) {
-		this.regularlyOnOff = regularlyOnOff;
-	}
-
-
-
-	public int getRegularlyType() {
-		return regularlyType;
-	}
-
-
-
-	public void setRegularlyType(int regularlyType) {
-		this.regularlyType = regularlyType;
-	}
-
-
-	
-	public boolean isAlarmOnOff() {
-		return alarmOnOff;
-	}
-
-
-
-	public void setAlarmOnOff(boolean alarmOnOff) {
-		this.alarmOnOff = alarmOnOff;
-	}
-
-
-
-	public LocalDateTime getAlarmTime() {
-		return alarmTime;
-	}
-
-
-
-	public void setAlarmTime(LocalDateTime alarmTime) {
-		this.alarmTime = alarmTime;
-	}
 
 
 
