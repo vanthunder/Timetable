@@ -96,7 +96,7 @@ public class Creator {
 							regularlyInnerList.add(newAppointment);
 						}
 						else {
-							Event copy = (Event) newAppointment.clone();
+							Appointment copy = (Appointment) newAppointment.clone();
 							copy.setStartpoint(copy.getStartpoint().plusDays(i));
 							//has to be transferred to calenderList and category
 						}
