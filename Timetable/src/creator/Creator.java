@@ -11,6 +11,7 @@ import base.Base;
 import calendar.Calendar;
 import note.Note;
 import task.Task;
+import task.TaskCreatorController;
 
 public class Creator {
 	
@@ -34,16 +35,17 @@ public class Creator {
 		*tempContentlist.add(newEvent);
 		*chosenCategory.setContentlist(tempContentlist);
 		*/
-		
+	
 		return newEvent.toString();
 	}
-	
+
 	/**This method is called by createAppointmentUI() which is located in a Controller.
 	 * createAppointmentUI opens the appointment-creation-menu. As soon as the user clicks on "save appointment" in that menu, 
 	 * the data that the user gave in the appointment creation menu, will be converted and transferred to this method. 
 	 * This method creates an appointment out of that data and saves it in the chosen category and in the calendar.
 	 * 
 	 */
+
 	public static String createAppointment(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay, boolean regularlyOnOff, 
 			int regularlyType, int regularlyAmount, String description, boolean alarmOnOff, 
 			LocalDateTime alarmTime, int notesPinned, ArrayList<Note> notesLink, boolean floating, Category chosenCategory) throws CloneNotSupportedException {
@@ -89,7 +91,7 @@ public class Creator {
 				HashMap<Integer, ArrayList<Base>> tempRegularlyList = Calendar.getRegularlyList();
 				ArrayList<Base> regularlyInnerList = new ArrayList<Base>();
 				
-				//t�glich
+				//täglich
 				if(newAppointment.getRegularlyType() == 0) {
 					for(int i=0; i<regularlyAmount; i++) {
 						if(i==0) {
@@ -103,22 +105,54 @@ public class Creator {
 					}
 				}
 				
+				//wöchentlich
+				if(newAppointment.getRegularlyType() == 1) {
+					for(int i=0; i<regularlyAmount; i++) {
+						if(i==0) {
+							regularlyInnerList.add(newAppointment);
+						}
+						else {
+							Appointment copy = (Appointment) newAppointment.clone();
+							copy.setStartpoint(copy.getStartpoint().plusWeeks(i));
+							//has to be transferred to calenderList and category
+						}
+					}
+				}
+				
+				
 				
 				tempRegularlyList.put(regularlyID, regularlyInnerList);
-			}
 			
+			//monatlich
+			if(newAppointment.getRegularlyType() == 2) {
+				for(int i=0; i<regularlyAmount; i++) {
+					if(i==0) {
+						regularlyInnerList.add(newAppointment);
+					}
+					else {
+						Appointment copy = (Appointment) newAppointment.clone();
+						copy.setStartpoint(copy.getStartpoint().plusMonths(i));
+						//has to be transferred to calenderList and category
+					}
+				}
+
+						
 			
 			//Save.save(); as soon as the appointment is created, the program will save the data
 			
 			//Testreturn to proof if the Appointment object got the data it should have:
 		//return newAppointment.toString();
-			return newAppointment.toString();
+			
+			}
+			
 	}
-	
+			return newAppointment.toString();
+
+	}
 	public static String createTask(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay,
-			boolean regularlyOnOff, int regularlyType, String description, boolean alarmOnOff, LocalDateTime alarmTime,
+			boolean regularlyOnOff, int regularlyType,int regularlyAmount, String description, boolean alarmOnOff, LocalDateTime alarmTime,
 			int notesPinned, ArrayList<Note> notesLink, boolean floating, boolean autoSortOnOff, int duration,
-			boolean done, LocalDateTime feasibleTimeStart, LocalDateTime feasibleTimeEnd, LocalDateTime periodStart, LocalDateTime periodEnd) {
+			boolean done, LocalDateTime feasibleTimeStart, LocalDateTime feasibleTimeEnd, LocalDateTime periodStart, LocalDateTime periodEnd)throws CloneNotSupportedException{
 
 
 	
@@ -126,21 +160,80 @@ public class Creator {
 		floating = false;
 		if(startpoint == endpoint) {
 			floating = true;
-
-
+			
 		
+			
 		if(periodEnd.isAfter(periodStart)==true){
 			
 			long diffInMinutes = Math.abs(endpoint.getMinute() - startpoint.getMinute());
 		    long diff = TimeUnit.DAYS.convert(diffInMinutes, TimeUnit.MINUTES);
 		    duration = (int) diff;
 		}
+		
 	}
-		Task newTask = new Task(title, startpoint, endpoint, allDay, regularlyOnOff, regularlyType, description, alarmOnOff, alarmTime,
+		Task newTask = new Task(title, startpoint, endpoint, allDay, regularlyOnOff, regularlyType, regularlyAmount, description, alarmOnOff, alarmTime,
 				notesPinned, notesLink, floating, done, duration, done, duration, duration, periodEnd, periodEnd);
 		
+		ArrayList<Base> tempCalendarList = Calendar.getCalendarList();
+		tempCalendarList.add(newTask);
+		//tempCalendarList.sort();
+		Calendar.setCalendarList(tempCalendarList);
+			
+		int regularlyID = 0;
+		if(regularlyOnOff) {
+			HashMap<Integer, ArrayList<Base>> tempRegularlyList = Calendar.getRegularlyList();
+			ArrayList<Base> regularlyInnerList = new ArrayList<Base>();
+			
+			//täglich
+			if(newTask.getRegularlyType() == 0) {
+				for(int i=0; i<regularlyAmount; i++) {
+					if(i==0) {
+						regularlyInnerList.add(newTask);
+					}
+					else {
+						Appointment copy = (Appointment) newTask.clone();
+						copy.setStartpoint(copy.getStartpoint().plusDays(i));
+						//has to be transferred to calenderList and category
+					}
+				}
+			}
+			
+			//wöchentlich
+			if(newTask.getRegularlyType() == 1) {
+				for(int i=0; i<regularlyAmount; i++) {
+					if(i==0) {
+						regularlyInnerList.add(newTask);
+					}
+					else {
+						Appointment copy = (Appointment) newTask.clone();
+						copy.setStartpoint(copy.getStartpoint().plusWeeks(i));
+						//has to be transferred to calenderList and category
+					}
+				}
+			}
+			
+			
+			
+			tempRegularlyList.put(regularlyID, regularlyInnerList);
+		
+		//monatlich
+		if(newTask.getRegularlyType() == 2) {
+			for(int i=0; i<regularlyAmount; i++) {
+				if(i==0) {
+					regularlyInnerList.add(newTask);
+				}
+				else {
+					Appointment copy = (Appointment) newTask.clone();
+					copy.setStartpoint(copy.getStartpoint().plusMonths(i));
+					//has to be transferred to calenderList and category
+				}
+			}
+			}
+			
+			else regularlyType = 0;
+			}
 		return newTask.toString();
-}
+		}
 		
 	
 	
@@ -158,7 +251,7 @@ public class Creator {
 		return newNote.toString();
 	}
 
-
+	
 	public static int getRegularlyID(){
 		int regularlyID = 0;
 		// get regularlyID

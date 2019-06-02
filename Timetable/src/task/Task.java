@@ -17,10 +17,10 @@ public class Task extends Appointment{
 
 
 	public Task(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay, boolean regularlyOnOff,
-			int regularlyType, String description, boolean alarmOnOff, LocalDateTime alarmTime, int notesPinned,
-			ArrayList<Note> notesLink, boolean floating, boolean autoSortOnOff, int duration, boolean done,
+			int regularlyType, int regularlyID, String description, boolean alarmOnOff, LocalDateTime alarmTime, 
+			int notesPinned,ArrayList<Note> notesLink, boolean floating, boolean autoSortOnOff, int duration, boolean done,
 			int feasibleTimeStart, int feasibleTimeEnd, LocalDateTime periodStart, LocalDateTime periodEnd) {
-		super(title, startpoint, endpoint, allDay, regularlyOnOff, regularlyType, description, alarmOnOff, alarmTime,
+		super(title, startpoint, endpoint, allDay, regularlyOnOff, regularlyType, regularlyID, description, alarmOnOff, alarmTime,
 				notesPinned, notesLink, floating);
 		this.autoSortOnOff = autoSortOnOff;
 		this.duration = duration;
@@ -30,11 +30,6 @@ public class Task extends Appointment{
 		this.periodStart = periodStart;
 		this.periodEnd = periodEnd;
 	}
-
-
-
-
-
 
 	public boolean getAutoSortOnOff() {
 		return autoSortOnOff;
@@ -111,7 +106,7 @@ public class Task extends Appointment{
 	public String toString() {
 		return "Task [toString()=" + super.toString() + ", getStartpoint()=" + getStartpoint() + ", getEndpoint()="
 				+ getEndpoint() + ", isAllDay()=" + isAllDay() + ", isRegularlyOnOff()=" + isRegularlyOnOff()
-				+ ", getRegularlyType()=" + getRegularlyType() + ", getDescription()=" + getDescription()
+				+ ", getRegularlyType()=" + getRegularlyType() +", getRegularlyID()=" + getRegularlyID() + ", getDescription()=" + getDescription()
 				+ ", isAlarmOnOff()=" + isAlarmOnOff() + ", getAlarmTime()=" + getAlarmTime() + ", getNotesPinned()="
 				+ getNotesPinned() + ", getNotesLink()=" + getNotesLink() + ", isFloating()=" + isFloating()
 				+ ", getTitle()=" + getTitle() + ", getClass()=" + getClass() + ", autoSortOnOff=" + autoSortOnOff
@@ -119,5 +114,23 @@ public class Task extends Appointment{
 				+ ", feasibleTimeEnd=" + feasibleTimeEnd + ", periodStart=" + periodStart + ", periodEnd=" + periodEnd
 				+ "]";
 	}
+	@Override
+	public Task clone() throws CloneNotSupportedException{
+		Task clonedTask = (Task) super.clone();
+		clonedTask.setTitle(this.getTitle());
+		clonedTask.setStartpoint(this.getStartpoint());
+		clonedTask.setEndpoint(this.getEndpoint());
+		clonedTask.setAllDay(this.isAllDay());
+		clonedTask.setRegularlyOnOff(this.isRegularlyOnOff());
+		clonedTask.setRegularlyType(this.getRegularlyType());
+		clonedTask.setRegularlyID(this.getRegularlyID());
+		clonedTask.setDescription(this.getDescription());
+		clonedTask.setAlarmOnOff(this.isAlarmOnOff());
+		clonedTask.setAlarmTime(this.getAlarmTime());
+		clonedTask.setNotesPinned(this.getNotesPinned());
+		clonedTask.setNotesLink(this.getNotesLink());
+		clonedTask.setFloating(this.isFloating());
+		
+		return clonedTask;
 
-}
+}}
