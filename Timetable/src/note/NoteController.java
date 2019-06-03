@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 
 /**
@@ -25,7 +26,16 @@ public class NoteController implements Initializable
 	//Event for the link button
 	public void linkButtonPress(ActionEvent event) 
 	{
-		Image image = new Image();
+	
+	} 
+	@FXML
+	Button noteInsertImagebutton = new Button();
+	//Event for the link button
+	public void noteInsertImageButtonPress(ActionEvent event) 
+	{
+		Image image = new Image("/images/u mad bro.jpg");
+		
+		noteInsertImage.imageview.setImage(image);
 	
 	} 
 	//Initialize the NoteView with all its components
