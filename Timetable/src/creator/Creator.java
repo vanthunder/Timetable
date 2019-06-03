@@ -99,7 +99,13 @@ public class Creator {
 						}
 						else {
 							Appointment copy = (Appointment) newAppointment.clone();
-							copy.setStartpoint(copy.getStartpoint().plusDays(i));
+							//copy.setStartpoint(copy.getStartpoint().plusDays(i));
+							//copy.setEndpoint(copy.getEndpoint().plusDays(i));
+							LocalDateTime tempStartpoint = copy.getStartpoint();
+							tempStartpoint = tempStartpoint.plusDays(i);
+							copy.setStartpoint(tempStartpoint);
+							regularlyInnerList.add(copy);
+							
 							//has to be transferred to calenderList and category
 						}
 					}
