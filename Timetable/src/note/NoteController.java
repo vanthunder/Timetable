@@ -48,6 +48,7 @@ public class NoteController implements Initializable
 	public void initialize(URL arg0, ResourceBundle arg1)
 	{
 		
+		
 		Image image = new Image("/images/u mad bro.jpg");
 		
 		noteInsertImage.setImage(image);
