@@ -26,7 +26,7 @@ public class Appointment extends Event implements Cloneable {
 	@Override
 	public String toString(){
 		return new String("title: "+this.getTitle()+" startpoint: "+getStartpoint().format(dateWithTimeFormatter)+" endpoint: "+getEndpoint().format(dateWithTimeFormatter)+" allDay: "+isAllDay()+" regularlyOnOff: "+isRegularlyOnOff()+
-				" regularlyType: "+getRegularlyType()+" description: "+getDescription()+" alarmOnOff: "+isAlarmOnOff()+
+				" regularlyType: "+getRegularlyType()+" regularlyID: "+getRegularlyID()+" description: "+getDescription()+" alarmOnOff: "+isAlarmOnOff()+
 				" alarmTime: "+getAlarmTime().format(dateWithTimeFormatter)+" notesPinned: "+notesPinned+" notesLink: "+notesLink+" floating: "+floating);
 	}
 	
