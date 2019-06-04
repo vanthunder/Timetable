@@ -19,7 +19,9 @@ import javafx.stage.FileChooser;
 
 public class NoteCreatorController implements Initializable
 {
-
+	//@FXML
+	//private ImageView noteInsertImage = new ImageView();
+	
 	@FXML
 	Button noteInsertImageButton = new Button();
 	//Event for the link button
