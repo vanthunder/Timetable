@@ -29,15 +29,19 @@ public class NoteCreatorController implements Initializable
 	@FXML
 	HBox imageList = new HBox();
 	
+	@FXML
+	ImageView currentImage = new ImageView();
+	@FXML
 	public void noteInsertImageButtonPress(ActionEvent event) throws IOException 
 	{
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Open Image File");
 		File imageFile = fileChooser.showOpenDialog(null);
 		Image image = new Image(imageFile.toURI().toString());
-	ImageView imageView = new ImageView(image);
-	imageList.getChildren().add(imageView);
-	System.out.println(imageList.getChildren());
+	    ImageView imageView = new ImageView(image);
+	    imageList.getChildren().add(imageView);
+	    currentImage.setImage(image);
+	    System.out.println(imageList.getChildren());
 	
 	} 
 	//Initialize the NoteView with all its components
