@@ -191,7 +191,7 @@ public class Creator {
 						regularlyInnerList.add(newTask);
 					}
 					else {
-						Appointment copy = (Appointment) newTask.clone();
+						Task copy = (Task) newTask.clone();
 						copy.setStartpoint(copy.getStartpoint().plusDays(i));
 						//has to be transferred to calenderList and category
 					}
@@ -205,7 +205,7 @@ public class Creator {
 						regularlyInnerList.add(newTask);
 					}
 					else {
-						Appointment copy = (Appointment) newTask.clone();
+						Task copy = (Task) newTask.clone();
 						copy.setStartpoint(copy.getStartpoint().plusWeeks(i));
 						//has to be transferred to calenderList and category
 					}
@@ -223,7 +223,7 @@ public class Creator {
 					regularlyInnerList.add(newTask);
 				}
 				else {
-					Appointment copy = (Appointment) newTask.clone();
+					Task copy = (Task) newTask.clone();
 					copy.setStartpoint(copy.getStartpoint().plusMonths(i));
 					//has to be transferred to calenderList and category
 				}

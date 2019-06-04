@@ -18,6 +18,7 @@ public abstract class TaskCreatorController {
 	@FXML
 	private static TextField durationCurrentValue;
 
+
 	@FXML
 	private static Slider durationSlider;
 	
@@ -30,7 +31,7 @@ public abstract class TaskCreatorController {
 	// Event Listener on TextField[#durationCurrentValue].onInputMethodTextChanged
 	@FXML
 	public static void onTextChanged(InputMethodEvent eventText) {
-
+		
 		String durationText=durationCurrentValue.getPromptText();
 		duration = Integer.parseInt(durationText);
 		durationSlider.setValue(duration);	
@@ -41,6 +42,7 @@ public abstract class TaskCreatorController {
 	// Event Listener on Slider[#durationSlider].onMouseDragReleased
 	@FXML
 	public static void onSliderChanged(MouseDragEvent eventSlider) {
+	
 		double sliderValue = durationSlider.getValue();
 		String valueToText;
 		valueToText = String.valueOf(duration);
@@ -52,12 +54,12 @@ public abstract class TaskCreatorController {
 	public static int getDuration() {
 		InputMethodEvent eventText = null;
 		MouseDragEvent eventSlider= null;
-		
+
 		durationCurrentValue.getOnInputMethodTextChanged().handle(eventText);
-		durationSlider.getOnMouseDragReleased().handle(eventSlider);
-		
-		
 		onTextChanged(eventText);
+		
+		
+		durationSlider.getOnMouseDragReleased().handle(eventSlider);
 		onSliderChanged(eventSlider);
 		
 
