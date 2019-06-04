@@ -13,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+
 
 
 /**
@@ -21,28 +23,34 @@ import javafx.scene.image.ImageView;
  */
 public class NoteController implements Initializable
 {
+	
+	@FXML
+	private ImageView noteInsertImage = new ImageView();
+	
 	@FXML
 	Button linkButton = new Button();
-	//Event for the link button
-	public void linkButtonPress(ActionEvent event) 
-	{
 	
-	} 
+	public void linkButtonPress(ActionEvent event) {
+		
+	}
+	
 	@FXML
-	Button noteInsertImagebutton = new Button();
+	Button noteInsertImageButton = new Button();
 	//Event for the link button
 	public void noteInsertImageButtonPress(ActionEvent event) 
 	{
-		Image image = new Image("/images/u mad bro.jpg");
-		
-		noteInsertImage.imageview.setImage(image);
-	
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Open Image File");
+		fileChooser.showOpenDialog(noteInsertImageButton.getScene().getWindow());
 	} 
 	//Initialize the NoteView with all its components
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1)
 	{
-		// TODO Auto-generated method stub
+		
+		Image image = new Image("/images/u mad bro.jpg");
+		
+		noteInsertImage.setImage(image);
 		
 	}
 

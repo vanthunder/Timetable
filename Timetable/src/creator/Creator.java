@@ -86,8 +86,9 @@ public class Creator {
 			//tempCalendarList.sort();
 			Calendar.setCalendarList(tempCalendarList);
 			
-			int regularlyID = 0;
+			
 			if(regularlyOnOff) {
+				int regularlyID = Creator.getRegularlyID();
 				HashMap<Integer, ArrayList<Base>> tempRegularlyList = Calendar.getRegularlyList();
 				ArrayList<Base> regularlyInnerList = new ArrayList<Base>();
 				
@@ -99,7 +100,13 @@ public class Creator {
 						}
 						else {
 							Appointment copy = (Appointment) newAppointment.clone();
-							copy.setStartpoint(copy.getStartpoint().plusDays(i));
+							//copy.setStartpoint(copy.getStartpoint().plusDays(i));
+							//copy.setEndpoint(copy.getEndpoint().plusDays(i));
+							LocalDateTime tempStartpoint = copy.getStartpoint();
+							tempStartpoint = tempStartpoint.plusDays(i);
+							copy.setStartpoint(tempStartpoint);
+							regularlyInnerList.add(copy);
+							
 							//has to be transferred to calenderList and category
 						}
 					}
@@ -121,7 +128,7 @@ public class Creator {
 				
 				
 				
-				tempRegularlyList.put(regularlyID, regularlyInnerList);
+				
 			
 			//monatlich
 			if(newAppointment.getRegularlyType() == 2) {
@@ -135,15 +142,14 @@ public class Creator {
 						//has to be transferred to calenderList and category
 					}
 				}
-
-						
 			
-			//Save.save(); as soon as the appointment is created, the program will save the data
+			}
+//Save.save(); as soon as the appointment is created, the program will save the data
 			
 			//Testreturn to proof if the Appointment object got the data it should have:
 		//return newAppointment.toString();
-			
-			}
+			tempRegularlyList.put(regularlyID, regularlyInnerList);
+			Calendar.setRegularlyList(tempRegularlyList);
 			
 	}
 			return newAppointment.toString();
@@ -255,13 +261,19 @@ public class Creator {
 	public static int getRegularlyID(){
 		int regularlyID = 0;
 		// get regularlyID
-		for(int j=0; j<Calendar.getRegularlyList().size(); j++) {
-			if (Calendar.getRegularlyList().get(j)== null) {
+		int j = 0;
+		
+		do {
+			if (Calendar.getRegularlyList().containsKey(j)==false) {
 				regularlyID = j;
-				return j;
+				break;
 			}
+			j++;
 		}
-		return 0;
+		while(j<Calendar.getRegularlyList().size());
+		
+		
+		return regularlyID;
 	}
 	
 	
