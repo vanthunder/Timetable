@@ -85,14 +85,14 @@ public class CategoriesController<T> implements Initializable
         treeView.setOnEditStart(event -> editStart(event));
  
         // Set editing related event handlers (OnEditCommit)
-        treeView.setOnEditCommit(event -> editCommit(event));
- 
-        // Set editing related event handlers (OnEditCancel)
-        treeView.setOnEditCancel(event -> editCancel(event));
-    }
-    
-	//Returns the tree
-    public TreeView<String> initialize() 
+		treeView.setOnEditCommit(event -> editCommit(event));
+
+		// Set editing related event handlers (OnEditCancel)
+		treeView.setOnEditCancel(event -> editCancel(event));
+	}
+
+	// Returns the tree
+	public TreeView<String> initialize()
     {
      return treeView;   
     }

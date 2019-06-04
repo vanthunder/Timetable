@@ -1,25 +1,29 @@
 package application;
-import java.awt.RenderingHints.Key;
+
 import java.io.IOException;
+import java.time.LocalDate;
 
-import org.junit.runner.Computer;
+import com.sun.javafx.scene.control.skin.DatePickerSkin;
 
+import DebugCalendar.DebugCalendarController;
 import category.CategoriesController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Control;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import junit.framework.Test;
 import note.NoteController;
+import task.TaskCreatorController;
 
 
 public class MainController extends Main
@@ -40,6 +44,17 @@ public class MainController extends Main
     TextField Search = new TextField();
     @FXML
     Button Test = new Button();
+    @FXML
+    DatePicker datePicker = new DatePicker();
+    @FXML
+    BorderPane Root1 = new BorderPane();
+    @FXML
+    DebugCalendarController debugCalendarController = new DebugCalendarController();
+    
+  
+
+    
+    
     
     public void appointmentButtonPress (ActionEvent event)
     {
@@ -129,8 +144,8 @@ public class MainController extends Main
      
     }
 	public void initialize() 
-    {
-        
+    {   
+		
     }
 
 }
