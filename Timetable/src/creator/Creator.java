@@ -270,7 +270,7 @@ public class Creator {
 			}
 			j++;
 		}
-		while(j<Calendar.getRegularlyList().size());
+		while(j<=Calendar.getRegularlyList().size());
 		
 		
 		return regularlyID;

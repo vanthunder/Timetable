@@ -132,6 +132,7 @@ class CreatorTests {
 		//}
 	}
 	
+	//komisch
 	@Test
 	void testAppointmentRegularlyDailyAllDay() throws CloneNotSupportedException {
 		LocalDateTime startpoint = LocalDateTime.of(1998, 1, 14, 0, 0);
@@ -139,8 +140,11 @@ class CreatorTests {
 		LocalDateTime alarmTime = LocalDateTime.of(1998, 1, 16, 0, 0);
 		ArrayList<Note> notesLink = new ArrayList<Note>();
 		Category chosenCategory = new Category();
-		Creator.createAppointment("sexy Appointment", startpoint, endpoint, true, true, 0, 10, 
+		Creator.createAppointment("sexy Appointment", startpoint, endpoint, false, true, 0, 10, 
 				"beautiful from start to end", false, alarmTime, 0, notesLink, false, chosenCategory);
+		
+		Creator.createAppointment("sexy Appointment", startpoint, endpoint, true, true, 0, 10, 
+			"beautiful from start to end", false, alarmTime, 0, notesLink, false, chosenCategory);
 		for(int i=0; i<10;i++) {
 			System.out.println(Calendar.getRegularlyList().get(1).get(i).toString());
 		}
