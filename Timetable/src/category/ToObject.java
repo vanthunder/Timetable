@@ -14,22 +14,21 @@ import javafx.scene.image.ImageView;
  */
 public class ToObject
 {
-	Image icon = new Image(
-			getClass().getResourceAsStream("/images/Folder.png"));
-	 private final TreeItem<String> rootItem = new TreeItem();
+	Image icon = new Image(getClass().getResourceAsStream("/images/Folder.png"));
+	private final TreeItem<String> rootItem = new TreeItem();
 
-	    public ToObject(Base Base)
-	    {
-	        rootItem.setValue(Base.getTitle());
-	        rootItem.setGraphic(new ImageView(icon));
-	    }   
+	public ToObject(Base Base)
+	{
+		rootItem.setValue(Base.getTitle());
+		rootItem.setGraphic(new ImageView(icon));
+	}
 
-	    /**
-	     * @return the rootItem
-	     */
-	    public TreeItem<String> getRootItem()
-	    {
-	        return rootItem;
-	    }
+	/**
+	 * @return the rootItem
+	 */
+	public TreeItem<String> getRootItem()
+	{
+		return rootItem;
+	}
 
 }

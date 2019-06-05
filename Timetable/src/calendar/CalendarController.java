@@ -30,11 +30,8 @@ public class CalendarController implements CalendarControllerInterface
 	
 	String Month = new String("Monat");
 	String Day = new String("Tag");
-	ArrayList<String> TFormat = new ArrayList<>(Arrays.asList("Monat",
-                                                              "Tag"));
-    ListIterator<String> currentTFormat = TFormat.listIterator();
-    
-   // Event Listener on Button[#upLeftButton].onAction
+
+    // Event Listener on Button[#upLeftButton].onAction
 	@FXML
 	public void urlPress(ActionEvent event) 
 	{   if(timeformat.getText().equals(Month))
