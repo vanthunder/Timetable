@@ -331,7 +331,7 @@ public class DebugCalendarController implements Initializable
 		calendar();
 		markCurrentDate();
 		System.out.println(currentDate.format(dayFormatter) + "TEST     !!!!");
-		currentDate.plusMonths(1);
+		//currentDate.plusMonths(1);
 		System.out.println(currentDate.plusMonths(3));
 		System.out.println(markedLabel);
 	}

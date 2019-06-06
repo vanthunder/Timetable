@@ -13,10 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="calendar.CalendarController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calendar.CalendarController">
    <center>
-      <GridPane gridLinesVisible="true" style="-fx-border-color: silver; -fx-background-color: white;" BorderPane.alignment="CENTER">
+      <GridPane fx:id="Calendar" gridLinesVisible="true" style="-fx-border-color: silver; -fx-background-color: white;" BorderPane.alignment="CENTER">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -38,6 +37,16 @@
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
+            <Pane prefHeight="9.0" prefWidth="702.0" />
+            <HBox alignment="CENTER">
+               <children>
+                  <Label fx:id="YearLabel" alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="29.0" prefWidth="71.0" style="-fx-border-color: silver; -fx-border-radius: 10; -fx-background-radius: 10; -fx-alignment: center; -fx-background-color: white;" text="Jahr" textAlignment="CENTER" textFill="#4a7090">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
             <Pane prefHeight="9.0" prefWidth="702.0" />
             <HBox alignment="CENTER">
                <children>
@@ -81,7 +90,7 @@
                      </graphic>
                   </Button>
                   <Pane prefHeight="25.0" prefWidth="10.0" />
-                  <Label fx:id="selectTime" style="-fx-border-color: silver; -fx-border-radius: 10; -fx-alignment: center;" text="  Inhalt  " textAlignment="CENTER">
+                  <Label fx:id="selectTimeLabel" prefHeight="29.0" prefWidth="143.0" style="-fx-border-color: silver; -fx-border-radius: 10; -fx-alignment: center;" text="  Inhalt  " textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
