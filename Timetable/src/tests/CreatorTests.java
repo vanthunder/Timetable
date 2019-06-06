@@ -122,14 +122,14 @@ class CreatorTests {
 				"beautiful from start to end", false, alarmTime, 0, notesLink, false, chosenCategory);
 		
 		
-		
+		for(int i=0; i<10;i++) {
+			System.out.println(Calendar.getRegularlyList().get(0).get(i).toString());
+		}
 		assertEquals("title: sexy Appointment startpoint: 14.01.1998 00:00 endpoint: 15.01.1998 00:00 "
 				+ "allDay: false regularlyOnOff: true regularlyType: 0 regularlyID: 0 description: beautiful from start to end "
 				+ "alarmOnOff: false alarmTime: 16.01.1998 00:00 notesPinned: 0 notesLink: [] floating: false", 
 				Calendar.getRegularlyList().get(0).get(0).toString());
-		//for(int i=0; i<10;i++) {
-		//	System.out.println(Calendar.getRegularlyList().get(0).get(i).toString());
-		//}
+		
 	}
 	
 	//komisch
@@ -140,20 +140,19 @@ class CreatorTests {
 		LocalDateTime alarmTime = LocalDateTime.of(1998, 1, 16, 0, 0);
 		ArrayList<Note> notesLink = new ArrayList<Note>();
 		Category chosenCategory = new Category();
-		Creator.createAppointment("sexy Appointment", startpoint, endpoint, false, true, 0, 10, 
-				"beautiful from start to end", false, alarmTime, 0, notesLink, false, chosenCategory);
+		
 		
 		Creator.createAppointment("sexy Appointment", startpoint, endpoint, true, true, 0, 10, 
 			"beautiful from start to end", false, alarmTime, 0, notesLink, false, chosenCategory);
-		for(int i=0; i<10;i++) {
-			System.out.println(Calendar.getRegularlyList().get(1).get(i).toString());
-		}
+		//for(int i=0; i<10;i++) {
+		//	System.out.println(Calendar.getRegularlyList().get(0).get(i).toString());
+		//}
 		
 		
 		assertEquals("title: sexy Appointment startpoint: 14.01.1998 00:00 endpoint: 15.01.1998 23:59 "
 				+ "allDay: true regularlyOnOff: true regularlyType: 0 regularlyID: 0 description: beautiful from start to end "
 				+ "alarmOnOff: false alarmTime: 16.01.1998 00:00 notesPinned: 0 notesLink: [] floating: false", 
-				Calendar.getRegularlyList().get(1).get(0).toString());
+				Calendar.getRegularlyList().get(0).get(0).toString());
 		
 	}
 	
