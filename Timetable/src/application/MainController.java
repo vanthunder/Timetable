@@ -1,16 +1,11 @@
 package application;
 
 import java.io.IOException;
-import java.time.LocalDate;
-
-import com.sun.javafx.scene.control.skin.DatePickerSkin;
-
 import DebugCalendar.DebugCalendarController;
 import category.CategoriesController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,13 +18,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import note.NoteController;
-import task.TaskCreatorController;
 
 
 public class MainController extends Main
 
 {
-    //Ruft den Controller für das Kategoriensystem auf
+    //Ruft den Controller fï¿½r das Kategoriensystem auf
     @FXML 
     CategoriesController categoriesController = new CategoriesController();
     @FXML
@@ -85,7 +79,7 @@ public class MainController extends Main
     	
 		try
 		{
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/TaskCreator.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/CreateTask.fxml"));
 	    	Parent root1;
 			root1 = (Parent) fxmlLoader.load();
 			Stage stage = new Stage();
