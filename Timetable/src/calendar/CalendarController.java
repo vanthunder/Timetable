@@ -23,6 +23,8 @@ import javax.jws.soap.SOAPBinding.Use;
 import javax.xml.bind.ValidationEvent;
 import static java.time.temporal.TemporalAdjusters.*;
 import org.omg.CORBA.Current;
+
+import DebugCalendar.CalanderLabel;
 import javafx.fxml.Initializable;
 import javafx.geometry.NodeOrientation;
 import javafx.scene.control.Control;
@@ -52,17 +54,16 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.converter.LocalDateStringConverter;
 
-
-
 public class CalendarController implements Initializable
 
-{   @FXML
+{
+	@FXML
 	private GridPane Calendar;
 	@FXML
 	private Button upLeftButton;
 	@FXML
 	private Label timeformat;
-    @FXML
+	@FXML
 	private Button upRightButton;
 	@FXML
 	private Button downLeftButton;
@@ -76,133 +77,210 @@ public class CalendarController implements Initializable
 	private final List<Label> Labels = new ArrayList<>();
 	@FXML
 	CalendarLabel label = new CalendarLabel();
+	@FXML
+	private Label LeapYearLabel;
 
-	
 	String Month = new String("Monat");
 	String Day = new String("Tag");
-	
-	 // LocalDate Events
-		private YearMonth actualYearMonth;
-		private LocalDate currentDate = LocalDate.now();
-		LocalDate startOfWeek = currentDate.minusDays(currentDate.getDayOfWeek().getValue() - 1);
-		LocalDate endOfWeek = startOfWeek.plusDays(6);
-		LocalDate start = currentDate.with(firstDayOfMonth());
-		LocalDate end = currentDate.with(lastDayOfMonth());
-		Month currentMonth = currentDate.getMonth();
-		LocalDate a = LocalDate.of(currentDate.getYear(),2, 1);
-		//Month month = Month.a.get;
-		//Month february = Month.valueOf(1)//Month.FEBRUARY;
-     // LocalDate helper integers;
-		int maxlength = currentMonth.maxLength();
-		int markedLabel = 0;
-		int ab = 0;
-		int Months = 1;
-		int mMonths = 0;
-		int CurrentYear = currentDate.getYear();
-		int feb = a.getMonth().maxLength();//february.maxLength();
 
-		DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("         E\n        d MMM");
+	// LocalDate Events
+	private YearMonth actualYearMonth;
+	private LocalDate currentDate = LocalDate.now();
+	LocalDate startOfWeek = currentDate.minusDays(currentDate.getDayOfWeek().getValue() - 1);
+	LocalDate endOfWeek = startOfWeek.plusDays(6);
+	LocalDate start = currentDate.with(firstDayOfMonth());
+	LocalDate end = currentDate.with(lastDayOfMonth());
+	Month currentMonth = currentDate.getMonth();
+	LocalDate crMonth = currentDate.withMonth(currentMonth.getValue());
+	LocalDate year;
+	LocalDate a = LocalDate.of(currentDate.getYear(), 2, 1);
+	// Month month = Month.a.get;
+	// Month february = Month.valueOf(1)//Month.FEBRUARY;
+	// LocalDate helper integers;
+	int maxlength = currentMonth.maxLength();
+	int markedLabel = 0;
+	int ab = 0;
+	int Months = 1;
+	int mMonths = 1;
+	int CurrentYear = currentDate.getYear();
+	int feb = a.getMonth().maxLength();// february.maxLength();
 
-    // Event Listener on Button[#upLeftButton].onAction
+	DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("         E\n        d MMM");
+
+	// Event Listener on Button[#upLeftButton].onAction
 	@FXML
-	public void urlPress(ActionEvent event) 
-	{   if(timeformat.getText().equals(Month))
+	public void urlPress(ActionEvent event)
+	{
+		if (timeformat.getText().equals(Month))
 		{
 			timeformat.setText(Day);
-		}
-		else
-		if (timeformat.getText().equals(Day))
+		} else if (timeformat.getText().equals(Day))
 		{
 			timeformat.setText(Month);
 		}
 	}
+
 	// Event Listener on Button[#upRightButton].onAction
 	@FXML
-	public void urbPress(ActionEvent event) 
+	public void urbPress(ActionEvent event)
 	{
-		if(timeformat.getText().equals(Month))
+		if (timeformat.getText().equals(Month))
 		{
 			timeformat.setText(Day);
-		}
-		else
-		if (timeformat.getText().equals(Day))
+		} else if (timeformat.getText().equals(Day))
 		{
 			timeformat.setText(Month);
 		}
 	}
+
 	// Event Listener on Button[#downLeftButton].onAction
 	@FXML
-	public void dlbPress(ActionEvent event) 
+	public void dlbPress(ActionEvent event)
 	{
-		// selectTimeLabel.setText(Integer.toString(CurrentYear--));
-				if (ab == maxlength)
-				{
-					ab = 0;
-				}
-
-				// selectTimeLabel.setText(Integer.toString(CurrentYear++));
-				for (int i = 0; i <maxlength; i++)
-				{
-					
-					maxlength = currentMonth.maxLength();
-					if (!(ab == maxlength))
-					{
-						LocalDate betweenweek = start.minusMonths(mMonths).minusDays(i);
-						if (betweenweek.getMonth().toString().equals("FEBRUARY"))
+		if (ab == maxlength)
+		{
+			ab = 0;
+		}	
+		maxlength = currentMonth.maxLength();
+		selectTimeLabel.setText(Integer.toString(CurrentYear++));
+			 switch(currentMonth)
+		     {
+		      case JANUARY:
+		    	  selectTimeLabel.setText("Dezember");
+		    	  System.out.println("Januar");
+		    	  maxlength = 31;
+		    	  break;
+		      case FEBRUARY:
+		    	  selectTimeLabel.setText("Januar");
+		    	  System.out.println("Februar");
+		    	  maxlength = 31;
+		    	  break;
+		      case MARCH:
+		    	  selectTimeLabel.setText("Februar");
+		    	  System.out.println("März");
+		    	  if(year.isLeapYear())
+		    	  {
+		    		  maxlength = 29;
+		    		  System.out.println("true");
+		    	  }
+		    	  else 
+		    	  if(!year.isLeapYear())
+			      {
+			    	 maxlength = 28;
+			    	 System.out.println("false");
+			      }
+		    	  break;
+		      case APRIL:
+		    	  selectTimeLabel.setText("März");
+		    	  System.out.println("April");
+		    	  maxlength = 31;
+		    	  break;
+		      case MAY:
+		    	  selectTimeLabel.setText("April");
+		    	  System.out.println("Mai");
+		    	  maxlength = 30;
+		    	  break;
+		      case JUNE:
+		    	  selectTimeLabel.setText("Mai");
+		    	  System.out.println("Juni");
+		    	  maxlength = 31;
+		    	  break;
+		      case JULY:
+		    	  selectTimeLabel.setText("Juni");
+		    	  System.out.println("July");
+		    	  maxlength = 30;
+		    	  break;
+		      case AUGUST:
+		    	  selectTimeLabel.setText("Juli");
+		    	  System.out.println("August");
+		    	  maxlength = 31;
+		    	  break;
+		      case SEPTEMBER:
+		    	  selectTimeLabel.setText("August");
+		    	  System.out.println("September");
+		    	  maxlength = 31;
+		    	  break;
+		      case OCTOBER:
+		    	  selectTimeLabel.setText("September");
+		    	  System.out.println("Oktober");
+		    	  maxlength = 30;
+		    	  break;
+		      case NOVEMBER:
+		    	  selectTimeLabel.setText("Oktober");
+		    	  System.out.println("November");
+		    	  maxlength = 31;
+		    	  break;
+		      case DECEMBER:
+		    	  selectTimeLabel.setText("November");
+		    	  System.out.println("Dezember");
+		    	  maxlength = 30;
+		    	  break;
+		     }
+		          LocalDate betweenweek = start.minusMonths(mMonths);
+		    	  for (int i = 0; i < maxlength; i++)
+		    	  {     
+		    		    betweenweek = start.minusMonths(mMonths).plusDays(i);
+		    		    label.setText(betweenweek.format(dayFormatter));
+					    Labels.get(i).setText(betweenweek.format(dayFormatter));
+					    YearLabel.setText(Integer.toString(betweenweek.getYear()));
+					    currentMonth = betweenweek.getMonth();
+					    year = betweenweek;
+						ab++;
+						if(betweenweek.isLeapYear())
 						{
-							maxlength = feb-1;
-							Labels.get(28).setText("");
-							Labels.get(29).setText("");
-							Labels.get(30).setText("");
-							Labels.get(31).setText("");
-						}
-						if (Labels.get(markedLabel).getText().toString().equals(currentDate.format(dayFormatter)))
-						{
-
-							Labels.get(markedLabel).setStyle("-fx-background-color: #428aff");
-							
-							System.out.println("WAhr111111111111111111111111111111111111111111");
+							LeapYearLabel.setVisible(true);
 						}
 						else
-							if (!Labels.get(i).getText().toString().equals(currentDate.format(dayFormatter)))
+					    if(!betweenweek.isLeapYear())
+					    {
+						    LeapYearLabel.setVisible(false);
+					    }
+						if (currentMonth == currentMonth.FEBRUARY)
+						{
+							if(year.isLeapYear())
 							{
-		                        Labels.get(markedLabel).setStyle(Labels.get(1).getStyle());
-								System.out.println("WAhr");
+								Labels.get(29).setText("");
+								Labels.get(30).setText("");
+								Labels.get(31).setText("");
 							}
-						
-						currentMonth = betweenweek.getMonth();
-						label.setText(betweenweek.format(dayFormatter));
-						Labels.get(i).setText(betweenweek.format(dayFormatter));
-
-						System.out.println(betweenweek.getDayOfWeek());
-
-						ab++;
-						System.out.println(betweenweek.getMonth());
-						System.out.println(Labels.get(i).getText().toString());
-						YearLabel.setText(Integer.toString(betweenweek.getYear()));
-						selectTimeLabel.setText(betweenweek.getMonth().toString());
+							else
+							if(!year.isLeapYear())
+							{
+								Labels.get(28).setText("");
+								Labels.get(29).setText("");
+								Labels.get(30).setText("");
+								Labels.get(31).setText("");
+							}
+							}
 						if (Labels.get(i) == null)
 						{
-							CalendarLabel label = new CalendarLabel();
-							// label.setText(betweenweek.format(dayFormatter));
+							CalanderLabel label = new CalanderLabel();
 							Labels.add(label);
-						} 
-						else 
-						if 
-						(i < maxlength)
+						}
+						else
+						if (i < maxlength)
 						{
-							System.out.println("TESTSETSETSTESTESTESETSETSETSETST");
 							Labels.get(maxlength).setText("");
 						}
-						
-					}
+						    System.out.println(i +". = "+maxlength);
+				        if (Labels.get(markedLabel).getText().toString().equals(currentDate.format(dayFormatter)))
+					    {
+                            Labels.get(markedLabel).setStyle("-fx-background-color: #428aff");
+					    }
+					    else
+						if (!Labels.get(i).getText().toString().equals(currentDate.format(dayFormatter)))
+						{
+                            Labels.get(markedLabel).setStyle(Labels.get(1).getStyle());
+						}
+		               }
+		    	Months--;
+		  		mMonths++;
+		  		System.out.println("mMonths = "+mMonths);
+		  		System.out.println("Months = "+Months);
+		  		System.out.println("crMonth = "+ crMonth.getMonthValue());
+		  		System.out.println("CurrentMonthValue = "+currentMonth.getValue());
+		  	}
 
-					System.out.println(maxlength);
-
-				}
-				Months--;
-				mMonths++;	
-	}
 	// Event Listener on Button[#downRigtButton].onAction
 	@FXML
 	public void drbPress(ActionEvent event)
@@ -210,72 +288,145 @@ public class CalendarController implements Initializable
 		if (ab == maxlength)
 		{
 			ab = 0;
-		}
+		}	
 		maxlength = currentMonth.maxLength();
 		selectTimeLabel.setText(Integer.toString(CurrentYear++));
-		for (int i = 0; i < maxlength; i++)
-		{
-			
-			maxlength = currentMonth.maxLength();
-			if (!(ab == maxlength))
-			{
-				LocalDate betweenweek = start.plusMonths(Months).plusDays(i);
-				if (betweenweek.getMonth().toString().equals("FEBRUARY"))
-				{
-					maxlength = feb-1;
-					Labels.get(28).setText("");
-					Labels.get(29).setText("");
-					Labels.get(30).setText("");
-					Labels.get(31).setText("");
-				}
-				if (Labels.get(markedLabel).getText().toString().equals(currentDate.format(dayFormatter)))
-				{
+			 switch(currentMonth)
+		     {
+		      case JANUARY:
+		    	  selectTimeLabel.setText("Februar");
+		    	  System.out.println("Januar");
+		    	  if(year.isLeapYear())
+		    	  {
+		    		  maxlength = 29;
+		    		  System.out.println("true");
+		    	  }
+		    	  else 
+		    	  if(!year.isLeapYear())
+			      {
+			    	 maxlength = 28;
+			    	 System.out.println("false");
+			      }
+		    	  break;
+		      case FEBRUARY:
+		    	  selectTimeLabel.setText("März");
+		    	  System.out.println("Februar");
+		    	  maxlength = 31;
+		    	  break;
+		      case MARCH:
+		    	  selectTimeLabel.setText("April");
+		    	  System.out.println("März");
+		    	  maxlength = 30;
+		    	  break;
+		      case APRIL:
+		    	  selectTimeLabel.setText("Mai");
+		    	  System.out.println("April");
+		    	  maxlength = 31;
+		    	  break;
+		      case MAY:
+		    	  selectTimeLabel.setText("Juni");
+		    	  System.out.println("Mai");
+		    	  maxlength = 30;
+		    	  break;
+		      case JUNE:
+		    	  selectTimeLabel.setText("Juli");
+		    	  System.out.println("Juni");
+		    	  maxlength = 31;
+		    	  break;
+		      case JULY:
+		    	  selectTimeLabel.setText("August");
+		    	  System.out.println("Juli");
+		    	  maxlength = 31;
+		    	  break;
+		      case AUGUST:
+		    	  selectTimeLabel.setText("September");
+		    	  System.out.println("August");
+		    	  maxlength = 30;
+		    	  break;
+		      case SEPTEMBER:
+		    	  selectTimeLabel.setText("Oktober");
+		    	  System.out.println("September");
+		    	  maxlength = 31;
+		    	  break;
+		      case OCTOBER:
+		    	  selectTimeLabel.setText("November");
+		    	  System.out.println("Oktober");
+		    	  maxlength = 30;
+		    	  break;
+		      case NOVEMBER:
+		    	  selectTimeLabel.setText("Dezember");
+		    	  System.out.println("November");
+		    	  maxlength = 31;
+		    	  break;
+		      case DECEMBER:
+		    	  selectTimeLabel.setText("Januar");
+		    	  System.out.println("Dezember");
+		    	  maxlength = 31;
+		    	  break;
+		     }
+		          LocalDate betweenweek = start.plusMonths(Months);
+		    	  for (int i = 0; i < maxlength; i++)
+		    	  {     
+		    		    betweenweek = start.plusMonths(Months).plusDays(i);
+		    		    label.setText(betweenweek.format(dayFormatter));
+					    Labels.get(i).setText(betweenweek.format(dayFormatter));
+					    YearLabel.setText(Integer.toString(betweenweek.getYear()));
+					    currentMonth = betweenweek.getMonth();
+					    year = betweenweek;
+						ab++;
+						if(betweenweek.isLeapYear())
+						{
+							LeapYearLabel.setVisible(true);
+						}
+						else
+					    if(!betweenweek.isLeapYear())
+					    {
+						    LeapYearLabel.setVisible(false);
+					    }
+						if (currentMonth == currentMonth.FEBRUARY)
+						{
+							if(year.isLeapYear())
+							{
+								Labels.get(29).setText("");
+								Labels.get(30).setText("");
+								Labels.get(31).setText("");
+							}
+							else
+							if(!year.isLeapYear())
+							{
+								Labels.get(28).setText("");
+								Labels.get(29).setText("");
+								Labels.get(30).setText("");
+								Labels.get(31).setText("");
+							}
+							}
+						if (Labels.get(i) == null)
+						{
+							CalanderLabel label = new CalanderLabel();
+							Labels.add(label);
+						}
+						else
+						if (i < maxlength)
+						{
+							Labels.get(maxlength).setText("");
+						}
+						    System.out.println(i +". = "+maxlength);
+				        if (Labels.get(markedLabel).getText().toString().equals(currentDate.format(dayFormatter)))
+					    {
+                            Labels.get(markedLabel).setStyle("-fx-background-color: #428aff");
+					    }
+					    else
+						if (!Labels.get(i).getText().toString().equals(currentDate.format(dayFormatter)))
+						{
+                            Labels.get(markedLabel).setStyle(Labels.get(1).getStyle());
+						}
+		               }
+		     Months++;
+		     mMonths--;
+		     System.out.println("mMonths = "+mMonths);
+		     System.out.println("Months = "+Months);
+		     }
 
-					Labels.get(markedLabel).setStyle("-fx-background-color: #428aff");
-					
-					System.out.println("WAhr111111111111111111111111111111111111111111");
-				}
-				else
-					if (!Labels.get(i).getText().toString().equals(currentDate.format(dayFormatter)))
-					{
-
-						Labels.get(markedLabel).setStyle(Labels.get(1).getStyle());
-						System.out.println("WAhr");
-					}
-			
-				currentMonth = betweenweek.getMonth();
-				label.setText(betweenweek.format(dayFormatter));
-				Labels.get(i).setText(betweenweek.format(dayFormatter));
-				
-				System.out.println(betweenweek.getDayOfWeek());
-				// label.setText(betweenweek.format(dayFormatter));
-				// Labels.add(label);
-				ab++;
-				System.out.println("NOCHMAL");
-				YearLabel.setText(Integer.toString(betweenweek.getYear()));
-				selectTimeLabel.setText(betweenweek.getMonth().toString());
-				if (Labels.get(i) == null)
-				{
-					CalendarLabel label = new CalendarLabel();
-					Labels.add(label);
-				}
-				else
-				if (i < maxlength)
-				{
-						System.out.println("TESTSETSETSTESTESTESETSETSETSETST");
-						Labels.get(maxlength).setText("");
-				}
-					
-					
-						
-					
-		}
-		}
-		Months++;
-		mMonths--;
-	}
-
-	
 	public void intitCalendar()
 	{
 		int a = 0;
@@ -288,7 +439,6 @@ public class CalendarController implements Initializable
 				currentDate.getYear();
 				CalendarLabel label = new CalendarLabel();
 				label.setTextAlignment(TextAlignment.CENTER);
-				// label.setText(currentDate.format(dayFormatter));
 				label.setTextAlignment(TextAlignment.CENTER);
 				label.setAlignment(Pos.CENTER);
 				Calendar.setAlignment(Pos.CENTER);
@@ -302,12 +452,21 @@ public class CalendarController implements Initializable
 					label.setText("TEST");
 					label.setText(betweenweek.format(dayFormatter));
 					Labels.add(label);
-
+					
+                    LeapYearLabel.setVisible(false);
 					System.out.println(betweenweek.getDayOfWeek());
-
 					a++;
-
-				} else if (a <= maxlength)
+					if(betweenweek.isLeapYear())
+					{
+						LeapYearLabel.setVisible(true);
+					}
+					else
+				    if(!betweenweek.isLeapYear())
+				    {
+					    LeapYearLabel.setVisible(false);
+				    }
+				} else 
+					if (a <= maxlength)
 				{
 					// label.setText("TEST");
 					Labels.add(label);
@@ -315,7 +474,59 @@ public class CalendarController implements Initializable
 
 			}
 		}
-    }
+		 switch(currentMonth)
+	     {
+	      case JANUARY:
+	    	  selectTimeLabel.setText("Januar");
+	    	  System.out.println("Januar");
+	    	  break;
+	      case FEBRUARY:
+	    	  selectTimeLabel.setText("Februar");
+	    	  System.out.println("Februar");
+	    	  break;
+	      case MARCH:
+	    	  selectTimeLabel.setText("März");
+	    	  System.out.println("März");
+	    	  break;
+	      case APRIL:
+	    	  selectTimeLabel.setText("April");
+	    	  System.out.println("April");
+	    	  break;
+	      case MAY:
+	    	  selectTimeLabel.setText("Mai");
+	    	  System.out.println("Mai");
+	    	  break;
+	      case JUNE:
+	    	  selectTimeLabel.setText("Juni");
+	    	  System.out.println("Juni");
+	    	  break;
+	      case JULY:
+	    	  selectTimeLabel.setText("Juli");
+	    	  System.out.println("Juli");
+	    	  break;
+	      case AUGUST:
+	    	  selectTimeLabel.setText("August");
+	    	  System.out.println("August");
+	    	  break;
+	      case SEPTEMBER:
+	    	  selectTimeLabel.setText("September");
+	    	  System.out.println("September");
+	    	  break;
+	      case OCTOBER:
+	    	  selectTimeLabel.setText("Oktober");
+	    	  System.out.println("Oktober");
+	    	  break;
+	      case NOVEMBER:
+	    	  selectTimeLabel.setText("November");
+	    	  System.out.println("November");
+	    	  break;
+	      case DECEMBER:
+	    	  selectTimeLabel.setText("Dezember");
+	    	  System.out.println("Dezember");
+	    	  break;
+	     }
+	}
+
 	public void markcurrentDate()
 	{
 		for (int i = 0; i < Labels.size(); i++)
@@ -329,15 +540,14 @@ public class CalendarController implements Initializable
 			}
 		}
 	}
-	
-	
-	 //Initialize the Calendar with all its components
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) 
-    {
-    	selectTimeLabel.setText(Integer.toString(currentDate.getYear()));
+
+	// Initialize the Calendar with all its components
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1)
+	{
+		selectTimeLabel.setText(Integer.toString(currentDate.getYear()));
 		intitCalendar();
 		markcurrentDate();
-    }
+	}
 
 }

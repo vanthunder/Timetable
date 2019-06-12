@@ -11,6 +11,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calendar.CalendarController">
@@ -107,7 +109,22 @@
                   </Button>
                </children>
             </HBox>
-            <Pane prefHeight="9.0" prefWidth="702.0" />
+            <HBox alignment="TOP_RIGHT" prefHeight="24.0" prefWidth="702.0">
+               <children>
+                  <Label fx:id="LeapYearLabel" prefHeight="6.0" prefWidth="100.0" style="-fx-border-color: silver; -fx-border-radius: 10; -fx-alignment: center;" text="Schaltjahr" textAlignment="RIGHT">
+                     <textFill>
+                        <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#60e1b8" />
+                              <Stop color="#29d8f0fa" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <Pane prefHeight="29.0" prefWidth="8.0" />
+               </children>
+            </HBox>
+            <Pane prefHeight="0.0" prefWidth="702.0" />
          </children>
       </VBox>
    </top>
