@@ -134,11 +134,7 @@
                   <Pane prefHeight="467.0" prefWidth="10.0" />
                </children>
             </HBox>
-            <Pane prefHeight="67.0" prefWidth="408.0">
-               <children>
-                  <Label prefHeight="100.0" prefWidth="100.0" text="Live Feed" />
-               </children>
-            </Pane>
+            <Pane prefHeight="67.0" prefWidth="408.0" />
          </children>
       </VBox>
    </left>
@@ -170,4 +166,10 @@
          </bottom>
       </BorderPane>
    </top>
+   <bottom>
+      <Pane prefHeight="4.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <right>
+      <Pane prefWidth="4.0" BorderPane.alignment="CENTER" />
+   </right>
 </BorderPane>

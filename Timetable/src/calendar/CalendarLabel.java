@@ -26,4 +26,5 @@ public class CalendarLabel extends Label
 	{
 		return labedate;
 	}
+
 }

@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appointment.AppointmentCreatorController">
@@ -47,6 +48,20 @@
                   <Button fx:id="AppoinmentPinNote" alignment="CENTER" mnemonicParsing="false" onAction="#appointmentPinNotePress" text="Notiz anheften" />
                </children>
             </HBox>
+            <Pane />
+            <VBox>
+               <children>
+                  <HBox>
+                     <children>
+                        <Pane prefHeight="25.0" prefWidth="124.0" />
+                        <CheckBox fx:id="insertCategory" mnemonicParsing="false" text="Kategorie hinzufügen" />
+                        <Pane prefHeight="25.0" prefWidth="30.0" />
+                        <ChoiceBox fx:id="chooseCategory" prefWidth="150.0" />
+                        <Pane />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
             <HBox alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <CheckBox fx:id="AppointmentAlarmOnOff" mnemonicParsing="false" text="Alarm">

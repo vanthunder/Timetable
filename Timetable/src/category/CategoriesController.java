@@ -60,8 +60,8 @@ public class CategoriesController<T> implements Initializable
 	Image icon = new Image(getClass().getResourceAsStream("/images/Folder.png"));
 	String text = "";
 	String value;
-	CategoriesHelper helper = new CategoriesHelper();
-	ArrayList<TreeItem> mainCategories = helper.getMainCategories();
+	static CategoriesHelper helper = new CategoriesHelper();
+	static ArrayList<TreeItem> mainCategories = helper.getMainCategories();
 	TreeItem root = new TreeItem("Kategorien", new ImageView(icon));
 	private TreeItem<String> newItem;
 
@@ -70,7 +70,7 @@ public class CategoriesController<T> implements Initializable
 	{
 		// category.setContentlist(mainCategories);
 		// mainCategories.addAll(category.getContentlist());
-		// System.out.println(mainCategories);
+		System.out.println(mainCategories);
 		root.setExpanded(true);
 		treeView.setCellFactory(TextFieldTreeCell.forTreeView());
 		treeView.setEditable(true);
@@ -88,10 +88,32 @@ public class CategoriesController<T> implements Initializable
 		treeView.setOnEditCancel(event -> editCancel(event));
 	}
 
+	/**
+	 * @return the mainCategories
+	 */
+	public static ArrayList<TreeItem> getMainCategories()
+	{
+		return mainCategories;
+	}
+
+	/**
+	 * @param mainCategories the mainCategories to set
+	 */
+	public void setMainCategories(ArrayList<TreeItem> mainCategories)
+	{
+		this.mainCategories = mainCategories;
+	}
+
 	// Returns the tree
 	public TreeView<String> initialize()
 	{
 		return treeView;
+	}
+	
+	public static void insertCategoryByCreator(TreeItem<String> savePosition, TreeItem<String> newItem)
+	{
+		savePosition.getChildren().addAll(newItem);
+		System.out.println("TEST");
 	}
 
 	// Method for inserting an Item
