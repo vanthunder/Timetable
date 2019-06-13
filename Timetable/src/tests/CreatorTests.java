@@ -41,7 +41,7 @@ class CreatorTests {
 
 	
 	@Test
-	void testEventRegular() {
+	void testEventRegular() throws CloneNotSupportedException {
 		LocalDateTime startpoint = LocalDateTime.of(1998, 1, 14, 0, 0);
 		LocalDateTime endpoint = LocalDateTime.of(1998, 1, 15, 0, 0);
 		LocalDateTime alarmTime = LocalDateTime.of(1998, 1, 16, 0, 0);
@@ -53,7 +53,7 @@ class CreatorTests {
 	}
 	
 	@Test
-	void testEventCalendarTransfer() {
+	void testEventCalendarTransfer() throws CloneNotSupportedException {
 		LocalDateTime startpoint = LocalDateTime.of(1998, 1, 14, 0, 0);
 		LocalDateTime endpoint = LocalDateTime.of(1998, 1, 15, 0, 0);
 		LocalDateTime alarmTime = LocalDateTime.of(1998, 1, 16, 0, 0);
