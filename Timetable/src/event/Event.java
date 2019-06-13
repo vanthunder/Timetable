@@ -3,6 +3,7 @@ package event;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import appointment.Appointment;
 import base.Base;
 
 public class Event extends Base implements Cloneable {
@@ -113,6 +114,23 @@ public class Event extends Base implements Cloneable {
 				+ description + ", regularlyOnOff: " + regularlyOnOff + ", regularlyType: " + regularlyType
 				+ ", regularlyID: " + regularlyID + ", alarmOnOff: " + alarmOnOff + ", alarmTime: " 
 				+ alarmTime.format(dateWithTimeFormatter);
+	}
+	
+	public Event clone() throws CloneNotSupportedException{
+		Event clonedAppointment = (Event) super.clone();
+		clonedAppointment.setTitle(this.getTitle());
+		clonedAppointment.setStartpoint(this.getStartpoint());
+		clonedAppointment.setEndpoint(this.getEndpoint());
+		clonedAppointment.setAllDay(this.isAllDay());
+		clonedAppointment.setRegularlyOnOff(this.isRegularlyOnOff());
+		clonedAppointment.setRegularlyType(this.getRegularlyType());
+		clonedAppointment.setRegularlyID(this.getRegularlyID());
+		clonedAppointment.setDescription(this.getDescription());
+		clonedAppointment.setAlarmOnOff(this.isAlarmOnOff());
+		clonedAppointment.setAlarmTime(this.getAlarmTime());
+		
+		return clonedAppointment;
+		
 	}
 	
 	

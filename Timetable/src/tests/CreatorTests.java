@@ -49,7 +49,7 @@ class CreatorTests {
 		
 		assertEquals("title: hi, startpoint: 14.01.1998 00:00, endpoint: 15.01.1998 23:59, allDay: true, description: best event of the year, "
 				+ "regularlyOnOff: false, regularlyType: 0, regularlyID: 0, alarmOnOff: false, alarmTime: 16.01.1998 00:00", 
-				Creator.createEvent("hi", startpoint, endpoint, "best event of the year", false, 0, 0, false, alarmTime));
+				Creator.createEvent("hi", startpoint, endpoint, "best event of the year", false, 0, 0, 0, false, alarmTime));
 	}
 	
 	@Test
@@ -58,7 +58,7 @@ class CreatorTests {
 		LocalDateTime endpoint = LocalDateTime.of(1998, 1, 15, 0, 0);
 		LocalDateTime alarmTime = LocalDateTime.of(1998, 1, 16, 0, 0);
 		
-		Creator.createEvent("hi", startpoint, endpoint, "best event of the year", false, 0, 0, false, alarmTime);
+		Creator.createEvent("hi", startpoint, endpoint, "best event of the year", false, 0, 0, 0, false, alarmTime);
 		assertEquals("title: hi, startpoint: 14.01.1998 00:00, endpoint: 15.01.1998 23:59, allDay: true, description: best event of the year, "
 				+ "regularlyOnOff: false, regularlyType: 0, regularlyID: 0, alarmOnOff: false, alarmTime: 16.01.1998 00:00", 
 				Calendar.getEventList().get(0).toString());

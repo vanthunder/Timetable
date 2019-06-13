@@ -15,7 +15,7 @@ import task.Task;
 public class Creator {
 	
 	public static String createEvent(String title, LocalDateTime startpoint, LocalDateTime endpoint, String description, 
-			boolean regularlyOnOff, int regularlyType, int regularlyAmount, int regularlyID, boolean alarmOnOff, LocalDateTime alarmTime) {
+			boolean regularlyOnOff, int regularlyType, int regularlyAmount, int regularlyID, boolean alarmOnOff, LocalDateTime alarmTime) throws CloneNotSupportedException {
 		//event exists always the whole day
 		startpoint = startpoint.withHour(0).withMinute(0);
 		endpoint = endpoint.withHour(23).withMinute(59);
@@ -367,7 +367,7 @@ public class Creator {
 			}
 			
 			//wöchentlich
-			else if(newAppointment.getRegularlyType() == 1) {
+			else if(newTask.getRegularlyType() == 1) {
 				for(int i=0; i<regularlyAmount; i++) {
 					if(i==0) {
 						regularlyInnerList.add(newTask);
@@ -410,7 +410,7 @@ public class Creator {
 			}
 		}
 			//jährlich
-			else if(newAppointment.getRegularlyType() == 3) {
+			else if(newTask.getRegularlyType() == 3) {
 				for(int i=0; i<regularlyAmount; i++) {
 					if(i==0) {
 						regularlyInnerList.add(newTask);
