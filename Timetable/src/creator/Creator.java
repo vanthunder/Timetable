@@ -15,12 +15,18 @@ import task.Task;
 public class Creator {
 	
 	public static String createEvent(String title, LocalDateTime startpoint, LocalDateTime endpoint, String description, 
-			boolean regularlyOnOff, int regularlyType, int regularlyID, boolean alarmOnOff, LocalDateTime alarmTime) {
+			boolean regularlyOnOff, int regularlyType, int regularlyAmount, int regularlyID, boolean alarmOnOff, LocalDateTime alarmTime) {
 		//event exists always the whole day
 		startpoint = startpoint.withHour(0).withMinute(0);
 		endpoint = endpoint.withHour(23).withMinute(59);
 		Event newEvent = new Event(title, startpoint, endpoint, true, description, 
 				regularlyOnOff, regularlyType, regularlyID, alarmOnOff, alarmTime);
+		
+		
+
+		startpoint = startpoint.withHour(0).withMinute(0);
+		endpoint = endpoint.withHour(23).withMinute(59);
+			
 		
 		//event is saved in Calendar
 		ArrayList<Event> tempEventList = Calendar.getEventList();
@@ -28,12 +34,130 @@ public class Creator {
 		//tempCalendarList.sort();
 		Calendar.setEventList(tempEventList);
 		
-		//the event will be saved in the chosen Category:
-		/*
-		*ArrayList<Base> tempContentlist = chosenCategory.getContentlist();
-		*tempContentlist.add(newEvent);
-		*chosenCategory.setContentlist(tempContentlist);
-		*/
+		
+		
+		
+		//its better to have a method that does that in controller
+		/*boolean floating = false;
+		if(startpoint.equals(endpoint)) {
+			floating = true;
+		}*/
+			
+		
+			//the appointment will be saved in the Category:
+			/*chosenCategory.contentlist.add(newAppointment);	<- this would be much easier than the way I've done it below, 
+			*														but don't work when contentList is private
+			*ArrayList<Base> tempContentlist = chosenCategory.getContentlist();
+			*tempContentlist.add(newAppointment);
+			*chosenCategory.setContentlist(tempContentlist);
+			*/
+			
+			//newAppointment is only added to calendar if floating is false
+
+			ArrayList<Base> tempCalendarList = Calendar.getCalendarList();
+			tempCalendarList.add(newEvent);
+			//tempCalendarList.sort();
+			Calendar.setCalendarList(tempCalendarList);
+			
+			
+			if(regularlyOnOff) {
+				
+				HashMap<Integer, ArrayList<Base>> tempRegularlyList = Calendar.getRegularlyList();
+				ArrayList<Base> regularlyInnerList = new ArrayList<Base>();
+				ArrayList<Base> tempCalendarList2 = Calendar.getCalendarList();
+				
+				//täglich
+				if(newEvent.getRegularlyType() == 0) {
+					for(int i=0; i<regularlyAmount; i++) {
+						if(i==0) {
+							regularlyInnerList.add(newEvent);
+						}
+						else {
+							Appointment copy = (Appointment) newEvent.clone();
+							LocalDateTime tempStartpoint = copy.getStartpoint();
+							tempStartpoint = tempStartpoint.plusDays(i);
+							copy.setStartpoint(tempStartpoint);
+							regularlyInnerList.add(copy);
+							
+							tempCalendarList2.add(copy);
+							Calendar.setCalendarList(tempCalendarList2);
+							//has to be transferred to category!!!
+						}
+					}
+				}
+				
+				//wöchentlich
+				else if(newEvent.getRegularlyType() == 1) {
+					for(int i=0; i<regularlyAmount; i++) {
+						if(i==0) {
+							regularlyInnerList.add(newEvent);
+						}
+						else {
+							Appointment copy = (Appointment) newEvent.clone();
+							LocalDateTime tempStartpoint = copy.getStartpoint();
+							tempStartpoint = tempStartpoint.plusWeeks(i);
+							copy.setStartpoint(tempStartpoint);
+							regularlyInnerList.add(copy);
+					
+							tempCalendarList2.add(copy);
+							Calendar.setCalendarList(tempCalendarList2);
+							//has to be transferred to category!!!
+						}
+					}
+				}
+				
+				
+				
+				
+			
+			//monatlich
+				else if(newEvent.getRegularlyType() == 2) {
+					for(int i=0; i<regularlyAmount; i++) {
+						if(i==0) {
+							regularlyInnerList.add(newEvent);
+						}
+						else {
+							Appointment copy = (Appointment) newEvent.clone();
+							LocalDateTime tempStartpoint = copy.getStartpoint();
+							tempStartpoint = tempStartpoint.plusMonths(i);
+							copy.setStartpoint(tempStartpoint);
+							regularlyInnerList.add(copy);
+						
+							tempCalendarList2.add(copy);
+							Calendar.setCalendarList(tempCalendarList2);
+							//has to be transferred to category!!!
+						}
+				}
+			}
+				//jährlich
+				else if(newEvent.getRegularlyType() == 3) {
+					for(int i=0; i<regularlyAmount; i++) {
+						if(i==0) {
+							regularlyInnerList.add(newEvent);
+						}
+						else {
+							Appointment copy = (Appointment) newEvent.clone();
+							LocalDateTime tempStartpoint = copy.getStartpoint();
+							tempStartpoint = tempStartpoint.plusYears(i);
+							copy.setStartpoint(tempStartpoint);
+							regularlyInnerList.add(copy);
+						
+							tempCalendarList2.add(copy);
+							Calendar.setCalendarList(tempCalendarList2);
+							//has to be transferred to category!!!
+						}
+				}
+			}
+				tempRegularlyList.put(getRegularlyID(), regularlyInnerList);
+				Calendar.setRegularlyList(tempRegularlyList);
+				
+//Save.save(); as soon as the appointment is created, the program will save the data
+			
+			//Testreturn to proof if the Appointment object got the data it should have:
+		//return newAppointment.toString();
+			
+			
+			}
 	
 		return newEvent.toString();
 	}
@@ -56,9 +180,7 @@ public class Creator {
 		if(allDay) {
 			startpoint = startpoint.withHour(0).withMinute(0);
 			endpoint = endpoint.withHour(23).withMinute(59);
-			
-			
-		}
+			}
 		
 		//its better to have a method that does that in controller
 		/*boolean floating = false;
@@ -87,9 +209,10 @@ public class Creator {
 			
 			
 			if(regularlyOnOff) {
-				int regularlyID = Creator.getRegularlyID();
+				
 				HashMap<Integer, ArrayList<Base>> tempRegularlyList = Calendar.getRegularlyList();
 				ArrayList<Base> regularlyInnerList = new ArrayList<Base>();
+				ArrayList<Base> tempCalendarList2 = Calendar.getCalendarList();
 				
 				//täglich
 				if(newAppointment.getRegularlyType() == 0) {
@@ -99,28 +222,34 @@ public class Creator {
 						}
 						else {
 							Appointment copy = (Appointment) newAppointment.clone();
-							//copy.setStartpoint(copy.getStartpoint().plusDays(i));
-							//copy.setEndpoint(copy.getEndpoint().plusDays(i));
 							LocalDateTime tempStartpoint = copy.getStartpoint();
 							tempStartpoint = tempStartpoint.plusDays(i);
 							copy.setStartpoint(tempStartpoint);
 							regularlyInnerList.add(copy);
 							
-							//has to be transferred to calenderList and category
+							tempCalendarList2.add(copy);
+							Calendar.setCalendarList(tempCalendarList2);
+							//has to be transferred to category!!!
 						}
 					}
 				}
 				
 				//wöchentlich
-				if(newAppointment.getRegularlyType() == 1) {
+				else if(newAppointment.getRegularlyType() == 1) {
 					for(int i=0; i<regularlyAmount; i++) {
 						if(i==0) {
 							regularlyInnerList.add(newAppointment);
 						}
 						else {
 							Appointment copy = (Appointment) newAppointment.clone();
-							copy.setStartpoint(copy.getStartpoint().plusWeeks(i));
-							//has to be transferred to calenderList and category
+							LocalDateTime tempStartpoint = copy.getStartpoint();
+							tempStartpoint = tempStartpoint.plusWeeks(i);
+							copy.setStartpoint(tempStartpoint);
+							regularlyInnerList.add(copy);
+					
+							tempCalendarList2.add(copy);
+							Calendar.setCalendarList(tempCalendarList2);
+							//has to be transferred to category!!!
 						}
 					}
 				}
@@ -130,27 +259,53 @@ public class Creator {
 				
 			
 			//monatlich
-			if(newAppointment.getRegularlyType() == 2) {
-				for(int i=0; i<regularlyAmount; i++) {
-					if(i==0) {
-						regularlyInnerList.add(newAppointment);
-					}
-					else {
-						Appointment copy = (Appointment) newAppointment.clone();
-						copy.setStartpoint(copy.getStartpoint().plusMonths(i));
-						//has to be transferred to calenderList and category
-					}
+				else if(newAppointment.getRegularlyType() == 2) {
+					for(int i=0; i<regularlyAmount; i++) {
+						if(i==0) {
+							regularlyInnerList.add(newAppointment);
+						}
+						else {
+							Appointment copy = (Appointment) newAppointment.clone();
+							LocalDateTime tempStartpoint = copy.getStartpoint();
+							tempStartpoint = tempStartpoint.plusMonths(i);
+							copy.setStartpoint(tempStartpoint);
+							regularlyInnerList.add(copy);
+						
+							tempCalendarList2.add(copy);
+							Calendar.setCalendarList(tempCalendarList2);
+							//has to be transferred to category!!!
+						}
 				}
-			
 			}
+				//jährlich
+				else if(newAppointment.getRegularlyType() == 3) {
+					for(int i=0; i<regularlyAmount; i++) {
+						if(i==0) {
+							regularlyInnerList.add(newAppointment);
+						}
+						else {
+							Appointment copy = (Appointment) newAppointment.clone();
+							LocalDateTime tempStartpoint = copy.getStartpoint();
+							tempStartpoint = tempStartpoint.plusYears(i);
+							copy.setStartpoint(tempStartpoint);
+							regularlyInnerList.add(copy);
+						
+							tempCalendarList2.add(copy);
+							Calendar.setCalendarList(tempCalendarList2);
+							//has to be transferred to category!!!
+						}
+				}
+			}
+				tempRegularlyList.put(getRegularlyID(), regularlyInnerList);
+				Calendar.setRegularlyList(tempRegularlyList);
+				
 //Save.save(); as soon as the appointment is created, the program will save the data
 			
 			//Testreturn to proof if the Appointment object got the data it should have:
 		//return newAppointment.toString();
-			tempRegularlyList.put(regularlyID, regularlyInnerList);
-			Calendar.setRegularlyList(tempRegularlyList);
 			
-	}
+			
+			}
 			return newAppointment.toString();
 
 	}
@@ -184,10 +339,12 @@ public class Creator {
 		//tempCalendarList.sort();
 		Calendar.setCalendarList(tempCalendarList);
 			
-		int regularlyID = 0;
+		
 		if(regularlyOnOff) {
+			
 			HashMap<Integer, ArrayList<Base>> tempRegularlyList = Calendar.getRegularlyList();
 			ArrayList<Base> regularlyInnerList = new ArrayList<Base>();
+			ArrayList<Base> tempCalendarList2 = Calendar.getCalendarList();
 			
 			//täglich
 			if(newTask.getRegularlyType() == 0) {
@@ -196,47 +353,91 @@ public class Creator {
 						regularlyInnerList.add(newTask);
 					}
 					else {
-						Task copy = (Task) newTask.clone();
-						copy.setStartpoint(copy.getStartpoint().plusDays(i));
-						//has to be transferred to calenderList and category
+						Appointment copy = (Appointment) newTask.clone();
+						LocalDateTime tempStartpoint = copy.getStartpoint();
+						tempStartpoint = tempStartpoint.plusDays(i);
+						copy.setStartpoint(tempStartpoint);
+						regularlyInnerList.add(copy);
+						
+						tempCalendarList2.add(copy);
+						Calendar.setCalendarList(tempCalendarList2);
+						//has to be transferred to category!!!
 					}
 				}
 			}
 			
 			//wöchentlich
-			if(newTask.getRegularlyType() == 1) {
+			else if(newAppointment.getRegularlyType() == 1) {
 				for(int i=0; i<regularlyAmount; i++) {
 					if(i==0) {
 						regularlyInnerList.add(newTask);
 					}
 					else {
-						Task copy = (Task) newTask.clone();
-						copy.setStartpoint(copy.getStartpoint().plusWeeks(i));
-						//has to be transferred to calenderList and category
+						Appointment copy = (Appointment) newTask.clone();
+						LocalDateTime tempStartpoint = copy.getStartpoint();
+						tempStartpoint = tempStartpoint.plusWeeks(i);
+						copy.setStartpoint(tempStartpoint);
+						regularlyInnerList.add(copy);
+				
+						tempCalendarList2.add(copy);
+						Calendar.setCalendarList(tempCalendarList2);
+						//has to be transferred to category!!!
 					}
 				}
 			}
 			
 			
 			
-			tempRegularlyList.put(regularlyID, regularlyInnerList);
+			
 		
 		//monatlich
-		if(newTask.getRegularlyType() == 2) {
-			for(int i=0; i<regularlyAmount; i++) {
-				if(i==0) {
-					regularlyInnerList.add(newTask);
-				}
-				else {
-					Task copy = (Task) newTask.clone();
-					copy.setStartpoint(copy.getStartpoint().plusMonths(i));
-					//has to be transferred to calenderList and category
-				}
+			else if(newTask.getRegularlyType() == 2) {
+				for(int i=0; i<regularlyAmount; i++) {
+					if(i==0) {
+						regularlyInnerList.add(newTask);
+					}
+					else {
+						Appointment copy = (Appointment) newTask.clone();
+						LocalDateTime tempStartpoint = copy.getStartpoint();
+						tempStartpoint = tempStartpoint.plusMonths(i);
+						copy.setStartpoint(tempStartpoint);
+						regularlyInnerList.add(copy);
+					
+						tempCalendarList2.add(copy);
+						Calendar.setCalendarList(tempCalendarList2);
+						//has to be transferred to category!!!
+					}
 			}
+		}
+			//jährlich
+			else if(newAppointment.getRegularlyType() == 3) {
+				for(int i=0; i<regularlyAmount; i++) {
+					if(i==0) {
+						regularlyInnerList.add(newTask);
+					}
+					else {
+						Appointment copy = (Appointment) newTask.clone();
+						LocalDateTime tempStartpoint = copy.getStartpoint();
+						tempStartpoint = tempStartpoint.plusYears(i);
+						copy.setStartpoint(tempStartpoint);
+						regularlyInnerList.add(copy);
+					
+						tempCalendarList2.add(copy);
+						Calendar.setCalendarList(tempCalendarList2);
+						//has to be transferred to category!!!
+					}
 			}
+		}
+			tempRegularlyList.put(getRegularlyID(), regularlyInnerList);
+			Calendar.setRegularlyList(tempRegularlyList);
 			
-			else regularlyType = 0;
-			}
+//Save.save(); as soon as the appointment is created, the program will save the data
+		
+		//Testreturn to proof if the Appointment object got the data it should have:
+	//return newAppointment.toString();
+		
+		
+		}
 		return newTask.toString();
 		}
 		
@@ -273,6 +474,10 @@ public class Creator {
 		
 		
 		return regularlyID;
+	}
+	
+	public static void regulary(int regularlyType) {
+		
 	}
 	
 	

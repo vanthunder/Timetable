@@ -10,6 +10,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import appointment.Appointment;
@@ -123,18 +124,19 @@ class CreatorTests {
 		
 		
 		for(int i=0; i<10;i++) {
-			System.out.println(Calendar.getRegularlyList().get(0).get(i).toString());
+			System.out.println(Calendar.getRegularlyList().get(1).get(i).toString());
 		}
 		assertEquals("title: sexy Appointment startpoint: 14.01.1998 00:00 endpoint: 15.01.1998 00:00 "
 				+ "allDay: false regularlyOnOff: true regularlyType: 0 regularlyID: 0 description: beautiful from start to end "
 				+ "alarmOnOff: false alarmTime: 16.01.1998 00:00 notesPinned: 0 notesLink: [] floating: false", 
-				Calendar.getRegularlyList().get(0).get(0).toString());
+				Calendar.getRegularlyList().get(1).get(0).toString());
 		
 	}
 	
 	//komisch
 	@Test
 	void testAppointmentRegularlyDailyAllDay() throws CloneNotSupportedException {
+		System.out.println(Calendar.getRegularlyList().size());
 		LocalDateTime startpoint = LocalDateTime.of(1998, 1, 14, 0, 0);
 		LocalDateTime endpoint = LocalDateTime.of(1998, 1, 15, 0, 0);
 		LocalDateTime alarmTime = LocalDateTime.of(1998, 1, 16, 0, 0);
@@ -147,6 +149,7 @@ class CreatorTests {
 		//for(int i=0; i<10;i++) {
 		//	System.out.println(Calendar.getRegularlyList().get(0).get(i).toString());
 		//}
+		System.out.println(Calendar.getRegularlyList().size());
 		
 		
 		assertEquals("title: sexy Appointment startpoint: 14.01.1998 00:00 endpoint: 15.01.1998 23:59 "
