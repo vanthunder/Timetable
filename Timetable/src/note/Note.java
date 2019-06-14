@@ -1,5 +1,9 @@
 package note;
 
+import java.io.FileOutputStream;
+import java.io.File;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -9,7 +13,7 @@ import task.Task;
 import appointment.Appointment;
 import javafx.scene.image.Image;
 
-public class Note extends Base {
+public class Note extends Base implements Serializable {
 	
 	String title;
 	private int pinned;
@@ -19,7 +23,7 @@ public class Note extends Base {
 	private ArrayList soundList;
 	private String textbox;
 	private ArrayList videoList;
-	
+
 	public int getPinned() {
 		return pinned;
 	}
@@ -76,7 +80,7 @@ public class Note extends Base {
 		this.videoList = videoList;
 	}
 
-	public Note(String title, int pinned, ArrayList pinnedAt, ArrayList photoList, ArrayList gifList, ArrayList soundList, String textbox, ArrayList videoList) {
+	public Note(String title, int pinned, ArrayList pinnedAt, ArrayList photoList, ArrayList gifList, ArrayList soundList, String textbox, ArrayList videoList, String filepath) {
 		super(title);
 		this.title = title;
 		this.setPinned(pinned);
@@ -86,13 +90,53 @@ public class Note extends Base {
 		this.setSoundList(soundList);
 		this.setTextbox(textbox);
 		this.setVideoList(videoList);
+		this.setFilepath(filepath);
 	}
 	
 	/** states all Note attributes in a String*/
 	@Override
 	public String toString(){
 		return new String("title: " + this.getTitle() +" pinned: " + pinned + " pinnedAt: " + pinnedAt + " photoList: " + photoList + " gifList: " + gifList +
-				" soundList: " + soundList + " textbox: " + textbox + " videoList: " + videoList);
+				" soundList: " + soundList + " textbox: " + textbox + " videoList: " + videoList + " filepath: " + this.getFilepath());
+	}
+
+	public static void WriteObjectToFile(Note serObj) {
+		
+		String title = serObj.getTitle();
+		int counter=0;
+		
+		String filepath = "C:\\Users\\Melanpiriks\\Desktop\\" + title + counter + ".bin";
+
+		File tmpFilepath = new File(filepath);
+		
+		boolean exists = tmpFilepath.exists();
+		
+		while(exists = false) 
+		{
+			for(int i=0;  i >= 0; i++) {
+			
+			counter=i;
+			filepath = "C:\\Users\\Melanpiriks\\Desktop\\" + title + counter + ".bin";
+			}
+			
+		}
+		
+		
+		
+		serObj.setFilepath(filepath);
+		
+	    try {
+	 
+	            FileOutputStream fileOut = new FileOutputStream(filepath);
+	            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+	            objectOut.writeObject(serObj);
+	            objectOut.close();
+	            System.out.println("The Object  was succesfully written to a file");
+	 
+	        } catch (Exception ex) {
+	            ex.printStackTrace();
+	        }
+		
 	}	
 	
 	
@@ -116,3 +160,4 @@ public class Note extends Base {
 		 }*/
 
 }
+

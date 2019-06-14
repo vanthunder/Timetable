@@ -1,4 +1,9 @@
 package creator;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,7 +17,7 @@ import calendar.Calendar;
 import note.Note;
 import task.Task;
 
-public class Creator {
+public class Creator implements Serializable {
 	
 	public static String createEvent(String title, LocalDateTime startpoint, LocalDateTime endpoint, String description, 
 			boolean regularlyOnOff, int regularlyType, int regularlyAmount, boolean alarmOnOff, LocalDateTime alarmTime) throws CloneNotSupportedException {
@@ -465,12 +470,14 @@ public class Creator {
 	 * This method creates a note out of the data and saves it in the chosen category.
 	 */
 	public static String createNote(String title, int pinned, ArrayList pinnedAt, ArrayList photoList, ArrayList gifList, 
-			ArrayList soundList, String textbox, ArrayList videoList, Category chosenCategory) {
+			ArrayList soundList, String textbox, ArrayList videoList, String filepath, Category chosenCategory) {
 		
-			Note newNote = new Note(title, pinned, pinnedAt, photoList, gifList, soundList, textbox, videoList);
-		
-	
-		return newNote.toString();
+			Note newNote = new Note(title, pinned, pinnedAt, photoList, gifList, soundList, textbox, videoList, filepath);
+
+			Note.WriteObjectToFile(newNote);
+			
+			return newNote.toString();
+			
 	}
 
 	
