@@ -15,12 +15,12 @@ import task.Task;
 public class Creator {
 	
 	public static String createEvent(String title, LocalDateTime startpoint, LocalDateTime endpoint, String description, 
-			boolean regularlyOnOff, int regularlyType, int regularlyAmount, int regularlyID, boolean alarmOnOff, LocalDateTime alarmTime) throws CloneNotSupportedException {
+			boolean regularlyOnOff, int regularlyType, int regularlyAmount, boolean alarmOnOff, LocalDateTime alarmTime) throws CloneNotSupportedException {
 		//event exists always the whole day
 		startpoint = startpoint.withHour(0).withMinute(0);
 		endpoint = endpoint.withHour(23).withMinute(59);
 		Event newEvent = new Event(title, startpoint, endpoint, true, description, 
-				regularlyOnOff, regularlyType, regularlyID, alarmOnOff, alarmTime);
+				regularlyOnOff, regularlyType, 0, alarmOnOff, alarmTime);
 		
 		
 
@@ -62,25 +62,30 @@ public class Creator {
 			
 			if(regularlyOnOff) {
 				
+				newEvent.setRegularlyID(getRegularlyID());
+				
 				HashMap<Integer, ArrayList<Base>> tempRegularlyList = Calendar.getRegularlyList();
 				ArrayList<Base> regularlyInnerList = new ArrayList<Base>();
 				ArrayList<Base> tempCalendarList2 = Calendar.getCalendarList();
+				
 				
 				//täglich
 				if(newEvent.getRegularlyType() == 0) {
 					for(int i=0; i<regularlyAmount; i++) {
 						if(i==0) {
 							regularlyInnerList.add(newEvent);
+							tempCalendarList2.add(newEvent);
 						}
 						else {
 							Appointment copy = (Appointment) newEvent.clone();
 							LocalDateTime tempStartpoint = copy.getStartpoint();
 							tempStartpoint = tempStartpoint.plusDays(i);
 							copy.setStartpoint(tempStartpoint);
+							copy.setRegularlyID(getRegularlyID());
 							regularlyInnerList.add(copy);
 							
 							tempCalendarList2.add(copy);
-							Calendar.setCalendarList(tempCalendarList2);
+							
 							//has to be transferred to category!!!
 						}
 					}
@@ -97,6 +102,7 @@ public class Creator {
 							LocalDateTime tempStartpoint = copy.getStartpoint();
 							tempStartpoint = tempStartpoint.plusWeeks(i);
 							copy.setStartpoint(tempStartpoint);
+							copy.setRegularlyID(getRegularlyID());
 							regularlyInnerList.add(copy);
 					
 							tempCalendarList2.add(copy);
@@ -121,6 +127,7 @@ public class Creator {
 							LocalDateTime tempStartpoint = copy.getStartpoint();
 							tempStartpoint = tempStartpoint.plusMonths(i);
 							copy.setStartpoint(tempStartpoint);
+							copy.setRegularlyID(getRegularlyID());
 							regularlyInnerList.add(copy);
 						
 							tempCalendarList2.add(copy);
@@ -140,6 +147,7 @@ public class Creator {
 							LocalDateTime tempStartpoint = copy.getStartpoint();
 							tempStartpoint = tempStartpoint.plusYears(i);
 							copy.setStartpoint(tempStartpoint);
+							copy.setRegularlyID(getRegularlyID());
 							regularlyInnerList.add(copy);
 						
 							tempCalendarList2.add(copy);
@@ -225,6 +233,7 @@ public class Creator {
 							LocalDateTime tempStartpoint = copy.getStartpoint();
 							tempStartpoint = tempStartpoint.plusDays(i);
 							copy.setStartpoint(tempStartpoint);
+							copy.setRegularlyID(getRegularlyID());
 							regularlyInnerList.add(copy);
 							
 							tempCalendarList2.add(copy);
@@ -245,6 +254,7 @@ public class Creator {
 							LocalDateTime tempStartpoint = copy.getStartpoint();
 							tempStartpoint = tempStartpoint.plusWeeks(i);
 							copy.setStartpoint(tempStartpoint);
+							copy.setRegularlyID(getRegularlyID());
 							regularlyInnerList.add(copy);
 					
 							tempCalendarList2.add(copy);
@@ -269,6 +279,7 @@ public class Creator {
 							LocalDateTime tempStartpoint = copy.getStartpoint();
 							tempStartpoint = tempStartpoint.plusMonths(i);
 							copy.setStartpoint(tempStartpoint);
+							copy.setRegularlyID(getRegularlyID());
 							regularlyInnerList.add(copy);
 						
 							tempCalendarList2.add(copy);
@@ -288,6 +299,7 @@ public class Creator {
 							LocalDateTime tempStartpoint = copy.getStartpoint();
 							tempStartpoint = tempStartpoint.plusYears(i);
 							copy.setStartpoint(tempStartpoint);
+							copy.setRegularlyID(getRegularlyID());
 							regularlyInnerList.add(copy);
 						
 							tempCalendarList2.add(copy);
@@ -357,6 +369,7 @@ public class Creator {
 						LocalDateTime tempStartpoint = copy.getStartpoint();
 						tempStartpoint = tempStartpoint.plusDays(i);
 						copy.setStartpoint(tempStartpoint);
+						copy.setRegularlyID(getRegularlyID());
 						regularlyInnerList.add(copy);
 						
 						tempCalendarList2.add(copy);
@@ -377,6 +390,7 @@ public class Creator {
 						LocalDateTime tempStartpoint = copy.getStartpoint();
 						tempStartpoint = tempStartpoint.plusWeeks(i);
 						copy.setStartpoint(tempStartpoint);
+						copy.setRegularlyID(getRegularlyID());
 						regularlyInnerList.add(copy);
 				
 						tempCalendarList2.add(copy);
@@ -401,6 +415,7 @@ public class Creator {
 						LocalDateTime tempStartpoint = copy.getStartpoint();
 						tempStartpoint = tempStartpoint.plusMonths(i);
 						copy.setStartpoint(tempStartpoint);
+						copy.setRegularlyID(getRegularlyID());
 						regularlyInnerList.add(copy);
 					
 						tempCalendarList2.add(copy);
@@ -420,6 +435,7 @@ public class Creator {
 						LocalDateTime tempStartpoint = copy.getStartpoint();
 						tempStartpoint = tempStartpoint.plusYears(i);
 						copy.setStartpoint(tempStartpoint);
+						copy.setRegularlyID(getRegularlyID());
 						regularlyInnerList.add(copy);
 					
 						tempCalendarList2.add(copy);

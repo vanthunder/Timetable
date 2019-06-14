@@ -33,6 +33,8 @@ class CreatorTests {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		Calendar.getCalendarList().clear();
+		Calendar.getRegularlyList().clear();
 	}
 
 	@AfterEach
@@ -49,7 +51,7 @@ class CreatorTests {
 		
 		assertEquals("title: hi, startpoint: 14.01.1998 00:00, endpoint: 15.01.1998 23:59, allDay: true, description: best event of the year, "
 				+ "regularlyOnOff: false, regularlyType: 0, regularlyID: 0, alarmOnOff: false, alarmTime: 16.01.1998 00:00", 
-				Creator.createEvent("hi", startpoint, endpoint, "best event of the year", false, 0, 0, 0, false, alarmTime));
+				Creator.createEvent("hi", startpoint, endpoint, "best event of the year", false, 0, 0, false, alarmTime));
 	}
 	
 	@Test
@@ -58,11 +60,23 @@ class CreatorTests {
 		LocalDateTime endpoint = LocalDateTime.of(1998, 1, 15, 0, 0);
 		LocalDateTime alarmTime = LocalDateTime.of(1998, 1, 16, 0, 0);
 		
-		Creator.createEvent("hi", startpoint, endpoint, "best event of the year", false, 0, 0, 0, false, alarmTime);
+		Creator.createEvent("hi", startpoint, endpoint, "best event of the year", false, 0, 0, false, alarmTime);
 		assertEquals("title: hi, startpoint: 14.01.1998 00:00, endpoint: 15.01.1998 23:59, allDay: true, description: best event of the year, "
 				+ "regularlyOnOff: false, regularlyType: 0, regularlyID: 0, alarmOnOff: false, alarmTime: 16.01.1998 00:00", 
 				Calendar.getEventList().get(0).toString());
 	}
+	
+	@Test
+	void testEventRegularlyDaily() throws CloneNotSupportedException {
+		LocalDateTime startpoint = LocalDateTime.of(1998, 1, 14, 0, 0);
+		LocalDateTime endpoint = LocalDateTime.of(1998, 1, 15, 0, 0);
+		LocalDateTime alarmTime = LocalDateTime.of(1998, 1, 16, 0, 0);
+		
+		
+		assertEquals(Creator.createEvent("hi", startpoint, endpoint, "best event of the year", true, 0, 5, false, alarmTime),
+				Calendar.getRegularlyList().get(0).get(0));
+	}
+	
 	
 	@Test
 	void testAppointmentRegular() throws CloneNotSupportedException {
@@ -104,6 +118,7 @@ class CreatorTests {
 		Category chosenCategory = new Category();
 		Creator.createAppointment("sexy Appointment", startpoint, endpoint, false, false, 0, 0, 
 				"beautiful from start to end", false, alarmTime, 0, notesLink, false, chosenCategory);
+		System.out.println(Calendar.getCalendarList().size());
 		
 		
 		assertEquals("title: sexy Appointment startpoint: 14.01.1998 00:00 endpoint: 15.01.1998 00:00 "
@@ -124,12 +139,12 @@ class CreatorTests {
 		
 		
 		for(int i=0; i<10;i++) {
-			System.out.println(Calendar.getRegularlyList().get(1).get(i).toString());
+			System.out.println(Calendar.getRegularlyList().get(0).get(i).toString());
 		}
 		assertEquals("title: sexy Appointment startpoint: 14.01.1998 00:00 endpoint: 15.01.1998 00:00 "
 				+ "allDay: false regularlyOnOff: true regularlyType: 0 regularlyID: 0 description: beautiful from start to end "
 				+ "alarmOnOff: false alarmTime: 16.01.1998 00:00 notesPinned: 0 notesLink: [] floating: false", 
-				Calendar.getRegularlyList().get(1).get(0).toString());
+				Calendar.getRegularlyList().get(0).get(0).toString());
 		
 	}
 	
