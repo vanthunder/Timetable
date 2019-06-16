@@ -8,6 +8,8 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import calendar.CalendarController;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -226,6 +228,14 @@ public class CategoriesController<T> implements Initializable
 				{
 					parent.getChildren().remove(currentCategory);
 					writeMessage("Die Kategorie " + currentCategory.getValue() + " wurde gelöscht!");
+					if (currentCategory.getValue().toString().contains("Termin:"))
+					{
+						String cache = new String();
+						String newCache = new String();
+						cache = currentCategory.getValue().toString();
+						newCache = cache.replace("Termin: ", "");
+						CalendarController.eraseAppointment(newCache);
+					}
 				}
 			}
 		}
@@ -288,9 +298,26 @@ public class CategoriesController<T> implements Initializable
 
 	private void editCommit(TreeView.EditEvent event)
 	{
-		writeMessage(
-				event.getTreeItem() + " changed." + " old = " + event.getOldValue() + ", new = " + event.getNewValue());
+		writeMessage( event.getTreeItem() + " changed." + " old = " + event.getOldValue() + ", new = " + event.getNewValue());
 		System.out.println(event.getOldValue() + " " + event.getNewValue());
+		if(event.getOldValue().toString().contains("Termin:"))
+		{
+			String cache = new String();
+			cache = event.getOldValue().toString();
+			String subCache = cache.replace("Termin: ", "");
+			String nextCache = event.getNewValue().toString();
+			String nextSubCache = nextCache.replace("Termin: ", "");
+			CalendarController.editAppointment(subCache, nextSubCache);
+			System.out.println(nextSubCache+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			String newValue = event.getNewValue().toString();
+			//newValue = "Termin: "+newValue;
+			//event.getNewValue().toString().replace(event.getNewValue().toString(), "").concat("Termin: ").concat(newValue);
+			 if(!event.getNewValue().toString().contains("Termin: "))
+			 {
+				 writeMessage("Du darfst 'Termin: ' nicht löschen!"); 
+			 } 
+		}	
+		
 	}
 
 	private void editCancel(TreeView.EditEvent e)

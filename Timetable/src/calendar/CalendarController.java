@@ -5,7 +5,6 @@ import static java.time.temporal.TemporalAdjusters.lastDayOfMonth;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.Month;
-import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +18,10 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 import DebugCalendar.CalanderLabel;
 import javafx.fxml.Initializable;
-import appointment.*;
+
 
 /**
  * @author Marvin
@@ -58,9 +56,11 @@ public class CalendarController implements Initializable
 	private Label LeapYearLabel;
 	String Month = new String("Monat");
 	String Day = new String("Tag");
-
+	//AppointmentList
+	//private final static HashMap<LocalDate, String> appointments = new HashMap<>();  
+    private final static List<LocalDate> appointments = new ArrayList<>();
+    private final static List<String> descriptions = new ArrayList<>();
 	// LocalDate Events
-	private YearMonth actualYearMonth;
 	private LocalDate currentDate = LocalDate.now();
 	LocalDate startOfWeek = currentDate.minusDays(currentDate.getDayOfWeek().getValue() - 1);
 	LocalDate endOfWeek = startOfWeek.plusDays(6);
@@ -70,17 +70,20 @@ public class CalendarController implements Initializable
 	LocalDate crMonth = currentDate.withMonth(currentMonth.getValue());
 	LocalDate year;
 	LocalDate a = LocalDate.of(currentDate.getYear(), 2, 1);
-	// Month month = Month.a.get;
-	// Month february = Month.valueOf(1)//Month.FEBRUARY;
-	// LocalDate helper integers;
+	static LocalDate cacheDate;
 	int maxlength = currentMonth.maxLength();
 	int markedLabel = 0;
 	int ab = 0;
 	int Months = 1;
 	int mMonths = 1;
 	int CurrentYear = currentDate.getYear();
+	int counter = 0;
+	int backCounter = 2;
 	int feb = a.getMonth().maxLength();// february.maxLength();
-
+	//Strings
+	static String AppointmentColor = "-fx-background-color: #b4ff96;";
+	static String ResetColor = "-fx-background-color: White;";
+    // Formats the date and time
 	static DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("         E\n        d MMM");
 
 	// Event Listener on Button[#upLeftButton].onAction
@@ -196,6 +199,7 @@ public class CalendarController implements Initializable
 		    	  for (int i = 0; i < maxlength; i++)
 		    	  {     
 		    		    betweenweek = start.minusMonths(mMonths).plusDays(i);
+		    		    cacheDate = betweenweek;
 		    		    label.setText(betweenweek.format(dayFormatter));
 					    Labels.get(i).setText(betweenweek.format(dayFormatter));
 					    YearLabel.setText(Integer.toString(betweenweek.getYear()));
@@ -234,11 +238,13 @@ public class CalendarController implements Initializable
 							Labels.add(label);
 						}
 						else
+						//Resets the label if the array size do not fit the month size
 						if (i < maxlength)
 						{
 							Labels.get(maxlength).setText("");
 						}
 						    System.out.println(i +". = "+maxlength);
+						//marks the current date
 				        if (Labels.get(markedLabel).getText().toString().equals(currentDate.format(dayFormatter)))
 					    {
                             Labels.get(markedLabel).setStyle("-fx-background-color: #428aff");
@@ -248,23 +254,40 @@ public class CalendarController implements Initializable
 						{
                             Labels.get(markedLabel).setStyle(Labels.get(1).getStyle());
 						}
-		               }
+				        for (int a = 0; a <appointments.size();a++)
+			        	{
+				        	if(betweenweek.format(dayFormatter).equals(appointments.get(a).format(dayFormatter)))
+			        		{
+			        			Labels.get(i).setStyle(AppointmentColor);
+						        Labels.get(i).setText("\n"+Labels.get(i).getText()+"\n"+" "+descriptions.get(a));
+						        break;
+						    }
+			        		if(!betweenweek.format(dayFormatter).equals(appointments.get(a).format(dayFormatter)))
+				        	{
+			        			Labels.get(i).setStyle(Labels.get(1).getStyle());
+				        	}
+			        	  }	
+				       }
 		    	Months--;
 		  		mMonths++;
 		  		System.out.println("mMonths = "+mMonths);
 		  		System.out.println("Months = "+Months);
 		  		System.out.println("crMonth = "+ crMonth.getMonthValue());
 		  		System.out.println("CurrentMonthValue = "+currentMonth.getValue());
+		  		System.out.println("Counter = "+counter);
+		  		System.out.println("Backcounter = "+backCounter);
+		  		System.out.println("drbCounter = "+counter);
 		  	}
 
 	// Event Listener on Button[#downRigtButton].onAction
 	@FXML
 	public void drbPress(ActionEvent event)
-	{
+	{   
 		if (ab == maxlength)
 		{
 			ab = 0;
-		}	
+		}
+		
 		maxlength = currentMonth.maxLength();
 		selectTimeLabel.setText(Integer.toString(CurrentYear++));
 			 switch(currentMonth)
@@ -344,6 +367,7 @@ public class CalendarController implements Initializable
 		    	  for (int i = 0; i < maxlength; i++)
 		    	  {     
 		    		    betweenweek = start.plusMonths(Months).plusDays(i);
+		    		    cacheDate = betweenweek;
 		    		    label.setText(betweenweek.format(dayFormatter));
 					    Labels.get(i).setText(betweenweek.format(dayFormatter));
 					    YearLabel.setText(Integer.toString(betweenweek.getYear()));
@@ -396,18 +420,33 @@ public class CalendarController implements Initializable
 						{
                             Labels.get(markedLabel).setStyle(Labels.get(1).getStyle());
 						}
-		               }
+				        for (int a = 0; a <appointments.size();a++)
+			        	{
+				        	if(betweenweek.format(dayFormatter).equals(appointments.get(a).format(dayFormatter)))
+			        		{
+			        			Labels.get(i).setStyle(AppointmentColor);
+						        Labels.get(i).setText("\n"+Labels.get(i).getText()+"\n"+" "+descriptions.get(a));
+						        break;
+						    }
+			        		if(!betweenweek.format(dayFormatter).equals(appointments.get(a).format(dayFormatter)))
+				        	{
+			        			Labels.get(i).setStyle(Labels.get(1).getStyle());
+				        	}
+			        	  }
+			        	}
 		     Months++;
 		     mMonths--;
 		     System.out.println("mMonths = "+mMonths);
 		     System.out.println("Months = "+Months);
+		     System.out.println("Size = "+appointments.size());
+		     System.out.println("counter = "+counter);
+		     System.out.println("Backcounter = "+backCounter);
 		     }
 
 	public void intitCalendar()
 	{
 		int a = 0;
 		YearLabel.setText(Integer.toString(currentDate.getYear()));
-		// currentDate.getYear();
 		for (int i = 0; i < 5; i++)
 		{
 			for (int j = 0; j < 7; j++)
@@ -444,7 +483,6 @@ public class CalendarController implements Initializable
 				} else 
 					if (a <= maxlength)
 				{
-					// label.setText("TEST");
 					Labels.add(label);
 				}
 
@@ -522,14 +560,76 @@ public class CalendarController implements Initializable
 		{
 			if(Labels.get(i).getText().equals(newAppointment.format(dayFormatter)))
 			{ 
-	            Labels.get(i).setStyle("-fx-background-color: #b4ff96;");
+	            Labels.get(i).setStyle(AppointmentColor);
 	            Labels.get(i).setText("\n"+Labels.get(i).getText()+"\n"+" "+description);
+	            System.out.println(appointments+" = "+description);
 			}
 		}
+		appointments.add(newAppointment);
+        descriptions.add(description);
+        System.out.println(appointments+" = "+description);
 	}
 	public void appointmentSavePress(ActionEvent event)
 	{
 		System.out.println("TEST");
+	}
+	public static void eraseAppointment(String compare)
+	{
+		
+		for(int i = 0; i < Labels.size(); i++)
+		{
+			for (int a = 0; a <appointments.size();a++)
+        	{    
+	        	if(Labels.get(i).getText().contains(compare))
+        		{
+        			Labels.get(i).setStyle(Labels.get(1).getStyle());
+        			Labels.get(i).setText(Labels.get(i).getText().replace(compare, ""));
+        			System.out.println("Hey das ist wahr");  
+			    }
+        		
+        	  }	
+		}
+		for(int i = 0; i< appointments.size(); i++)
+		{
+			if(compare.equals(descriptions.get(i)))
+			{
+				descriptions.remove(i);
+				appointments.remove(i);
+			}
+		}
+	}
+	public static void editAppointment(String oldName, String newName)
+	{
+		for(int i = 0; i < Labels.size(); i++)
+		{
+			for (int a = 0; a <appointments.size();a++)
+        	{    
+	        	if(Labels.get(i).getText().contains(oldName))
+        		{
+	        		String oldNameCache = new String();
+	        		oldNameCache = Labels.get(i).getText();
+	        		String newNameCache = new String();
+	        		newNameCache = newName.replace("Termin: ", "");
+        			String subCache = new String(); 
+        		    subCache = oldNameCache.replace(oldName, "")+newNameCache;
+	        		Labels.get(i).setText(Labels.get(i).getText().replace(oldName, "")+newName);
+        			System.out.println("Hey das ist wahr"+oldName+" - "+newName+" "+"newNameCache = "+newNameCache+" "+" oldNameCache = "+oldNameCache+" "+"subCache = "+subCache);
+        			if(descriptions.get(a).contains(oldName))
+        			{
+        				descriptions.set(a, newName);
+        			}
+			    }
+        		
+        	  }	
+		}
+		for(int i = 0; i< appointments.size(); i++)
+		{
+			if(descriptions.get(i).contains(oldName))
+			{
+				//descriptions.set(i, newName);
+			}
+		}
+		System.out.println("Hey das ist wahr "+oldName+" "+newName);  
 	}
 	// Initialize the Calendar with all its components
 	@Override
@@ -538,7 +638,11 @@ public class CalendarController implements Initializable
 		selectTimeLabel.setText(Integer.toString(currentDate.getYear()));
 		intitCalendar();
 		markcurrentDate();
+		//init some test appointments
 		addAppointment(crMonth = crMonth.plusDays(2), "Termin: Kino um 20:00 Uhr");
+		addAppointment(crMonth = crMonth.plusMonths(1).plusDays(20), "1Termin: Kino um 20:00 Uhr");
+		addAppointment(crMonth = crMonth.plusMonths(2).plusDays(10), "2Termin: Kino um 20:00 Uhr");
+		addAppointment(crMonth = crMonth.plusMonths(3).plusDays(3), "2Termin: Kino um 20:00 Uhr");
 		System.out.println("Das Datum lautet = "+crMonth.format(dayFormatter));
 	}
 
