@@ -7,6 +7,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -17,48 +18,57 @@
    <center>
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="312.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+            <HBox alignment="CENTER" minHeight="100.0" minWidth="200.0" spacing="20.0" VBox.vgrow="SOMETIMES">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
                <children>
-                  <TextField fx:id="title" alignment="CENTER" promptText="Titel" />
+                  <TextField fx:id="title" alignment="CENTER" promptText="Titel" HBox.hgrow="NEVER" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="SOMETIMES">
                <children>
-                  <DatePicker fx:id="pickStart" promptText="Startzeit" />
+                  <DatePicker fx:id="pickStart" minWidth="100.0" promptText="Anfang" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" minWidth="30.0" text="Start" textAlignment="CENTER" />
+                  <Spinner fx:id="startHour" editable="true" initialValue="8" max="23" min="0" minWidth="55.0" />
+                  <Label minWidth="3.0" text=":" />
+                  <Spinner fx:id="startMinute" editable="true" initialValue="0" max="59" min="0" minWidth="55.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="SOMETIMES">
                <children>
-                  <DatePicker fx:id="pickEnd" promptText="Endzeit" />
+                  <DatePicker fx:id="pickEnd" minWidth="100.0" promptText="Ende" HBox.hgrow="NEVER" />
+                  <Label minWidth="30.0" text="Ende" textAlignment="CENTER" />
+                  <Spinner fx:id="endHour" editable="true" initialValue="20" max="23" min="0" minWidth="55.0" />
+                  <Label minWidth="3.0" text=":" />
+                  <Spinner fx:id="endMinute" editable="true" initialValue="0" max="59" min="0" minWidth="55.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="ALWAYS">
                <children>
-                  <VBox alignment="CENTER" prefHeight="67.0" prefWidth="79.0">
+                  <VBox alignment="CENTER" minHeight="60.0" minWidth="20.0" HBox.hgrow="NEVER">
                      <children>
-                        <TextField fx:id="hoursField" onAction="#hoursField" promptText="h" />
-                        <TextField fx:id="minutesField" onAction="#minutesField" promptText="m" />
+                        <TextField fx:id="hoursField" minWidth="20.0" onAction="#hoursField" promptText="h" VBox.vgrow="NEVER" />
+                        <TextField fx:id="minutesField" minWidth="20.0" onAction="#minutesField" promptText="m" VBox.vgrow="NEVER" />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="67.0" prefWidth="102.0">
+                  <VBox alignment="CENTER" minWidth="45.0" HBox.hgrow="NEVER">
                      <children>
-                        <Label prefHeight="25.0" prefWidth="45.0" text="Stunden" />
-                        <Label prefHeight="25.0" prefWidth="49.0" text="Minuten" />
+                        <Label prefHeight="25.0" prefWidth="45.0" text="Stunden" VBox.vgrow="SOMETIMES" />
+                        <Label prefHeight="25.0" prefWidth="49.0" text="Minuten" VBox.vgrow="SOMETIMES" />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="92.0" prefWidth="254.0">
+                  <VBox alignment="CENTER" minWidth="190.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Slider fx:id="durationSlider" majorTickUnit="1.0" max="14.0" minorTickCount="1" onMouseDragReleased="#slideDuration" prefHeight="14.0" prefWidth="152.0" showTickLabels="true" showTickMarks="true" />
+                        <Slider fx:id="durationSlider" blockIncrement="5.0" majorTickUnit="1.0" max="12.0" min="1.0" minorTickCount="1" onMouseDragReleased="#slideDuration" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" VBox.vgrow="ALWAYS" />
+                        <Slider fx:id="durationSlider1" blockIncrement="1.0" majorTickUnit="5.0" max="60.0" minorTickCount="2" onMouseDragReleased="#slideDuration" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="SOMETIMES">
                <children>
-                  <CheckBox fx:id="regularOnOff" mnemonicParsing="false" onAction="#regularSwitch" text="regelmäßig">
+                  <CheckBox fx:id="regularOnOff" mnemonicParsing="false" onAction="#regularSwitch" text="regelmäßig" HBox.hgrow="NEVER">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -66,16 +76,16 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </CheckBox>
-                  <ChoiceBox fx:id="choiceRegular" prefWidth="150.0">
+                  <ChoiceBox fx:id="choiceRegular" prefWidth="150.0" HBox.hgrow="SOMETIMES">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
                   </ChoiceBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="SOMETIMES">
                <children>
-                  <CheckBox fx:id="autoSortOnOff" mnemonicParsing="false" onAction="#autosortSwitch" text="Auto-Planer">
+                  <CheckBox fx:id="autoSortOnOff" mnemonicParsing="false" onAction="#autosortSwitch" text="Auto-Planer" HBox.hgrow="NEVER">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -83,7 +93,7 @@
                         <Insets right="50.0" />
                      </HBox.margin>
                   </CheckBox>
-                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveTask" text="Speichern">
+                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveTask" text="Speichern" HBox.hgrow="SOMETIMES">
                      <font>
                         <Font size="15.0" />
                      </font>

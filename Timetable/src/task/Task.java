@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import appointment.Appointment;
 import note.Note;
 
-public class Task extends Appointment{
+public class Task extends Appointment implements Comparable{
 	private boolean autoSortOnOff;
 	private int duration;
 	private boolean done;
@@ -18,15 +18,12 @@ public class Task extends Appointment{
 
 	public Task(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay, boolean regularlyOnOff,
 			int regularlyType, int regularlyID, String description, boolean alarmOnOff, LocalDateTime alarmTime, 
-			int notesPinned,ArrayList<Note> notesLink, boolean floating, boolean autoSortOnOff, int duration, boolean done,
-			int feasibleTimeStart, int feasibleTimeEnd, LocalDateTime periodStart, LocalDateTime periodEnd) {
+			int notesPinned,ArrayList<Note> notesLink, boolean floating, boolean autoSortOnOff, int duration, boolean done, LocalDateTime periodStart, LocalDateTime periodEnd) {
 		super(title, startpoint, endpoint, allDay, regularlyOnOff, regularlyType, regularlyID, description, alarmOnOff, alarmTime,
 				notesPinned, notesLink, floating);
 		this.autoSortOnOff = autoSortOnOff;
 		this.duration = duration;
 		this.done = done;
-		this.feasibleTimeStart = feasibleTimeStart;
-		this.feasibleTimeEnd = feasibleTimeEnd;
 		this.periodStart = periodStart;
 		this.periodEnd = periodEnd;
 	}
@@ -59,28 +56,7 @@ public class Task extends Appointment{
 	public void setDone(boolean done) {
 		this.done = done;
 	}
-
-
-	public int getFeasibleTimeStart() {
-		return feasibleTimeStart;
-	}
-
-
-	public void setFeasibleTimeStart(int feasibleTimeStart) {
-		this.feasibleTimeStart = feasibleTimeStart;
-	}
-
-
-	public int getFeasibleTimeEnd() {
-		return feasibleTimeEnd;
-	}
-
-
-	public void setFeasibleTimeEnd(int feasibleTimeEnd) {
-		this.feasibleTimeEnd = feasibleTimeEnd;
-	}
-
-
+	
 	public LocalDateTime getPeriodStart() {
 		return periodStart;
 	}
@@ -133,4 +109,10 @@ public class Task extends Appointment{
 		
 		return clonedTask;
 
-}}
+}
+
+	@Override
+	public int compareTo(Object arg0) {
+		// TODO Auto-generated method stub
+		return 0;
+	}}

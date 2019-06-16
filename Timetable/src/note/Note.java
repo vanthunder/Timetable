@@ -111,13 +111,14 @@ public class Note extends Base implements Serializable {
 		
 		boolean exists = tmpFilepath.exists();
 		
-		while(exists = false) 
+		while(exists == false) 
 		{
 			for(int i=0;  i >= 0; i++) {
 			
 			counter=i;
 			filepath = "C:\\Users\\Melanpiriks\\Desktop\\" + title + counter + ".bin";
 			}
+		
 			
 		}
 		

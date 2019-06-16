@@ -329,7 +329,7 @@ public class Creator implements Serializable {
 	public static String createTask(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay,
 			boolean regularlyOnOff, int regularlyType,int regularlyAmount, String description, boolean alarmOnOff, LocalDateTime alarmTime,
 			int notesPinned, ArrayList<Note> notesLink, boolean floating, boolean autoSortOnOff, int duration,
-			boolean done, LocalDateTime feasibleTimeStart, LocalDateTime feasibleTimeEnd, LocalDateTime periodStart, LocalDateTime periodEnd)throws CloneNotSupportedException{
+			boolean done, LocalDateTime periodStart, LocalDateTime periodEnd)throws CloneNotSupportedException{
 
 
 	
@@ -349,9 +349,9 @@ public class Creator implements Serializable {
 		
 	}
 		Task newTask = new Task(title, startpoint, endpoint, allDay, regularlyOnOff, regularlyType, regularlyAmount, description, alarmOnOff, alarmTime,
-				notesPinned, notesLink, floating, done, duration, done, duration, duration, periodEnd, periodEnd);
+				notesPinned, notesLink, floating, done, duration, done, periodEnd, periodEnd);
 		
-		ArrayList<Base> tempCalendarList = Calendar.getCalendarList();
+		ArrayList<Appointment> tempCalendarList = Calendar.getCalendarList();
 		tempCalendarList.add(newTask);
 		//tempCalendarList.sort();
 		Calendar.setCalendarList(tempCalendarList);
@@ -359,9 +359,9 @@ public class Creator implements Serializable {
 		
 		if(regularlyOnOff) {
 			
-			HashMap<Integer, ArrayList<Base>> tempRegularlyList = Calendar.getRegularlyList();
-			ArrayList<Base> regularlyInnerList = new ArrayList<Base>();
-			ArrayList<Base> tempCalendarList2 = Calendar.getCalendarList();
+			HashMap<Integer, ArrayList<Appointment>> tempRegularlyList = Calendar.getRegularlyList();
+			ArrayList<Appointment> regularlyInnerList = new ArrayList<Appointment>();
+			ArrayList<Appointment> tempCalendarList2 = Calendar.getCalendarList();
 			
 			//täglich
 			if(newTask.getRegularlyType() == 0) {
