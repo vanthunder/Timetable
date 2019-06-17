@@ -1,8 +1,8 @@
 package base;
 
 public abstract class Base {
-	String title;
-	String filepath;
+	private String title;
+	private String filepath;
 	
 	public String getFilepath() {
 		return filepath;

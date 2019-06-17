@@ -16,7 +16,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <center>
-      <TabPane tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+      <TabPane fx:id="tabs" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
           <Tab text="Kalendar">
                <content>
@@ -145,7 +145,7 @@
                <children>
                   <TextField fx:id="Search" onKeyPressed="#searchKey" onMouseEntered="#searchClicked" onMouseExited="#searchExit" opacity="0.88" prefWidth="150.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-border-color: silver; -fx-border-width: 2;" />
                   <Pane prefHeight="29.0" prefWidth="6.0" />
-                  <Button mnemonicParsing="false" style="-fx-background-radius: 4;">
+                  <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchButtonClicked" style="-fx-background-radius: 4;">
                      <graphic>
                         <ImageView fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>

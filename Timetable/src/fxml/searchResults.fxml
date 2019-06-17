@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="SearchController">
+   <children>
+      <VBox prefHeight="316.0" prefWidth="246.0">
+         <children>
+            <Label text="Suchergebnisse:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label text="Termine" />
+            <VBox fx:id="appointmentResults" prefHeight="43.0" prefWidth="100.0" />
+            <Label text="Aufgaben" />
+            <VBox fx:id="taskResults" prefHeight="200.0" prefWidth="100.0" />
+            <Label text="Notizen" />
+            <VBox fx:id="noteResults" prefHeight="200.0" prefWidth="100.0" />
+            <Label text="Ereignisse" />
+            <VBox fx:id="eventResults" prefHeight="200.0" prefWidth="100.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

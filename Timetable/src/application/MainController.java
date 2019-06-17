@@ -10,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
@@ -44,6 +46,10 @@ public class MainController extends Main
     BorderPane Root1 = new BorderPane();
     @FXML
     DebugCalendarController debugCalendarController = new DebugCalendarController();
+    @FXML
+    TabPane tabs = new TabPane();
+    
+    Tab searchTab;
     
   
 
@@ -127,6 +133,12 @@ public class MainController extends Main
     	else
     	Search.setPrefWidth(250);
     	
+    }
+    
+    public void searchButtonClicked (ActionEvent event)
+    {
+    	Tab tab = new Tab("Suchen");
+    	tabs.getTabs().add(tab);
     }
     
 	public void searchExit (MouseEvent event)

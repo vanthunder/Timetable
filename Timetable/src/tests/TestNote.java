@@ -16,14 +16,7 @@ public class TestNote {
 		final ArrayList gifList = null;
 		final ArrayList soundList = null;
 		final String textbox;
-		final ArrayList videoList = null;
-
-
-			title ="Stupid Note";
-			pinned=0;
-			textbox="Some stupid text";
-					  
-		       
+		final ArrayList videoList = null;		       
 			
 			Note serObj = new Note("Stupid Note", 0, pinnedAt, photoList, gifList, soundList, "Some stupid text", videoList, "Aber");
 			

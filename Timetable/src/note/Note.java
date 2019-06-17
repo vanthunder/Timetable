@@ -8,6 +8,9 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import base.Base;
 import task.Task;
 import appointment.Appointment;
@@ -15,7 +18,6 @@ import javafx.scene.image.Image;
 
 public class Note extends Base implements Serializable {
 	
-	String title;
 	private int pinned;
 	private ArrayList <Appointment> pinnedAt;
 	private ArrayList photoList;
@@ -82,7 +84,6 @@ public class Note extends Base implements Serializable {
 
 	public Note(String title, int pinned, ArrayList pinnedAt, ArrayList photoList, ArrayList gifList, ArrayList soundList, String textbox, ArrayList videoList, String filepath) {
 		super(title);
-		this.title = title;
 		this.setPinned(pinned);
 		this.setPinnedAt(pinnedAt);
 		this.setPhotoList(photoList);
@@ -102,41 +103,46 @@ public class Note extends Base implements Serializable {
 
 	public static void WriteObjectToFile(Note serObj) {
 		
-		String title = serObj.getTitle();
+		String tmpTitle = serObj.getTitle();
 		int counter=0;
+		boolean created = false;
 		
-		String filepath = "C:\\Users\\Melanpiriks\\Desktop\\" + title + counter + ".bin";
+		do {
+			
+		String filepath = tmpTitle + counter + ".txt";
 
 		File tmpFilepath = new File(filepath);
+		GsonBuilder gbuild = new GsonBuilder();
+		Gson gson = gbuild.create();
+		
 		
 		boolean exists = tmpFilepath.exists();
 		
-		while(exists == false) 
-		{
-			for(int i=0;  i >= 0; i++) {
-			
-			counter=i;
-			filepath = "C:\\Users\\Melanpiriks\\Desktop\\" + title + counter + ".bin";
-			}
-		
-			
+		if(exists) {
+			counter++;
+			continue;
 		}
-		
-		
-		
+	
 		serObj.setFilepath(filepath);
 		
 	    try {
 	 
 	            FileOutputStream fileOut = new FileOutputStream(filepath);
-	            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-	            objectOut.writeObject(serObj);
-	            objectOut.close();
+	            fileOut.write(gson.toJson(serObj).getBytes());
 	            System.out.println("The Object  was succesfully written to a file");
 	 
 	        } catch (Exception ex) {
 	            ex.printStackTrace();
 	        }
+		
+		
+		created = true;
+		
+			
+		} while (!created);
+		
+		
+		
 		
 	}	
 	
