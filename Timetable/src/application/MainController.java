@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
@@ -51,8 +52,8 @@ public class MainController extends Main
     
     Tab searchTab;
     
-  
-
+    SingleSelectionModel<Tab> selectionModel = tabs.getSelectionModel();
+   
     
     
     
@@ -137,8 +138,9 @@ public class MainController extends Main
     
     public void searchButtonClicked (ActionEvent event)
     {
-    	Tab tab = new Tab("Suchen");
+    	Tab tab = new Tab("Suchergebnisse");
     	tabs.getTabs().add(tab);
+    	selectionModel.select(tab);
     }
     
 	public void searchExit (MouseEvent event)
