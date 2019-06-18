@@ -1,5 +1,6 @@
 package calendar;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,6 +13,8 @@ public class Calendar {
 	//events are stored in a seperate list because they do not collide
 	private static ArrayList<Event> eventList = new ArrayList<Event>();
 	private static HashMap<Integer, ArrayList<Appointment>> regularlyList = new HashMap<Integer, ArrayList<Appointment>>();
+	public static final DateTimeFormatter dateWithTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+	public static final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
 	
 	
 	
