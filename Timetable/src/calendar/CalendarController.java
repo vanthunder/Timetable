@@ -640,7 +640,7 @@ public class CalendarController implements Initializable
 		markcurrentDate();
 		//init some test appointments
 		addAppointment(crMonth = crMonth.plusDays(2), "Termin: Kino um 20:00 Uhr");
-		addAppointment(crMonth = crMonth.plusMonths(1).plusDays(20), "1Termin: Kino um 20:00 Uhr");
+		addAppointment(crMonth = crMonth.plusMonths(2).plusDays(20), "1Termin: Kino um 20:00 Uhr");
 		addAppointment(crMonth = crMonth.plusMonths(2).plusDays(10), "2Termin: Kino um 20:00 Uhr");
 		addAppointment(crMonth = crMonth.plusMonths(3).plusDays(3), "2Termin: Kino um 20:00 Uhr");
 		System.out.println("Das Datum lautet = "+crMonth.format(dayFormatter));
