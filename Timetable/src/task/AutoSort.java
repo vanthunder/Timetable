@@ -3,8 +3,8 @@ package task;
 import java.time.LocalDateTime;
 import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 import java.time.*;
+import java.lang.*;
 import java.util.*;
 
 import calendar.Calendar;
@@ -36,9 +36,8 @@ public class AutoSort {
 	public static void autoSort(Task currentTask) {
 		long tmpDuration = 0;
 		for(int i=0; i<Calendar.getCalendarList().size()-1; i++) {
-
 			
-	        if(Calendar.getCalendarList().get(i).getEndpoint().until(Calendar.getCalendarList().get(i+1).getStartpoint(),(TemporalUnit) TimeUnit.MINUTES)>= tmpDuration+90  ){
+	        if(Calendar.getCalendarList().get(i).getEndpoint().until(Calendar.getCalendarList().get(i+1).getStartpoint(), Minutes)>= tmpDuration+90  ){
 
 	        }
 	    }

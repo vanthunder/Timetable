@@ -34,6 +34,7 @@
                   <Spinner fx:id="startHour" editable="true" minWidth="60.0" />
                   <Label minWidth="3.0" text=":" />
                   <Spinner fx:id="startMinute" editable="true" minWidth="55.0" />
+
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="SOMETIMES">
@@ -61,8 +62,8 @@
                   </VBox>
                   <VBox alignment="CENTER" minWidth="190.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Slider fx:id="durationSlider" blockIncrement="5.0" majorTickUnit="1.0" max="12.0" min="1.0" minorTickCount="0" onMouseDragReleased="#slideDuration" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" VBox.vgrow="ALWAYS" />
-                        <Slider fx:id="durationSlider1" blockIncrement="5.0" majorTickUnit="10.0" max="60.0" minorTickCount="8" onMouseDragReleased="#slideDuration" showTickLabels="true" showTickMarks="true" snapToTicks="true" VBox.vgrow="ALWAYS" />
+                        <Slider fx:id="durationSlider" blockIncrement="5.0" majorTickUnit="1.0" max="12.0" min="1.0" minorTickCount="1" onMouseDragReleased="#slideDuration" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" VBox.vgrow="ALWAYS" />
+                        <Slider fx:id="durationSlider1" blockIncrement="1.0" majorTickUnit="5.0" max="60.0" minorTickCount="2" onMouseDragReleased="#slideDuration" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>
                </children>
