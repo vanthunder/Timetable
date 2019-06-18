@@ -65,7 +65,11 @@ public class NoteCreatorController implements Initializable
 	} 
 	//This method is for the [saveNoteButton]
 	public void saveNoteButtonPress(ActionEvent event)
-	{   //This method saves the current Note and it's title as a category if a category is choosed in the choice box.
+	{   
+		Note serObj = new Note("Stupid Note", 0, null, null, null, null, "Some stupid text", null, "Aber");
+		
+		Note.WriteObjectToFile(serObj);
+		//This method saves the current Note and it's title as a category if a category is choosed in the choice box.
 		if(!categoryChooser.getSelectionModel().getSelectedItem().equals(null))
 		 {		
 			TreeItem<String> savePosition = categoryChooser.getSelectionModel().getSelectedItem();
