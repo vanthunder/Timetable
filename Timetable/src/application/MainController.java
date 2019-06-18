@@ -140,7 +140,8 @@ public class MainController extends Main
     {
     	Tab tab = new Tab("Suchergebnisse");
     	tabs.getTabs().add(tab);
-    	selectionModel.select(tab);
+    	tabs.getSelectionModel().select(tab);
+
     }
     
 	public void searchExit (MouseEvent event)
