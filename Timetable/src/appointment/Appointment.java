@@ -4,6 +4,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import base.Base;
+import calendar.Calendar;
 import event.Event;
 import note.Note;
 import java.io.*;
@@ -25,9 +26,9 @@ public class Appointment extends Event implements Cloneable {
 	/** states all Appointment attributes in a String*/
 	@Override
 	public String toString(){
-		return new String("title: "+this.getTitle()+" startpoint: "+getStartpoint().format(dateWithTimeFormatter)+" endpoint: "+getEndpoint().format(dateWithTimeFormatter)+" allDay: "+isAllDay()+" regularlyOnOff: "+isRegularlyOnOff()+
+		return new String("title: "+this.getTitle()+" startpoint: "+getStartpoint().format(Calendar.dateWithTimeFormatter)+" endpoint: "+getEndpoint().format(Calendar.dateWithTimeFormatter)+" allDay: "+isAllDay()+" regularlyOnOff: "+isRegularlyOnOff()+
 				" regularlyType: "+getRegularlyType()+" regularlyID: "+getRegularlyID()+" description: "+getDescription()+" alarmOnOff: "+isAlarmOnOff()+
-				" alarmTime: "+getAlarmTime().format(dateWithTimeFormatter)+" notesPinned: "+notesPinned+" notesLink: "+notesLink+" floating: "+floating);
+				" alarmTime: "+getAlarmTime().format(Calendar.dateWithTimeFormatter)+" notesPinned: "+notesPinned+" notesLink: "+notesLink+" floating: "+floating);
 	}
 	
 	/*	

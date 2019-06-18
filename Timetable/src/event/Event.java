@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 import appointment.Appointment;
 import base.Base;
+import calendar.Calendar;
 
 public class Event extends Base implements Cloneable {
 	//ganztag start description
@@ -17,7 +18,7 @@ public class Event extends Base implements Cloneable {
 	private int regularlyID;
 	private boolean alarmOnOff;
 	private LocalDateTime alarmTime;
-	public final DateTimeFormatter dateWithTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+	
 	
 	
 
@@ -107,13 +108,15 @@ public class Event extends Base implements Cloneable {
 		this.regularlyID = regularlyID;
 	}
 
+	
+
 	@Override
 	public String toString() {
-		return "title: " + getTitle()+", startpoint: " + startpoint.format(dateWithTimeFormatter) + ", endpoint: " 
-				+ endpoint.format(dateWithTimeFormatter) + ", allDay: " + allDay + ", description: "
+		return "title: " + getTitle()+", startpoint: " + startpoint.format(Calendar.dateWithTimeFormatter) + ", endpoint: " 
+				+ endpoint.format(Calendar.dateWithTimeFormatter) + ", allDay: " + allDay + ", description: "
 				+ description + ", regularlyOnOff: " + regularlyOnOff + ", regularlyType: " + regularlyType
 				+ ", regularlyID: " + regularlyID + ", alarmOnOff: " + alarmOnOff + ", alarmTime: " 
-				+ alarmTime.format(dateWithTimeFormatter);
+				+ alarmTime.format(Calendar.dateWithTimeFormatter);
 	}
 	
 	public Event clone() throws CloneNotSupportedException{
