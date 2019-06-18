@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+//import com.google.gson.Gson;
+//import com.google.gson.GsonBuilder;
 
 import base.Base;
 import task.Task;
@@ -112,8 +112,8 @@ public class Note extends Base implements Serializable {
 		String filepath = /*"\\..\\SavedNotes\\" +*/ tmpTitle + counter + ".txt";
 
 		File tmpFilepath = new File(filepath);
-		GsonBuilder gbuild = new GsonBuilder();
-		Gson gson = gbuild.create();
+		//GsonBuilder gbuild = new GsonBuilder();
+		//Gson gson = gbuild.create();
 		
 		
 		boolean exists = tmpFilepath.exists();

@@ -19,6 +19,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
@@ -36,13 +37,13 @@ public class CreateTaskController implements Initializable {
 	@FXML
 	private TextField minutesField;
 	@FXML
-	private Spinner<Long> startHour;
+	private Spinner<Integer> startHour;
 	@FXML
-	private Spinner<Long> endHour;
+	private Spinner<Integer> endHour;
 	@FXML
-	private Spinner<Long> startMinute;
+	private Spinner<Integer> startMinute;
 	@FXML
-	private Spinner<Long> endMinute;
+	private Spinner<Integer> endMinute;
 	@FXML
 	private Slider durationSlider;
 	@FXML
@@ -58,15 +59,6 @@ public class CreateTaskController implements Initializable {
 	@FXML
 	private ChoiceBox<TreeItem<String>> categoryChooser = new ChoiceBox<>();
 	
-	Image icon = new Image(getClass().getResourceAsStream("/images/Aufgabe.png"));
-	
-	ObservableList<String> regularlyType= FXCollections.observableArrayList("täglich", "wöchentlich", "monatlich");
-
-	
-	public static final long INIT_VALUE_HOURS = 1;
-	public static final long INIT_VALUE_MINUTES = 1;
-	LocalDate startDate;
-	LocalDate endDate;
 
 	// Event Listener on TextField[#hoursField].onAction
 	@FXML
@@ -108,13 +100,48 @@ public class CreateTaskController implements Initializable {
 		}
 	}
 
-	private static final long endTimeHour=0;
-	private static final long endTimeMinute=0;
 
+	Image icon = new Image(getClass().getResourceAsStream("/images/Aufgabe.png"));
+	
+	ObservableList<String> regularlyType= FXCollections.observableArrayList("täglich", "wöchentlich", "monatlich");
+
+	
+	public static final int INIT_VALUE_HOURS = 1;
+	public static final int INIT_VALUE_MINUTES = 1;
+	public static final int INIT_VALUE_START_HOURS = 8;
+	public static final int INIT_VALUE_START_MINUTES = 0;
+	public static final int INIT_VALUE_END_HOURS = 20;
+	public static final int INIT_VALUE_END_MINUTES = 0;
+	LocalDate startDate;
+	LocalDate endDate;
+	SpinnerValueFactory<Integer> dateFactoryHours = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,23,0);
+	SpinnerValueFactory<Integer> dateFactoryMinutes = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,59,0);
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
 
+		
+		this.startHour.setValueFactory(dateFactoryHours);
+		this.endHour.setValueFactory(dateFactoryHours);
+		this.startMinute.setValueFactory(dateFactoryMinutes);
+		this.endMinute.setValueFactory(dateFactoryMinutes);
+		
+		final Spinner<Integer> startHours = new Spinner<Integer>();
+		dateFactoryHours.setValue(INIT_VALUE_START_HOURS);
+		final Spinner<Integer> endHours = new Spinner<Integer>();
+		dateFactoryHours.setValue(INIT_VALUE_END_HOURS);
+		final Spinner<Integer> startMinutes = new Spinner<Integer>();
+		dateFactoryMinutes.setValue(INIT_VALUE_START_MINUTES);
+		final Spinner<Integer> endMinutes = new Spinner<Integer>();
+		dateFactoryMinutes.setValue(INIT_VALUE_END_MINUTES);
+		
+		
+		dateFactoryHours.setWrapAround(true);
+		dateFactoryHours.setWrapAround(true);
+		dateFactoryMinutes.setWrapAround(true);
+		dateFactoryMinutes.setWrapAround(true);
+		
 		
 		choiceRegular.setVisible(false);
 		regularOnOff.setSelected(false);
@@ -124,26 +151,22 @@ public class CreateTaskController implements Initializable {
 			choiceRegular.setVisible(true);
 		}	
 			
-		
-		
 		choiceRegular.setItems(regularlyType);
 		
-		durationSlider.setValue(Math.round(INIT_VALUE_HOURS));
-		durationSlider1.setValue(Math.round(INIT_VALUE_MINUTES));
-		
+		durationSlider.setValue(INIT_VALUE_HOURS);
+		durationSlider1.setValue(INIT_VALUE_MINUTES);
 
-		hoursField.setText(new Long(Math.round(INIT_VALUE_HOURS)).toString());
-		minutesField.setText(new Long(Math.round(INIT_VALUE_MINUTES)).toString());
-		if(endHour.getValueFactory().getValue() == startHour.getValueFactory().getValue() || endMinute.getValueFactory().getValue() == startMinute.getValueFactory().getValue()) 
-		{
-		endHour.getValueFactory().setValue(new Long(endTimeHour+INIT_VALUE_HOURS));
-		endMinute.getValueFactory().setValue(new Long(endTimeMinute+INIT_VALUE_MINUTES));
-		}
-				
-		regularOnOff.selectedProperty().bindBidirectional(choiceRegular.visibleProperty());
+		hoursField.setText(new Integer(INIT_VALUE_HOURS).toString());
+		minutesField.setText(new Integer(INIT_VALUE_MINUTES).toString());
+		
+		startHours.getValueFactory().setValue(INIT_VALUE_START_HOURS);
+		startMinutes.getValueFactory().setValue(INIT_VALUE_START_MINUTES);
+		endHours.getValueFactory().setValue(INIT_VALUE_END_HOURS);
+		endMinutes.getValueFactory().setValue(INIT_VALUE_END_MINUTES);
+		
+		//regularOnOff.selectedProperty().bindBidirectional(choiceRegular.visibleProperty());
 		hoursField.textProperty().bindBidirectional(durationSlider.valueProperty(), NumberFormat.getNumberInstance());
 		minutesField.textProperty().bindBidirectional(durationSlider1.valueProperty(), NumberFormat.getNumberInstance());
-		endHour.getValueFactory().valueProperty().bindBidirectional(startHour.getValueFactory().valueProperty());
 		
 		//Inserts the Categories to the choice box.
 		for(int i = 0; i < CategoriesController.getMainCategories().size(); i++)
