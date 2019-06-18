@@ -1,1 +1,0 @@
-{"pinned":0,"textbox":"Some stupid text","title":"Stupid Note","filepath":"Stupid Note0.txt"}

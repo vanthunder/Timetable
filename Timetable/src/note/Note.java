@@ -109,7 +109,7 @@ public class Note extends Base implements Serializable {
 		
 		do {
 			
-		String filepath = /*"\\..\\SavedNotes\\" +*/ tmpTitle + counter + ".txt";
+		String filepath = "Note " + tmpTitle + counter + ".txt";
 
 		File tmpFilepath = new File(filepath);
 		GsonBuilder gbuild = new GsonBuilder();
