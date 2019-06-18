@@ -150,7 +150,7 @@ public class CreateTaskController implements Initializable {
 		{
 			choiceRegular.setVisible(true);
 		}	
-			
+		
 		choiceRegular.setItems(regularlyType);
 		
 		durationSlider.setValue(INIT_VALUE_HOURS);
