@@ -37,13 +37,13 @@ public class CreateTaskController implements Initializable {
 	@FXML
 	private TextField minutesField;
 	@FXML
-	private Spinner<Integer> startHour;
+	private Spinner<Double> startHour;
 	@FXML
-	private Spinner<Integer> endHour;
+	private Spinner<Double> endHour;
 	@FXML
-	private Spinner<Integer> startMinute;
+	private Spinner<Double> startMinute;
 	@FXML
-	private Spinner<Integer> endMinute;
+	private Spinner<Double> endMinute;
 	@FXML
 	private Slider durationSlider;
 	@FXML
@@ -103,46 +103,36 @@ public class CreateTaskController implements Initializable {
 
 	Image icon = new Image(getClass().getResourceAsStream("/images/Aufgabe.png"));
 	
-	ObservableList<String> regularlyType= FXCollections.observableArrayList("täglich", "wöchentlich", "monatlich");
+	ObservableList<String> regularlyType= FXCollections.observableArrayList("taeglich", "woechentlich", "monatlich");
 
 	
-	public static final int INIT_VALUE_HOURS = 1;
-	public static final int INIT_VALUE_MINUTES = 1;
-	public static final int INIT_VALUE_START_HOURS = 8;
-	public static final int INIT_VALUE_START_MINUTES = 0;
-	public static final int INIT_VALUE_END_HOURS = 20;
-	public static final int INIT_VALUE_END_MINUTES = 0;
+	public static final double INIT_VALUE_HOURS = 0;
+	public static final double INIT_VALUE_MINUTES = 0;
+	public static final double INIT_VALUE_START_HOURS = 0;
+	public static final double INIT_VALUE_START_MINUTES = 0;
+	public static final double INIT_VALUE_END_HOURS = 0;
+	public static final double INIT_VALUE_END_MINUTES = 0;
 	LocalDate startDate;
 	LocalDate endDate;
-	SpinnerValueFactory<Integer> dateFactoryHours = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,23,0);
-	SpinnerValueFactory<Integer> dateFactoryMinutes = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,59,0);
+	SpinnerValueFactory<Double> dateFactoryStartHours = new SpinnerValueFactory.DoubleSpinnerValueFactory(0,23,0);
+	SpinnerValueFactory<Double> dateFactoryEndHours = new SpinnerValueFactory.DoubleSpinnerValueFactory(0,23,0);
+	SpinnerValueFactory<Double> dateFactoryStartMinutes = new SpinnerValueFactory.DoubleSpinnerValueFactory(0,59,0);
+	SpinnerValueFactory<Double> dateFactoryEndMinutes = new SpinnerValueFactory.DoubleSpinnerValueFactory(0,59,0);
+	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-
+		this.startHour.setValueFactory(dateFactoryStartHours);
+		this.endHour.setValueFactory(dateFactoryEndHours);
+		this.startMinute.setValueFactory(dateFactoryStartMinutes);
+		this.endMinute.setValueFactory(dateFactoryEndMinutes);
 		
-		this.startHour.setValueFactory(dateFactoryHours);
-		this.endHour.setValueFactory(dateFactoryHours);
-		this.startMinute.setValueFactory(dateFactoryMinutes);
-		this.endMinute.setValueFactory(dateFactoryMinutes);
-		
-		final Spinner<Integer> startHours = new Spinner<Integer>();
-		dateFactoryHours.setValue(INIT_VALUE_START_HOURS);
-		final Spinner<Integer> endHours = new Spinner<Integer>();
-		dateFactoryHours.setValue(INIT_VALUE_END_HOURS);
-		final Spinner<Integer> startMinutes = new Spinner<Integer>();
-		dateFactoryMinutes.setValue(INIT_VALUE_START_MINUTES);
-		final Spinner<Integer> endMinutes = new Spinner<Integer>();
-		dateFactoryMinutes.setValue(INIT_VALUE_END_MINUTES);
-		
-		
-		dateFactoryHours.setWrapAround(true);
-		dateFactoryHours.setWrapAround(true);
-		dateFactoryMinutes.setWrapAround(true);
-		dateFactoryMinutes.setWrapAround(true);
-		
-		
+		dateFactoryStartHours.setValue( INIT_VALUE_START_HOURS);
+		dateFactoryEndHours.setValue(INIT_VALUE_END_HOURS);
+		dateFactoryStartMinutes.setValue(INIT_VALUE_START_MINUTES);
+		dateFactoryEndMinutes.setValue(INIT_VALUE_END_MINUTES);
+			
 		choiceRegular.setVisible(false);
 		regularOnOff.setSelected(false);
 			
@@ -156,15 +146,13 @@ public class CreateTaskController implements Initializable {
 		durationSlider.setValue(INIT_VALUE_HOURS);
 		durationSlider1.setValue(INIT_VALUE_MINUTES);
 
-		hoursField.setText(new Integer(INIT_VALUE_HOURS).toString());
-		minutesField.setText(new Integer(INIT_VALUE_MINUTES).toString());
+		hoursField.setText(new Double(INIT_VALUE_HOURS).toString());
+		minutesField.setText(new Double(INIT_VALUE_MINUTES).toString());
 		
-		startHours.getValueFactory().setValue(INIT_VALUE_START_HOURS);
-		startMinutes.getValueFactory().setValue(INIT_VALUE_START_MINUTES);
-		endHours.getValueFactory().setValue(INIT_VALUE_END_HOURS);
-		endMinutes.getValueFactory().setValue(INIT_VALUE_END_MINUTES);
+		System.out.println(INIT_VALUE_START_HOURS+INIT_VALUE_END_HOURS+INIT_VALUE_START_MINUTES+INIT_VALUE_END_MINUTES);
+
 		
-		//regularOnOff.selectedProperty().bindBidirectional(choiceRegular.visibleProperty());
+		regularOnOff.selectedProperty().bindBidirectional(choiceRegular.visibleProperty());
 		hoursField.textProperty().bindBidirectional(durationSlider.valueProperty(), NumberFormat.getNumberInstance());
 		minutesField.textProperty().bindBidirectional(durationSlider1.valueProperty(), NumberFormat.getNumberInstance());
 		
@@ -175,3 +163,5 @@ public class CreateTaskController implements Initializable {
 		}
 	}
 }
+
+
