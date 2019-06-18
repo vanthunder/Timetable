@@ -109,7 +109,7 @@ public class Note extends Base implements Serializable {
 		
 		do {
 			
-		String filepath = tmpTitle + counter + ".txt";
+		String filepath = /*"\\..\\SavedNotes\\" +*/ tmpTitle + counter + ".txt";
 
 		File tmpFilepath = new File(filepath);
 		GsonBuilder gbuild = new GsonBuilder();
@@ -129,7 +129,7 @@ public class Note extends Base implements Serializable {
 	 
 	            FileOutputStream fileOut = new FileOutputStream(filepath);
 	            fileOut.write(gson.toJson(serObj).getBytes());
-	            System.out.println("The Object  was succesfully written to a file");
+	            System.out.println("Die Notiz wurde erfolgreich gespeichert!");
 	 
 	        } catch (Exception ex) {
 	            ex.printStackTrace();
@@ -140,10 +140,7 @@ public class Note extends Base implements Serializable {
 		
 			
 		} while (!created);
-		
-		
-		
-		
+				
 	}	
 	
 	
