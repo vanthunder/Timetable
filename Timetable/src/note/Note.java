@@ -128,7 +128,9 @@ public class Note extends Base implements Serializable {
 	    try {
 	 
 	            FileOutputStream fileOut = new FileOutputStream(filepath);
-	            //fileOut.write(gson.toJson(serObj).getBytes());
+	            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+	            objectOut.writeObject(serObj);
+	            objectOut.close();
 	            System.out.println("Die Notiz wurde erfolgreich gespeichert!");
 	 
 	        } catch (Exception ex) {
