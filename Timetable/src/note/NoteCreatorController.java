@@ -69,6 +69,7 @@ public class NoteCreatorController implements Initializable
 		Note serObj = new Note("Stupid Note", 0, null, null, null, null, "Some stupid text", null, "Aber");
 		
 		Note.WriteObjectToFile(serObj);
+		
 		//This method saves the current Note and it's title as a category if a category is choosed in the choice box.
 		if(!categoryChooser.getSelectionModel().getSelectedItem().equals(null))
 		 {		
@@ -76,6 +77,7 @@ public class NoteCreatorController implements Initializable
 			TreeItem<String> newItem = new TreeItem<String>("Notiz: "+noteTitle.getText(), new ImageView(icon));
 			CategoriesController.insertCategoryByCreator(savePosition, newItem);
 		 }
+		
 	}
 	//Initialize the NoteView with all its components
 	@Override
@@ -86,9 +88,5 @@ public class NoteCreatorController implements Initializable
 			categoryChooser.getItems().addAll(CategoriesController.getMainCategories().get(i));
 		}
 		
-	/**	Image image = new Image("/images/u mad bro.jpg");
-		
-		noteInsertImage.setImage(image);
-		*/
 	}
 }
