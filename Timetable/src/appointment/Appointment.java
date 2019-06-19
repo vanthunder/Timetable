@@ -31,6 +31,47 @@ public class Appointment extends Event implements Cloneable {
 				" alarmTime: "+getAlarmTime().format(Calendar.dateWithTimeFormatter)+" notesPinned: "+notesPinned+" notesLink: "+notesLink+" floating: "+floating);
 	}
 	
+public static void WriteObjectToFile(Appointment serObj) {
+		
+		String tmpTitle = serObj.getTitle();
+		int counter=0;
+		boolean created = false;
+		
+		do {
+			
+		String filepath = "Appointment " + tmpTitle + counter + ".txt";
+
+		File tmpFilepath = new File(filepath);		
+		
+		boolean exists = tmpFilepath.exists();
+		
+		if(exists) {
+			counter++;
+			continue;
+		}
+	
+		serObj.setFilepath(filepath);
+		
+	    try {
+	 
+	            FileOutputStream fileOut = new FileOutputStream(filepath);
+	            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+	            objectOut.writeObject(serObj);
+	            objectOut.close();
+	            System.out.println("Der Termin wurde erfolgreich gespeichert!");
+	 
+	        } catch (Exception ex) {
+	            ex.printStackTrace();
+	        }
+		
+		
+		created = true;
+		
+			
+		} while (!created);
+				
+	}	
+	
 	/*	
 	 * public calendarNotePinning{
 	 * 
