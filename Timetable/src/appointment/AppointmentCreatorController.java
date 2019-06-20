@@ -92,12 +92,13 @@ public class AppointmentCreatorController implements Initializable
 		String title = AppointmentTitle.getText();
 		LocalDateTime startpoint = LocalDateTime.of(AppointmentStartDate.getValue(), LocalTime.parse(AppointmentStartTime.getText(), Calendar.timeFormatter));
 		LocalDateTime endpoint = LocalDateTime.of(AppointmentEndDate.getValue(), LocalTime.parse(AppointmentEndTime.getText(), Calendar.timeFormatter));
-		boolean allDay = AppointmentAllDay.getState();
-		LocalDateTime alarmTime = LocalDateTime.of(AppointmentAlarmDate.getValue(), LocalTime.parse(AppointmentAlarmTime.getText(), Calendar.timeFormatter));
-		boolean regularlyOnOff = AppointmentRegularlyOnOff.getState();
+		boolean allDay = AppointmentAllDay.isSelected();
+		boolean regularlyOnOff = AppointmentRegularlyOnOff.isSelected();
 		int regularlyType;
 		int regularlyAmount;
 		String description;
+		boolean AlarmOnOff = AppointmentAllDay.isSelected();
+		LocalDateTime alarmTime = LocalDateTime.of(AppointmentAlarmDate.getValue(), LocalTime.parse(AppointmentAlarmTime.getText(), Calendar.timeFormatter));
 		
 		
 		
