@@ -17,18 +17,23 @@ public class Task extends Appointment implements Comparable {
 	private int feasibleTimeEnd;
 	private LocalDateTime periodStart;
 	private LocalDateTime periodEnd;;
+	private int autoSortID;
 
 	public Task(String title, String filepath, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay,
 			boolean regularlyOnOff, int regularlyType, int regularlyID, String description, boolean alarmOnOff,
 			LocalDateTime alarmTime, int notesPinned, ArrayList<Note> notesLink, boolean floating,
-			boolean autoSortOnOff, int duration, boolean done, LocalDateTime periodStart, LocalDateTime periodEnd) {
+			boolean autoSortOnOff, int duration, boolean done, LocalDateTime periodStart, LocalDateTime periodEnd,int autoSortID) {
+		
 		super(title, startpoint, endpoint, allDay, regularlyOnOff, regularlyType, regularlyID, description, alarmOnOff,
 				alarmTime, notesPinned, notesLink, floating);
+		
 		this.autoSortOnOff = autoSortOnOff;
 		this.duration = duration;
 		this.done = done;
 		this.periodStart = periodStart;
 		this.periodEnd = periodEnd;
+		this.autoSortID = autoSortID;
+		
 	}
 
 	public boolean getAutoSortOnOff() {
@@ -70,6 +75,14 @@ public class Task extends Appointment implements Comparable {
 	public void setPeriodEnd(LocalDateTime periodEnd) {
 		this.periodEnd = periodEnd;
 
+	}
+	
+	public int getAutoSortID() {
+		return autoSortID;
+	}
+
+	public void setAutoSortID(int autoSortID) {
+		this.autoSortID = autoSortID;
 	}
 
 	public static void WriteObjectToFile(Task serObj) {
@@ -122,7 +135,7 @@ public class Task extends Appointment implements Comparable {
 				+ ", isFloating()=" + isFloating() + ", getTitle()=" + getTitle() + ", getClass()=" + getClass()
 				+ ", autoSortOnOff=" + autoSortOnOff + ", duration=" + duration + ", done=" + done
 				+ ", feasibleTimeStart=" + feasibleTimeStart + ", feasibleTimeEnd=" + feasibleTimeEnd + ", periodStart="
-				+ periodStart + ", periodEnd=" + periodEnd + "]";
+				+ periodStart + ", periodEnd=" + periodEnd + "autoSortID=" + autoSortID + "]";
 	}
 
 	@Override
@@ -141,6 +154,7 @@ public class Task extends Appointment implements Comparable {
 		clonedTask.setNotesPinned(this.getNotesPinned());
 		clonedTask.setNotesLink(this.getNotesLink());
 		clonedTask.setFloating(this.isFloating());
+		clonedTask.setAutoSortID(this.getAutoSortID());
 
 		return clonedTask;
 
@@ -151,4 +165,6 @@ public class Task extends Appointment implements Comparable {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+
 }
