@@ -82,7 +82,7 @@ public class Note extends Base implements Serializable {
 		this.videoList = videoList;
 	}
 
-	public Note(String title, int pinned, ArrayList pinnedAt, ArrayList photoList, ArrayList gifList, ArrayList soundList, String textbox, ArrayList videoList, String filepath) {
+	public Note(String title, int pinned, ArrayList pinnedAt, ArrayList photoList, ArrayList gifList, ArrayList soundList, String textbox, ArrayList videoLis, String filepath) {
 		super(title);
 		this.setPinned(pinned);
 		this.setPinnedAt(pinnedAt);

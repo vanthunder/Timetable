@@ -1,5 +1,8 @@
 package base;
 
+import java.io.File;
+import java.nio.file.Files;
+
 public abstract class Base {
 	private String title;
 	private String filepath;
