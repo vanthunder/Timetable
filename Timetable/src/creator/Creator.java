@@ -332,9 +332,9 @@ public class Creator implements Serializable {
 
 		if (regularlyOnOff) {
 
-			HashMap<Integer, ArrayList<Appointment>> tempRegularlyList = Calendar.getRegularlyList();
-			ArrayList<Appointment> regularlyInnerList = new ArrayList<Appointment>();
-			ArrayList<Appointment> tempCalendarList2 = Calendar.getCalendarList();
+			HashMap<Integer, ArrayList<Base>> tempRegularlyList = Calendar.getRegularlyList();
+			ArrayList<Base> regularlyInnerList = new ArrayList<Base>();
+			ArrayList<Base> tempCalendarList2 = Calendar.getCalendarList();
 
 			// täglich
 			if (newTask.getRegularlyType() == 0) {
