@@ -22,18 +22,14 @@ public class Task extends Appointment implements Comparable {
 	public Task(String title, String filepath, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay,
 			boolean regularlyOnOff, int regularlyType, int regularlyID, String description, boolean alarmOnOff,
 			LocalDateTime alarmTime, int notesPinned, ArrayList<Note> notesLink, boolean floating,
-			boolean autoSortOnOff, int duration, boolean done, LocalDateTime periodStart, LocalDateTime periodEnd,int autoSortID) {
+			boolean autoSortOnOff, int duration, boolean done) {
 		
 		super(title, startpoint, endpoint, allDay, regularlyOnOff, regularlyType, regularlyID, description, alarmOnOff,
 				alarmTime, notesPinned, notesLink, floating);
 		
 		this.autoSortOnOff = autoSortOnOff;
 		this.duration = duration;
-		this.done = done;
-		this.periodStart = periodStart;
-		this.periodEnd = periodEnd;
-		this.autoSortID = autoSortID;
-		
+		this.done = done;		
 	}
 
 	public boolean getAutoSortOnOff() {
@@ -64,13 +60,6 @@ public class Task extends Appointment implements Comparable {
 		return periodStart;
 	}
 
-	public void setPeriodStart(LocalDateTime periodStart) {
-		this.periodStart = periodStart;
-	}
-
-	public LocalDateTime getPeriodEnd() {
-		return periodEnd;
-	}
 
 	public void setPeriodEnd(LocalDateTime periodEnd) {
 		this.periodEnd = periodEnd;

@@ -12,6 +12,7 @@ import java.time.*;
 
 import calendar.Calendar;
 
+
 public class AutoSort {
 	/*
 	 * Rules: 1. no collision allowed:
@@ -58,6 +59,7 @@ public class AutoSort {
 						// add the new Task to the CalendarList
 						tmpCalendarList.add(currentTask);
 						autoSortInnerList.add(currentTask);
+						Task.WriteObjectToFile(currentTask);
 						break;
 					} else {
 						Task copy = (Task) currentTask.clone();
@@ -67,6 +69,7 @@ public class AutoSort {
 						// add the new Task to the CalendarList
 						tmpCalendarList.add(copy);
 						autoSortInnerList.add(copy);
+						Task.WriteObjectToFile(copy);
 						break;
 					}
 
@@ -109,5 +112,6 @@ public class AutoSort {
 
 		return autosortTaskID;
 	}
+
 
 }

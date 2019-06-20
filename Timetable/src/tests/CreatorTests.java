@@ -198,7 +198,7 @@ class CreatorTests {
 		boolean autoSortOnOff = false;
 		
 		assertEquals("Task [toString()=title: awesome Task startpoint: 10.01.2002 00:00 endpoint: 14.01.2002 00:00 allDay: false regularlyOnOff: false regularlyType: 0 regularlyID: 0 description: awesome Description alarmOnOff: false alarmTime: 12.01.2002 00:00 notesPinned: 0 notesLink: [] floating: false, getStartpoint()=2002-01-10T00:00, getEndpoint()=2002-01-14T00:00, isAllDay()=false, isRegularlyOnOff()=false, getRegularlyType()=0, getRegularlyID()=0, getDescription()=awesome Description, isAlarmOnOff()=false, getAlarmTime()=2002-01-12T00:00, getNotesPinned()=0, getNotesLink()=[], isFloating()=false, getTitle()=awesome Task, getClass()=class task.Task, autoSortOnOff=false, duration=0, done=false, feasibleTimeStart=0, feasibleTimeEnd=0, periodStart=2002-01-20T00:00, periodEnd=2002-01-20T00:00]",
-				Creator.createTask("awesome Task", startpoint, endpoint, allDay, regularlyOnOff,
+				Creator.createTask("awesome Task", null, startpoint, endpoint, allDay, regularlyOnOff,
 						regularlyType, 0, "awesome Description", alarmOnOff, alarmTime, notesPinned,
 						notesLink, floating, autoSortOnOff, duration, done, periodStart, periodEnd));
 		

@@ -302,27 +302,21 @@ public class Creator implements Serializable {
 
 	}
 
-	public static String createTask(String title, String filepath, LocalDateTime startpoint, LocalDateTime endpoint,
-			boolean allDay, boolean regularlyOnOff, int regularlyType, int regularlyAmount, String description,
-			boolean alarmOnOff, LocalDateTime alarmTime, int notesPinned, ArrayList<Note> notesLink, boolean floating,
-			boolean autoSortOnOff, int duration, boolean done, LocalDateTime periodStart, LocalDateTime periodEnd)
+	public static String createTask(String title, String filepath, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay,
+			boolean regularlyOnOff, int regularlyType, int regularlyID, String description, boolean alarmOnOff,
+			LocalDateTime alarmTime, int notesPinned, ArrayList<Note> notesLink, boolean floating,
+			boolean autoSortOnOff, int duration, boolean done)
 			throws CloneNotSupportedException {
 
 		floating = false;
 		if (startpoint == endpoint) {
 			floating = true;
 
-			if (periodEnd.isAfter(periodStart) == true) {
-
-				long diffInMinutes = Math.abs(endpoint.getMinute() - startpoint.getMinute());
-				long diff = TimeUnit.DAYS.convert(diffInMinutes, TimeUnit.MINUTES);
-				duration = (int) diff;
-			}
-
 		}
+		int regularlyAmount = 0;
 		Task newTask = new Task(title, filepath, startpoint, endpoint, allDay, regularlyOnOff, regularlyType,
 				regularlyAmount, description, alarmOnOff, alarmTime, notesPinned, notesLink, floating, done, duration,
-				done, periodEnd, periodEnd);
+				done);
 
 		ArrayList<Appointment> tempCalendarList = Calendar.getCalendarList();
 		tempCalendarList.add(newTask);
@@ -471,10 +465,6 @@ public class Creator implements Serializable {
 		} while (j <= Calendar.getRegularlyList().size());
 
 		return regularlyID;
-	}
-
-	public static void regulary(int regularlyType) {
-
 	}
 
 }
