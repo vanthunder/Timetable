@@ -56,10 +56,7 @@ public class Creator implements Serializable {
 
 		// newAppointment is only added to calendar if floating is false
 
-		ArrayList<Base> tempCalendarList = Calendar.getCalendarList();
-		tempCalendarList.add(newEvent);
-		// tempCalendarList.sort();
-		Calendar.setCalendarList(tempCalendarList);
+		
 
 		if (regularlyOnOff) {
 
@@ -67,14 +64,14 @@ public class Creator implements Serializable {
 
 			HashMap<Integer, ArrayList<Base>> tempRegularlyList = Calendar.getRegularlyList();
 			ArrayList<Base> regularlyInnerList = new ArrayList<Base>();
-			ArrayList<Base> tempCalendarList2 = Calendar.getCalendarList();
+			ArrayList<Event> tempEventList2 = Calendar.getEventList();
 
 			// täglich
 			if (newEvent.getRegularlyType() == 0) {
 				for (int i = 0; i < regularlyAmount; i++) {
 					if (i == 0) {
 						regularlyInnerList.add(newEvent);
-						tempCalendarList2.add(newEvent);
+						tempEventList2.add(newEvent);
 					} else {
 						Appointment copy = (Appointment) newEvent.clone();
 						LocalDateTime tempStartpoint = copy.getStartpoint();
@@ -83,7 +80,7 @@ public class Creator implements Serializable {
 						copy.setRegularlyID(getRegularlyID());
 						regularlyInnerList.add(copy);
 
-						tempCalendarList2.add(copy);
+						tempEventList2.add(copy);
 
 						// has to be transferred to category!!!
 					}
@@ -103,8 +100,8 @@ public class Creator implements Serializable {
 						copy.setRegularlyID(getRegularlyID());
 						regularlyInnerList.add(copy);
 
-						tempCalendarList2.add(copy);
-						Calendar.setCalendarList(tempCalendarList2);
+						tempEventList2.add(copy);
+						
 						// has to be transferred to category!!!
 					}
 				}
@@ -123,8 +120,8 @@ public class Creator implements Serializable {
 						copy.setRegularlyID(getRegularlyID());
 						regularlyInnerList.add(copy);
 
-						tempCalendarList2.add(copy);
-						Calendar.setCalendarList(tempCalendarList2);
+						tempEventList2.add(copy);
+						
 						// has to be transferred to category!!!
 					}
 				}
@@ -142,14 +139,15 @@ public class Creator implements Serializable {
 						copy.setRegularlyID(getRegularlyID());
 						regularlyInnerList.add(copy);
 
-						tempCalendarList2.add(copy);
-						Calendar.setCalendarList(tempCalendarList2);
+						tempEventList2.add(copy);
+						
 						// has to be transferred to category!!!
 					}
 				}
 			}
 			tempRegularlyList.put(getRegularlyID(), regularlyInnerList);
 			Calendar.setRegularlyList(tempRegularlyList);
+			Calendar.setEventList(tempEventList2);
 
 //Save.save(); as soon as the appointment is created, the program will save the data
 
@@ -201,7 +199,7 @@ public class Creator implements Serializable {
 
 		// newAppointment is only added to calendar if floating is false
 
-		ArrayList<Base> tempCalendarList = Calendar.getCalendarList();
+		ArrayList<Appointment> tempCalendarList = Calendar.getCalendarList();
 		tempCalendarList.add(newAppointment);
 		// tempCalendarList.sort();
 		Calendar.setCalendarList(tempCalendarList);
@@ -210,7 +208,7 @@ public class Creator implements Serializable {
 
 			HashMap<Integer, ArrayList<Base>> tempRegularlyList = Calendar.getRegularlyList();
 			ArrayList<Base> regularlyInnerList = new ArrayList<Base>();
-			ArrayList<Base> tempCalendarList2 = Calendar.getCalendarList();
+			ArrayList<Appointment> tempCalendarList2 = Calendar.getCalendarList();
 
 			// täglich
 			if (newAppointment.getRegularlyType() == 0) {
@@ -226,7 +224,7 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
-						Calendar.setCalendarList(tempCalendarList2);
+						
 						// has to be transferred to category!!!
 					}
 				}
@@ -246,7 +244,7 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
-						Calendar.setCalendarList(tempCalendarList2);
+						
 						// has to be transferred to category!!!
 					}
 				}
@@ -266,7 +264,7 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
-						Calendar.setCalendarList(tempCalendarList2);
+						
 						// has to be transferred to category!!!
 					}
 				}
@@ -285,13 +283,14 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
-						Calendar.setCalendarList(tempCalendarList2);
+						
 						// has to be transferred to category!!!
 					}
 				}
 			}
 			tempRegularlyList.put(getRegularlyID(), regularlyInnerList);
 			Calendar.setRegularlyList(tempRegularlyList);
+			Calendar.setCalendarList(tempCalendarList2);
 
 //Save.save(); as soon as the appointment is created, the program will save the data
 
@@ -332,8 +331,8 @@ public class Creator implements Serializable {
 
 		if (regularlyOnOff) {
 
-			HashMap<Integer, ArrayList<Appointment>> tempRegularlyList = Calendar.getRegularlyList();
-			ArrayList<Appointment> regularlyInnerList = new ArrayList<Appointment>();
+			HashMap<Integer, ArrayList<Base>> tempRegularlyList = Calendar.getRegularlyList();
+			ArrayList<Base> regularlyInnerList = new ArrayList<Base>();
 			ArrayList<Appointment> tempCalendarList2 = Calendar.getCalendarList();
 
 			// täglich
