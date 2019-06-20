@@ -12,7 +12,7 @@ public class Calendar {
 	private static ArrayList<Appointment> calendarList = new ArrayList<Appointment>();
 	//events are stored in a seperate list because they do not collide
 	private static ArrayList<Event> eventList = new ArrayList<Event>();
-	private static HashMap<Integer, ArrayList<Appointment>> regularlyList = new HashMap<Integer, ArrayList<Appointment>>();
+	private static HashMap<Integer, ArrayList<Base>> regularlyList = new HashMap<Integer, ArrayList<Base>>();
 	public static final DateTimeFormatter dateWithTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
 	public static final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
 	
@@ -35,11 +35,11 @@ public class Calendar {
 		Calendar.eventList = eventList;
 	}
 
-	public static HashMap<Integer, ArrayList<Appointment>> getRegularlyList() {
+	public static HashMap<Integer, ArrayList<Base>> getRegularlyList() {
 		return regularlyList;
 	}
 
-	public static void setRegularlyList(HashMap<Integer, ArrayList<Appointment>> regularlyList) {
+	public static void setRegularlyList(HashMap<Integer, ArrayList<Base>> regularlyList) {
 		Calendar.regularlyList = regularlyList;
 	}
 	
