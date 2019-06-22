@@ -18,7 +18,7 @@
    <center>
       <TabPane fx:id="tabs" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
-          <Tab text="Kalendar">
+          <Tab text="Kalender">
                <content>
                   <BorderPane>
                      <center>
@@ -60,14 +60,6 @@
                         <fx:include source="Notes.fxml" />
                      </center>
                   </BorderPane>
-               </content>
-            </Tab>
-            <Tab text="Debug Calendar">
-               <content>
-                  <BorderPane fx:id="Root1">
-                     <center>
-                        <fx:include source="DebugCalendar.fxml" />
-                     </center></BorderPane>
                </content>
             </Tab>
         </tabs>
