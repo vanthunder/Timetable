@@ -308,10 +308,7 @@ public class CategoriesController<T> implements Initializable
 			String nextCache = event.getNewValue().toString();
 			String nextSubCache = nextCache.replace("Termin: ", "");
 			CalendarController.editAppointment(subCache, nextSubCache);
-			System.out.println(nextSubCache+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			String newValue = event.getNewValue().toString();
-			//newValue = "Termin: "+newValue;
-			//event.getNewValue().toString().replace(event.getNewValue().toString(), "").concat("Termin: ").concat(newValue);
 			 if(!event.getNewValue().toString().contains("Termin: "))
 			 {
 				 writeMessage("Du darfst 'Termin: ' nicht löschen!"); 
