@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -14,7 +15,7 @@
 
 <BorderPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appointment.AppointmentCreatorController">
    <center>
-      <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="312.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="500.0" prefWidth="312.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
@@ -27,12 +28,14 @@
             </HBox>
             <HBox fx:id="AppointmentStartDate" alignment="TOP_CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
+                  <Label text="von:" />
                   <DatePicker promptText="Datum" />
                   <TextField fx:id="AppointmentStartTime" promptText="Uhrzeit" />
                </children>
             </HBox>
             <HBox alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
+                  <Label text="bis:" />
                   <DatePicker fx:id="AppointmentEndDate" promptText="Datum" />
                   <TextField fx:id="AppointmentEndTime" promptText="Uhrzeit" />
                </children>
@@ -40,7 +43,7 @@
             <HBox alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="80.0">
                <children>
                   <CheckBox fx:id="AppointmentRegularlyOnOff" mnemonicParsing="false" text="regelmäßig" />
-                  <ChoiceBox fx:id="AppointmentRegularlyType" disable="true" prefWidth="150.0" />
+                  <ChoiceBox fx:id="AppointmentRegularlyType" prefWidth="150.0" visible="false" />
                </children>
             </HBox>
             <HBox alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="142.0">
@@ -63,17 +66,7 @@
                   </HBox>
                </children>
             </VBox>
-            <HBox alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-               <children>
-                  <CheckBox fx:id="AppointmentAlarmOnOff" mnemonicParsing="false" text="Alarm">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </CheckBox>
-                  <DatePicker fx:id="AppointmentAlarmDate" disable="true" promptText="Datum" />
-                  <TextField fx:id="AppointmentAlarmTime" disable="true" promptText="Uhrzeit" />
-               </children>
-            </HBox>
+            <TextArea fx:id="AppointmentDescription" prefHeight="200.0" prefWidth="200.0" promptText="Beschreibung" />
             <Button fx:id="AppointmentSave" mnemonicParsing="false" onAction="#appointmentSavePress" text="Speichern" />
          </children>
          <BorderPane.margin>

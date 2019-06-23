@@ -27,8 +27,7 @@ public class Creator implements Serializable {
 		// event exists always the whole day
 		startpoint = startpoint.withHour(0).withMinute(0);
 		endpoint = endpoint.withHour(23).withMinute(59);
-		Event newEvent = new Event(title, startpoint, endpoint, true, description, regularlyOnOff, regularlyType, 0,
-				alarmOnOff, alarmTime);
+		Event newEvent = new Event(title, startpoint, endpoint, true, description, regularlyOnOff, regularlyType, 0);
 
 		startpoint = startpoint.withHour(0).withMinute(0);
 		endpoint = endpoint.withHour(23).withMinute(59);
@@ -170,8 +169,7 @@ public class Creator implements Serializable {
 	 */
 
 	public static String createAppointment(String title, LocalDateTime startpoint, LocalDateTime endpoint,
-			boolean allDay, boolean regularlyOnOff, int regularlyType, int regularlyAmount, String description,
-			boolean alarmOnOff, LocalDateTime alarmTime, int notesPinned, ArrayList<Note> notesLink, boolean floating,
+			boolean allDay, boolean regularlyOnOff, int regularlyType, int regularlyAmount, String description, int notesPinned, ArrayList<Note> notesLink, boolean floating,
 			Category chosenCategory) throws CloneNotSupportedException {
 
 		if (allDay) {
@@ -186,7 +184,7 @@ public class Creator implements Serializable {
 		 */
 
 		Appointment newAppointment = new Appointment(title, startpoint, endpoint, allDay, regularlyOnOff, regularlyType,
-				0, description, alarmOnOff, alarmTime, notesPinned, notesLink, floating);
+				0, description, notesPinned, notesLink, floating);
 
 		// the appointment will be saved in the Category:
 		/*

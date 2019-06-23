@@ -16,14 +16,13 @@ public class Event extends Base implements Cloneable {
 	private boolean regularlyOnOff;
 	private int regularlyType;
 	private int regularlyID;
-	private boolean alarmOnOff;
-	private LocalDateTime alarmTime;
+
 	
 	
 	
 
 	public Event(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay, String description,
-			boolean regularlyOnOff, int regularlyType, int regularlyID, boolean alarmOnOff, LocalDateTime alarmTime) {
+			boolean regularlyOnOff, int regularlyType, int regularlyID) {
 		super(title);
 		this.startpoint = startpoint;
 		this.endpoint = endpoint;
@@ -32,8 +31,7 @@ public class Event extends Base implements Cloneable {
 		this.regularlyOnOff = regularlyOnOff;
 		this.regularlyType = regularlyType;
 		this.regularlyID = regularlyID;
-		this.alarmOnOff = alarmOnOff;
-		this.alarmTime = alarmTime;
+		
 	}
 
 	public LocalDateTime getStartpoint() {
@@ -84,22 +82,6 @@ public class Event extends Base implements Cloneable {
 		this.regularlyType = regularlyType;
 	}
 
-	public boolean isAlarmOnOff() {
-		return alarmOnOff;
-	}
-
-	public void setAlarmOnOff(boolean alarmOnOff) {
-		this.alarmOnOff = alarmOnOff;
-	}
-
-	public LocalDateTime getAlarmTime() {
-		return alarmTime;
-	}
-
-	public void setAlarmTime(LocalDateTime alarmTime) {
-		this.alarmTime = alarmTime;
-	}
-
 	public int getRegularlyID() {
 		return regularlyID;
 	}
@@ -115,8 +97,7 @@ public class Event extends Base implements Cloneable {
 		return "title: " + getTitle()+", startpoint: " + startpoint.format(Calendar.dateWithTimeFormatter) + ", endpoint: " 
 				+ endpoint.format(Calendar.dateWithTimeFormatter) + ", allDay: " + allDay + ", description: "
 				+ description + ", regularlyOnOff: " + regularlyOnOff + ", regularlyType: " + regularlyType
-				+ ", regularlyID: " + regularlyID + ", alarmOnOff: " + alarmOnOff + ", alarmTime: " 
-				+ alarmTime.format(Calendar.dateWithTimeFormatter);
+				+ ", regularlyID: " + regularlyID;
 	}
 	
 	public Event clone() throws CloneNotSupportedException{
@@ -129,9 +110,6 @@ public class Event extends Base implements Cloneable {
 		clonedAppointment.setRegularlyType(this.getRegularlyType());
 		clonedAppointment.setRegularlyID(this.getRegularlyID());
 		clonedAppointment.setDescription(this.getDescription());
-		clonedAppointment.setAlarmOnOff(this.isAlarmOnOff());
-		clonedAppointment.setAlarmTime(this.getAlarmTime());
-		
 		return clonedAppointment;
 		
 	}
