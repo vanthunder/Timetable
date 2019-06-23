@@ -26,10 +26,10 @@
                   </TextField>
                </children>
             </HBox>
-            <HBox fx:id="AppointmentStartDate" alignment="TOP_CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+            <HBox alignment="TOP_CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
                   <Label text="von:" />
-                  <DatePicker promptText="Datum" />
+                  <DatePicker fx:id="AppointmentStartDate" promptText="Datum" />
                   <TextField fx:id="AppointmentStartTime" promptText="Uhrzeit" />
                </children>
             </HBox>
