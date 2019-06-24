@@ -67,7 +67,7 @@ public class Creator implements Serializable {
 
 			// täglich
 			if (newEvent.getRegularlyType() == 0) {
-				for (int i = 0; i < regularlyAmount; i++) {
+				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
 						regularlyInnerList.add(newEvent);
 						tempEventList2.add(newEvent);
@@ -88,7 +88,7 @@ public class Creator implements Serializable {
 
 			// wöchentlich
 			else if (newEvent.getRegularlyType() == 1) {
-				for (int i = 0; i < regularlyAmount; i++) {
+				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
 						regularlyInnerList.add(newEvent);
 					} else {
@@ -108,7 +108,7 @@ public class Creator implements Serializable {
 
 			// monatlich
 			else if (newEvent.getRegularlyType() == 2) {
-				for (int i = 0; i < regularlyAmount; i++) {
+				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
 						regularlyInnerList.add(newEvent);
 					} else {
@@ -127,7 +127,7 @@ public class Creator implements Serializable {
 			}
 			// jährlich
 			else if (newEvent.getRegularlyType() == 3) {
-				for (int i = 0; i < regularlyAmount; i++) {
+				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
 						regularlyInnerList.add(newEvent);
 					} else {
@@ -210,7 +210,7 @@ public class Creator implements Serializable {
 
 			// täglich
 			if (newAppointment.getRegularlyType() == 0) {
-				for (int i = 0; i < regularlyAmount; i++) {
+				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
 						regularlyInnerList.add(newAppointment);
 					} else {
@@ -230,7 +230,7 @@ public class Creator implements Serializable {
 
 			// wöchentlich
 			else if (newAppointment.getRegularlyType() == 1) {
-				for (int i = 0; i < regularlyAmount; i++) {
+				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
 						regularlyInnerList.add(newAppointment);
 					} else {
@@ -250,7 +250,7 @@ public class Creator implements Serializable {
 
 			// monatlich
 			else if (newAppointment.getRegularlyType() == 2) {
-				for (int i = 0; i < regularlyAmount; i++) {
+				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
 						regularlyInnerList.add(newAppointment);
 					} else {
@@ -269,7 +269,7 @@ public class Creator implements Serializable {
 			}
 			// jährlich
 			else if (newAppointment.getRegularlyType() == 3) {
-				for (int i = 0; i < regularlyAmount; i++) {
+				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
 						regularlyInnerList.add(newAppointment);
 					} else {
@@ -330,7 +330,7 @@ public class Creator implements Serializable {
 
 			// täglich
 			if (newTask.getRegularlyType() == 0) {
-				for (int i = 0; i < regularlyAmount; i++) {
+				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
 						regularlyInnerList.add(newTask);
 						Task.WriteObjectToFile(newTask);
@@ -353,7 +353,7 @@ public class Creator implements Serializable {
 
 			// wöchentlich
 			else if (newTask.getRegularlyType() == 1) {
-				for (int i = 0; i < regularlyAmount; i++) {
+				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
 						regularlyInnerList.add(newTask);
 						Task.WriteObjectToFile(newTask);
@@ -376,7 +376,7 @@ public class Creator implements Serializable {
 
 			// monatlich
 			else if (newTask.getRegularlyType() == 2) {
-				for (int i = 0; i < regularlyAmount; i++) {
+				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
 						regularlyInnerList.add(newTask);
 						Task.WriteObjectToFile(newTask);
@@ -397,7 +397,7 @@ public class Creator implements Serializable {
 			}
 			// jährlich
 			else if (newTask.getRegularlyType() == 3) {
-				for (int i = 0; i < regularlyAmount; i++) {
+				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
 						regularlyInnerList.add(newTask);
 						Task.WriteObjectToFile(newTask);
