@@ -48,7 +48,7 @@ public class NoteCreatorController implements Initializable
 	@FXML
 	ImageView currentImage = new ImageView();
 	
-	Image icon = new Image(getClass().getResourceAsStream("/images/Notiz.png"));
+	Image icon = new Image(getClass().getResourceAsStream("/images/NotizIcon.png"));
 	
 	@FXML
 	public void noteInsertImageButtonPress(ActionEvent event) throws IOException 

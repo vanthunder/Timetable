@@ -71,6 +71,7 @@ public class CalendarController implements Initializable
 	LocalDate year;
 	LocalDate a = LocalDate.of(currentDate.getYear(), 2, 1);
 	static LocalDate cacheDate;
+	//ints that are needed for further calculation
 	int maxlength = currentMonth.maxLength();
 	int markedLabel = 0;
 	int ab = 0;
@@ -80,7 +81,7 @@ public class CalendarController implements Initializable
 	int counter = 0;
 	int backCounter = 2;
 	int feb = a.getMonth().maxLength();// february.maxLength();
-	//Strings
+	//Color Strings
 	static String AppointmentColor = "-fx-background-color: #b4ff96;";
 	static String ResetColor = "-fx-background-color: White;";
     // Formats the date and time
@@ -112,7 +113,7 @@ public class CalendarController implements Initializable
 		}
 	}
 
-	// Event Listener on Button[#downLeftButton].onAction
+	// Event Listener on Button[#downLeftButton].onAction Switches back to the previous Month
 	@FXML
 	public void dlbPress(ActionEvent event)
 	{
@@ -279,7 +280,7 @@ public class CalendarController implements Initializable
 		  		System.out.println("drbCounter = "+counter);
 		  	}
 
-	// Event Listener on Button[#downRigtButton].onAction
+	// Event Listener on Button[#downRigtButton].onAction Switches forward to the next Month
 	@FXML
 	public void drbPress(ActionEvent event)
 	{   
@@ -443,7 +444,8 @@ public class CalendarController implements Initializable
 		     System.out.println("Backcounter = "+backCounter);
 		     }
 
-	public void intitCalendar()
+	//Initialize the calendar
+	public void intitCalendar() 
 	{
 		int a = 0;
 		YearLabel.setText(Integer.toString(currentDate.getYear()));
@@ -540,7 +542,7 @@ public class CalendarController implements Initializable
 	    	  break;
 	     }
 	}
-
+    //Marks the current date with a blue label
 	public void markcurrentDate()
 	{
 		for (int i = 0; i < Labels.size(); i++)
@@ -554,6 +556,7 @@ public class CalendarController implements Initializable
 			}
 		}
 	}
+	//Static method gets called by the Appointmentscreator, to create an appointment
 	public static void addAppointment(LocalDate newAppointment, String description)
 	{
 		for (int i = 0; i < 32; i++)
@@ -569,10 +572,7 @@ public class CalendarController implements Initializable
         descriptions.add(description);
         System.out.println(appointments+" = "+description);
 	}
-	public void appointmentSavePress(ActionEvent event)
-	{
-		System.out.println("TEST");
-	}
+	//Static Method gets called by the Category Controller, to erase an appointment
 	public static void eraseAppointment(String compare)
 	{
 		
@@ -598,6 +598,7 @@ public class CalendarController implements Initializable
 			}
 		}
 	}
+	//Static Method gets called by the Category Controller, to edit an appointment
 	public static void editAppointment(String oldName, String newName)
 	{
 		for(int i = 0; i < Labels.size(); i++)

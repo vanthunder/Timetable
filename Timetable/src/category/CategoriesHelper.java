@@ -23,16 +23,16 @@ public class CategoriesHelper
 
 	public CategoriesHelper()
 	{
-
+		
 	}
-
+    //Imports an image for the folder icon
 	Image icon = new Image(getClass().getResourceAsStream("/images/Folder.png"));
 	Base Base1 = new Base("!! Debug Item !!")
 	{
 	};
 	ToObject toObject = new ToObject(Base1);
 
-	// Diese Methode erstellt die Oberkategorien
+	// This Method creates the maincategories
 	public ArrayList<TreeItem> getMainCategories()
 	{
 		ArrayList<TreeItem> mainCategories = new ArrayList<TreeItem>();
@@ -54,7 +54,7 @@ public class CategoriesHelper
 		return mainCategories;
 	}
 
-	// Diese Methode erstellt die Unterkategorie Uni
+	// This method creates the child category Uni
 	private ArrayList<TreeItem> getUni()
 	{
 		ArrayList<TreeItem> uni = new ArrayList<TreeItem>();
@@ -76,7 +76,7 @@ public class CategoriesHelper
 		return uni;
 	}
 
-	// Diese Methode erstellt die Unterkategorie Freizeit
+	// This method creates the child category Freizeit
 	private ArrayList<TreeItem> getFreizeit()
 	{
 		ArrayList<TreeItem> freizeit = new ArrayList<TreeItem>();
@@ -90,7 +90,7 @@ public class CategoriesHelper
 		return freizeit;
 	}
 
-	// Diese Methode erstellt die Unterkategorie Sonstiges
+	// This method creates the child category Freizeit
 	private ArrayList<TreeItem> getSonstiges()
 	{
 		ArrayList<TreeItem> sonstiges = new ArrayList<TreeItem>();
@@ -106,7 +106,7 @@ public class CategoriesHelper
 		return sonstiges;
 	}
 
-	// Diese Methode erstellt die Unterkategorien für das Unifach Mathe
+	// This method creates the child category Mathe
 	private ArrayList<TreeItem> getMathe()
 	{
 		ArrayList<TreeItem> mathe = new ArrayList<TreeItem>();
@@ -122,7 +122,7 @@ public class CategoriesHelper
 		return mathe;
 	}
 
-	// Diese Methode erstellt die Unterkategorien für das Unifach Englisch
+	// This method creates the child category Englisch
 	private ArrayList<TreeItem> getEnglisch()
 	{
 		ArrayList<TreeItem> englisch = new ArrayList<TreeItem>();
@@ -138,7 +138,7 @@ public class CategoriesHelper
 		return englisch;
 	}
 
-	// Diese Methode erstellt die Unterkategorien für das Unifach Design
+	// This method creates the child category Design
 	private ArrayList<TreeItem> getDesign()
 	{
 		ArrayList<TreeItem> design = new ArrayList<TreeItem>();
@@ -154,7 +154,7 @@ public class CategoriesHelper
 		return design;
 	}
 
-	// Diese Methode erstellt die Unterkategorien für das Unifach Informatik
+	// This method creates the child category Informatik
 	private ArrayList<TreeItem> getInformatik()
 	{
 		ArrayList<TreeItem> informatik = new ArrayList<TreeItem>();
