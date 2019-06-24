@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.3" icons="true" automaticImage="PNG" always-add-relationships="true" generalizations="true" 
+  realizations="true" associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="category.Category" project="Timetable" 
+    file="/Timetable/src/category/Category.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="142" width="379" x="2160" y="3194"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="DebugCalendar.DebugCalendarController" project="Timetable" 
+    file="/Timetable/src/DebugCalendar/DebugCalendarController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="826" width="573" x="1134" y="1372"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="event.Event" project="Timetable" file="/Timetable/src/event/Event.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="502" width="452" x="2141" y="3773"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="tests.CreatorTests" project="Timetable" 
+    file="/Timetable/src/tests/CreatorTests.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="340" width="276" x="2904" y="1372"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="category.CategoriesController" project="Timetable" 
+    file="/Timetable/src/category/CategoriesController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="700" width="587" x="1747" y="1372"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="base.Base" project="Timetable" file="/Timetable/src/base/Base.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="195" width="158" x="1920" y="3538"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="note.NoteController" project="Timetable" 
+    file="/Timetable/src/note/NoteController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="303" x="791" y="1372"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="application.Main" project="Timetable" file="/Timetable/src/application/Main.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="124" width="130" x="1915" y="198"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="calendar.CalendarLabel" project="Timetable" 
+    file="/Timetable/src/calendar/CalendarLabel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="124" width="143" x="1215" y="3194"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="note.NoteCreatorController" project="Timetable" 
+    file="/Timetable/src/note/NoteCreatorController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="268" width="541" x="1334" y="398"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="application.MainController" project="Timetable" 
+    file="/Timetable/src/application/MainController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="412" width="442" x="1915" y="398"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="creator.Creator" project="Timetable" file="/Timetable/src/creator/Creator.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="178" width="980" x="2137" y="2238"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="appointment.AppointmentCreatorController" project="Timetable" 
+    file="/Timetable/src/appointment/AppointmentCreatorController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="448" width="753" x="3201" y="398"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="14" language="java" name="note.NoteOverviewControllerInterface" project="Timetable" 
+    file="/Timetable/src/note/NoteOverviewControllerInterface.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="88" width="262" x="263" y="398"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="15" language="java" name="task.CreateTaskController" project="Timetable" 
+    file="/Timetable/src/task/CreateTaskController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="934" width="729" x="565" y="398"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="task.Task" project="Timetable" file="/Timetable/src/task/Task.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="484" width="906" x="1130" y="4641"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="note.Note" project="Timetable" file="/Timetable/src/note/Note.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="484" width="469" x="1130" y="5165"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="search.SearchController" project="Timetable" 
+    file="/Timetable/src/search/SearchController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="160" width="264" x="1057" y="198"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="note.NoteOverview" project="Timetable" 
+    file="/Timetable/src/note/NoteOverview.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="124" width="228" x="647" y="4315"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="appointment.Appointment" project="Timetable" 
+    file="/Timetable/src/appointment/Appointment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="286" width="659" x="2099" y="4315"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="DebugCalendar.CalanderLabel" project="Timetable" 
+    file="/Timetable/src/DebugCalendar/CalanderLabel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="178" width="163" x="1012" y="3194"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="calendar.Calendar" project="Timetable" 
+    file="/Timetable/src/calendar/Calendar.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="304" width="601" x="2579" y="3194"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="category.ToObject" project="Timetable" 
+    file="/Timetable/src/category/ToObject.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="142" width="501" x="1398" y="3194"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="24" language="java" name="category.CategoryInterface" project="Timetable" 
+    file="/Timetable/src/category/CategoryInterface.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="106" width="258" x="2181" y="3538"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="25" language="java" name="tests.TestNote" project="Timetable" file="/Timetable/src/tests/TestNote.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="106" width="130" x="414" y="4641"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="task.AutoSort" project="Timetable" file="/Timetable/src/task/AutoSort.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="142" width="233" x="647" y="2238"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="category.CategoriesHelper" project="Timetable" 
+    file="/Timetable/src/category/CategoriesHelper.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="250" width="501" x="1554" y="2238"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="note.NoteOverviewController" project="Timetable" 
+    file="/Timetable/src/note/NoteOverviewController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="88" width="199" x="263" y="198"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="29" language="java" name="note.NoteOverviewInterface" project="Timetable" 
+    file="/Timetable/src/note/NoteOverviewInterface.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="106" width="228" x="723" y="4641"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="30" language="java" name="calendar.CalendarController" project="Timetable" 
+    file="/Timetable/src/calendar/CalendarController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="916" width="573" x="941" y="2238"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <dependency id="31">    
+    <bendpoint x="3273" y="1372"/>    
+    <bendpoint x="3273" y="2238"/>    
+    <bendpoint x="3273" y="3194"/>    
+    <bendpoint x="3273" y="3538"/>    
+    <bendpoint x="3252" y="3773"/>    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <dependency id="32">    
+    <bendpoint x="595" y="1372"/>    
+    <bendpoint x="595" y="2238"/>    
+    <bendpoint x="595" y="3194"/>    
+    <bendpoint x="595" y="3538"/>    
+    <bendpoint x="750" y="3773"/>    
+    <bendpoint x="905" y="4315"/>    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <dependency id="33">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <association id="34">    
+    <bendpoint x="2469" y="3538"/>    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="35" name="eventList"/>      
+      <multiplicity id="36" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="37">    
+    <bendpoint x="2108" y="4641"/>    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="38" name="pinnedAt"/>      
+      <multiplicity id="39" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="40">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="41">    
+    <bendpoint x="3231" y="2238"/>    
+    <bendpoint x="3231" y="3194"/>    
+    <bendpoint x="3231" y="3538"/>    
+    <bendpoint x="3231" y="3773"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <dependency id="42">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <association id="43">    
+    <bendpoint x="910" y="2238"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="44" name="label"/>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="46">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="47" name="label"/>      
+      <multiplicity id="48" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="49">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <dependency id="50">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <generalization id="51">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <association id="52">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="53" name="noteController"/>      
+      <multiplicity id="54" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="55">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="24"/>  
+  </realization>  
+  <generalization id="56">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="20"/>  
+  </generalization>  
+  <dependency id="57">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <dependency id="58">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <association id="59">    
+    <bendpoint x="1929" y="3194"/>    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="60" name="Base1"/>      
+      <multiplicity id="61" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="62">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <dependency id="63">    
+    <bendpoint x="616" y="1372"/>    
+    <bendpoint x="616" y="2238"/>    
+    <bendpoint x="616" y="3194"/>    
+    <bendpoint x="616" y="3538"/>    
+    <bendpoint x="616" y="3773"/>    
+    <bendpoint x="616" y="4315"/>    
+    <bendpoint x="616" y="4641"/>    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <dependency id="64">    
+    <bendpoint x="1992" y="3194"/>    
+    <bendpoint x="1756" y="3538"/>    
+    <bendpoint x="1521" y="3773"/>    
+    <bendpoint x="1521" y="4315"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <dependency id="65">    
+    <bendpoint x="574" y="1372"/>    
+    <bendpoint x="574" y="2238"/>    
+    <bendpoint x="574" y="3194"/>    
+    <bendpoint x="574" y="3538"/>    
+    <bendpoint x="574" y="3773"/>    
+    <bendpoint x="574" y="4315"/>    
+    <bendpoint x="574" y="4641"/>    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <dependency id="66">    
+    <bendpoint x="981" y="3194"/>    
+    <bendpoint x="1261" y="3538"/>    
+    <bendpoint x="1542" y="3773"/>    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <generalization id="67">    
+    <bendpoint x="2066" y="4641"/>    
+    <bendpoint x="2066" y="4315"/>    
+    <bendpoint x="2066" y="3773"/>    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <dependency id="68">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="69">    
+    <bendpoint x="3252" y="2238"/>    
+    <bendpoint x="3252" y="3194"/>    
+    <bendpoint x="3252" y="3538"/>    
+    <bendpoint x="3273" y="3773"/>    
+    <bendpoint x="3273" y="4315"/>    
+    <bendpoint x="3273" y="4641"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <dependency id="70">    
+    <bendpoint x="2106" y="2238"/>    
+    <bendpoint x="1971" y="3194"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <association id="71">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="72" name="toObject"/>      
+      <multiplicity id="73" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="74">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="75">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <association id="76">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="77" name="categoriesController"/>      
+      <multiplicity id="78" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="79">    
+    <bendpoint x="2129" y="3538"/>    
+    <bendpoint x="2087" y="3773"/>    
+    <bendpoint x="2045" y="4315"/>    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <dependency id="80">    
+    <bendpoint x="1950" y="3194"/>    
+    <bendpoint x="1666" y="3538"/>    
+    <bendpoint x="1382" y="3773"/>    
+    <bendpoint x="1099" y="4315"/>    
+    <bendpoint x="1099" y="4641"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <dependency id="81">    
+    <bendpoint x="2364" y="1372"/>    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <association id="82">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="83" name="debugCalendarController"/>      
+      <multiplicity id="84" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="85">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="86">    
+    <bendpoint x="3189" y="2238"/>    
+    <bendpoint x="3210" y="3194"/>    
+    <bendpoint x="3210" y="3538"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="87">    
+    <bendpoint x="2129" y="3194"/>    
+    <bendpoint x="2150" y="3538"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="88">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <generalization id="89">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <association id="90">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="91" name="helper"/>      
+      <multiplicity id="92" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="93">    
+    <bendpoint x="3168" y="2238"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="94">    
+    <bendpoint x="981" y="4641"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <dependency id="95">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="21"/>  
+  </dependency>  
+  <association id="96">    
+    <bendpoint x="2085" y="2238"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="97" name="category"/>      
+      <multiplicity id="98" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="99">    
+    <bendpoint x="3147" y="2238"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <realization id="100">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="29"/>  
+  </realization>  
+  <dependency id="101">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="102">    
+    <bendpoint x="3210" y="1372"/>    
+    <bendpoint x="3210" y="2238"/>    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <generalization id="103">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <association id="104">    
+    <bendpoint x="2087" y="4641"/>    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="105" name="notesLink"/>      
+      <multiplicity id="106" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="107">    
+    <bendpoint x="2108" y="3194"/>    
+    <bendpoint x="2108" y="3538"/>    
+    <bendpoint x="2108" y="3773"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <dependency id="108">    
+    <bendpoint x="2038" y="3194"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="109">    
+    <bendpoint x="960" y="3194"/>    
+    <bendpoint x="1014" y="3538"/>    
+    <bendpoint x="1067" y="3773"/>    
+    <bendpoint x="1120" y="4315"/>    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <association id="110">    
+    <bendpoint x="2623" y="3538"/>    
+    <bendpoint x="2623" y="3773"/>    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="111" name="calendarList"/>      
+      <multiplicity id="112" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="113">    
+    <bendpoint x="3294" y="1372"/>    
+    <bendpoint x="3294" y="2238"/>    
+    <bendpoint x="3294" y="3194"/>    
+    <bendpoint x="3294" y="3538"/>    
+    <bendpoint x="3294" y="3773"/>    
+    <bendpoint x="3294" y="4315"/>    
+    <bendpoint x="3294" y="4641"/>    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
