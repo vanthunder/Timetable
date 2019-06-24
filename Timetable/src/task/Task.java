@@ -13,23 +13,15 @@ public class Task extends Appointment implements Comparable {
 	private boolean autoSortOnOff;
 	private int duration;
 	private boolean done;
-	private int feasibleTimeStart;
-	private int feasibleTimeEnd;
 	private LocalDateTime periodStart;
 	private LocalDateTime periodEnd;;
 	private int autoSortID;
 
-	public Task(String title, String filepath, LocalDateTime startpoint, LocalDateTime endpoint,
-			LocalDateTime periodStart, LocalDateTime periodEnd, boolean allDay, boolean regularlyOnOff,
+	public Task(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay, boolean regularlyOnOff,
 			int regularlyType, int regularlyID, String description, int notesPinned, ArrayList<Note> notesLink,
-			boolean floating, boolean autoSortOnOff, int duration, boolean done) {
-
-		super(title, startpoint, periodEnd, allDay, regularlyOnOff, regularlyType, regularlyID, description,
-				notesPinned, notesLink, floating);
-
-		this.autoSortOnOff = autoSortOnOff;
-		this.duration = duration;
-		this.done = done;
+			boolean floating, boolean autoSortOnOff, int duration) {
+		super(title, startpoint, endpoint, allDay, regularlyOnOff, regularlyType, regularlyID, description, notesPinned,
+				notesLink, floating);
 	}
 
 	public LocalDateTime getPeriodEnd() {
@@ -129,8 +121,7 @@ public class Task extends Appointment implements Comparable {
 				+ getRegularlyType() + ", getRegularlyID()=" + getRegularlyID() + ", getDescription()="
 				+ getDescription() + ", getNotesPinned()=" + getNotesPinned() + ", getNotesLink()=" + getNotesLink()
 				+ ", isFloating()=" + isFloating() + ", getTitle()=" + getTitle() + ", getClass()=" + getClass()
-				+ ", autoSortOnOff=" + autoSortOnOff + ", duration=" + duration + ", done=" + done
-				+ ", feasibleTimeStart=" + feasibleTimeStart + ", feasibleTimeEnd=" + feasibleTimeEnd + ", periodStart="
+				+ ", autoSortOnOff=" + autoSortOnOff + ", duration=" + duration + ", done=" + done + ", periodStart="
 				+ periodStart + ", periodEnd=" + periodEnd + "autoSortID=" + autoSortID + "]";
 	}
 

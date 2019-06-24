@@ -1,6 +1,7 @@
 package task;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -24,13 +25,15 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.input.MouseDragEvent;
-
+import note.Note;
+import task.AutoSort;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.ChoiceBox;
 
 public class CreateTaskController implements Initializable {
-
+	Task newTask;
 	@FXML
 	private ResourceBundle resources;
 	@FXML
@@ -71,6 +74,23 @@ public class CreateTaskController implements Initializable {
 	private Button updateStartButton;
 	@FXML
 	private Button updateEndButton;
+	@FXML
+	private DatePicker pickPeriodStart;
+
+	@FXML
+	private Spinner<Integer> periodStartHour;
+
+	@FXML
+	private Spinner<Integer> periodStartMinute;
+
+	@FXML
+	private DatePicker pickPeriodEnd;
+
+	@FXML
+	private Spinner<Integer> periodEndHour;
+
+	@FXML
+	private Spinner<Integer> periodEndMinute;
 
 	@FXML
 	private ChoiceBox<TreeItem<String>> categoryChooser = new ChoiceBox<>();
@@ -81,6 +101,10 @@ public class CreateTaskController implements Initializable {
 	private static final int INIT_VALUE_START_MINUTES = 0;
 	private static final int INIT_VALUE_END_HOURS = 20;
 	private static final int INIT_VALUE_END_MINUTES = 0;
+	private static final int INIT_VALUE_PERIOD_START_HOURS = 8;
+	private static final int INIT_VALUE_PERIOD_START_MINUTES = 0;
+	private static final int INIT_VALUE_PERIOD_END_HOURS = 20;
+	private static final int INIT_VALUE_PERIOD_END_MINUTES = 0;
 	private static int INIT_SLIDER_DURATION;
 
 	boolean regularlyOnOff;
@@ -96,6 +120,14 @@ public class CreateTaskController implements Initializable {
 	SpinnerValueFactory<Integer> dateFactoryStartMinutes = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0);
 	SpinnerValueFactory<Integer> dateFactoryEndHours = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 0);
 	SpinnerValueFactory<Integer> dateFactoryEndMinutes = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0);
+	SpinnerValueFactory<Integer> dateFactoryperiodStartHours = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23,
+			0);
+	SpinnerValueFactory<Integer> dateFactoryperiodStartMinutes = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,
+			59, 0);
+	SpinnerValueFactory<Integer> dateFactoryperiodEndHours = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23,
+			0);
+	SpinnerValueFactory<Integer> dateFactoryperiodEndMinutes = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59,
+			0);
 
 	// Event Listener on TextField[#hoursField].onAction
 	@FXML
@@ -140,65 +172,15 @@ public class CreateTaskController implements Initializable {
 
 	@FXML
 	public void autosortSwitch(ActionEvent event) {
-		autoSort = this.regularOnOff.isSelected();
+		autoSort = this.autoSortOnOff.isSelected();
 	}
 
 	// Event Listener on Button[#saveButton].onAction
 	@FXML
 	public void saveTask(ActionEvent event) {
-		String titleText = this.title.getText();
-		String filepath = null;
-		int duration = INIT_SLIDER_DURATION;
 
-		LocalDate startDate = this.pickStart.getValue();
-		LocalDate endDate = this.pickEnd.getValue();
-
-		startTime.withHour(new Integer(startHour.getValueFactory().getValue()));
-		startTime.withMinute(new Integer(startMinute.getValueFactory().getValue()));
-
-		endTime.withHour(new Integer(endHour.getValueFactory().getValue()));
-		endTime.withMinute(new Integer(endMinute.getValueFactory().getValue()));
-
-		LocalDateTime startpoint = startTime.atDate(startDate);
-		LocalDateTime endpoint = endTime.atDate(endDate);
-
-		int regularType;
-		if (this.choiceRegular.getSelectionModel().getSelectedItem() == "taeglich") {
-			regularType = 0;
-		} else if (this.choiceRegular.getSelectionModel().getSelectedItem() == "woechentlich") {
-			regularType = 1;
-		} else if (this.choiceRegular.getSelectionModel().getSelectedItem() == "monatlich") {
-			regularType = 2;
-		} else {
-			regularType = 3;
-		}
-
-		String descriptionText = this.description.getText();
-		int notesPinned = 0;
-		ArrayList<note.Note> notesLink = null;
-		boolean done = false;
-		LocalDateTime periodStart = null;
-		LocalDateTime periodEnd = null;
-		boolean allDay = false;
-		boolean alarmOnOff = false;
-		LocalDateTime alarmTime = null;
-		int regularlyID = 0;
-		boolean floating = false;
-		Task newTask = new Task(titleText, filepath, startpoint, endpoint, periodStart, periodEnd, allDay,
-				regularlyOnOff, regularType, regularlyID, descriptionText, notesPinned, notesLink, floating, autoSort,
-				duration, done);
-
-		if (!autoSort) {
-
-//					titleText, filepath, startpoint, endpoint, allDay, regularlyOnOff, regularType,
-//					regularlyID, descriptionText, alarmOnOff, alarmTime, notesPinned, notesLink, floating, autoSort,
-//					duration, done
-		} else {
-
-		}
-
-		// This method saves the current Task and it's title as a category if a category
-		// is choosed in the choice box.
+//		 This method saves the current Task and it's title as a category if a category
+//		 is choosed in the choice box.
 		if (!categoryChooser.getSelectionModel().getSelectedItem().equals(null))
 
 		{
@@ -212,15 +194,23 @@ public class CreateTaskController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
-		this.startHour.setValueFactory(dateFactoryStartHours);
-		this.endHour.setValueFactory(dateFactoryEndHours);
-		this.startMinute.setValueFactory(dateFactoryStartMinutes);
-		this.endMinute.setValueFactory(dateFactoryEndMinutes);
+		startHour.setValueFactory(dateFactoryStartHours);
+		endHour.setValueFactory(dateFactoryEndHours);
+		startMinute.setValueFactory(dateFactoryStartMinutes);
+		endMinute.setValueFactory(dateFactoryEndMinutes);
+		periodStartHour.setValueFactory(dateFactoryperiodStartHours);
+		periodStartMinute.setValueFactory(dateFactoryperiodStartMinutes);
+		periodEndHour.setValueFactory(dateFactoryperiodEndHours);
+		periodEndMinute.setValueFactory(dateFactoryperiodEndMinutes);
 
 		dateFactoryStartHours.setValue(INIT_VALUE_START_HOURS);
 		dateFactoryStartHours.setValue(INIT_VALUE_END_HOURS);
 		dateFactoryStartMinutes.setValue(INIT_VALUE_START_MINUTES);
 		dateFactoryStartMinutes.setValue(INIT_VALUE_END_MINUTES);
+		dateFactoryperiodStartHours.setValue(INIT_VALUE_PERIOD_START_HOURS);
+		dateFactoryperiodStartMinutes.setValue(INIT_VALUE_PERIOD_START_MINUTES);
+		dateFactoryperiodEndHours.setValue(INIT_VALUE_PERIOD_END_HOURS);
+		dateFactoryperiodEndMinutes.setValue(INIT_VALUE_PERIOD_END_MINUTES);
 
 		choiceRegular.setVisible(false);
 		regularOnOff.setSelected(false);
@@ -247,18 +237,48 @@ public class CreateTaskController implements Initializable {
 		hoursField.textProperty().bindBidirectional(durationHours.valueProperty(), NumberFormat.getNumberInstance());
 		minutesField.textProperty().bindBidirectional(durationMinutes.valueProperty(),
 				NumberFormat.getNumberInstance());
+
 		autoSortOnOff.selectedProperty().bindBidirectional(startHour.disableProperty());
 		autoSortOnOff.selectedProperty().bindBidirectional(startMinute.disableProperty());
 		autoSortOnOff.selectedProperty().bindBidirectional(endHour.disableProperty());
 		autoSortOnOff.selectedProperty().bindBidirectional(endMinute.disableProperty());
 		autoSortOnOff.selectedProperty().bindBidirectional(pickStart.disableProperty());
 		autoSortOnOff.selectedProperty().bindBidirectional(pickEnd.disableProperty());
-		
+
 		autoSortOnOff.setSelected(true);
+
+		int regularType = 3;
+		if (this.choiceRegular.getSelectionModel().getSelectedItem() == "taeglich") {
+			regularType = 0;
+		} else if (this.choiceRegular.getSelectionModel().getSelectedItem() == "woechentlich") {
+			regularType = 1;
+		} else if (this.choiceRegular.getSelectionModel().getSelectedItem() == "monatlich") {
+			regularType = 2;
+		}
 
 		// Inserts the Categories to the choice box.
 		for (int i = 0; i < CategoriesController.getMainCategories().size(); i++) {
 			categoryChooser.getItems().addAll(CategoriesController.getMainCategories().get(i));
+
+		}
+		if (saveButton.isPressed()) {
+
+			// set startPoint
+			LocalTime startTime = LocalTime.of(startHour.getValueFactory().getValue(),
+					startMinute.getValueFactory().getValue());
+			LocalDate startDate = pickStart.getValue();
+			LocalDateTime startpoint = startDate.atTime(startTime);
+
+			// set endpoint
+			LocalTime endTime = LocalTime.of(endHour.getValueFactory().getValue(),
+					endMinute.getValueFactory().getValue());
+			endTime.withHour(endHour.getValueFactory().getValue());
+
+			Task thisTask = new Task(title.getText(), startpoint, endpoint, floating, floating, duration, duration, null, duration, notesLinks, floating, floating, duration);
+			if (!autoSort) {
+
+			}
 		}
 	}
 }
+//			Task.WriteObjectToFile(newTask);

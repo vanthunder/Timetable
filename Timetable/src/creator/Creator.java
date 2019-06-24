@@ -55,8 +55,6 @@ public class Creator implements Serializable {
 
 		// newAppointment is only added to calendar if floating is false
 
-		
-
 		if (regularlyOnOff) {
 
 			newEvent.setRegularlyID(getRegularlyID());
@@ -100,7 +98,7 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempEventList2.add(copy);
-						
+
 						// has to be transferred to category!!!
 					}
 				}
@@ -120,7 +118,7 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempEventList2.add(copy);
-						
+
 						// has to be transferred to category!!!
 					}
 				}
@@ -139,7 +137,7 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempEventList2.add(copy);
-						
+
 						// has to be transferred to category!!!
 					}
 				}
@@ -169,8 +167,9 @@ public class Creator implements Serializable {
 	 */
 
 	public static String createAppointment(String title, LocalDateTime startpoint, LocalDateTime endpoint,
-			boolean allDay, boolean regularlyOnOff, int regularlyType, int regularlyAmount, String description, int notesPinned, ArrayList<Note> notesLink, boolean floating,
-			Category chosenCategory) throws CloneNotSupportedException {
+			boolean allDay, boolean regularlyOnOff, int regularlyType, int regularlyAmount, String description,
+			int notesPinned, ArrayList<Note> notesLink, boolean floating, Category chosenCategory)
+			throws CloneNotSupportedException {
 
 		if (allDay) {
 			startpoint = startpoint.withHour(0).withMinute(0);
@@ -222,7 +221,7 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
-						
+
 						// has to be transferred to category!!!
 					}
 				}
@@ -242,7 +241,7 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
-						
+
 						// has to be transferred to category!!!
 					}
 				}
@@ -262,7 +261,7 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
-						
+
 						// has to be transferred to category!!!
 					}
 				}
@@ -281,7 +280,7 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
-						
+
 						// has to be transferred to category!!!
 					}
 				}
@@ -300,11 +299,10 @@ public class Creator implements Serializable {
 
 	}
 
-	public static String createTask(String title, String filepath, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay,
-			boolean regularlyOnOff, int regularlyType, int regularlyID, String description, boolean alarmOnOff,
-			LocalDateTime alarmTime, int notesPinned, ArrayList<Note> notesLink, boolean floating,
-			boolean autoSortOnOff, int duration, boolean done)
-			throws CloneNotSupportedException {
+	public static String createTask(String title, String filepath, LocalDateTime startpoint, LocalDateTime endpoint,
+			boolean allDay, boolean regularlyOnOff, int regularlyType, int regularlyID, String description,
+			int notesPinned, ArrayList<Note> notesLink, boolean floating, boolean autoSortOnOff, int duration,
+			boolean done) throws CloneNotSupportedException {
 
 		floating = false;
 		if (startpoint == endpoint) {
@@ -312,9 +310,8 @@ public class Creator implements Serializable {
 
 		}
 		int regularlyAmount = 0;
-		Task newTask = new Task(title, filepath, startpoint, endpoint, allDay, regularlyOnOff, regularlyType,
-				regularlyAmount, description, alarmOnOff, alarmTime, notesPinned, notesLink, floating, done, duration,
-				done);
+		Task newTask = new Task(title, startpoint, endpoint, allDay, regularlyOnOff, regularlyType, regularlyID,
+				description, notesPinned, notesLink, floating, autoSortOnOff, duration);
 
 		ArrayList<Appointment> tempCalendarList = Calendar.getCalendarList();
 		tempCalendarList.add(newTask);
@@ -326,7 +323,6 @@ public class Creator implements Serializable {
 			HashMap<Integer, ArrayList<Base>> tempRegularlyList = Calendar.getRegularlyList();
 			ArrayList<Base> regularlyInnerList = new ArrayList<Base>();
 			ArrayList<Appointment> tempCalendarList2 = Calendar.getCalendarList();
-
 
 			// täglich
 			if (newTask.getRegularlyType() == 0) {
