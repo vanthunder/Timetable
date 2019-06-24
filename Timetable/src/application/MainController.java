@@ -1,6 +1,11 @@
 package application;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+
 import DebugCalendar.DebugCalendarController;
 import category.CategoriesController;
 import javafx.event.ActionEvent;
@@ -17,10 +22,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import note.Note;
 import note.NoteController;
+import search.SearchController;
 
 
 public class MainController extends Main
@@ -138,9 +146,21 @@ public class MainController extends Main
     
     public void searchButtonClicked (ActionEvent event)
     {
+    	String searchThis = Search.getText();
+    	
     	Tab tab = new Tab("Suchergebnisse");
     	tabs.getTabs().add(tab);
     	tabs.getSelectionModel().select(tab);
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/searchResults.fxml"));
+    	try {
+    		AnchorPane root = (AnchorPane) fxmlLoader.load();
+        	tab.setContent(root);
+        	SearchController searchController = (SearchController) fxmlLoader.getController();
+        	searchController.setQuery(searchThis);
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	
 
     }
     
@@ -154,7 +174,25 @@ public class MainController extends Main
     }
 	public void initialize() 
     {   
-		
-    }
+		File folder = new File("notes");
+		File[] listOfFiles = folder.listFiles();
 
+		for (int i = 0; i < listOfFiles.length; i++) {
+		  if (listOfFiles[i].isFile()) 
+		  {
+			  InputStream fis = null;
+
+				try
+				{
+				  fis = new FileInputStream("notes/"+ listOfFiles[i].getName() );
+				  ObjectInputStream o = new ObjectInputStream( fis );
+				  Note note = (Note) o.readObject();
+				  System.out.println( note );
+				}
+				catch ( IOException e ) { System.err.println( e ); }
+				catch ( ClassNotFoundException e ) { System.err.println( e ); }
+				finally { try { fis.close(); } catch ( Exception e ) { } }
+    }
+}
+}
 }

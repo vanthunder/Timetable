@@ -66,7 +66,10 @@ public class NoteCreatorController implements Initializable
 	//This method is for the [saveNoteButton]
 	public void saveNoteButtonPress(ActionEvent event)
 	{   
-		Note serObj = new Note("Stupid Note", 0, null, null, null, null, "Some stupid text", null, "Aber");
+		String title = noteTitle.getText();
+		Image image = currentImage.getImage();
+		
+		Note serObj = new Note(title, 0, null, null, null, null, "Some stupid text", null, "Aber");
 		
 		Note.WriteObjectToFile(serObj);
 		

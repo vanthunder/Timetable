@@ -16,8 +16,10 @@ import task.Task;
 import appointment.Appointment;
 import javafx.scene.image.Image;
 
-public class Note extends Base implements Serializable {
-	
+public class Note extends Base {
+
+	private static final long serialVersionUID = -8361123580583543165L;
+	private String title;
 	private int pinned;
 	private ArrayList <Appointment> pinnedAt;
 	private ArrayList photoList;
@@ -104,24 +106,27 @@ public class Note extends Base implements Serializable {
 	public static void WriteObjectToFile(Note serObj) {
 		
 		String tmpTitle = serObj.getTitle();
-		int counter=0;
-		boolean created = false;
-		
-		do {
-			
-		String filepath = "Note " + tmpTitle + counter + ".txt";
+	
+			String filepath = "notes/Note " + tmpTitle + ".txt";
 
-		File tmpFilepath = new File(filepath);
-		//GsonBuilder gbuild = new GsonBuilder();
-		//Gson gson = gbuild.create();
+			File tmpFilepath = new File(filepath);
+			tmpFilepath.getParentFile().mkdirs();
 		
+			boolean exists = tmpFilepath.exists();
 		
-		boolean exists = tmpFilepath.exists();
-		
-		if(exists) {
-			counter++;
-			continue;
-		}
+			if(exists) {
+				File file = new File(filepath); 
+        
+				if(file.delete()) 
+			{ 
+				System.out.println("Erfolgreich aktualisiert"); 
+			} 
+			else
+			{ 
+				System.out.println("Fehler beim aktualisieren"); 
+			
+			}
+			}
 	
 		serObj.setFilepath(filepath);
 		
@@ -138,10 +143,7 @@ public class Note extends Base implements Serializable {
 	        }
 		
 		
-		created = true;
 		
-			
-		} while (!created);
 				
 	}	
 	

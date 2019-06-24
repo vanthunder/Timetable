@@ -16,4 +16,9 @@ public class SearchController {
 	
 	@FXML
 	VBox eventResults = new VBox();
+
+	public void setQuery(String searchThis) {
+		// TODO Auto-generated method stub
+		System.out.println(searchThis);
+	}
 }
