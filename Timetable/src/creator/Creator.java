@@ -437,11 +437,12 @@ public class Creator implements Serializable {
 			ArrayList gifList, ArrayList soundList, String textbox, ArrayList videoList, String filepath,
 			Category chosenCategory) {
 
-		Note newNote = new Note(title, pinned, pinnedAt, photoList, gifList, soundList, textbox, videoList, filepath);
+		Note newNote = new Note("Stupid Note", 0, pinnedAt, photoList, gifList, soundList, "Some stupid text", videoList, "Aber");
 
 		Note.WriteObjectToFile(newNote);
 
 		return newNote.toString();
+
 
 	}
 

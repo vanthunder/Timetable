@@ -1,9 +1,10 @@
 package base;
 
 import java.io.File;
+import java.io.Serializable;
 import java.nio.file.Files;
 
-public abstract class Base {
+public abstract class Base implements Serializable {
 	private String title;
 	private String filepath;
 	
@@ -14,6 +15,8 @@ public abstract class Base {
 	public void setFilepath(String filepath) {
 		this.filepath = filepath;
 	}
+	
+	public Base() {}
 
 	public Base(String title){
 		this.title = title;
