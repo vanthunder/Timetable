@@ -4,9 +4,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
+import static org.junit.jupiter.api.Assumptions.assumingThat;
+
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import javax.sql.rowset.CachedRowSet;
 
 import javafx.event.ActionEvent;
 
@@ -19,15 +24,25 @@ public class NotesViewController implements Initializable
 	@FXML
 	private GridPane NoteContent;
 	@FXML
+	private static GridPane Cache = new GridPane();
+	@FXML
 	private Button backButton;
 	@FXML
 	notesLabel Label = new notesLabel();
 	@FXML
 	private Button forwardButton;
 	@FXML
-	static ArrayList<Label> notesabels = new ArrayList<>();
-	static ArrayList<String> notes = new ArrayList<String>();
+	static ArrayList<Label> notesLabels = new ArrayList<>(100);
+	static ArrayList<String> notes = new ArrayList<String>(100);
 	
+	public static ArrayList<String> getNotes()
+	{
+		return notes;
+	}
+	public static void setNotes(ArrayList<String> notes)
+	{
+		NotesViewController.notes = notes;
+	}
 	// Event Listener on Button[#backButton].onAction
 	@FXML
 	public void backButtonPress(ActionEvent event) 
@@ -43,17 +58,39 @@ public class NotesViewController implements Initializable
 	@FXML
 	public void creatNotesView()
 	{
-		for (int i = 0; i < notes.size(); i++)
+		for (int i = 0; i < 10; i++)
 		{
 			Label notelabel = new Label();
+			if(i < notes.size())
+			{
 			notelabel.setText(notes.get(i));
+			notesLabels.add(notelabel);
+			}
 			NoteContent.add(notelabel, 0, i);
+			notesLabels.add(notelabel);
 		}	
+		
+	}
+	public static void update(String note)
+	{
+	   Label noteLabel = new Label();
+	   noteLabel.setText(note);
+	   notesLabels.add(noteLabel);
+	   for(int i = 0; i < notesLabels.size(); i++)
+	   {
+		   if(notesLabels.get(i).getText().equals(""))
+		   {
+			   notesLabels.get(i).setText(note);
+			   break;
+		   } 
+	   }
+	   
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
 		// TODO Auto-generated method stub
+		//creatNotesView();
 		notes.add("Note: Das ist eine Test Notiz");
 		notes.add("Note: Das ist eine zweite Test Notiz");
 		notes.add("Note: Das ist eine Test Notiz");
@@ -61,5 +98,7 @@ public class NotesViewController implements Initializable
 		notes.add("Note: Das ist eine Test Notiz");
 		notes.add("Note: Das ist eine zweite Test Notiz");
 		creatNotesView();
+		
+		
 	}
 }

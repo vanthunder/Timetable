@@ -172,13 +172,13 @@ public class AppointmentCreatorController implements Initializable {
 			chooseCategory.getItems().addAll(CategoriesController.getMainCategories().get(i));
 		}
 		for (int i = 0; i < CategoriesController.getMainCategories().size(); i++) {
-			AppoinmentPinNote1.getItems().addAll(NoteOverview.getNotesList().get(i));
+			//AppoinmentPinNote1.getItems().addAll(NoteOverview.getNotesList().get(i));
 		}
 		for (int i = 0; i < CategoriesController.getMainCategories().size(); i++) {
-			AppoinmentPinNote2.getItems().addAll(NoteOverview.getNotesList().get(i));
+			//AppoinmentPinNote2.getItems().addAll(NoteOverview.getNotesList().get(i));
 		}
 		for (int i = 0; i < CategoriesController.getMainCategories().size(); i++) {
-			AppoinmentPinNote3.getItems().addAll(NoteOverview.getNotesList().get(i));
+			//AppoinmentPinNote3.getItems().addAll(NoteOverview.getNotesList().get(i));
 		}
 
 		AppointmentStartTimeHours.setValueFactory(dateFactoryStartHours);

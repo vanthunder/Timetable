@@ -70,7 +70,7 @@ public class NoteCreatorController implements Initializable
 		Image image = currentImage.getImage();
 		
 		Note serObj = new Note(title, 0, null, null, null, null, "Some stupid text", null, "Aber");
-		
+		NotesViewController.update(title);
 		Note.WriteObjectToFile(serObj);
 		
 		//This method saves the current Note and it's title as a category if a category is choosed in the choice box.
