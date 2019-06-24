@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="440.0" prefWidth="352.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="note.NoteCreatorController">
+<BorderPane prefHeight="440.0" prefWidth="352.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="note.NoteCreatorController">
    <center>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -26,7 +26,7 @@
             </HBox>
             <HBox prefHeight="143.0" prefWidth="352.0">
                <children>
-                  <TextField alignment="TOP_LEFT" prefHeight="143.0" prefWidth="352.0" promptText="Not" />
+                  <TextField fx:id="noteDescription" alignment="TOP_LEFT" prefHeight="143.0" prefWidth="352.0" promptText="Not" />
                </children>
             </HBox>
             <HBox fx:id="imageLIst" prefHeight="100.0" prefWidth="200.0">

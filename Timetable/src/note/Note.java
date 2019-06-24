@@ -22,8 +22,7 @@ public class Note extends Base {
 	private String title;
 	private int pinned;
 	private ArrayList <Appointment> pinnedAt;
-	private ArrayList photoList;
-	private ArrayList gifList;
+	private static ArrayList photoList;
 	private ArrayList soundList;
 	private String textbox;
 	private ArrayList videoList;
@@ -44,20 +43,12 @@ public class Note extends Base {
 		this.pinnedAt = pinnedAt;
 	}
 
-	public ArrayList getPhotoList() {
+	public static ArrayList getPhotoList() {
 		return photoList;
 	}
 
 	public void setPhotoList(ArrayList photoList) {
 		this.photoList = photoList;
-	}
-
-	public ArrayList getGifList() {
-		return gifList;
-	}
-
-	public void setGifList(ArrayList gifList) {
-		this.gifList = gifList;
 	}
 
 	public ArrayList getSoundList() {
@@ -84,12 +75,11 @@ public class Note extends Base {
 		this.videoList = videoList;
 	}
 
-	public Note(String title, int pinned, ArrayList pinnedAt, ArrayList photoList, ArrayList gifList, ArrayList soundList, String textbox, ArrayList videoList, String filepath) {
+	public Note(String title, int pinned, ArrayList pinnedAt, ArrayList photoList, ArrayList soundList, String textbox, ArrayList videoList, String filepath) {
 		super(title);
 		this.setPinned(pinned);
 		this.setPinnedAt(pinnedAt);
 		this.setPhotoList(photoList);
-		this.setGifList(gifList);
 		this.setSoundList(soundList);
 		this.setTextbox(textbox);
 		this.setVideoList(videoList);
@@ -99,7 +89,7 @@ public class Note extends Base {
 	/** states all Note attributes in a String*/
 	@Override
 	public String toString(){
-		return new String("title: " + this.getTitle() +" pinned: " + pinned + " pinnedAt: " + pinnedAt + " photoList: " + photoList + " gifList: " + gifList +
+		return new String("title: " + this.getTitle() +" pinned: " + pinned + " pinnedAt: " + pinnedAt + " photoList: " + photoList  +
 				" soundList: " + soundList + " textbox: " + textbox + " videoList: " + videoList + " filepath: " + this.getFilepath());
 	}
 

@@ -2,17 +2,19 @@ package note;
 
 import java.util.ArrayList;
 
-public class NoteOverview implements NoteOverviewInterface {
+import org.junit.experimental.theories.Theories;
 
-	@Override
-	public ArrayList<Note> getNotesList() {
-		// TODO Auto-generated method stub
-		return null;
+public class NoteOverview {
+	private static ArrayList<Note> notesList;
+	
+	
+	public static ArrayList<Note> getNotesList() {
+		return notesList;
 	}
 
-	@Override
-	public void setNotesList(ArrayList<Note> notesList) {
-		// TODO Auto-generated method stub
+	
+	public static void setNotesList(ArrayList<Note> notesList) {
+		NoteOverview.notesList = notesList;
 		
 	}
 
