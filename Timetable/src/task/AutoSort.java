@@ -16,14 +16,6 @@ import calendar.Calendar;
 public class AutoSort {
 	/*
 	 * Rules: 1. no collision allowed:
-	 * 
-	 * do { CalendarList.nextObject(); for (int i = 0; i <=
-	 * MINUTES(tmpEndpoint-tmpStarpoint); i++) { CalenderList.objectToCompare(); if
-	 * (startpoint >= tmpStartpoint + i && tmpEndpoint >=endpoint) { i++; } else{
-	 * return; }
-	 * 
-	 * } }while(ClaendarList.hasNext() == true;)
-	 * 
 	 * 2. only between 8.00 to 20.00 3. duration limit 3 hours 4. 45 minutes break
 	 * after 3 hours
 	 */

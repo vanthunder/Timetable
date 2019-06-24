@@ -37,23 +37,45 @@
 				</HBox>
 				<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="SOMETIMES">
 					<children>
-						<DatePicker fx:id="pickStart" minWidth="100.0" promptText="Anfang" />
+						<DatePicker fx:id="pickStart" minWidth="-Infinity" promptText="Anfang" />
 						<Label alignment="CENTER" contentDisplay="CENTER" minWidth="30.0" text="Start" textAlignment="CENTER" />
 						<Spinner fx:id="startHour" editable="true" minWidth="60.0" />
 						<Label minWidth="3.0" text=":" />
-						<Spinner fx:id="startMinute" editable="true" minWidth="55.0" />
+						<Spinner fx:id="startMinute" editable="true" minWidth="60.0" />
 
 					</children>
 				</HBox>
 				<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="SOMETIMES">
 					<children>
-						<DatePicker fx:id="pickEnd" minWidth="100.0" promptText="Ende" HBox.hgrow="NEVER" />
+						<DatePicker fx:id="pickEnd" minWidth="-Infinity" promptText="Ende" HBox.hgrow="NEVER" />
 						<Label minWidth="30.0" text="Ende" textAlignment="CENTER" />
 						<Spinner fx:id="endHour" editable="true" minWidth="60.0" />
 						<Label minWidth="3.0" text=":" />
-						<Spinner fx:id="endMinute" editable="true" minWidth="55.0" />
+						<Spinner fx:id="endMinute" editable="true" minWidth="60.0" />
 					</children>
 				</HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="SOMETIMES">
+               <children>
+                  <DatePicker fx:id="pickEnd1" minWidth="-Infinity" promptText="frühestens" HBox.hgrow="NEVER" />
+                  <Label minWidth="30.0" text="Start" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Spinner fx:id="endHour1" editable="true" minWidth="60.0" />
+                  <Label minWidth="3.0" text=":" />
+                  <Spinner fx:id="endMinute1" editable="true" minWidth="60.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <DatePicker fx:id="pickEnd11" minWidth="-Infinity" promptText="spätestens" />
+                  <Label minWidth="30.0" text="Start" textAlignment="CENTER" />
+                  <Spinner fx:id="endHour11" editable="true" minWidth="60.0" />
+                  <Label minWidth="3.0" text=":" />
+                  <Spinner fx:id="endMinute11" editable="true" minWidth="60.0" />
+               </children>
+            </HBox>
 				<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="ALWAYS">
 					<children>
 						<VBox alignment="CENTER" minHeight="60.0" minWidth="45.0" HBox.hgrow="NEVER">

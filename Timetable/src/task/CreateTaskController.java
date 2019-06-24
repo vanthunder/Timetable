@@ -17,9 +17,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import category.CategoriesController;
-import category.Category;
-import creator.Creator;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,14 +24,12 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.input.MouseDragEvent;
-import javafx.scene.input.MouseEvent;
-import note.Note;
+
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Labeled;
 import javafx.scene.control.ChoiceBox;
 
-public class CreateTaskController<Note> implements Initializable {
+public class CreateTaskController implements Initializable {
 
 	@FXML
 	private ResourceBundle resources;
@@ -89,7 +84,7 @@ public class CreateTaskController<Note> implements Initializable {
 	private static int INIT_SLIDER_DURATION;
 
 	boolean regularlyOnOff;
-	boolean autoSort;
+	boolean autoSort = true;
 	LocalTime endTime = null;
 	LocalTime startTime = null;
 
@@ -189,20 +184,19 @@ public class CreateTaskController<Note> implements Initializable {
 		LocalDateTime alarmTime = null;
 		int regularlyID = 0;
 		boolean floating = false;
-		Task newTask = new Task(titleText, filepath, startpoint, endpoint, allDay, regularlyOnOff, regularType,
-				regularlyID, descriptionText, alarmOnOff, alarmTime, notesPinned, notesLink, floating, autoSort,
+		Task newTask = new Task(titleText, filepath, startpoint, endpoint, periodStart, periodEnd, allDay,
+				regularlyOnOff, regularType, regularlyID, descriptionText, notesPinned, notesLink, floating, autoSort,
 				duration, done);
 
+		if (!autoSort) {
 
-				if (!autoSort) {
-					
 //					titleText, filepath, startpoint, endpoint, allDay, regularlyOnOff, regularType,
 //					regularlyID, descriptionText, alarmOnOff, alarmTime, notesPinned, notesLink, floating, autoSort,
 //					duration, done
-				}else {
-	
-				}
-			
+		} else {
+
+		}
+
 		// This method saves the current Task and it's title as a category if a category
 		// is choosed in the choice box.
 		if (!categoryChooser.getSelectionModel().getSelectedItem().equals(null))
@@ -214,7 +208,6 @@ public class CreateTaskController<Note> implements Initializable {
 		}
 
 	}
-
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -248,11 +241,20 @@ public class CreateTaskController<Note> implements Initializable {
 		startMinute.getValueFactory().setValue(INIT_VALUE_START_MINUTES);
 		endHour.getValueFactory().setValue((INIT_VALUE_END_HOURS));
 		endMinute.getValueFactory().setValue((INIT_VALUE_END_MINUTES));
+		autoSortOnOff.selectedProperty().set(autoSort);
 
 		regularOnOff.selectedProperty().bindBidirectional(choiceRegular.visibleProperty());
 		hoursField.textProperty().bindBidirectional(durationHours.valueProperty(), NumberFormat.getNumberInstance());
 		minutesField.textProperty().bindBidirectional(durationMinutes.valueProperty(),
 				NumberFormat.getNumberInstance());
+		autoSortOnOff.selectedProperty().bindBidirectional(startHour.disableProperty());
+		autoSortOnOff.selectedProperty().bindBidirectional(startMinute.disableProperty());
+		autoSortOnOff.selectedProperty().bindBidirectional(endHour.disableProperty());
+		autoSortOnOff.selectedProperty().bindBidirectional(endMinute.disableProperty());
+		autoSortOnOff.selectedProperty().bindBidirectional(pickStart.disableProperty());
+		autoSortOnOff.selectedProperty().bindBidirectional(pickEnd.disableProperty());
+
+		autoSortOnOff.setSelected(true);
 
 		// Inserts the Categories to the choice box.
 		for (int i = 0; i < CategoriesController.getMainCategories().size(); i++) {
