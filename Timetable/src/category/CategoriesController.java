@@ -60,6 +60,9 @@ public class CategoriesController<T> implements Initializable
 	Category category = new Category();
 	// Import an icon image for the treeView structure
 	Image icon = new Image(getClass().getResourceAsStream("/images/Folder.png"));
+	Image appointmentIcon = new Image(getClass().getResourceAsStream("/images/Kalender.png"));
+	Image taskIcon = new Image(getClass().getResourceAsStream("/images/AufgabeIcon.png"));
+	Image notesIcon = new Image(getClass().getResourceAsStream("/images/NotizIcon.png"));
 	String text = "";
 	String value;
 	static CategoriesHelper helper = new CategoriesHelper();
@@ -70,8 +73,6 @@ public class CategoriesController<T> implements Initializable
 	// Method to create an treeView
 	public void createTree(String... rootItem)
 	{
-		// category.setContentlist(mainCategories);
-		// mainCategories.addAll(category.getContentlist());
 		System.out.println(mainCategories);
 		root.setExpanded(true);
 		treeView.setCellFactory(TextFieldTreeCell.forTreeView());
@@ -111,11 +112,12 @@ public class CategoriesController<T> implements Initializable
 	{
 		return treeView;
 	}
-	
+
+	// Static Method gets called by different creators like Appointemnt, Note or
+	// Task, to create a category
 	public static void insertCategoryByCreator(TreeItem<String> savePosition, TreeItem<String> newItem)
 	{
 		savePosition.getChildren().addAll(newItem);
-		System.out.println("TEST");
 	}
 
 	// Method for inserting an Item
@@ -145,7 +147,7 @@ public class CategoriesController<T> implements Initializable
 				}
 				if (check == true && !text.equals("Sonstiges") && !text.equals("sonstiges"))
 				{
-					System.out.println("true");
+					
 					TreeItem<String> newCategory = new TreeItem<String>(text, new ImageView(icon));
 					parent.getChildren().add(newCategory);
 					writeMessage("Es wurde eine neue Kategorie mit dem Namen: " + "'"
@@ -156,29 +158,56 @@ public class CategoriesController<T> implements Initializable
 					}
 				} else if (check == true && text.equals("Sonstiges") || text.equals("sonstiges"))
 				{
-					writeMessage(
-							"Du kannst die Kategorie Sonstiges nicht erstellen,\nda schon eine Hauptkategorie Sonstiges vorhanden ist!");
-
-				}
+					writeMessage("Du kannst die Kategorie Sonstiges nicht erstellen,\nda schon eine Hauptkategorie Sonstiges vorhanden ist!");
+                }
 			}
 		}
 	}
 
+	// Resets the current Category to a the default look
 	public void resetButtonPress(ActionEvent event)
 	{
 		TreeItem<String> parent = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
 		if (!(parent == null))
 		{
-			System.out.println("Die Farbe wurde zurückgesetzt!");
-			TreeItem<String> current = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
-			TreeItem<String> reset = new TreeItem<String>("test", new ImageView(icon));
-			current.setGraphic(reset.getGraphic());
-			writeMessage("Die Farbe wurde zurückgesetzt!");
-		} else
-			writeMessage("Bitte wähle eine Kategorie aus um die Farbe zu reseten!");
+			if (!parent.getValue().toString().contains("Termin:") || !parent.getValue().toString().contains("Aufgabe:") || !parent.getValue().toString().contains("Notiz:"))
+			{
+				TreeItem<String> current = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
+				TreeItem<String> reset = new TreeItem<String>("test", new ImageView(icon));
+				current.setGraphic(reset.getGraphic());
+				writeMessage("Die Farbe wurde zurückgesetzt!");
+			}
+			
+			if (parent.getValue().toString().contains("Termin:"))
+			{
+			    TreeItem<String> current = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
+				TreeItem<String> reset = new TreeItem<String>("test", new ImageView(appointmentIcon));
+				current.setGraphic(reset.getGraphic());
+				writeMessage("Die Farbe wurde zurückgesetzt!");
+			}
+			
+			if (parent.getValue().toString().contains("Aufgabe:"))
+			{
+				TreeItem<String> current = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
+				TreeItem<String> reset = new TreeItem<String>("test", new ImageView(taskIcon));
+				current.setGraphic(reset.getGraphic());
+				writeMessage("Die Farbe wurde zurückgesetzt!");
+			}
+			
+			if (parent.getValue().toString().contains("Notiz:"))
+			{
+				TreeItem<String> current = (TreeItem<String>) treeView.getSelectionModel().getSelectedItem();
+				TreeItem<String> reset = new TreeItem<String>("test", new ImageView(notesIcon));
+				current.setGraphic(reset.getGraphic());
+				writeMessage("Die Farbe wurde zurückgesetzt!");
+			}
+		} 
+		else
+		writeMessage("Bitte wähle eine Kategorie aus um die Farbe zu reseten!");
 	}
 
-	// Method for the colorpicker
+	// Changes the color of a selected treeitem to a selected color of the
+	// colorpicker
 	public void colorPick(ActionEvent event)
 	{
 		String hex = "#" + Integer.toHexString(colorPicker.getValue().hashCode());
@@ -188,21 +217,54 @@ public class CategoriesController<T> implements Initializable
 		Label label = new Label();
 		if (parent == null)
 		{
-			System.out.println("TEST");
 			writeMessage("Du musst eine Kategorie auswählen!");
-		} else if (!(parent == null))
+		} 
+		else 
+		if (!(parent == null))
 		{
-			label.setText("  ");
-			label.setTextFill(newColor);
-			parent.setGraphic(label);
-			label.setGraphic(new ImageView(icon));
-			parent.getGraphic().setStyle("-fx-background-color:" + hex + ";");
-			writeMessage(
-					"Eine Farbe wurde für die Kategorie: " + "'" + parent.getValue().toString() + "'" + " ausgewählt!");
+			if (!parent.getValue().toString().contains("Termin:") || !parent.getValue().toString().contains("Aufgabe:") || !parent.getValue().toString().contains("Notiz:"))
+			{
+				label.setText("  ");
+				label.setTextFill(newColor);
+				parent.setGraphic(label);
+				label.setGraphic(new ImageView(icon));
+				parent.getGraphic().setStyle("-fx-background-color:" + hex + ";");
+				writeMessage("Eine Farbe wurde für die Kategorie: " + "'" + parent.getValue().toString() + "'" + " ausgewählt!");
+			}
+			
+			if (parent.getValue().toString().contains("Termin:"))
+			{
+				label.setText("  ");
+				label.setTextFill(newColor);
+				parent.setGraphic(label);
+				label.setGraphic(new ImageView(appointmentIcon));
+				parent.getGraphic().setStyle("-fx-background-color:" + hex + ";");
+				writeMessage("Eine Farbe wurde für die Kategorie: " + "'" + parent.getValue().toString() + "'" + " ausgewählt!");
+			}
+			
+			if (parent.getValue().toString().contains("Aufgabe:"))
+			{
+				label.setText("  ");
+				label.setTextFill(newColor);
+				parent.setGraphic(label);
+				label.setGraphic(new ImageView(taskIcon));
+				parent.getGraphic().setStyle("-fx-background-color:" + hex + ";");
+				writeMessage("Eine Farbe wurde für die Kategorie: " + "'" + parent.getValue().toString() + "'" + " ausgewählt!");
+			}
+			
+			if (parent.getValue().toString().contains("Notiz:"))
+			{
+				label.setText("  ");
+				label.setTextFill(newColor);
+				parent.setGraphic(label);
+				label.setGraphic(new ImageView(notesIcon));
+				parent.getGraphic().setStyle("-fx-background-color:" + hex + ";");
+				writeMessage("Eine Farbe wurde für die Kategorie: " + "'" + parent.getValue().toString() + "'" + " ausgewählt!");
+			}
 		}
 	}
 
-	// Helper Methods for the Event Handlers
+	// Deletes a selected treeItem
 	public void eraseCategoryPress(ActionEvent event)
 	{
 		TreeItem<T> currentCategory = (TreeItem<T>) treeView.getSelectionModel().getSelectedItem();
@@ -222,9 +284,7 @@ public class CategoriesController<T> implements Initializable
 				if (currentCategory.getValue().equals("Sonstiges"))
 				{
 					writeMessage("Du kannst die Kategorie " + currentCategory.getValue() + " nicht löschen!");
-				} 
-				else 
-				if (!currentCategory.getValue().equals("Sonstiges"))
+				} else if (!currentCategory.getValue().equals("Sonstiges"))
 				{
 					parent.getChildren().remove(currentCategory);
 					writeMessage("Die Kategorie " + currentCategory.getValue() + " wurde gelöscht!");
@@ -241,12 +301,13 @@ public class CategoriesController<T> implements Initializable
 		}
 	}
 
+	// Moves a selected treeitem up
 	public void UpButtonPress(ActionEvent event)
 	{
 		TreeItem<T> parent1 = (TreeItem<T>) treeView.getSelectionModel().getSelectedItem();
 		if (!(parent1 == null))
 		{
-			System.out.println("Down");
+			
 			if (parent1 != null)
 			{
 				TreeItem item = parent1;
@@ -261,17 +322,16 @@ public class CategoriesController<T> implements Initializable
 				treeView.getSelectionModel().select(item);
 			}
 
-			System.out.println(parent1.toString());
 		} else
 			writeMessage("Bitte wähle eine Kategorie aus,\num sie nach oben zu verschieben!");
 	}
 
+	// Moves a selected treeitem down
 	public void DownButtonPress(ActionEvent event)
 	{
 		TreeItem<T> parent1 = (TreeItem<T>) treeView.getSelectionModel().getSelectedItem();
 		if (!(parent1 == null))
 		{
-			System.out.println("Down");
 			if (parent1 != null)
 			{
 				TreeItem item = parent1;
@@ -286,21 +346,22 @@ public class CategoriesController<T> implements Initializable
 				treeView.getSelectionModel().select(item);
 			}
 
-			System.out.println(parent1.toString());
+			
 		} else
 			writeMessage("Bitte wähle eine Kategorie aus,\num sie nach unten zu verschieben!");
 	}
 
+	// Event handler for start editing
 	private void editStart(TreeView.EditEvent event)
 	{
 		writeMessage("Started editing: " + event.getTreeItem());
 	}
 
+	// Event handler for commiting
 	private void editCommit(TreeView.EditEvent event)
 	{
-		writeMessage( event.getTreeItem() + " changed." + " old = " + event.getOldValue() + ", new = " + event.getNewValue());
-		System.out.println(event.getOldValue() + " " + event.getNewValue());
-		if(event.getOldValue().toString().contains("Termin:"))
+		writeMessage(event.getTreeItem() + " changed." + " old = " + event.getOldValue() + ", new = " + event.getNewValue());
+		if (event.getOldValue().toString().contains("Termin:"))
 		{
 			String cache = new String();
 			cache = event.getOldValue().toString();
@@ -309,14 +370,14 @@ public class CategoriesController<T> implements Initializable
 			String nextSubCache = nextCache.replace("Termin: ", "");
 			CalendarController.editAppointment(subCache, nextSubCache);
 			String newValue = event.getNewValue().toString();
-			 if(!event.getNewValue().toString().contains("Termin: "))
-			 {
-				 writeMessage("Du darfst 'Termin: ' nicht löschen!"); 
-			 } 
-		}	
-		
-	}
+			if (!event.getNewValue().toString().contains("Termin: "))
+			{
+				writeMessage("Du darfst 'Termin: ' nicht löschen!");
+			}
+		}
+     }
 
+	// Event handler for cancelling
 	private void editCancel(TreeView.EditEvent e)
 	{
 		writeMessage("Cancelled editing: " + e.getTreeItem());
@@ -332,7 +393,6 @@ public class CategoriesController<T> implements Initializable
 		wait.setOnFinished((e) ->
 		{
 			this.logLabel.setText("");
-			// wait.playFromStart();
 		});
 		wait.play();
 	}

@@ -93,7 +93,7 @@ public class CreateTaskController<Note> implements Initializable {
 	LocalTime endTime = null;
 	LocalTime startTime = null;
 
-	Image icon = new Image(getClass().getResourceAsStream("/images/Aufgabe.png"));
+	Image icon = new Image(getClass().getResourceAsStream("/images/AufgabeIcon.png"));
 
 	ObservableList<String> regularlyType = FXCollections.observableArrayList("taeglich", "woechentlich", "monatlich");
 
