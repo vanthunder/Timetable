@@ -44,13 +44,11 @@ import javafx.scene.control.ChoiceBox;
 public class AppointmentCreatorController implements Initializable {
 	ObservableList<String> regularlyTypeList = FXCollections.observableArrayList("täglich", "wöchentlich", "monatlich",
 			"jährlich");
-<<<<<<< Upstream, based on origin/master
-=======
 
 	//ObservableList<Note> notesChoiceList = FXCollections.observableArrayList();
 	//ArrayList<Note> tempNotesList=NoteOverview.getNotesList();
 	
->>>>>>> a9faf75 Fixed some Creator Tests & further work on AppointmentCreatorController
+
 	SpinnerValueFactory<Integer> dateFactoryStartHours = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 0);
 	SpinnerValueFactory<Integer> dateFactoryStartMinutes = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0);
 	SpinnerValueFactory<Integer> dateFactoryEndHours = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 0);
@@ -178,18 +176,10 @@ public class AppointmentCreatorController implements Initializable {
 		for (int i = 0; i < CategoriesController.getMainCategories().size(); i++) {
 			chooseCategory.getItems().addAll(CategoriesController.getMainCategories().get(i));
 		}
-<<<<<<< Upstream, based on origin/master
-		for (int i = 0; i < CategoriesController.getMainCategories().size(); i++) {
-			//AppoinmentPinNote1.getItems().addAll(NoteOverview.getNotesList().get(i));
-		}
-		for (int i = 0; i < CategoriesController.getMainCategories().size(); i++) {
-			//AppoinmentPinNote2.getItems().addAll(NoteOverview.getNotesList().get(i));
-		}
-		for (int i = 0; i < CategoriesController.getMainCategories().size(); i++) {
-			//AppoinmentPinNote3.getItems().addAll(NoteOverview.getNotesList().get(i));
-		}
 
-=======
+		
+
+
 		/*for(int i=0; i<tempNotesList.size(); i++){
 			notesChoiceList.add(tempNotesList.get(i));
 		}
@@ -198,7 +188,9 @@ public class AppointmentCreatorController implements Initializable {
 			AppoinmentPinNote2.setItems(notesChoiceList);
 			AppoinmentPinNote3.setItems(notesChoiceList);
 		}*/
->>>>>>> a9faf75 Fixed some Creator Tests & further work on AppointmentCreatorController
+		
+		
+
 		AppointmentStartTimeHours.setValueFactory(dateFactoryStartHours);
 		AppointmentEndTimeHours.setValueFactory(dateFactoryEndHours);
 		AppointmentStartTimeMinutes.setValueFactory(dateFactoryStartMinutes);

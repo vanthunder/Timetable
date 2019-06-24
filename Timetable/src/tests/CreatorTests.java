@@ -59,10 +59,10 @@ class CreatorTests {
 		LocalDateTime endpoint = LocalDateTime.of(1998, 1, 15, 0, 0);
 		LocalDateTime alarmTime = LocalDateTime.of(1998, 1, 16, 0, 0);
 
-		Creator.createEvent("hi", startpoint, endpoint, "best event of the year", false, 0, 0, false, alarmTime);
+		Creator.createEvent("hi", startpoint, endpoint, "best event of the year", false, 0, 0);
 		assertEquals(
 				"title: hi, startpoint: 14.01.1998 00:00, endpoint: 15.01.1998 23:59, allDay: true, description: best event of the year, "
-						+ "regularlyOnOff: false, regularlyType: 0, regularlyID: 0, alarmOnOff: false, alarmTime: 16.01.1998 00:00",
+						+ "regularlyOnOff: false, regularlyType: 0, regularlyID: 0, ",
 				Calendar.getEventList().get(0).toString());
 	}
 
@@ -72,8 +72,7 @@ class CreatorTests {
 		LocalDateTime endpoint = LocalDateTime.of(1998, 1, 15, 0, 0);
 		LocalDateTime alarmTime = LocalDateTime.of(1998, 1, 16, 0, 0);
 
-		assertEquals(
-				Creator.createEvent("hi", startpoint, endpoint, "best event of the year", true, 0, 5),
+		assertEquals(Creator.createEvent("hi", startpoint, endpoint, "best event of the year", true, 0, 5),
 				Calendar.getRegularlyList().get(0).get(0));
 	}
 
@@ -105,7 +104,7 @@ class CreatorTests {
 
 		assertEquals(
 				"title: sexy Appointment startpoint: 14.01.1998 00:00 endpoint: 15.01.1998 23:59 allDay: true regularlyOnOff: false "
-				+ "regularlyType: 0 regularlyID: 0 description: beautiful from start to end notesPinned: 0 notesLink: [] floating: false",
+						+ "regularlyType: 0 regularlyID: 0 description: beautiful from start to end notesPinned: 0 notesLink: [] floating: false",
 				Creator.createAppointment("sexy Appointment", startpoint, endpoint, true, false, 0, 0,
 						"beautiful from start to end", 0, notesLink, false, chosenCategory));
 
@@ -124,8 +123,7 @@ class CreatorTests {
 
 		assertEquals("title: sexy Appointment startpoint: 14.01.1998 00:00 endpoint: 15.01.1998 00:00 "
 				+ "allDay: false regularlyOnOff: false regularlyType: 0 regularlyID: 0 description: beautiful from start to end "
-				+ "notesPinned: 0 notesLink: [] floating: false",
-				Calendar.getCalendarList().get(0).toString());
+				+ "notesPinned: 0 notesLink: [] floating: false", Calendar.getCalendarList().get(0).toString());
 	}
 
 	@Test
@@ -143,8 +141,7 @@ class CreatorTests {
 		}
 		assertEquals("title: sexy Appointment startpoint: 14.01.1998 00:00 endpoint: 15.01.1998 00:00 "
 				+ "allDay: false regularlyOnOff: true regularlyType: 0 regularlyID: 0 description: beautiful from start to end "
-				+ "notesPinned: 0 notesLink: [] floating: false",
-				Calendar.getRegularlyList().get(0).get(0).toString());
+				+ "notesPinned: 0 notesLink: [] floating: false", Calendar.getRegularlyList().get(0).get(0).toString());
 
 	}
 
@@ -167,8 +164,7 @@ class CreatorTests {
 
 		assertEquals("title: sexy Appointment startpoint: 14.01.1998 00:00 endpoint: 15.01.1998 23:59 "
 				+ "allDay: true regularlyOnOff: true regularlyType: 0 regularlyID: 0 description: beautiful from start to end "
-				+ "notesPinned: 0 notesLink: [] floating: false",
-				Calendar.getRegularlyList().get(0).get(0).toString());
+				+ "notesPinned: 0 notesLink: [] floating: false", Calendar.getRegularlyList().get(0).get(0).toString());
 
 	}
 
@@ -193,35 +189,6 @@ class CreatorTests {
 		int notesPinned = 0;
 		boolean floating = false;
 		boolean autoSortOnOff = false;
-<<<<<<< Upstream, based on origin/master
-		
-		assertEquals("Task [toString()=title: awesome Task startpoint: 10.01.2002 00:00 endpoint: 14.01.2002 00:00 allDay: false regularlyOnOff: false regularlyType: 0 regularlyID: 0 description: awesome Description alarmOnOff: false alarmTime: 12.01.2002 00:00 notesPinned: 0 notesLink: [] floating: false, getStartpoint()=2002-01-10T00:00, getEndpoint()=2002-01-14T00:00, isAllDay()=false, isRegularlyOnOff()=false, getRegularlyType()=0, getRegularlyID()=0, getDescription()=awesome Description, isAlarmOnOff()=false, getAlarmTime()=2002-01-12T00:00, getNotesPinned()=0, getNotesLink()=[], isFloating()=false, getTitle()=awesome Task, getClass()=class task.Task, autoSortOnOff=false, duration=0, done=false, feasibleTimeStart=0, feasibleTimeEnd=0, periodStart=2002-01-20T00:00, periodEnd=2002-01-20T00:00]",
-				Creator.createTask("awesome Task", null, startpoint, endpoint, allDay, regularlyOnOff,
-						regularlyType, 0, "awesome Description", alarmOnOff, alarmTime, notesPinned,
-						notesLink, floating, autoSortOnOff, duration, done));
-		
-		}
-		
-		
-		//AB HIER NOTES
-		
-		
-		
-		@Test
-		void testnotecreation () {
-			
-			ArrayList pinnedAt = new ArrayList();
-			ArrayList photoList = new ArrayList();
-			ArrayList gifList = new ArrayList();
-			ArrayList soundList = new ArrayList();
-			ArrayList videoList = new ArrayList();
-			Category chosenCategory = new Category();
-			
-			assertEquals("title: Stupid Note pinned: 0 pinnedAt: [] photoList: [] gifList: [] soundList: [] textbox: Some stupid text videoList: []",
-		            Creator.createNote("Stupid Note", 0, pinnedAt, photoList, gifList, soundList, "Some stupid text", videoList, chosenCategory));
-		}
-	
-=======
 
 		assertEquals(
 				"Task [toString()=title: awesome Task startpoint: 10.01.2002 00:00 endpoint: 14.01.2002 00:00 allDay: false regularlyOnOff: false regularlyType: 0 regularlyID: 0 description: awesome Description alarmOnOff: false alarmTime: 12.01.2002 00:00 notesPinned: 0 notesLink: [] floating: false, getStartpoint()=2002-01-10T00:00, getEndpoint()=2002-01-14T00:00, isAllDay()=false, isRegularlyOnOff()=false, getRegularlyType()=0, getRegularlyID()=0, getDescription()=awesome Description, isAlarmOnOff()=false, getAlarmTime()=2002-01-12T00:00, getNotesPinned()=0, getNotesLink()=[], isFloating()=false, getTitle()=awesome Task, getClass()=class task.Task, autoSortOnOff=false, duration=0, done=false, feasibleTimeStart=0, feasibleTimeEnd=0, periodStart=2002-01-20T00:00, periodEnd=2002-01-20T00:00]",
@@ -230,6 +197,26 @@ class CreatorTests {
 						duration, done));
 
 	}
+
+	// AB HIER NOTES
+
+	@Test
+	void testnotecreation() {
+
+		ArrayList pinnedAt = new ArrayList();
+		ArrayList photoList = new ArrayList();
+		ArrayList gifList = new ArrayList();
+		ArrayList soundList = new ArrayList();
+		ArrayList videoList = new ArrayList();
+		Category chosenCategory = new Category();
+
+		assertEquals(
+				"title: Stupid Note pinned: 0 pinnedAt: [] photoList: [] gifList: [] soundList: [] textbox: Some stupid text videoList: []",
+				Creator.createNote("Stupid Note", 0, pinnedAt, photoList, gifList, soundList, "Some stupid text",
+						videoList, chosenCategory));
+	}
+
+	
 
 	// AB HIER NOTES
 
@@ -247,6 +234,6 @@ class CreatorTests {
 				Creator.createNote("Stupid Note", 0, pinnedAt, photoList, soundList, "Some stupid text", videoList,
 						"Some stupid filepath", chosenCategory));
 	}
->>>>>>> a9faf75 Fixed some Creator Tests & further work on AppointmentCreatorController
 
+	
 }
