@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
@@ -13,9 +14,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appointment.AppointmentCreatorController">
+<BorderPane prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appointment.AppointmentCreatorController">
    <center>
-      <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="500.0" prefWidth="312.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
@@ -30,26 +31,51 @@
                <children>
                   <Label text="von:" />
                   <DatePicker fx:id="AppointmentStartDate" promptText="Datum" />
-                  <TextField fx:id="AppointmentStartTime" promptText="Uhrzeit" />
+                  <Label text="Uhrzeit:" />
+                  <Spinner fx:id="AppointmentStartTimeHours" />
+                  <Label text=":" />
+                  <Spinner fx:id="AppointmentStartTimeMinutes" />
                </children>
             </HBox>
             <HBox alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
                   <Label text="bis:" />
                   <DatePicker fx:id="AppointmentEndDate" promptText="Datum" />
-                  <TextField fx:id="AppointmentEndTime" promptText="Uhrzeit" />
+                  <Label text="Uhrzeit:" />
+                  <Spinner fx:id="AppointmentEndTimeHours" />
+                  <Label text=":" />
+                  <Spinner fx:id="AppointmentEndTimeMinutes" />
                </children>
             </HBox>
             <HBox alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="80.0">
                <children>
                   <CheckBox fx:id="AppointmentRegularlyOnOff" mnemonicParsing="false" text="regelmäßig" />
                   <ChoiceBox fx:id="AppointmentRegularlyType" prefWidth="150.0" visible="false" />
+                  <Label fx:id="AppointmentRegularlyAmountLabel" text="Wiederholungen" visible="false" />
+                  <Spinner fx:id="AppointmentRegularlyAmount" visible="false" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="142.0">
+            <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <CheckBox fx:id="AppointmentAllDay" contentDisplay="CENTER" mnemonicParsing="false" text="ganztägig" />
-                  <Button fx:id="AppoinmentPinNote" alignment="CENTER" mnemonicParsing="false" onAction="#appointmentPinNotePress" text="Notiz anheften" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <CheckBox fx:id="AppointmentPinNote1OnOff" mnemonicParsing="false" text="1. Notiz anheften" />
+                  <ChoiceBox fx:id="AppointmentPinNote1" prefWidth="150.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <CheckBox fx:id="AppointmentPinNote2OnOff" mnemonicParsing="false" text="2. Notiz anheften" />
+                  <ChoiceBox fx:id="AppointmentPinNote1" prefWidth="150.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <CheckBox fx:id="AppointmentPinNote3OnOff" mnemonicParsing="false" text="3. Notiz anheften" />
+                  <ChoiceBox fx:id="AppointmentPinNote1" prefWidth="150.0" />
                </children>
             </HBox>
             <Pane />
