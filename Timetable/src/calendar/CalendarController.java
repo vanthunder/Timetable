@@ -57,7 +57,7 @@ public class CalendarController implements Initializable
 	String Month = new String("Monat");
 	String Day = new String("Tag");
 	//AppointmentList
-	//private final static HashMap<LocalDate, String> appointments = new HashMap<>();  
+	//private final static HashMap<LocalDate, <String> appointments = new HashMap<>();  
     private final static List<LocalDate> appointments = new ArrayList<>();
     private final static List<String> descriptions = new ArrayList<>();
 	// LocalDate Events
