@@ -253,7 +253,7 @@ public class CreateTaskController implements Initializable {
 		autoSortOnOff.selectedProperty().bindBidirectional(endMinute.disableProperty());
 		autoSortOnOff.selectedProperty().bindBidirectional(pickStart.disableProperty());
 		autoSortOnOff.selectedProperty().bindBidirectional(pickEnd.disableProperty());
-
+		
 		autoSortOnOff.setSelected(true);
 
 		// Inserts the Categories to the choice box.
