@@ -28,6 +28,12 @@ public class NotesViewController implements Initializable
 	static ArrayList<Label> notesabels = new ArrayList<>();
 	static ArrayList<String> notes = new ArrayList<String>();
 	
+	public static ArrayList<String> getNotes() {
+		return notes;
+	}
+	public static void setNotes(ArrayList<String> notes) {
+		NotesViewController.notes = notes;
+	}
 	// Event Listener on Button[#backButton].onAction
 	@FXML
 	public void backButtonPress(ActionEvent event) 
