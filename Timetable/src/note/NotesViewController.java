@@ -35,19 +35,12 @@ public class NotesViewController implements Initializable
 	static ArrayList<Label> notesLabels = new ArrayList<>(100);
 	static ArrayList<String> notes = new ArrayList<String>(100);
 	
-<<<<<<< HEAD
 	public static ArrayList<String> getNotes()
 	{
 		return notes;
 	}
 	public static void setNotes(ArrayList<String> notes)
 	{
-=======
-	public static ArrayList<String> getNotes() {
-		return notes;
-	}
-	public static void setNotes(ArrayList<String> notes) {
->>>>>>> branch 'master' of https://github.com/vanthunder/Timetable
 		NotesViewController.notes = notes;
 	}
 	// Event Listener on Button[#backButton].onAction

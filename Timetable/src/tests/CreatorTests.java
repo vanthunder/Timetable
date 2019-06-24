@@ -214,12 +214,13 @@ class CreatorTests {
 			
 			ArrayList pinnedAt = new ArrayList();
 			ArrayList photoList = new ArrayList();
+			ArrayList gifList = new ArrayList();
 			ArrayList soundList = new ArrayList();
 			ArrayList videoList = new ArrayList();
 			Category chosenCategory = new Category();
 			
-			assertEquals("title: Stupid Note pinned: 0 pinnedAt: [] photoList: [] soundList: [] textbox: Some stupid text videoList: []",
-		            Creator.createNote("Stupid Note", 0, pinnedAt, photoList, soundList, "Some stupid text", videoList, "Some stupid filepath", chosenCategory));
+			assertEquals("title: Stupid Note pinned: 0 pinnedAt: [] photoList: [] gifList: [] soundList: [] textbox: Some stupid text videoList: []",
+		            Creator.createNote("Stupid Note", 0, pinnedAt, photoList, gifList, soundList, "Some stupid text", videoList, chosenCategory));
 		}
 	
 

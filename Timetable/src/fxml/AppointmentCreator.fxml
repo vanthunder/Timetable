@@ -69,13 +69,13 @@
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <CheckBox fx:id="AppointmentPinNote2OnOff" mnemonicParsing="false" text="2. Notiz anheften" />
-                  <ChoiceBox fx:id="AppointmentPinNote2" prefWidth="150.0" />
+                  <ChoiceBox fx:id="AppointmentPinNote1" prefWidth="150.0" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <CheckBox fx:id="AppointmentPinNote3OnOff" mnemonicParsing="false" text="3. Notiz anheften" />
-                  <ChoiceBox fx:id="AppointmentPinNote3" prefWidth="150.0" />
+                  <ChoiceBox fx:id="AppointmentPinNote1" prefWidth="150.0" />
                </children>
             </HBox>
             <Pane />

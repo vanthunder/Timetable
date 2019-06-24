@@ -43,9 +43,6 @@ public class NoteCreatorController implements Initializable
 	TextField noteTitle = new TextField();
 	
 	@FXML
-	TextField noteDescription = new TextField();
-	
-	@FXML
 	ChoiceBox<TreeItem<String>> categoryChooser = new ChoiceBox<TreeItem<String>>();
 	
 	@FXML
@@ -66,24 +63,14 @@ public class NoteCreatorController implements Initializable
 	    System.out.println(imageList.getChildren());
 	
 	} 
-	
 	//This method is for the [saveNoteButton]
 	public void saveNoteButtonPress(ActionEvent event)
 	{   
 		String title = noteTitle.getText();
 		Image image = currentImage.getImage();
-		//Note.getPhotoList().add(image);
-		String desc = noteDescription.getText();
-		String filepath = "notes/" + title;
 		
-<<<<<<< HEAD
 		Note serObj = new Note(title, 0, null, null, null, null, "Some stupid text", null, "Aber");
 		NotesViewController.update(title);
-=======
-		
-		Note serObj = new Note(title, 0, null, null, null, desc, null, filepath);
-		
->>>>>>> branch 'master' of https://github.com/vanthunder/Timetable
 		Note.WriteObjectToFile(serObj);
 		
 		//This method saves the current Note and it's title as a category if a category is choosed in the choice box.
