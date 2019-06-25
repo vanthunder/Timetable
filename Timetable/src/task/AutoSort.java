@@ -29,12 +29,12 @@ public class AutoSort {
 		ArrayList<Task> autoSortInnerList = new ArrayList<Task>();
 		for (int j = 0; j < tmpDuration.size(); j++) {
 
-			for (int i = 0; i < Calendar.getCalendarList().size() - 1; i++) {
-				if (Calendar.getCalendarList().get(i).getEndpoint().isBefore(currentTask.getPeriodStart())) {
+			for (int i = 0; i < tmpCalendarList.size() - 1; i++) {
+				if (tmpCalendarList.get(i).getEndpoint().isBefore(currentTask.getPeriodStart())) {
 					continue;
 				}
 				
-				LocalDateTime endpointLastDate = Calendar.getCalendarList().get(i).getEndpoint();
+				LocalDateTime endpointLastDate = tmpCalendarList.get(i).getEndpoint();
 				LocalTime checkEarly = LocalTime.of(8, 0);
 				LocalTime checkLate = LocalTime.of(20, 0);
 				LocalTime startTime = endpointLastDate.toLocalTime().plusMinutes(45);
@@ -44,8 +44,8 @@ public class AutoSort {
 				boolean startTimeInRange = startTime.isAfter(checkEarly) && startTime.isBefore(checkLate);
 				boolean endTimeInRange = endTime.isAfter(checkEarly) && endTime.isBefore(checkLate);
 	
-				if (Calendar.getCalendarList().get(i).getEndpoint().until(
-						Calendar.getCalendarList().get(i + 1).getStartpoint(),
+				if (tmpCalendarList.get(i).getEndpoint().until(
+						tmpCalendarList.get(i + 1).getStartpoint(),
 						(TemporalUnit) TimeUnit.MINUTES) >= tmpDuration.get(j) + 90 && startTimeInRange
 						&& endTimeInRange) {
 
