@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import category.CategoriesController;
+import creator.Creator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -188,9 +189,9 @@ public class CreateTaskController implements Initializable {
 			TreeItem<String> newItem = new TreeItem<String>("Aufgabe: " + title.toString(), new ImageView(icon));
 			CategoriesController.insertCategoryByCreator(savePosition, newItem);
 		}
-
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -273,12 +274,38 @@ public class CreateTaskController implements Initializable {
 			LocalTime endTime = LocalTime.of(endHour.getValueFactory().getValue(),
 					endMinute.getValueFactory().getValue());
 			endTime.withHour(endHour.getValueFactory().getValue());
+			LocalDate endDate = pickEnd.getValue();
+			LocalDateTime endpoint = endDate.atTime(endTime);
 
-			Task thisTask = new Task(title.getText(), startpoint, endpoint, floating, floating, duration, duration, null, duration, notesLinks, floating, floating, duration);
+//			set allDay 
+			boolean allDay = false;
+
+//			set duration
+			int duration = INIT_VALUE_HOURS;
+
+//			initialize RegularID
+			int regularID = Creator.getRegularlyID();
+
+			ArrayList<Note> notesLinks = null;
+			boolean floating = false;
+			int notesPinned = 0;
+
 			if (!autoSort) {
 
+				try {
+					if (!autoSort) {
+						Creator.createTask(title.getText(), null, startpoint, endpoint, allDay,
+								regularOnOff.isSelected(), regularType, regularID, description.getText(), notesPinned,
+								notesLinks, floating, autoSort, duration, floating);
+					} else if (autoSort) {
+						AutoSort.autoSort(newTask);
+					}
+					System.out.println(newTask.toString());
+				} catch (CloneNotSupportedException e) {
+					e.printStackTrace();
+				}
 			}
+
 		}
 	}
 }
-//			Task.WriteObjectToFile(newTask);

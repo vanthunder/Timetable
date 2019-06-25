@@ -11,6 +11,7 @@ import appointment.Appointment;
 import java.time.*;
 
 import calendar.Calendar;
+import task.Task;
 
 
 public class AutoSort {
@@ -29,6 +30,10 @@ public class AutoSort {
 		for (int j = 0; j < tmpDuration.size(); j++) {
 
 			for (int i = 0; i < Calendar.getCalendarList().size() - 1; i++) {
+				if (Calendar.getCalendarList().get(i).getEndpoint().isBefore(currentTask.getPeriodStart())) {
+					continue;
+				}
+				
 				LocalDateTime endpointLastDate = Calendar.getCalendarList().get(i).getEndpoint();
 				LocalTime checkEarly = LocalTime.of(8, 0);
 				LocalTime checkLate = LocalTime.of(20, 0);
@@ -38,7 +43,7 @@ public class AutoSort {
 
 				boolean startTimeInRange = startTime.isAfter(checkEarly) && startTime.isBefore(checkLate);
 				boolean endTimeInRange = endTime.isAfter(checkEarly) && endTime.isBefore(checkLate);
-
+	
 				if (Calendar.getCalendarList().get(i).getEndpoint().until(
 						Calendar.getCalendarList().get(i + 1).getStartpoint(),
 						(TemporalUnit) TimeUnit.MINUTES) >= tmpDuration.get(j) + 90 && startTimeInRange
@@ -51,13 +56,14 @@ public class AutoSort {
 						// add the new Task to the CalendarList
 						tmpCalendarList.add(currentTask);
 						autoSortInnerList.add(currentTask);
+						System.out.println(currentTask.toString());
 						Task.WriteObjectToFile(currentTask);
 						break;
 					} else {
 						Task copy = (Task) currentTask.clone();
 						copy.setStartpoint(LocalDateTime.of(taskDate, startTime));
 						copy.setEndpoint(LocalDateTime.of(taskDate, endTime));
-
+						System.out.println(copy.toString());
 						// add the new Task to the CalendarList
 						tmpCalendarList.add(copy);
 						autoSortInnerList.add(copy);
