@@ -170,7 +170,7 @@ public class CreatorTests {
 				+ "notesPinned: 0 notesLink: [] floating: false", Calendar.getRegularlyList().get(0).get(0).toString());
 
 	}
-<<<<<<< HEAD
+
 	
 	
 		//Tasks 
@@ -178,7 +178,7 @@ public class CreatorTests {
 		void testTaskregular() throws CloneNotSupportedException {
 		LocalDateTime startpoint = LocalDateTime.of(2002,1,10,0,0);
 		LocalDateTime endpoint = LocalDateTime.of(2002,1,14,0,0);
-=======
+
 
 	// Tasks
 	@Test
@@ -186,25 +186,25 @@ public class CreatorTests {
 		LocalDateTime startpoint = LocalDateTime.of(2002, 1, 10, 0, 0);
 		LocalDateTime endpoint = LocalDateTime.of(2002, 1, 14, 0, 0);
 		LocalDateTime alarmTime = LocalDateTime.of(2002, 1, 12, 0, 0);
->>>>>>> branch 'master' of https://github.com/vanthunder/Timetable
+
 		ArrayList<Note> notesLink = new ArrayList<Note>();
-<<<<<<< HEAD
+
 		new Category();
-=======
+
 		Category chosenCategory = new Category();
 		LocalDateTime feasibleTimeStart = LocalDateTime.of(2002, 1, 10, 0, 0);
 		LocalDateTime periodStart = LocalDateTime.of(2002, 1, 10, 0, 0);
->>>>>>> branch 'master' of https://github.com/vanthunder/Timetable
+
 		boolean done = false;
-<<<<<<< HEAD
+
 		LocalDateTime.of(2002,1,16,0,0);
 		LocalDateTime.of(2002,1,20,0,0);
 		int duration =0;
-=======
+
 		LocalDateTime feasibleTimeEnd = LocalDateTime.of(2002, 1, 16, 0, 0);
 		LocalDateTime periodEnd = LocalDateTime.of(2002, 1, 20, 0, 0);
 		int duration = 0;
->>>>>>> branch 'master' of https://github.com/vanthunder/Timetable
+
 		boolean allDay = false;
 		boolean regularlyOnOff = false;
 		int regularlyType = 0;
@@ -236,7 +236,7 @@ public class CreatorTests {
 		int notesPinned = 0;
 		boolean floating = false;
 		boolean autoSortOnOff = false;
-<<<<<<< HEAD
+
 		
 		Task testTask = new Task("awesome Task", null, startpoint, allDay, regularlyOnOff,
 				regularlyType, 0, "awesome Description", notesPinned, 
