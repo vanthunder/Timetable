@@ -19,6 +19,7 @@ import calendar.Calendar;
 import note.Note;
 import task.Task;
 
+
 public class Creator implements Serializable {
 
 	public static String createEvent(String title, LocalDateTime startpoint, LocalDateTime endpoint, String description,
@@ -301,8 +302,7 @@ public class Creator implements Serializable {
 
 	public static String createTask(String title, String filepath, LocalDateTime startpoint, LocalDateTime endpoint,
 			boolean allDay, boolean regularlyOnOff, int regularlyType, int regularlyID, String description,
-			int notesPinned, ArrayList<Note> notesLink, boolean floating, boolean autoSortOnOff, int duration,
-			boolean done) throws CloneNotSupportedException {
+			int notesPinned, ArrayList<Note> notesLink, boolean floating, boolean autoSortOnOff, int duration) throws CloneNotSupportedException {
 
 		floating = false;
 		if (startpoint == endpoint) {
@@ -329,7 +329,7 @@ public class Creator implements Serializable {
 				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
 						regularlyInnerList.add(newTask);
-						Task.WriteObjectToFile(newTask);
+
 					} else {
 						Appointment copy = (Appointment) newTask.clone();
 						LocalDateTime tempStartpoint = copy.getStartpoint();
@@ -437,12 +437,12 @@ public class Creator implements Serializable {
 			ArrayList gifList, ArrayList soundList, String textbox, ArrayList videoList, String filepath,
 			Category chosenCategory) {
 
-		Note newNote = new Note("Stupid Note", 0, pinnedAt, photoList, gifList, soundList, "Some stupid text", videoList, "Aber");
+		Note newNote = new Note("Stupid Note", 0, pinnedAt, photoList, gifList, soundList, "Some stupid text",
+				videoList, "Aber");
 
 		Note.WriteObjectToFile(newNote);
 
 		return newNote.toString();
-
 
 	}
 
@@ -461,7 +461,5 @@ public class Creator implements Serializable {
 
 		return regularlyID;
 	}
-
-
 
 }

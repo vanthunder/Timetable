@@ -182,16 +182,15 @@ public class CreateTaskController implements Initializable {
 
 //		 This method saves the current Task and it's title as a category if a category
 //		 is choosed in the choice box.
-		if (!categoryChooser.getSelectionModel().getSelectedItem().equals(null))
-
-		{
-			TreeItem<String> savePosition = categoryChooser.getSelectionModel().getSelectedItem();
-			TreeItem<String> newItem = new TreeItem<String>("Aufgabe: " + title.toString(), new ImageView(icon));
-			CategoriesController.insertCategoryByCreator(savePosition, newItem);
-		}
+//		if (!categoryChooser.getSelectionModel().getSelectedItem().equals(null))
+//
+//		{
+//			TreeItem<String> savePosition = categoryChooser.getSelectionModel().getSelectedItem();
+//			TreeItem<String> newItem = new TreeItem<String>("Aufgabe: " + title.toString(), new ImageView(icon));
+//			CategoriesController.insertCategoryByCreator(savePosition, newItem);
+//		}
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -289,18 +288,33 @@ public class CreateTaskController implements Initializable {
 			ArrayList<Note> notesLinks = null;
 			boolean floating = false;
 			int notesPinned = 0;
+			
+			if (!categoryChooser.getSelectionModel().getSelectedItem().equals(null))
 
+			{
+				TreeItem<String> savePosition = categoryChooser.getSelectionModel().getSelectedItem();
+				TreeItem<String> newItem = new TreeItem<String>("Aufgabe: " + title.toString(), new ImageView(icon));
+				CategoriesController.insertCategoryByCreator(savePosition, newItem);
+			
+		}
+			
 			if (!autoSort) {
 
 				try {
 					if (!autoSort) {
 						Creator.createTask(title.getText(), null, startpoint, endpoint, allDay,
 								regularOnOff.isSelected(), regularType, regularID, description.getText(), notesPinned,
-								notesLinks, floating, autoSort, duration, floating);
+								notesLinks, floating, autoSort, duration);
+					
 					} else if (autoSort) {
-						AutoSort.autoSort(newTask);
+						Task thisTask =new Task(title.getText(), null, startpoint, allDay,
+								regularOnOff.isSelected(), regularType, regularID, description.getText(), notesPinned,
+								notesLinks, floating, autoSort, duration);
+						AutoSort.autoSort(thisTask);
+						System.out.println(thisTask);
 					}
-					System.out.println(newTask.toString());
+					
+
 				} catch (CloneNotSupportedException e) {
 					e.printStackTrace();
 				}

@@ -93,7 +93,7 @@
 						<VBox alignment="CENTER" minWidth="190.0" HBox.hgrow="ALWAYS">
 							<children>
 								<Slider fx:id="durationHours" blockIncrement="5.0" majorTickUnit="1.0" max="12.0" min="1.0" minorTickCount="1" onMouseDragReleased="#slideDuration" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" VBox.vgrow="ALWAYS" />
-								<Slider fx:id="durationMinutes" blockIncrement="1.0" majorTickUnit="5.0" max="60.0" minorTickCount="2" onMouseDragReleased="#slideDuration" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" VBox.vgrow="ALWAYS" />
+								<Slider fx:id="durationMinutes" blockIncrement="1.0" majorTickUnit="5.0" max="60.0" minorTickCount="0" onMouseDragReleased="#slideDuration" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" VBox.vgrow="ALWAYS" />
 							</children>
 						</VBox>
                   <VBox alignment="CENTER" minWidth="100.0">

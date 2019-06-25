@@ -6,8 +6,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.junit.Assert.*;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
@@ -18,9 +20,10 @@ import calendar.Calendar;
 import category.Category;
 import creator.Creator;
 import note.Note;
+import task.AutoSort;
 import task.Task;
 
-class CreatorTests {
+public class CreatorTests {
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -180,26 +183,54 @@ class CreatorTests {
 		void testTaskregular() throws CloneNotSupportedException {
 		LocalDateTime startpoint = LocalDateTime.of(2002,1,10,0,0);
 		LocalDateTime endpoint = LocalDateTime.of(2002,1,14,0,0);
-		LocalDateTime alarmTime = LocalDateTime.of(2002,1,12,0,0);
 		ArrayList<Note> notesLink = new ArrayList<Note>();
-		Category chosenCategory = new Category();
-		LocalDateTime feasibleTimeStart = LocalDateTime.of(2002,1,10,0,0);
-		LocalDateTime periodStart = LocalDateTime.of(2002,1,10,0,0);
+		new Category();
 		boolean done = false;
-		LocalDateTime feasibleTimeEnd = LocalDateTime.of(2002,1,16,0,0);
-		LocalDateTime periodEnd = LocalDateTime.of(2002,1,20,0,0);
+		LocalDateTime.of(2002,1,16,0,0);
+		LocalDateTime.of(2002,1,20,0,0);
 		int duration =0;
 		boolean allDay = false;
 		boolean regularlyOnOff = false;
 		int regularlyType = 0;
-		boolean alarmOnOff = false;
+		int notesPinned = 0;
+		boolean floating = false;
+		boolean autoSortOnOff = false;
+	
+		
+		Assertions.assertEquals("Task [toString()=title: awesome Task startpoint: 10.01.2002 00:00 endpoint: 14.01.2002 00:00 allDay: false regularlyOnOff: false regularlyType: 0 regularlyID: 0 description: awesome Description notesPinned: 0 notesLink: [] floating: false, getStartpoint()=2002-01-10T00:00, getEndpoint()=2002-01-14T00:00, getPeriodStart()=null, getPeriodEnd()=null, isAllDay()=false, isRegisRegularlyOnOff()ularlyOnOff()=, getRegularlyType()=0, getRegularlyID()=0, getDescription()=awesome Description, getNotesPinned()=0, getNotesLink()=[], isFloating()=false, getTitle()=awesome Task, getClass()=class task.Task, autoSortOnOff=false, duration=0, done=false, periodStart=null, periodEnd=nullautoSortID=0]",
+				Creator.createTask("awesome Task", null, startpoint, endpoint, allDay, regularlyOnOff,
+						regularlyType, 0, "awesome Description", notesPinned, 
+						notesLink, floating, autoSortOnOff, duration, done));
+		
+		}
+		
+		//AutoSort
+		@Test
+		void testTaskAutoSort() throws CloneNotSupportedException {
+		LocalDateTime startpoint = LocalDateTime.of(2002,1,10,0,0);
+		LocalDateTime endpoint = LocalDateTime.of(2002,1,14,0,0);
+		ArrayList<Note> notesLink = new ArrayList<Note>();
+		new Category();
+		LocalDateTime.of(2002,1,16,0,0);
+		LocalDateTime.of(2002,1,20,0,0);
+		int duration =0;
+		boolean allDay = false;
+		boolean regularlyOnOff = false;
+		int regularlyType = 0;
 		int notesPinned = 0;
 		boolean floating = false;
 		boolean autoSortOnOff = false;
 		
-		assertEquals("Task [toString()=title: awesome Task startpoint: 10.01.2002 00:00 endpoint: 14.01.2002 00:00 allDay: false regularlyOnOff: false regularlyType: 0 regularlyID: 0 description: awesome Description alarmOnOff: false alarmTime: 12.01.2002 00:00 notesPinned: 0 notesLink: [] floating: false, getStartpoint()=2002-01-10T00:00, getEndpoint()=2002-01-14T00:00, isAllDay()=false, isRegularlyOnOff()=false, getRegularlyType()=0, getRegularlyID()=0, getDescription()=awesome Description, isAlarmOnOff()=false, getAlarmTime()=2002-01-12T00:00, getNotesPinned()=0, getNotesLink()=[], isFloating()=false, getTitle()=awesome Task, getClass()=class task.Task, autoSortOnOff=false, duration=0, done=false, feasibleTimeStart=0, feasibleTimeEnd=0, periodStart=2002-01-20T00:00, periodEnd=2002-01-20T00:00]",
+		Task testTask = new Task("awesome Task", null, startpoint, allDay, regularlyOnOff,
+				regularlyType, 0, "awesome Description", notesPinned, 
+				notesLink, floating, autoSortOnOff, duration);
+			
+	
+
+		boolean done = false;
+		Assertions.assertEquals("Task [toString()=title: awesome Task startpoint: 10.01.2002 00:00 endpoint: 14.01.2002 00:00 allDay: false regularlyOnOff: false regularlyType: 0 regularlyID: 0 description: awesome Description notesPinned: 0 notesLink: [] floating: false, getStartpoint()=2002-01-10T00:00, getEndpoint()=2002-01-14T00:00, getPeriodStart()=null, getPeriodEnd()=null, isAllDay()=false, isRegisRegularlyOnOff()ularlyOnOff()=, getRegularlyType()=0, getRegularlyID()=0, getDescription()=awesome Description, getNotesPinned()=0, getNotesLink()=[], isFloating()=false, getTitle()=awesome Task, getClass()=class task.Task, autoSortOnOff=false, duration=0, done=false, periodStart=null, periodEnd=nullautoSortID=0]",
 				Creator.createTask("awesome Task", null, startpoint, endpoint, allDay, regularlyOnOff,
-						regularlyType, 0, "awesome Description", alarmOnOff, alarmTime, notesPinned,
+						regularlyType, 0, "awesome Description", notesPinned, 
 						notesLink, floating, autoSortOnOff, duration, done));
 		
 		}
@@ -209,6 +240,11 @@ class CreatorTests {
 		
 		
 		
+		private void assertEquals(Task testTask, Object autoSort) {
+			// TODO Auto-generated method stub
+			
+		}
+
 		@Test
 		void testnotecreation () {
 			

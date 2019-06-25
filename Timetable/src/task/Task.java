@@ -73,45 +73,48 @@ public class Task extends Appointment implements Comparable {
 		this.autoSortID = autoSortID;
 	}
 
-	public static void WriteObjectToFile(Task serObj) {
-
+public static void WriteObjectToFile(Note serObj) {
+		
 		String tmpTitle = serObj.getTitle();
-		int counter = 0;
-		boolean created = false;
-
-		do {
-
-			String filepath = "Task " + tmpTitle + counter + ".txt";
+	
+			String filepath = "tasks/Task " + tmpTitle + ".txt";
 
 			File tmpFilepath = new File(filepath);
-//		GsonBuilder gbuild = new GsonBuilder();
-//		Gson gson = gbuild.create();
-
+			tmpFilepath.getParentFile().mkdirs();
+		
 			boolean exists = tmpFilepath.exists();
-
-			if (exists) {
-				counter++;
-				continue;
+		
+			if(exists) {
+				File file = new File(filepath); 
+        
+				if(file.delete()) 
+			{ 
+				System.out.println("Erfolgreich aktualisiert"); 
+			} 
+			else
+			{ 
+				System.out.println("Fehler beim aktualisieren"); 
+			
 			}
-
-			serObj.setFilepath(filepath);
-
-			try {
-
-				FileOutputStream fileOut = new FileOutputStream(filepath);
-				ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-				objectOut.writeObject(serObj);
-				objectOut.close();
-				System.out.println("Die Aufgabe wurde erfolgreich gespeichert!");
-
-			} catch (Exception ex) {
-				ex.printStackTrace();
 			}
+	
+		serObj.setFilepath(filepath);
+		
+	    try {
+	 
+	            FileOutputStream fileOut = new FileOutputStream(filepath);
+	            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+	            objectOut.writeObject(serObj);
+	            objectOut.close();
+	            System.out.println("Die Aufgabe wurde erfolgreich gespeichert!");
+	 
+	        } catch (Exception ex) {
+	            ex.printStackTrace();
+	            }
+	        }
+		
 
-			created = true;
 
-		} while (!created);
-	}
 
 	@Override
 	public String toString() {
