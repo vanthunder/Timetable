@@ -138,7 +138,7 @@ public class NotesViewController implements Initializable
 	public void initialize(URL location, ResourceBundle resources)
 	{
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
+
 		//createNotesView();
 		notes.add("Note: Das ist eine Test Notiz");
 		notes.add("Note: Das ist eine zweite Test Notiz");
@@ -146,60 +146,7 @@ public class NotesViewController implements Initializable
 		notes.add("Note: Das ist eine zweite Test Notiz");
 		notes.add("Note: Das ist eine Test Notiz");
 		notes.add("Note: Das ist eine zweite Test Notiz");
-		createNotesView();
-=======
-		//creatNotesView();
-		notes.add(" Note: 1Das ist eine Test Notiz");
-		notes.add(" Note: 2Das ist eine zweite Test Notiz");
-		notes.add(" Note: 3Das ist eine Test Notiz");
-		notes.add(" Note: 4Das ist eine zweite Test Notiz");
-		notes.add(" Note: 5Das ist eine Test Notiz");
-		notes.add(" Note: 6Das ist eine zweite Test Notiz");
-		notes.add(" Note: 7Das ist eine Test Notiz");
-		notes.add(" Note: 8Das ist eine zweite Test Notiz");
-		notes.add(" Note: 9Das ist eine Test Notiz");
-		notes.add(" Note: 10Das ist eine zweite Test Notiz");
-		notes.add(" Note: 11Das ist eine Test Notiz");
-		notes.add(" Note: 12Das  Notiz");
-		notes.add(" Note: 13Das ist ");
-		notes.add(" Note: 14Das i zweite Test Notiz");
-		notes.add(" Note: 15Das ie Test Notiz");
-		notes.add(" Note: 16Das i zweite Test Notiz");
-		notes.add(" Note: Dase Test Notiz");
-		notes.add(" Note: Das ne zweite Test Notiz");
-		notes.add(" Note: Deine Test Notiz");
-		notes.add(" Note: Da zweite Test Notiz");
-		notes.add(" Note: Das ist Test Notiz");
-		notes.add(" Note: Da eine zweite Test Notiz");
-		notes.add(" Note: Dane Test Notiz");
-		notes.add(" Note: Das ist eine zweite Test Notiz");
-		notes.add(" Note: Das ist eine Test Notiz");
-		notes.add(" Note: Das ist eine zweite Test Notiz");
-		notes.add(" Note: Das ist eine Test Notiz");
-		notes.add(" Note: Das ist eine zweite Test Notiz");
-		notes.add(" Note: Das ist eine Test Notiz");
-		notes.add(" Note: Das ist eine zweite Test Notiz");
-		notes.add(" Note: Das ist eine Test Notiz");
-		notes.add(" Note: Das ist eine zweite Test Notiz");
-		notes.add(" Note: Das ist eine Test Notiz");
-		notes.add(" Note: Das ist eine zweite Test Notiz");
-		notes.add(" Note: Das ist eine Test Notiz");
-		notes.add(" Note: Das ist eine zweite Test Notiz");
-		notes.add(" Note: Das ist eine Test Notiz");
-		notes.add(" Note: Das ist eine zweite Test Notiz6");
-		notes.add(" Note: Das ist eine Test Notiz");
-		notes.add(" Note: Das ist eine zweite Test Notiz5");
-		notes.add(" Note: Das ist eine Test Notiz");
-		notes.add(" Note: Das ist eine zweite Test Notiz4");
-		notes.add(" Note: Das ist eine Test Notiz");
-		notes.add(" Note: Das ist eine zweite Test Notiz3");
-		notes.add(" Note: Das ist eine Test Notiz");
-		notes.add(" Note: Das ist eine zweite Test Notiz2");
-		notes.add(" Note: Das ist eine Test Notiz");
-		notes.add(" Note: Das ist eine zweite Test Notiz1111111111111111");
-		creatNotesView();
->>>>>>> branch 'master' of https://github.com/vanthunder/Timetable
-		
+		createNotesView();		
 		
 	}
 }
