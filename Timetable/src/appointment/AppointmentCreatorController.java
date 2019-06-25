@@ -137,9 +137,12 @@ public class AppointmentCreatorController implements Initializable {
 		}
 		int regularlyAmount = AppointmentRegularlyAmount.getValue();
 		String description = AppointmentDescription.getText();
-		int notesPinned;
-		ArrayList<Note> notesLink;
-		boolean floating;
+		int notesPinned =
+		0;
+		ArrayList<Note> notesLink =
+		null;
+		boolean floating =
+		false;
 		if (startpoint == endpoint || endpoint.isBefore(startpoint) || startpoint == null || endpoint == null) {
 			floating = true;
 		}

@@ -145,7 +145,6 @@ public class NotesViewController implements Initializable
 		notes.add("Note: Das ist eine Test Notiz");
 		notes.add("Note: Das ist eine zweite Test Notiz");
 		notes.add("Note: Das ist eine Test Notiz");
-		notes.add("Note: Das ist eine zweite Test Notiz");
 		createNotesView();		
 		
 	}
