@@ -60,24 +60,6 @@
                   <CheckBox fx:id="AppointmentAllDay" contentDisplay="CENTER" mnemonicParsing="false" text="ganztägig" />
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <CheckBox fx:id="AppointmentPinNote1OnOff" mnemonicParsing="false" text="1. Notiz anheften" />
-                  <ChoiceBox fx:id="AppointmentPinNote1" prefWidth="150.0" />
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <CheckBox fx:id="AppointmentPinNote2OnOff" mnemonicParsing="false" text="2. Notiz anheften" />
-                  <ChoiceBox fx:id="AppointmentPinNote1" prefWidth="150.0" />
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <CheckBox fx:id="AppointmentPinNote3OnOff" mnemonicParsing="false" text="3. Notiz anheften" />
-                  <ChoiceBox fx:id="AppointmentPinNote1" prefWidth="150.0" />
-               </children>
-            </HBox>
             <Pane />
             <VBox>
                <children>

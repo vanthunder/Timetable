@@ -45,9 +45,8 @@ public class AppointmentCreatorController implements Initializable {
 	ObservableList<String> regularlyTypeList = FXCollections.observableArrayList("täglich", "wöchentlich", "monatlich",
 			"jährlich");
 
-	//ObservableList<Note> notesChoiceList = FXCollections.observableArrayList();
-	//ArrayList<Note> tempNotesList=NoteOverview.getNotesList();
-	
+	// ObservableList<Note> notesChoiceList = FXCollections.observableArrayList();
+	// ArrayList<Note> tempNotesList=NoteOverview.getNotesList();
 
 	SpinnerValueFactory<Integer> dateFactoryStartHours = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 0);
 	SpinnerValueFactory<Integer> dateFactoryStartMinutes = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0);
@@ -80,24 +79,6 @@ public class AppointmentCreatorController implements Initializable {
 	private Label AppointmentRegularlyAmountLabel;
 	@FXML
 	private CheckBox AppointmentAllDay;
-	@FXML
-	private ChoiceBox AppoinmentPinNote1OnOff;
-	@FXML
-	private ChoiceBox AppoinmentPinNote2OnOff;
-	@FXML
-	private ChoiceBox AppoinmentPinNote3OnOff;
-	@FXML
-	private ChoiceBox AppoinmentPinNote1;
-	@FXML
-	private ChoiceBox AppoinmentPinNote2;
-	@FXML
-	private ChoiceBox AppoinmentPinNote3;
-	@FXML
-	private CheckBox AppointmentAlarmOnOff;
-	@FXML
-	private DatePicker AppointmentAlarmDate;
-	@FXML
-	private TextField AppointmentAlarmTime;
 	@FXML
 	private TextArea AppointmentDescription;
 	@FXML
@@ -136,11 +117,11 @@ public class AppointmentCreatorController implements Initializable {
 		CalendarController.addAppointment(save, AppointmentTitle.getText());
 		String title = AppointmentTitle.getText();
 		LocalDateTime startpoint = LocalDateTime.of(AppointmentStartDate.getValue(),
-				LocalTime.parse(AppointmentStartTimeHours.getValue() + ":" + AppointmentStartTimeMinutes.getValue(),
-						Calendar.timeFormatter));
+				LocalTime.of(AppointmentStartTimeHours.getValueFactory().getValue(),
+						AppointmentStartTimeMinutes.getValueFactory().getValue()));
 		LocalDateTime endpoint = LocalDateTime.of(AppointmentEndDate.getValue(),
-				LocalTime.parse(AppointmentEndTimeHours.getValue() + ":" + AppointmentEndTimeMinutes.getValue(),
-						Calendar.timeFormatter));
+				LocalTime.of(AppointmentEndTimeHours.getValueFactory().getValue(),
+						AppointmentEndTimeMinutes.getValueFactory().getValue()));
 		boolean allDay = AppointmentAllDay.isSelected();
 		boolean regularlyOnOff = AppointmentRegularlyOnOff.isSelected();
 		String regularlyTypeString = (String) AppointmentRegularlyType.getValue();
@@ -166,9 +147,8 @@ public class AppointmentCreatorController implements Initializable {
 		// chooseCategory.getSelectionModel().getSelectedItem();;
 
 		System.out.println(regularlyTypeString + regularlyType);
-		// Creator.createAppointment(title, startpoint, endpoint, allDay,
-		// regularlyOnOff, regularlyType, regularlyAmount,
-		// description, notesPinned, notesLink, floating, chosenCategory);
+		Creator.createAppointment(title, startpoint, endpoint, allDay, regularlyOnOff, regularlyType, regularlyAmount,
+				description, notesPinned, notesLink, floating, chosenCategory);
 	}
 
 	@Override
@@ -177,19 +157,14 @@ public class AppointmentCreatorController implements Initializable {
 			chooseCategory.getItems().addAll(CategoriesController.getMainCategories().get(i));
 		}
 
-		
-
-
-		/*for(int i=0; i<tempNotesList.size(); i++){
-			notesChoiceList.add(tempNotesList.get(i));
-		}
-		if (NoteOverview.getNotesList().get(0) != null) {
-			AppoinmentPinNote1.setItems(notesChoiceList);
-			AppoinmentPinNote2.setItems(notesChoiceList);
-			AppoinmentPinNote3.setItems(notesChoiceList);
-		}*/
-		
-		
+		/*
+		 * for(int i=0; i<tempNotesList.size(); i++){
+		 * notesChoiceList.add(tempNotesList.get(i)); } if
+		 * (NoteOverview.getNotesList().get(0) != null) {
+		 * AppoinmentPinNote1.setItems(notesChoiceList);
+		 * AppoinmentPinNote2.setItems(notesChoiceList);
+		 * AppoinmentPinNote3.setItems(notesChoiceList); }
+		 */
 
 		AppointmentStartTimeHours.setValueFactory(dateFactoryStartHours);
 		AppointmentEndTimeHours.setValueFactory(dateFactoryEndHours);
