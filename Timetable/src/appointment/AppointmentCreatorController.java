@@ -95,7 +95,7 @@ public class AppointmentCreatorController implements Initializable {
 
 	// Event Listener on Button[#AppointmentSave].onAction
 	@FXML
-	public void appointmentSavePress(ActionEvent event) {
+	public void appointmentSavePress(ActionEvent event) throws CloneNotSupportedException {
 
 		Appointment serObj = new Appointment("Stupid Appointment", null, null, false, false, 0, 0, "Some stupid text",
 				0, null, false);
@@ -147,7 +147,7 @@ public class AppointmentCreatorController implements Initializable {
 
 		System.out.println(regularlyTypeString + regularlyType);
 		Creator.createAppointment(title, startpoint, endpoint, allDay, regularlyOnOff, regularlyType, regularlyAmount,
-				description, notesPinned, notesLink, floating, chosenCategory);
+				description, notesPinned, notesLink, floating);
 	}
 
 	@Override
