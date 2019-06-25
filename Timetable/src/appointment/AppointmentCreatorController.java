@@ -158,8 +158,7 @@ public class AppointmentCreatorController implements Initializable {
 		for (int i = 0; i < CategoriesController.getMainCategories().size(); i++) {
 			chooseCategory.getItems().addAll(CategoriesController.getMainCategories().get(i));
 		}
-
-		/*
+        /*
 		 * for(int i=0; i<tempNotesList.size(); i++){
 		 * notesChoiceList.add(tempNotesList.get(i)); } if
 		 * (NoteOverview.getNotesList().get(0) != null) {
