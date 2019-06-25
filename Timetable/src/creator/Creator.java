@@ -170,7 +170,7 @@ public class Creator implements Serializable {
 
 	public static String createAppointment(String title, LocalDateTime startpoint, LocalDateTime endpoint,
 			boolean allDay, boolean regularlyOnOff, int regularlyType, int regularlyAmount, String description,
-			int notesPinned, ArrayList<Note> notesLink, boolean floating, Category chosenCategory)
+			int notesPinned, ArrayList<Note> notesLink, boolean floating)
 			throws CloneNotSupportedException {
 
 		if (allDay) {
