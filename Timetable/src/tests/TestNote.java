@@ -13,12 +13,10 @@ public class TestNote {
 		final int pinned;
 		final ArrayList pinnedAt = null;
 		final ArrayList photoList = null;
-		final ArrayList gifList = null;
-		final ArrayList soundList = null;
 		final String textbox;
-		final ArrayList videoList = null;		       
+		final String filepath;
 			
-			Note serObj = new Note("Stupid Note", 0, pinnedAt, photoList, gifList, soundList, "Some stupid text", videoList, "Aber");
+			Note serObj = new Note("Stupid Note", 0, pinnedAt, photoList "Some stupid text", "Aber");
 			
 			Note.WriteObjectToFile(serObj);
 			

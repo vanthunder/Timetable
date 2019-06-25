@@ -1,7 +1,11 @@
 package note;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,10 +27,7 @@ public class Note extends Base {
 	private int pinned;
 	private ArrayList <Appointment> pinnedAt;
 	private ArrayList photoList;
-	private ArrayList gifList;
-	private ArrayList soundList;
 	private String textbox;
-	private ArrayList videoList;
 
 	public int getPinned() {
 		return pinned;
@@ -52,22 +53,6 @@ public class Note extends Base {
 		this.photoList = photoList;
 	}
 
-	public ArrayList getGifList() {
-		return gifList;
-	}
-
-	public void setGifList(ArrayList gifList) {
-		this.gifList = gifList;
-	}
-
-	public ArrayList getSoundList() {
-		return soundList;
-	}
-
-	public void setSoundList(ArrayList soundList) {
-		this.soundList = soundList;
-	}
-
 	public String getTextbox() {
 		return textbox;
 	}
@@ -76,31 +61,20 @@ public class Note extends Base {
 		this.textbox = textbox;
 	}
 
-	public ArrayList getVideoList() {
-		return videoList;
-	}
-
-	public void setVideoList(ArrayList videoList) {
-		this.videoList = videoList;
-	}
-
-	public Note(String title, int pinned, ArrayList pinnedAt, ArrayList photoList, ArrayList gifList, ArrayList soundList, String textbox, ArrayList videoList, String filepath) {
+	public Note(String title, int pinned, ArrayList pinnedAt, ArrayList photoList, String textbox, String filepath) {
 		super(title);
 		this.setPinned(pinned);
 		this.setPinnedAt(pinnedAt);
 		this.setPhotoList(photoList);
-		this.setGifList(gifList);
-		this.setSoundList(soundList);
 		this.setTextbox(textbox);
-		this.setVideoList(videoList);
 		this.setFilepath(filepath);
 	}
 	
 	/** states all Note attributes in a String*/
 	@Override
 	public String toString(){
-		return new String("title: " + this.getTitle() +" pinned: " + pinned + " pinnedAt: " + pinnedAt + " photoList: " + photoList + " gifList: " + gifList +
-				" soundList: " + soundList + " textbox: " + textbox + " videoList: " + videoList + " filepath: " + this.getFilepath());
+		return new String("title: " + this.getTitle() +" pinned: " + pinned + " pinnedAt: " + pinnedAt + " photoList: " + photoList +
+				" textbox: " + textbox + " filepath: " + this.getFilepath());
 	}
 
 	public static void WriteObjectToFile(Note serObj) {
@@ -145,7 +119,51 @@ public class Note extends Base {
 		
 		
 				
-	}	
+	}
+
+	public static String noteLoad(Note serObj) {
+		
+		File folder = new File("notes");
+		InputStream fileInput = null;
+
+				try
+				{
+				  fileInput = new FileInputStream("notes/" + "Note "+ serObj.getTitle() + ".txt");
+				  ObjectInputStream objectInput = new ObjectInputStream(fileInput);
+				  Note note = (Note) objectInput.readObject();
+				  System.out.println( note );
+				  objectInput.close();
+				}
+				catch (IOException e) { System.err.println(e); }
+				catch (ClassNotFoundException e) { System.err.println(e); }
+				finally {try {fileInput.close();} catch (Exception e) { } }
+				
+			return serObj.toString();
+    }
+	
+	
+	public static void noteAllLoad() {
+		File folder = new File("notes");
+		File[] fileList = folder.listFiles();
+
+		for (int i = 0; i < fileList.length; i++) {
+		  if (fileList[i].isFile()) 
+		  {
+			  InputStream fileInput = null;
+
+				try
+				{
+				  fileInput = new FileInputStream("notes/"+ fileList[i].getName() );
+				  ObjectInputStream objectInput = new ObjectInputStream(fileInput);
+				  Note note = (Note) objectInput.readObject();
+				  System.out.println(note);
+				  objectInput.close();
+				}
+				catch (IOException e) {System.err.println(e); }
+				catch ( ClassNotFoundException e ) { System.err.println(e); }
+				finally {try {fileInput.close();} catch (Exception e) { } }
+    }
+	}
 	
 	
 	/*	
@@ -167,5 +185,6 @@ public class Note extends Base {
 		       
 		 }*/
 
+}
 }
 

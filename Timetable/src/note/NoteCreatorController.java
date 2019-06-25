@@ -69,7 +69,7 @@ public class NoteCreatorController implements Initializable
 		String title = noteTitle.getText();
 		Image image = currentImage.getImage();
 		
-		Note serObj = new Note(title, 0, null, null, null, null, "Some stupid text", null, "Aber");
+		Note serObj = new Note(title, 0, null, null, "Some stupid text", "Aber");
 		NotesViewController.update(title);
 		Note.WriteObjectToFile(serObj);
 		

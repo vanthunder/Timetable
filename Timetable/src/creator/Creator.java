@@ -17,6 +17,7 @@ import appointment.Appointment;
 import base.Base;
 import calendar.Calendar;
 import note.Note;
+import note.NotesViewController;
 import task.Task;
 
 public class Creator implements Serializable {
@@ -438,17 +439,17 @@ public class Creator implements Serializable {
 	 * note out of the data and saves it in the chosen category.
 	 */
 	public static String createNote(String title, int pinned, ArrayList pinnedAt, ArrayList photoList,
-			ArrayList gifList, ArrayList soundList, String textbox, ArrayList videoList, String filepath,
+			String textbox, String filepath,
 			Category chosenCategory) {
 
-		Note newNote = new Note("Stupid Note", 0, pinnedAt, photoList, gifList, soundList, "Some stupid text", videoList, "Aber");
+		Note newNote = new Note("Stupid Note", 0, pinnedAt, photoList, "Some stupid text", "Aber");
 
 		Note.WriteObjectToFile(newNote);
-
+		NotesViewController.getNotes().add(Note.noteLoad(newNote));
+		
 		return newNote.toString();
-
-
 	}
+
 
 	public static int getRegularlyID() {
 		int regularlyID = 0;

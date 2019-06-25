@@ -174,25 +174,6 @@ public class MainController extends Main
     }
 	public void initialize() 
     {   
-		File folder = new File("notes");
-		File[] listOfFiles = folder.listFiles();
-
-		for (int i = 0; i < listOfFiles.length; i++) {
-		  if (listOfFiles[i].isFile()) 
-		  {
-			  InputStream fis = null;
-
-				try
-				{
-				  fis = new FileInputStream("notes/"+ listOfFiles[i].getName() );
-				  ObjectInputStream o = new ObjectInputStream( fis );
-				  Note note = (Note) o.readObject();
-				  System.out.println( note );
-				}
-				catch ( IOException e ) { System.err.println( e ); }
-				catch ( ClassNotFoundException e ) { System.err.println( e ); }
-				finally { try { fis.close(); } catch ( Exception e ) { } }
-    }
-}
+		Note.noteAllLoad();
 }
 }
