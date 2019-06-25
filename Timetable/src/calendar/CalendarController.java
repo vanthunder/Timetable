@@ -58,29 +58,29 @@ public class CalendarController implements Initializable
 	// AppointmentList
 	// private final static HashMap<LocalDate, <String> appointments = new
 	// HashMap<>();
-	private static List<LocalDate> appointments = new ArrayList<>();
+	private static ArrayList<LocalDate> appointments = new ArrayList<>();
 
-	public static List<LocalDate> getAppointments()
+	public static ArrayList<LocalDate> getAppointments()
 	{
 		return appointments;
 	}
 
-	public static void setAppointments(List<LocalDate> appointments)
+	public static void setAppointments(ArrayList<LocalDate> appointments)
 	{
 		CalendarController.appointments = appointments;
 	}
 
-	public static List<String> getDescriptions()
+	public static ArrayList<String> getDescriptions()
 	{
 		return descriptions;
 	}
 
-	public static void setDescriptions(List<String> descriptions)
+	public static void setDescriptions(ArrayList<String> descriptions)
 	{
 		CalendarController.descriptions = descriptions;
 	}
 
-	private static List<String> descriptions = new ArrayList<>();
+	private static ArrayList<String> descriptions = new ArrayList<>();
 	// LocalDate Events
 	private LocalDate currentDate = LocalDate.now();
 	LocalDate startOfWeek = currentDate.minusDays(currentDate.getDayOfWeek().getValue() - 1);
@@ -106,7 +106,7 @@ public class CalendarController implements Initializable
 	static String AppointmentColor = "-fx-background-color: #b4ff96;";
 	static String ResetColor = "-fx-background-color: White;";
 	// Formats the date and time
-	static DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("         E\n        d MMM");
+	static DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("         E\n        d MMMM");
 
 	// Event Listener on Button[#upLeftButton].onAction
 	@FXML
