@@ -438,21 +438,17 @@ public class Creator implements Serializable {
 			String textbox, String filepath,
 			Category chosenCategory) {
 
-<<<<<<< HEAD
-		Note newNote = new Note("Stupid Note", 0, pinnedAt, photoList, gifList, soundList, "Some stupid text",
-				videoList, "Aber");
-=======
+
+		
+
 		Note newNote = new Note("Stupid Note", 0, pinnedAt, photoList, "Some stupid text", "Aber");
->>>>>>> branch 'master' of https://github.com/vanthunder/Timetable
+
 
 		Note.WriteObjectToFile(newNote);
 		NotesViewController.getNotes().add(Note.noteLoad(newNote));
 		
 		return newNote.toString();
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://github.com/vanthunder/Timetable
 	}
 
 

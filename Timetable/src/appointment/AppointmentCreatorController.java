@@ -143,8 +143,7 @@ public class AppointmentCreatorController implements Initializable {
 		if (startpoint == endpoint || endpoint.isBefore(startpoint) || startpoint == null || endpoint == null) {
 			floating = true;
 		}
-		// TreeItem<String> chosenCategory =
-		// chooseCategory.getSelectionModel().getSelectedItem();;
+		 TreeItem<String> chosenCategory = chooseCategory.getSelectionModel().getSelectedItem();
 
 		System.out.println(regularlyTypeString + regularlyType);
 		Creator.createAppointment(title, startpoint, endpoint, allDay, regularlyOnOff, regularlyType, regularlyAmount,
