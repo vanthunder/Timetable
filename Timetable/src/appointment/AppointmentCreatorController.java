@@ -44,6 +44,11 @@ import javafx.scene.control.ChoiceBox;
 public class AppointmentCreatorController implements Initializable {
 	ObservableList<String> regularlyTypeList = FXCollections.observableArrayList("täglich", "wöchentlich", "monatlich",
 			"jährlich");
+
+	//ObservableList<Note> notesChoiceList = FXCollections.observableArrayList();
+	//ArrayList<Note> tempNotesList=NoteOverview.getNotesList();
+	
+
 	SpinnerValueFactory<Integer> dateFactoryStartHours = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 0);
 	SpinnerValueFactory<Integer> dateFactoryStartMinutes = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0);
 	SpinnerValueFactory<Integer> dateFactoryEndHours = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 0);
@@ -171,15 +176,20 @@ public class AppointmentCreatorController implements Initializable {
 		for (int i = 0; i < CategoriesController.getMainCategories().size(); i++) {
 			chooseCategory.getItems().addAll(CategoriesController.getMainCategories().get(i));
 		}
-		for (int i = 0; i < CategoriesController.getMainCategories().size(); i++) {
-			//AppoinmentPinNote1.getItems().addAll(NoteOverview.getNotesList().get(i));
+
+		
+
+
+		/*for(int i=0; i<tempNotesList.size(); i++){
+			notesChoiceList.add(tempNotesList.get(i));
 		}
-		for (int i = 0; i < CategoriesController.getMainCategories().size(); i++) {
-			//AppoinmentPinNote2.getItems().addAll(NoteOverview.getNotesList().get(i));
-		}
-		for (int i = 0; i < CategoriesController.getMainCategories().size(); i++) {
-			//AppoinmentPinNote3.getItems().addAll(NoteOverview.getNotesList().get(i));
-		}
+		if (NoteOverview.getNotesList().get(0) != null) {
+			AppoinmentPinNote1.setItems(notesChoiceList);
+			AppoinmentPinNote2.setItems(notesChoiceList);
+			AppoinmentPinNote3.setItems(notesChoiceList);
+		}*/
+		
+		
 
 		AppointmentStartTimeHours.setValueFactory(dateFactoryStartHours);
 		AppointmentEndTimeHours.setValueFactory(dateFactoryEndHours);

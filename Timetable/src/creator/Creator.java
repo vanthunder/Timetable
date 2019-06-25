@@ -22,7 +22,7 @@ import task.Task;
 public class Creator implements Serializable {
 
 	public static String createEvent(String title, LocalDateTime startpoint, LocalDateTime endpoint, String description,
-			boolean regularlyOnOff, int regularlyType, int regularlyAmount, boolean alarmOnOff, LocalDateTime alarmTime)
+			boolean regularlyOnOff, int regularlyType, int regularlyAmount)
 			throws CloneNotSupportedException {
 		// event exists always the whole day
 		startpoint = startpoint.withHour(0).withMinute(0);
