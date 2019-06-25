@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,6 +17,7 @@ import event.Event;
 import appointment.Appointment;
 import base.Base;
 import calendar.Calendar;
+import calendar.CalendarController;
 import note.Note;
 import note.NotesViewController;
 import task.Task;
@@ -290,6 +292,7 @@ public class Creator implements Serializable {
 			tempRegularlyList.put(getRegularlyID(), regularlyInnerList);
 			Calendar.setRegularlyList(tempRegularlyList);
 			Calendar.setCalendarList(tempCalendarList2);
+			updateCalendarControllerList();
 
 //Save.save(); as soon as the appointment is created, the program will save the data
 
@@ -417,6 +420,7 @@ public class Creator implements Serializable {
 			tempRegularlyList.put(getRegularlyID(), regularlyInnerList);
 			Calendar.setRegularlyList(tempRegularlyList);
 			Calendar.setCalendarList(tempCalendarList2);
+			updateCalendarControllerList();
 
 //Save.save(); as soon as the appointment is created, the program will save the data
 
@@ -466,6 +470,23 @@ public class Creator implements Serializable {
 		} while (j <= Calendar.getRegularlyList().size());
 
 		return regularlyID;
+	}
+	
+	public static void updateCalendarControllerList() {
+		ArrayList<Appointment> tmpCalendarList = Calendar.getCalendarList();
+		ArrayList<LocalDate> tmpControllerListAppointment = CalendarController.getAppointments();
+		ArrayList<String> tmpControllerListDescription = CalendarController.getDescriptions();
+		for(int i=0; i<tmpCalendarList.size(); i++) {
+			tmpControllerListAppointment.add(tmpCalendarList.get(i).getStartpoint().toLocalDate());
+			if(tmpCalendarList.get(i).getEndpoint()!=null) {
+			tmpControllerListAppointment.add(tmpCalendarList.get(i).getEndpoint().toLocalDate());
+			tmpControllerListDescription.add(tmpCalendarList.get(i).getTitle());
+			}
+			tmpControllerListDescription.add(tmpCalendarList.get(i).getTitle());
+		}
+		CalendarController.setDescriptions(tmpControllerListDescription);
+		CalendarController.setAppointments(tmpControllerListAppointment);
+		
 	}
 
 }
