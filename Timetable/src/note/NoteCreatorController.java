@@ -48,6 +48,9 @@ public class NoteCreatorController implements Initializable
 	@FXML
 	ImageView currentImage = new ImageView();
 	
+	@FXML
+	TextField noteDescription = new TextField();
+	
 	Image icon = new Image(getClass().getResourceAsStream("/images/NotizIcon.png"));
 	
 	@FXML
@@ -68,8 +71,10 @@ public class NoteCreatorController implements Initializable
 	{   
 		String title = noteTitle.getText();
 		Image image = currentImage.getImage();
+		String description = noteDescription.getText();
+		String filepath = "notes/" + title;
 		
-		Note serObj = new Note(title, 0, null, null, "Some stupid text", "Aber");
+		Note serObj = new Note(title, 0, null, null, description, filepath);
 		NotesViewController.update(title);
 		Note.WriteObjectToFile(serObj);
 		
