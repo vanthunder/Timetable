@@ -28,10 +28,10 @@ public class CategoriesHelper
 	}
     //Imports an image for the folder icon
 	Image icon = new Image(getClass().getResourceAsStream("/images/Folder.png"));
-	Base Base1 = new Base("!! Debug Item !!")
+	//Base Base1 = new Base("!! Debug Item !!")
 	{
 	};
-	ToObject toObject = new ToObject(Base1);
+	//ToObject toObject = new ToObject(Base1);
 
 	// This Method creates the maincategories
 	public ArrayList<TreeItem> getMainCategories()
@@ -50,7 +50,7 @@ public class CategoriesHelper
 		mainCategories.add(uni);
 		mainCategories.add(freizeit);
 		mainCategories.add(sonstiges);
-		mainCategories.add(toObject.getRootItem());
+		//mainCategories.add(toObject.getRootItem());
 
 		return mainCategories;
 	}
