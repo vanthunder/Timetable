@@ -13,6 +13,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -97,8 +98,12 @@ public class AppointmentCreatorController implements Initializable
 
 	// Event Listener on Button[#AppointmentSave].onAction
 	@FXML
+<<<<<<< Upstream, based on origin/master
 	public void appointmentSavePress(ActionEvent event) throws CloneNotSupportedException
 	{
+=======
+	public void appointmentSavePress(ActionEvent event) throws CloneNotSupportedException, IOException {
+>>>>>>> aa0b487 Save is finished
 
 		Appointment serObj = new Appointment("Stupid Appointment", null, null, false, false, 0, 0, "Some stupid text",
 				0, null, false);
