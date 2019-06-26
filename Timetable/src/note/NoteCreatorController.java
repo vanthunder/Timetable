@@ -1,6 +1,5 @@
 package note;
 
-
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -26,14 +25,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 
+/**
+ * 
+ * @author Niklas
+ *
+ */
+
 public class NoteCreatorController implements Initializable
 {
-	//@FXML
-	//private ImageView noteInsertImage = new ImageView();
-	
 	@FXML
 	Button noteInsertImageButton = new Button();
-	//Event for the link button
 	
 	@FXML
 	HBox imageList = new HBox();
@@ -68,7 +69,8 @@ public class NoteCreatorController implements Initializable
 	    System.out.println(imageList.getChildren());
 	
 	} 
-	//This method is for the [saveNoteButton]
+	
+	//This method saves the currently created Note
 	public void saveNoteButtonPress(ActionEvent event)
 	{   
 		String title = noteTitle.getText();
