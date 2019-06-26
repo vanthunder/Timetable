@@ -7,6 +7,11 @@ import appointment.Appointment;
 import base.Base;
 import calendar.Calendar;
 
+/**
+ * 
+ * @author Marc
+ *
+ */
 public class Event extends Base implements Cloneable {
 	//ganztag start description
 	private LocalDateTime startpoint;

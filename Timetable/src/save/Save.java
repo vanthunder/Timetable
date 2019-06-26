@@ -12,6 +12,11 @@ import appointment.Appointment;
 import calendar.Calendar;
 import creator.Creator;
 
+/**
+ * 
+ * @author Marc
+ *
+ */
 public class Save {
 	public static void saveCalendarList() throws IOException {
 	ArrayList<Appointment> tmpCalendarList = Calendar.getCalendarList();
