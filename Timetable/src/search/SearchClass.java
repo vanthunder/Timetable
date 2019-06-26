@@ -6,7 +6,7 @@ public class SearchClass {
 	
 	static int binarySearch(ArrayList[] array, String searchedTitle) 
     { 
-        int left = 0, right = array.length - 1; 
+      /**  int left = 0, right = array.length - 1; 
         while (left <= right) { 
             int middle = left + (right - left) / 2; 
   
@@ -21,8 +21,8 @@ public class SearchClass {
             else
                 right = middle - 1; 
         } 
-  
-        return -1; 
+  	*/
+        return -1;  
     } 
 
 }
