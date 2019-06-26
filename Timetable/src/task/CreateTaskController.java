@@ -258,17 +258,18 @@ public class CreateTaskController implements Initializable {
 		}
 		LocalDateTime periodStart = null;
 		LocalDateTime periodEnd = null;
+		String titleText = title.getText();
 
 //		a new Object by Type Task will be initialized and saved
 		if (title.getText() != null)
 			if (!autoSort) {
 
 				
-				Task newTask = new Task(title.getText(), LocalDateTime.of(startDate, startTime),
+				Task newTask = new Task(titleText, LocalDateTime.of(startDate, startTime),
 						LocalDateTime.of(endDate, endTime), allDay, regularOnOff.isSelected(), regularType, regularID,
 						description.getText(), notesPinned, notesLinks, floating, autoSort, duration,periodStart,periodEnd);
 
-				Creator.createTask(title.getText(), description.getText(), LocalDateTime.of(startDate, startTime),
+				Creator.createTask(titleText, description.getText(), LocalDateTime.of(startDate, startTime),
 						LocalDateTime.of(endDate, endTime), allDay, regularOnOff.isSelected(), regularType, regularID,
 						description.getText(), notesPinned, notesLinks, floating, autoSort, duration,periodStart,periodEnd);
 

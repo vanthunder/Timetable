@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import appointment.Appointment;
 import note.Note;
-
+// @Erwin
 public class Task extends Appointment implements Comparable {
 	private boolean autoSortOnOff;
 	private int duration;

@@ -14,6 +14,8 @@ import java.time.*;
 import calendar.Calendar;
 import calendar.CalendarController;
 import creator.Creator;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Parent;
@@ -22,7 +24,7 @@ import javafx.scene.layout.HBox;
 import save.Save;
 import task.Task;
 
-
+// @ Erwin Kling @Marc Drolshagen
 public class AutoSort {
 	/*
 	 * Rules: 1. no collision allowed:
@@ -31,7 +33,7 @@ public class AutoSort {
 	 */
 
 	public static void autoSort(Task currentTask) throws CloneNotSupportedException, IOException {
-		ArrayList<Button> taskButtons = TaskController.buttonList;
+		ObservableList<Button> taskButtons = FXCollections.observableArrayList();
 		ArrayList<Long> tmpDuration = splitDuration(currentTask);
 		currentTask.setAutoSortID(getAutosortTaskID());
 		ArrayList<Appointment> tmpCalendarList = Calendar.getCalendarList();
@@ -77,8 +79,7 @@ public class AutoSort {
 							btn.setMinHeight(50);
 							btn.setText(currentTask.getTitle() + " Start: " + currentTask.getStartpoint() + " Ende: "
 									+ currentTask.getEndpoint());
-							taskButtons.add(btn);
-							TaskController.buttonList.add(btn);
+
 							
 						}
 						break;
@@ -100,8 +101,7 @@ public class AutoSort {
 							btn.setMinHeight(50);
 							btn.setText(currentTask.getTitle() + " Start: " + currentTask.getStartpoint() + " Ende: "
 									+ currentTask.getEndpoint());
-							taskButtons.add(btn);
-							TaskController.buttonList.add(btn);
+
 							
 						}
 						break;

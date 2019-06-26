@@ -103,10 +103,10 @@ public class CalendarController implements Initializable
 	int maxlength = currentMonth.maxLength();
 	int markedLabel = 0;
 	int ab = 0;
+	int counter = 0;
 	int Months = 1;
 	int mMonths = 1;
 	int CurrentYear = currentDate.getYear();
-	int counter = 0;
 	int backCounter = 2;
 	int feb = a.getMonth().maxLength();// february.maxLength();
 	// Color Strings
@@ -642,12 +642,7 @@ public class CalendarController implements Initializable
 		}
 		System.out.println("Hey das ist wahr " + oldName + " " + newName);
 	}
-//	add new Button to Task Tab
-	public static void taskList (Button newbtn) {
-		taskBox.getChildren().add(newbtn);
-		System.out.println("button created");
-		
-	}
+
 	
 	
 
