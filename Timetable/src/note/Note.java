@@ -32,6 +32,7 @@ public class Note extends Base {
 	private String title;
 	private ArrayList photoList;
 	private String textbox;
+	private String filepath;
 
 	
 	public ArrayList getPhotoList() {
@@ -157,5 +158,13 @@ public class Note extends Base {
 			}
 		}
 
+	}
+
+	public String getFilepath() {
+		return filepath;
+	}
+
+	public void setFilepath(String filepath) {
+		this.filepath = filepath;
 	}
 }

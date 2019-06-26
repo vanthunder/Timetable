@@ -86,4 +86,9 @@ public class Appointment extends Event implements Cloneable {
 		return clonedAppointment;
 
 	}
+
+	public void setFilepath(String filepath) {
+		// TODO Auto-generated method stub
+		
+	}
 }
