@@ -485,7 +485,7 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
-						
+
 						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
 							Button btn = new Button();
 							btn.setMinWidth(200);
@@ -592,12 +592,10 @@ public class Creator implements Serializable {
 		CalendarController.setDescriptions(tmpControllerListDescription);
 		CalendarController.setAppointments(tmpControllerListAppointment);
 
-	}
-<<<<<<< HEAD
+	}<<<<<<<HEAD
 
-}
-=======
-	
+}=======
+
 	public static void deleteFromCalendarList(String title) {
 		ArrayList<Integer> deleteIDs = new ArrayList<Integer>();
 		ArrayList<Appointment> tmpCalendarList = Calendar.getCalendarList();
@@ -612,5 +610,6 @@ public class Creator implements Serializable {
 		Calendar.setCalendarList(tmpCalendarList);
 		updateCalendarControllerList();
 	}
-}
->>>>>>> branch 'master' of https://github.com/vanthunder/Timetable
+}>>>>>>>branch'master'
+
+of https:// github.com/vanthunder/Timetable
