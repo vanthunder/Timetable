@@ -182,7 +182,7 @@ public class Creator implements Serializable {
 			boolean allDay, boolean regularlyOnOff, int regularlyType, int regularlyAmount, String description,
 			int notesPinned, ArrayList<Note> notesLink, boolean floating)
 			throws CloneNotSupportedException, IOException {
-		ArrayList<Button> taskButtons;
+
 
 		if (allDay) {
 			startpoint = startpoint.withHour(0).withMinute(0);
@@ -314,7 +314,7 @@ public class Creator implements Serializable {
 
 	}
 
-	static ArrayList<Button> taskButtons = null;
+	static ArrayList<Button> taskButtons = new ArrayList<Button>();
 
 	public static String createTask(String title, String filepath, LocalDateTime startpoint, LocalDateTime endpoint,
 			boolean allDay, boolean regularlyOnOff, int regularlyType, int regularlyID, String description,
@@ -527,7 +527,7 @@ public class Creator implements Serializable {
 		HBox hbox = new HBox(); // create new VBox instance
 		hbox.setMinWidth(500); // set minimum width, dont think you'd need this.
 
-		for (int i = 1; taskButtons.length(); i++) {
+		for (int i = 1;i <= taskButtons.size(); i++) {
 			Button btn = new Button();
 			btn.setMinWidth(200);
 			btn.setMinHeight(50);
