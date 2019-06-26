@@ -451,7 +451,7 @@ public class CalendarController implements Initializable
 	// Initialize the calendar
 	public void intitCalendar()
 	{
-		int a = 0;
+		int cache = 0;
 		YearLabel.setText(Integer.toString(currentDate.getYear()));
 		for (int i = 0; i < 5; i++)
 		{
@@ -460,15 +460,13 @@ public class CalendarController implements Initializable
 				currentDate.getYear();
 				CalendarLabel label = new CalendarLabel();
 				label.setTextAlignment(TextAlignment.CENTER);
-				label.setTextAlignment(TextAlignment.CENTER);
 				label.setAlignment(Pos.CENTER);
 				Calendar.setAlignment(Pos.CENTER);
-				label.setTextAlignment(TextAlignment.CENTER);
 				Calendar.add(label, j, i);
 				selectTimeLabel.setText(currentDate.getMonth().toString());
-				if (!(a == maxlength))
+				if (!(cache == maxlength))
 				{
-					LocalDate betweenweek = start.plusDays(a);
+					LocalDate betweenweek = start.plusDays(cache);
 					System.out.println("TEST");
 					label.setText("TEST");
 					label.setText(betweenweek.format(dayFormatter));
@@ -476,7 +474,7 @@ public class CalendarController implements Initializable
 
 					LeapYearLabel.setVisible(false);
 					System.out.println(betweenweek.getDayOfWeek());
-					a++;
+					cache++;
 					if (betweenweek.isLeapYear())
 					{
 						LeapYearLabel.setVisible(true);
@@ -484,7 +482,7 @@ public class CalendarController implements Initializable
 					{
 						LeapYearLabel.setVisible(false);
 					}
-				} else if (a <= maxlength)
+				} else if (cache <= maxlength)
 				{
 					Labels.add(label);
 				}
