@@ -330,7 +330,6 @@ public class Creator implements Serializable {
 		int regularlyAmount = 0;
 		Duration.between(endpoint, endpoint).toDays();
 
-
 		Task newTask = new Task(title, startpoint, endpoint, allDay, regularlyOnOff, regularlyType, regularlyID,
 				description, notesPinned, notesLink, floating, autoSortOnOff, duration, periodStart, periodEnd);
 
