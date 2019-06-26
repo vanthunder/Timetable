@@ -8,15 +8,18 @@ import java.util.concurrent.TimeUnit;
 
 import appointment.Appointment;
 
+import java.io.IOException;
 import java.time.*;
 
 import calendar.Calendar;
 import calendar.CalendarController;
+import creator.Creator;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import save.Save;
 import task.Task;
 
 
@@ -27,8 +30,8 @@ public class AutoSort {
 	 * after 3 hours
 	 */
 
-	public static void autoSort(Task currentTask) throws CloneNotSupportedException {
-		ArrayList<Button> taskButtons = null;
+	public static void autoSort(Task currentTask) throws CloneNotSupportedException, IOException {
+		ArrayList<Button> taskButtons = TaskController.buttonList;
 		ArrayList<Long> tmpDuration = splitDuration(currentTask);
 		currentTask.setAutoSortID(getAutosortTaskID());
 		ArrayList<Appointment> tmpCalendarList = Calendar.getCalendarList();
@@ -64,7 +67,7 @@ public class AutoSort {
 						tmpCalendarList.add(currentTask);
 						autoSortInnerList.add(currentTask);
 						System.out.println(currentTask.toString());
-						Task.WriteObjectToFile(currentTask);
+
 
 						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
 							Button btn = new Button();
@@ -73,7 +76,7 @@ public class AutoSort {
 							btn.setText(currentTask.getTitle() + " Start: " + currentTask.getStartpoint() + " Ende: "
 									+ currentTask.getEndpoint());
 							taskButtons.add(btn);
-							CalendarController.taskList(btn);
+							TaskController.buttonList.add(btn);
 							
 						}
 						break;
@@ -85,7 +88,8 @@ public class AutoSort {
 						// add the new Task to the CalendarList
 						tmpCalendarList.add(copy);
 						autoSortInnerList.add(copy);
-						Task.WriteObjectToFile(copy);
+
+						
 						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
 							Button btn = new Button();
 							btn.setMinWidth(200);
@@ -93,7 +97,7 @@ public class AutoSort {
 							btn.setText(currentTask.getTitle() + " Start: " + currentTask.getStartpoint() + " Ende: "
 									+ currentTask.getEndpoint());
 							taskButtons.add(btn);
-							CalendarController.taskList(btn);
+							TaskController.buttonList.add(btn);
 							
 						}
 						break;
@@ -103,6 +107,8 @@ public class AutoSort {
 			}
 		}
 		Calendar.setCalendarList(tmpCalendarList);
+		Creator.updateCalendarControllerList();
+		Save.saveCalendarList();
 
 		tmpAutoSortList.put(currentTask.getAutoSortID(), autoSortInnerList);
 		Calendar.setAutosortTaskList(tmpAutoSortList);
