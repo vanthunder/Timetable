@@ -527,7 +527,7 @@ public class Creator implements Serializable {
 		HBox hbox = new HBox(); // create new VBox instance
 		hbox.setMinWidth(500); // set minimum width, dont think you'd need this.
 
-		for (int i = 1; taskButtons.length(); i++) {
+		for (int i = 1; i<taskButtons.size(); i++) {
 			Button btn = new Button();
 			btn.setMinWidth(200);
 			btn.setMinHeight(50);
@@ -592,9 +592,9 @@ public class Creator implements Serializable {
 		CalendarController.setDescriptions(tmpControllerListDescription);
 		CalendarController.setAppointments(tmpControllerListAppointment);
 
-	}<<<<<<<HEAD
+	}
 
-}=======
+
 
 	public static void deleteFromCalendarList(String title) {
 		ArrayList<Integer> deleteIDs = new ArrayList<Integer>();
@@ -610,6 +610,4 @@ public class Creator implements Serializable {
 		Calendar.setCalendarList(tmpCalendarList);
 		updateCalendarControllerList();
 	}
-}>>>>>>>branch'master'
-
-of https:// github.com/vanthunder/Timetable
+}
