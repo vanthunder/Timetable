@@ -602,7 +602,7 @@ public class Creator implements Serializable {
 		ArrayList<Integer> deleteIDs = new ArrayList<Integer>();
 		ArrayList<Appointment> tmpCalendarList = Calendar.getCalendarList();
 		for(int i=0; i<tmpCalendarList.size(); i++) {
-			if(tmpCalendarList.get(i).getTitle()==title) {
+			if(tmpCalendarList.get(i).getTitle().equals(title)) {
 				deleteIDs.add(i);
 			}
 		}
