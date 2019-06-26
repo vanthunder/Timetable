@@ -10,6 +10,11 @@ import event.Event;
 import note.Note;
 import java.io.*;
 
+/**
+ * 
+ * @author Marc
+ *
+ */
 public class Appointment extends Event implements Cloneable {
 	private int notesPinned;
 	private ArrayList<Note> notesLink;
@@ -35,63 +40,9 @@ public class Appointment extends Event implements Cloneable {
 						+ " notesPinned: " + notesPinned + " notesLink: " + notesLink + " floating: " + floating);
 	}
 
-	public static void WriteObjectToFile(Appointment serObj) {
 
-		String tmpTitle = serObj.getTitle();
-		int counter = 0;
-		boolean created = false;
 
-		do {
-
-			String filepath = "Appointment " + tmpTitle + counter + ".txt";
-
-			File tmpFilepath = new File(filepath);
-
-			boolean exists = tmpFilepath.exists();
-
-			if (exists) {
-				counter++;
-				continue;
-			}
-
-			serObj.setFilepath(filepath);
-
-			try {
-
-				FileOutputStream fileOut = new FileOutputStream(filepath);
-				ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-				objectOut.writeObject(serObj);
-				objectOut.close();
-				System.out.println("Der Termin wurde erfolgreich gespeichert!");
-
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
-
-			created = true;
-
-		} while (!created);
-
-	}
-
-	/*
-	 * public calendarNotePinning{
-	 * 
-	 * //The method noteChoosing from NoteOverviewController opens note overview and
-	 * the user chooses the note to pin the appointment/terminated task to. //The
-	 * notesList-index from NoteOverview of the note is returned. int
-	 * noteChoosingIndex = NoteOverviewController.noteChoosing(); ArrayList<Note>
-	 * tempNotesLink = this.getNotesLink(); ArrayList<Note> tempNotesList =
-	 * NoteOverview.getNotesList(); tempNotesLink.add(tempNotesList[]));
-	 * this.setNotesLink(tempNotesLink()); this.notesPinned++;
-	 * 
-	 * tempPinnedAt = tempNotesList[noteChoosingIndex].getPinnedAt; tempCalendarList
-	 * = NotesCalendar.getCalendarList();
-	 * tempPinnedAt.add(tempCalendarList[currentAppointment()]);
-	 * tempNotesList[noteChoosingIndex].setPinnedAt(tempPinnedAt); //
-	 * currentAppointment calls the index of the current opened
-	 * appointment/terminated task in Calendar.calenderList }
-	 */
+	
 
 	public int getNotesPinned() {
 		return notesPinned;

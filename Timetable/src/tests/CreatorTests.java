@@ -24,6 +24,11 @@ import note.Note;
 import task.AutoSort;
 import task.Task;
 
+/**
+ * 
+ * @author Niklas, Erwin, Marc
+ *
+ */
 public class CreatorTests {
 
 	@BeforeAll
