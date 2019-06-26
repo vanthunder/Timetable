@@ -129,9 +129,11 @@ public class NotesViewController implements Initializable
 		   if(notesLabels.get(i).getText().equals(""))
 		   {
 			   notesLabels.get(i).setText(note);
+			   notes.add(note);
 			   break;
 		   } 
 	   }
+	   
 	   
 	}
 	@Override
@@ -140,6 +142,21 @@ public class NotesViewController implements Initializable
 		// TODO Auto-generated method stub
 
 		//createNotesView();
+		notes.add("Note: Das ist eine Test Notiz");
+		notes.add("Note: Das ist eine zweite Test Notiz");
+		notes.add("Note: Das ist eine Test Notiz");
+		notes.add("Note: Das ist eine zweite Test Notiz");
+		notes.add("Note: Das ist eine Test Notiz");
+		notes.add("Note: Das ist eine Test Notiz");
+		notes.add("Note: Das ist eine zweite Test Notiz");
+		notes.add("Note: Das ist eine Test Notiz");
+		notes.add("Note: Das ist eine zweite Test Notiz");
+		notes.add("Note: Das ist eine Test Notiz");
+		notes.add("Note: Das ist eine Test Notiz");
+		notes.add("Note: Das ist eine zweite Test Notiz");
+		notes.add("Note: Das ist eine Test Notiz");
+		notes.add("Note: Das ist eine zweite Test Notiz");
+		notes.add("Note: Das ist eine Test Notiz");
 		notes.add("Note: Das ist eine Test Notiz");
 		notes.add("Note: Das ist eine zweite Test Notiz");
 		notes.add("Note: Das ist eine Test Notiz");

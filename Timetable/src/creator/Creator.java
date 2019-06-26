@@ -526,14 +526,12 @@ public class Creator implements Serializable {
 	 * menu, will be converted and transferred to this method. This method creates a
 	 * note out of the data and saves it in the chosen category.
 	 */
-	public static String createNote(String title, int pinned, ArrayList pinnedAt, ArrayList photoList,
-			String textbox, String filepath,
-			Category chosenCategory) {
+	public static String createNote(String title, ArrayList photoList, String textbox, String filepath,	Category chosenCategory) {
 
 
 		
 
-		Note newNote = new Note("Stupid Note", 0, pinnedAt, photoList, "Some stupid text", "Aber");
+		Note newNote = new Note("Stupid Note", photoList, "Some stupid text", "Aber");
 
 
 		Note.WriteObjectToFile(newNote);

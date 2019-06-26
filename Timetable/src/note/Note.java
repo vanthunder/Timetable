@@ -24,27 +24,10 @@ public class Note extends Base {
 
 	private static final long serialVersionUID = -8361123580583543165L;
 	private String title;
-	private int pinned;
-	private ArrayList <Appointment> pinnedAt;
 	private ArrayList photoList;
 	private String textbox;
 
-	public int getPinned() {
-		return pinned;
-	}
-
-	public void setPinned(int pinned) {
-		this.pinned = pinned;
-	}
-
-	public ArrayList getPinnedAt() {
-		return pinnedAt;
-	}
-
-	public void setPinnedAt(ArrayList pinnedAt) {
-		this.pinnedAt = pinnedAt;
-	}
-
+	
 	public ArrayList getPhotoList() {
 		return photoList;
 	}
@@ -61,10 +44,8 @@ public class Note extends Base {
 		this.textbox = textbox;
 	}
 
-	public Note(String title, int pinned, ArrayList pinnedAt, ArrayList photoList, String textbox, String filepath) {
+	public Note(String title, ArrayList photoList, String textbox, String filepath) {
 		super(title);
-		this.setPinned(pinned);
-		this.setPinnedAt(pinnedAt);
 		this.setPhotoList(photoList);
 		this.setTextbox(textbox);
 		this.setFilepath(filepath);
@@ -73,7 +54,7 @@ public class Note extends Base {
 	/** states all Note attributes in a String*/
 	@Override
 	public String toString(){
-		return new String("title: " + this.getTitle() +" pinned: " + pinned + " pinnedAt: " + pinnedAt + " photoList: " + photoList +
+		return new String("title: " + this.getTitle() + " photoList: " + photoList +
 				" textbox: " + textbox + " filepath: " + this.getFilepath());
 	}
 
@@ -165,25 +146,6 @@ public class Note extends Base {
     }
 	}
 	
-	
-	/*	
-	 * public noteCalendarPinning{
-	 * 		//The method calendarChoosing from CalendarController opens calendar overview and the user chooses the appointment/terminated task to pin the note to. 
-	 * 		//The Calendarlist-index of the appointment/terminated task is returned.
-	 * 			int calendarChoosingIndex = CalendarController.calendarChoosing();
-		        ArrayList<Appointment> tempPinnedAt = this.getPinnedAt();
-		       ArrayList<Appointment> tempCalendarList = Calendar.getCalendarList();
-		       tempPinnedAt.add(tempCalendarList[calendarChoosingIndex]));
-		       this.setPinnedAt(tempPinnedAt());
-		       this.pinned++;
-		       
-		       tempNotesLink = tempCalendarList[calendarChoosingIndex].getNotesLink;
-		       tempNotesList = NotesOverview.getNotesList();
-		       tempNotesLink.add(tempNotesList[currentNote()]);
-		       tempCalendarList[calendarChoosingIndex].setNotesLink(tempNotesLink);
-		       // current note calls the index of the current opened note in NoteOverview.notesList
-		       
-		 }*/
 
 }
 }
