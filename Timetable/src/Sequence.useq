@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.3" icons="true" automaticImage="JPEG" generate-combined-fragments="true">  
+  <object id="1" language="java" name="tests.TestNote" project="Timetable" file="/Timetable/src/tests/TestNote.java" 
+    binary="false" label="testNote" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="265" y="0"/>  
+  </object>  
+  <object id="2" language="java" name="tests.CreatorTests" project="Timetable" 
+    file="/Timetable/src/tests/CreatorTests.java" binary="false" label="creatorTests" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="177" y="0"/>  
+  </object>  
+  <object id="3" language="java" name="task.Task" project="Timetable" file="/Timetable/src/task/Task.java" 
+    binary="false" label="task" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="207" y="0"/>  
+  </object>  
+  <object id="4" language="java" name="note.Note" project="Timetable" file="/Timetable/src/note/Note.java" 
+    binary="false" label="note" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="282" y="0"/>  
+  </object>  
+  <object id="5" language="java" name="note.NoteOverview" project="Timetable" 
+    file="/Timetable/src/note/NoteOverview.java" binary="false" label="noteOverview" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="261" y="0"/>  
+  </object>  
+  <object id="6" language="java" name="note.NoteController" project="Timetable" 
+    file="/Timetable/src/note/NoteController.java" binary="false" label="noteController" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="336" y="0"/>  
+  </object>  
+  <object id="7" language="java" name="note.NoteCreatorController" project="Timetable" 
+    file="/Timetable/src/note/NoteCreatorController.java" binary="false" label="noteCreatorController" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="377" y="0"/>  
+  </object>  
+  <object id="8" language="java" name="note.NoteOverviewController" project="Timetable" 
+    file="/Timetable/src/note/NoteOverviewController.java" binary="false" label="noteOverviewController1" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="288" y="0"/>  
+  </object>  
+  <object id="9" language="java" name="task.CreateTaskController" project="Timetable" 
+    file="/Timetable/src/task/CreateTaskController.java" binary="false" label="createTaskController" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="339" y="0"/>  
+  </object>  
+  <object id="10" language="java" name="task.AutoSort" project="Timetable" file="/Timetable/src/task/AutoSort.java" 
+    binary="false" label="autoSort" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="468" y="0"/>  
+  </object>  
+  <object id="11" language="java" name="search.SearchController" project="Timetable" 
+    file="/Timetable/src/search/SearchController.java" binary="false" label="searchController" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="598" y="0"/>  
+  </object>  
+  <object id="12" language="java" name="search.SearchClass" project="Timetable" 
+    file="/Timetable/src/search/SearchClass.java" binary="false" label="searchClass" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="877" y="0"/>  
+  </object>  
+  <object id="13" language="java" name="note.notesLabel" project="Timetable" file="/Timetable/src/note/notesLabel.java" 
+    binary="false" label="notesLabel" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="756" y="0"/>  
+  </object>  
+  <object id="14" language="java" name="note.NotesViewController" project="Timetable" 
+    file="/Timetable/src/note/NotesViewController.java" binary="false" label="notesViewController" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="818" y="0"/>  
+  </object>  
+  <object id="15" language="java" name="note.NoteOverviewController" project="Timetable" 
+    file="/Timetable/src/note/NoteOverviewController.java" binary="false" label="noteOverviewController" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="849" y="0"/>  
+  </object>  
+  <object id="16" language="java" name="note.NoteOverviewInterface" project="Timetable" 
+    file="/Timetable/src/note/NoteOverviewInterface.java" binary="false" label="noteOverviewInterface" type="interface" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="897" y="0"/>  
+  </object>  
+  <object id="17" language="java" name="note.NoteOverviewControllerInterface" project="Timetable" 
+    file="/Timetable/src/note/NoteOverviewControllerInterface.java" binary="false" 
+    label="noteOverviewControllerInterface" type="interface" autoSize="true">    
+    <position height="-1" width="-1" x="1072" y="0"/>  
+  </object>
+</sequence-diagram>
