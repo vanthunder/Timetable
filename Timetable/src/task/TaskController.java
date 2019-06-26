@@ -28,7 +28,7 @@ public class TaskController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1)
 	{
 
-		
+			
 		
 	}
 	

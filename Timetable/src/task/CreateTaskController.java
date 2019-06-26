@@ -11,6 +11,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.NumberFormat;
 import java.time.LocalDate;
@@ -104,8 +105,6 @@ public class CreateTaskController implements Initializable {
 	@FXML
 	private ChoiceBox<TreeItem<String>> categoryChooser = new ChoiceBox<>();
 
-
-
 	private static final int INIT_VALUE_HOURS = 1;
 	private static final int INIT_VALUE_MINUTES = 1;
 	private static final int INIT_VALUE_START_HOURS = 8;
@@ -191,7 +190,7 @@ public class CreateTaskController implements Initializable {
 	// Event Listener on Button[#saveButton].onAction
 
 	@FXML
-	public void saveTask(ActionEvent event) throws CloneNotSupportedException {
+	public void saveTask(ActionEvent event) throws CloneNotSupportedException, IOException {
 
 //		 set startPoint
 
@@ -270,7 +269,6 @@ public class CreateTaskController implements Initializable {
 						LocalDateTime.of(endDate, endTime), allDay, regularOnOff.isSelected(), regularType, regularID,
 						description.getText(), notesPinned, notesLinks, floating, autoSort, duration);
 
-				Task.WriteObjectToFile(newTask);
 				System.out.println(newTask);
 				
 				Alert alert = new Alert(AlertType.INFORMATION);
@@ -286,8 +284,9 @@ public class CreateTaskController implements Initializable {
 						description.getText(), notesPinned, notesLinks, floating, autoSort, duration);
 				
 				AutoSort.autoSort(newTask);
-				Task.WriteObjectToFile(newTask);
 				System.out.println(newTask);
+				
+			    }
 				
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("speichern erfolgreich!");
@@ -297,7 +296,7 @@ public class CreateTaskController implements Initializable {
 				alert.showAndWait();
 
 			}
-	}
+	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

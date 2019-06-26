@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.junit.Assert;
 import org.junit.Assert.*;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -50,7 +51,7 @@ public class CreatorTests {
 		LocalDateTime endpoint = LocalDateTime.of(1998, 1, 15, 0, 0);
 		LocalDateTime alarmTime = LocalDateTime.of(1998, 1, 16, 0, 0);
 
-		assertEquals(
+		Assert.assertEquals(
 				"title: hi, startpoint: 14.01.1998 00:00, endpoint: 15.01.1998 23:59, allDay: true, description: best event of the year, "
 						+ "regularlyOnOff: false, regularlyType: 0, regularlyID: 0",
 				Creator.createEvent("hi", startpoint, endpoint, "best event of the year", false, 0, 0));
@@ -63,7 +64,7 @@ public class CreatorTests {
 		LocalDateTime alarmTime = LocalDateTime.of(1998, 1, 16, 0, 0);
 
 		Creator.createEvent("hi", startpoint, endpoint, "best event of the year", false, 0, 0);
-		assertEquals(
+		Assert.assertEquals(
 				"title: hi, startpoint: 14.01.1998 00:00, endpoint: 15.01.1998 23:59, allDay: true, description: best event of the year, "
 						+ "regularlyOnOff: false, regularlyType: 0, regularlyID: 0, ",
 				Calendar.getEventList().get(0).toString());
@@ -75,7 +76,7 @@ public class CreatorTests {
 		LocalDateTime endpoint = LocalDateTime.of(1998, 1, 15, 0, 0);
 		LocalDateTime alarmTime = LocalDateTime.of(1998, 1, 16, 0, 0);
 
-		assertEquals(Creator.createEvent("hi", startpoint, endpoint, "best event of the year", true, 0, 5),
+		Assert.assertEquals(Creator.createEvent("hi", startpoint, endpoint, "best event of the year", true, 0, 5),
 				Calendar.getRegularlyList().get(0).get(0));
 	}
 
