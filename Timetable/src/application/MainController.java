@@ -15,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -57,6 +58,8 @@ public class MainController extends Main
     DebugCalendarController debugCalendarController = new DebugCalendarController();
     @FXML
     TabPane tabs = new TabPane();
+    @FXML
+    private ScrollPane taskList;
     
     Tab searchTab;
     

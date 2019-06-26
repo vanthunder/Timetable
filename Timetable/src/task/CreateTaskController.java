@@ -22,15 +22,18 @@ import java.util.ResourceBundle;
 import com.sun.javafx.css.converters.StringConverter;
 
 import appointment.Appointment;
+import calendar.CalendarController;
 import category.CategoriesController;
 import creator.Creator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.input.MouseDragEvent;
+import javafx.scene.layout.HBox;
 import note.Note;
 import task.AutoSort;
 import javafx.scene.control.CheckBox;
@@ -81,7 +84,7 @@ public class CreateTaskController implements Initializable {
 	@FXML
 	private Button updateEndButton;
 	@FXML
-	private DatePicker pickPeriodStart;
+	private DatePicker pickPeriodStart = new DatePicker(LocalDate.now());
 
 	@FXML
 	private Spinner<Integer> periodStartHour;
@@ -90,7 +93,7 @@ public class CreateTaskController implements Initializable {
 	private Spinner<Integer> periodStartMinute;
 
 	@FXML
-	private DatePicker pickPeriodEnd;
+	private DatePicker pickPeriodEnd = new DatePicker(LocalDate.now());
 
 	@FXML
 	private Spinner<Integer> periodEndHour;
@@ -100,6 +103,8 @@ public class CreateTaskController implements Initializable {
 
 	@FXML
 	private ChoiceBox<TreeItem<String>> categoryChooser = new ChoiceBox<>();
+
+	ArrayList<Button> taskButtons = new ArrayList<Button>();
 
 	private static final int INIT_VALUE_HOURS = 1;
 	private static final int INIT_VALUE_MINUTES = 1;
@@ -118,6 +123,7 @@ public class CreateTaskController implements Initializable {
 	LocalTime endTime;
 	LocalTime startTime;
 	int regularType = 3;
+	HBox taskEntries;
 
 	Image icon = new Image(getClass().getResourceAsStream("/images/AufgabeIcon.png"));
 
@@ -187,7 +193,7 @@ public class CreateTaskController implements Initializable {
 	@FXML
 	public void saveTask(ActionEvent event) throws CloneNotSupportedException {
 
-		// set startPoint
+//		 set startPoint
 
 		LocalTime startTime = LocalTime.of(startHour.getValueFactory().getValue(),
 				startMinute.getValueFactory().getValue());
@@ -195,16 +201,35 @@ public class CreateTaskController implements Initializable {
 		LocalDate startDate = pickStart.getValue();
 		if (startDate == null) {
 			startDate = LocalDate.now();
+			if (!autoSort) {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Datum geändert");
+				alert.setHeaderText("Anfangsdatum wurde automatisch gesetzt");
+				alert.setContentText("Anfangsdatum wurde geändert auf das heutige Datum");
+
+				alert.showAndWait();
+			}
 		}
-		
+
 		System.out.println(startTime);
 		System.out.println(startDate);
 
 		// set endpoint
+//		get Date and Time from Controller
 		LocalTime endTime = LocalTime.of(endHour.getValueFactory().getValue(), endMinute.getValueFactory().getValue());
 		LocalDate endDate = pickEnd.getValue();
+
+//		starpoint will be today if startpoint wasn't picked manually
 		if (endDate == null) {
 			endDate = LocalDate.now();
+
+//			Alerts if endpoint wasn't selected
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Enddatum war nicht festgelegt");
+			alert.setHeaderText("Enddatum wurde automatisch gesetzt");
+			alert.setContentText("Enddatum wurde geändert auf das heutige Datum");
+
+			alert.showAndWait();
 		}
 		System.out.println(endTime);
 		System.out.println(endDate);
@@ -216,7 +241,7 @@ public class CreateTaskController implements Initializable {
 		int duration = INIT_VALUE_HOURS;
 
 //		initialize RegularID
-		int regularID = Creator.getRegularlyID();
+		int regularID = 0;
 
 		ArrayList<Note> notesLinks = null;
 		boolean floating = false;
@@ -224,25 +249,36 @@ public class CreateTaskController implements Initializable {
 
 //		 This method saves the current Task and it's title as a category if a category
 //		 is choosed in the choice box.
-//		if (!categoryChooser.getSelectionModel().getSelectedItem().equals(null))
-//
-//		{
-//			TreeItem<String> savePosition = categoryChooser.getSelectionModel().getSelectedItem();
-//			TreeItem<String> newItem = new TreeItem<String>("Aufgabe: " + title.toString(), new ImageView(icon));
-//			CategoriesController.insertCategoryByCreator(savePosition, newItem);
-//
-//		};
+		if (!categoryChooser.getSelectionModel().getSelectedItem().equals(null))
+
+		{
+			TreeItem<String> savePosition = categoryChooser.getSelectionModel().getSelectedItem();
+			TreeItem<String> newItem = new TreeItem<String>("Aufgabe: " + title.toString(), new ImageView(icon));
+			CategoriesController.insertCategoryByCreator(savePosition, newItem);
+
+		}
+
+//		a new Object by Type Task will be initialized and saved
+
 		if (title.getText() != null)
 			if (!autoSort) {
-				Creator.createTask(title.getText(), description.getText(), LocalDateTime.of(startDate, startTime),
-						LocalDateTime.of(endDate, endTime), allDay, regularOnOff.isSelected(), regularType, regularID,
-						description.getText(), notesPinned, notesLinks, floating, autoSort, duration);
 				Task newTask = new Task(title.getText(), LocalDateTime.of(startDate, startTime),
 						LocalDateTime.of(endDate, endTime), allDay, regularOnOff.isSelected(), regularType, regularID,
 						description.getText(), notesPinned, notesLinks, floating, autoSort, duration);
+
+				Creator.createTask(title.getText(), description.getText(), LocalDateTime.of(startDate, startTime),
+						LocalDateTime.of(endDate, endTime), allDay, regularOnOff.isSelected(), regularType, regularID,
+						description.getText(), notesPinned, notesLinks, floating, autoSort, duration);
+
 				Task.WriteObjectToFile(newTask);
 				System.out.println(newTask);
-				
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("speichern erfolgreich!");
+				alert.setHeaderText("eine neue Aufgabe wurde manuell eingeplant");
+				alert.setContentText("Die aufgabe wurde erfolgreich gespeichert!");
+
+//				a new Object by Type Task will be initialized, organized and saved
+
 			} else {
 				Task newTask = new Task(title.getText(), LocalDateTime.of(startDate, startTime),
 						LocalDateTime.of(endDate, endTime), allDay, regularOnOff.isSelected(), regularType, regularID,
@@ -250,12 +286,22 @@ public class CreateTaskController implements Initializable {
 				AutoSort.autoSort(newTask);
 				Task.WriteObjectToFile(newTask);
 				System.out.println(newTask);
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("speichern erfolgreich!");
+				alert.setHeaderText("eine neue Aufgabe wurde mit dem AutoPlaner eingeplant");
+				alert.setContentText("Die aufgabe wurde erfolgreich gespeichert!");
+
+				alert.showAndWait();
+
 			}
+
+
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
+//		set the ValueFactories for the Spinner Items
 		startHour.setValueFactory(dateFactoryStartHours);
 		endHour.setValueFactory(dateFactoryEndHours);
 		startMinute.setValueFactory(dateFactoryStartMinutes);
@@ -264,6 +310,8 @@ public class CreateTaskController implements Initializable {
 		periodStartMinute.setValueFactory(dateFactoryperiodStartMinutes);
 		periodEndHour.setValueFactory(dateFactoryperiodEndHours);
 		periodEndMinute.setValueFactory(dateFactoryperiodEndMinutes);
+
+//		set the initializable variables for the Spinner Items
 
 		dateFactoryStartHours.setValue(INIT_VALUE_START_HOURS);
 		dateFactoryStartHours.setValue(INIT_VALUE_END_HOURS);
@@ -274,13 +322,15 @@ public class CreateTaskController implements Initializable {
 		dateFactoryperiodEndHours.setValue(INIT_VALUE_PERIOD_END_HOURS);
 		dateFactoryperiodEndMinutes.setValue(INIT_VALUE_PERIOD_END_MINUTES);
 
+//		tasks won't be regularly by default
 		choiceRegular.setVisible(false);
 		regularOnOff.setSelected(false);
 
+//		the choicebox Item to choose the regular type disappear while task is not regular
 		while (regularOnOff.isSelected() == true) {
 			choiceRegular.setVisible(true);
 		}
-
+//		get the regulartype value from the GUI
 		choiceRegular.setItems(regularlyType);
 
 		if (this.choiceRegular.getSelectionModel().getSelectedItem() == "taeglich") {
@@ -291,23 +341,26 @@ public class CreateTaskController implements Initializable {
 			regularType = 2;
 		}
 
+//		set initializable variables for the slider Items
 		durationHours.setValue(INIT_VALUE_HOURS);
 		durationMinutes.setValue(INIT_VALUE_MINUTES);
 
+//		set initializable variables for the TextField Items
 		hoursField.setText(new Integer(INIT_VALUE_HOURS).toString());
 		minutesField.setText(new Integer(INIT_VALUE_MINUTES).toString());
 
-		startHour.getValueFactory().setValue(INIT_VALUE_START_HOURS);
-		startMinute.getValueFactory().setValue(INIT_VALUE_START_MINUTES);
-		endHour.getValueFactory().setValue((INIT_VALUE_END_HOURS));
-		endMinute.getValueFactory().setValue((INIT_VALUE_END_MINUTES));
+//		the value of the autoSort variable depends on the Checkbox selection
 		autoSortOnOff.selectedProperty().set(autoSort);
 
+//		visibility of the checkbox Item depends on the Checkbox selection
 		regularOnOff.selectedProperty().bindBidirectional(choiceRegular.visibleProperty());
+
+//		the slider Items and the TextField Items contain the same Values
 		hoursField.textProperty().bindBidirectional(durationHours.valueProperty(), NumberFormat.getNumberInstance());
 		minutesField.textProperty().bindBidirectional(durationMinutes.valueProperty(),
 				NumberFormat.getNumberInstance());
 
+//		startpoint and endpoint editing is disabled while AutoPlaner is enabled
 		autoSortOnOff.selectedProperty().bindBidirectional(startHour.disableProperty());
 		autoSortOnOff.selectedProperty().bindBidirectional(startMinute.disableProperty());
 		autoSortOnOff.selectedProperty().bindBidirectional(endHour.disableProperty());
@@ -315,13 +368,15 @@ public class CreateTaskController implements Initializable {
 		autoSortOnOff.selectedProperty().bindBidirectional(pickStart.disableProperty());
 		autoSortOnOff.selectedProperty().bindBidirectional(pickEnd.disableProperty());
 
+//		AutoPlaner is enabled by default
 		autoSortOnOff.setSelected(true);
 
-		// Inserts the Categories to the choice box.
+//		 Inserts the Categories to the choice box.
 		for (int i = 0; i < CategoriesController.getMainCategories().size(); i++) {
 			categoryChooser.getItems().addAll(CategoriesController.getMainCategories().get(i));
 
 		}
+		categoryChooser.getSelectionModel().selectFirst();
 
 	}
 }

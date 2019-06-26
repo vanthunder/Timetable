@@ -14,6 +14,9 @@ import java.util.concurrent.TimeUnit;
 
 import category.Category;
 import event.Event;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import appointment.Appointment;
 import base.Base;
 import calendar.Calendar;
@@ -25,6 +28,8 @@ import task.Task;
 
 
 public class Creator implements Serializable {
+
+	private static ArrayList<Button> taskButtons;
 
 	public static String createEvent(String title, LocalDateTime startpoint, LocalDateTime endpoint, String description,
 			boolean regularlyOnOff, int regularlyType, int regularlyAmount)
@@ -336,6 +341,17 @@ public class Creator implements Serializable {
 						
 
 						regularlyInnerList.add(newTask);
+						
+						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
+							Button btn = new Button();
+							btn.setMinWidth(200);
+							btn.setMinHeight(50);
+							btn.setText(newTask.getTitle() + " Start: " + newTask.getStartpoint() + " Ende: "
+									+ newTask.getEndpoint());
+							taskButtons.add(btn);
+							CalendarController.taskList(btn);
+							
+						}
 
 					} else {
 						Appointment copy = (Appointment) newTask.clone();
@@ -346,6 +362,16 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
+						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
+							Button btn = new Button();
+							btn.setMinWidth(200);
+							btn.setMinHeight(50);
+							btn.setText(newTask.getTitle() + " Start: " + newTask.getStartpoint() + " Ende: "
+									+ newTask.getEndpoint());
+							taskButtons.add(btn);
+							CalendarController.taskList(btn);
+							
+						}
 						
 
 					}
@@ -358,6 +384,16 @@ public class Creator implements Serializable {
 					if (i == 0) {
 						
 						regularlyInnerList.add(newTask);
+						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
+							Button btn = new Button();
+							btn.setMinWidth(200);
+							btn.setMinHeight(50);
+							btn.setText(newTask.getTitle() + " Start: " + newTask.getStartpoint() + " Ende: "
+									+ newTask.getEndpoint());
+							taskButtons.add(btn);
+							CalendarController.taskList(btn);
+							
+						}
 
 					} else {
 						Appointment copy = (Appointment) newTask.clone();
@@ -368,6 +404,22 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
+						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
+							Button btn = new Button();
+							btn.setMinWidth(200);
+							btn.setMinHeight(50);
+							btn.setText(newTask.getTitle() + " Start: " + newTask.getStartpoint() + " Ende: "
+									+ newTask.getEndpoint());
+							btn.setOnAction(new EventHandler<ActionEvent>() {
+								@Override
+								public void handle(ActionEvent event) {
+									System.out.println(btn.getText());
+								}
+							});
+							taskButtons.add(btn);
+							CalendarController.taskList(btn);
+							
+						}
 						
 
 
@@ -382,6 +434,23 @@ public class Creator implements Serializable {
 						
 						regularlyInnerList.add(newTask);
 						
+						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
+							Button btn = new Button();
+							btn.setMinWidth(200);
+							btn.setMinHeight(50);
+							btn.setText(newTask.getTitle() + " Start: " + newTask.getStartpoint() + " Ende: "
+									+ newTask.getEndpoint());
+							btn.setOnAction(new EventHandler<ActionEvent>() {
+								@Override
+								public void handle(ActionEvent event) {
+									System.out.println(btn.getText());
+								}
+							});
+							taskButtons.add(btn);
+							CalendarController.taskList(btn);
+							
+						}
+						
 
 					} else {
 						Appointment copy = (Appointment) newTask.clone();
@@ -392,6 +461,17 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
+						
+						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
+							Button btn = new Button();
+							btn.setMinWidth(200);
+							btn.setMinHeight(50);
+							btn.setText(newTask.getTitle() + " Start: " + newTask.getStartpoint() + " Ende: "
+									+ newTask.getEndpoint());
+							taskButtons.add(btn);
+							CalendarController.taskList(btn);
+							
+						}
 						
 					}
 				}
@@ -410,6 +490,17 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
+						
+						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
+							Button btn = new Button();
+							btn.setMinWidth(200);
+							btn.setMinHeight(50);
+							btn.setText(newTask.getTitle() + " Start: " + newTask.getStartpoint() + " Ende: "
+									+ newTask.getEndpoint());
+							taskButtons.add(btn);
+							CalendarController.taskList(btn);
+							
+						}
 
 					}
 				}

@@ -11,6 +11,12 @@ import appointment.Appointment;
 import java.time.*;
 
 import calendar.Calendar;
+import calendar.CalendarController;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import task.Task;
 
 
@@ -22,6 +28,7 @@ public class AutoSort {
 	 */
 
 	public static void autoSort(Task currentTask) throws CloneNotSupportedException {
+		ArrayList<Button> taskButtons = null;
 		ArrayList<Long> tmpDuration = splitDuration(currentTask);
 		currentTask.setAutoSortID(getAutosortTaskID());
 		ArrayList<Appointment> tmpCalendarList = Calendar.getCalendarList();
@@ -58,6 +65,17 @@ public class AutoSort {
 						autoSortInnerList.add(currentTask);
 						System.out.println(currentTask.toString());
 						Task.WriteObjectToFile(currentTask);
+
+						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
+							Button btn = new Button();
+							btn.setMinWidth(200);
+							btn.setMinHeight(50);
+							btn.setText(currentTask.getTitle() + " Start: " + currentTask.getStartpoint() + " Ende: "
+									+ currentTask.getEndpoint());
+							taskButtons.add(btn);
+							CalendarController.taskList(btn);
+							
+						}
 						break;
 					} else {
 						Task copy = (Task) currentTask.clone();
@@ -68,6 +86,16 @@ public class AutoSort {
 						tmpCalendarList.add(copy);
 						autoSortInnerList.add(copy);
 						Task.WriteObjectToFile(copy);
+						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
+							Button btn = new Button();
+							btn.setMinWidth(200);
+							btn.setMinHeight(50);
+							btn.setText(currentTask.getTitle() + " Start: " + currentTask.getStartpoint() + " Ende: "
+									+ currentTask.getEndpoint());
+							taskButtons.add(btn);
+							CalendarController.taskList(btn);
+							
+						}
 						break;
 					}
 
