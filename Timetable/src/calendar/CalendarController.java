@@ -33,11 +33,11 @@ import javafx.fxml.Initializable;
 
 public class CalendarController implements Initializable
 
-{    
+{
 	@FXML
-    private ScrollPane taskList;
-    @FXML
-    private static HBox taskBox;
+	private ScrollPane taskList;
+	@FXML
+	private static HBox taskBox;
 	@FXML
 	private GridPane Calendar;
 	@FXML
@@ -63,8 +63,7 @@ public class CalendarController implements Initializable
 	String Month = new String("Monat");
 	String Day = new String("Tag");
 	// AppointmentList
-	// private final static HashMap<LocalDate, <String> appointments = new
-	// HashMap<>();
+	// Two lists that are neccessary for the appointments
 	private static ArrayList<LocalDate> appointments = new ArrayList<>();
 
 	public static ArrayList<LocalDate> getAppointments()
@@ -285,7 +284,7 @@ public class CalendarController implements Initializable
 				}
 				if (!betweenweek.format(dayFormatter).equals(appointments.get(a).format(dayFormatter)))
 				{
-					Labels.get(i).setStyle(Labels.get(1).getStyle());
+					Labels.get(i).setStyle(ResetColor);
 				}
 			}
 		}
@@ -442,7 +441,7 @@ public class CalendarController implements Initializable
 				}
 				if (!betweenweek.format(dayFormatter).equals(appointments.get(a).format(dayFormatter)))
 				{
-					Labels.get(i).setStyle(Labels.get(1).getStyle());
+					Labels.get(i).setStyle(ResetColor);
 				}
 			}
 		}
@@ -589,7 +588,7 @@ public class CalendarController implements Initializable
 			{
 				if (Labels.get(i).getText().contains(compare))
 				{
-					Labels.get(i).setStyle(Labels.get(1).getStyle());
+					Labels.get(i).setStyle(ResetColor);
 					Labels.get(i).setText(Labels.get(i).getText().replace(compare, ""));
 					Creator.deleteFromCalendarList(compare);
 					System.out.println("Hey das ist wahr");
@@ -643,8 +642,18 @@ public class CalendarController implements Initializable
 		System.out.println("Hey das ist wahr " + oldName + " " + newName);
 	}
 
+<<<<<<< HEAD
 	
 	
+=======
+//	add new Button to Task Tab
+	public static void taskList(Button newbtn)
+	{
+		taskBox.getChildren().add(newbtn);
+		System.out.println("button created");
+
+	}
+>>>>>>> branch 'master' of https://github.com/vanthunder/Timetable
 
 	// Initialize the Calendar with all its components
 	@Override
@@ -652,6 +661,7 @@ public class CalendarController implements Initializable
 	{
 		selectTimeLabel.setText(Integer.toString(currentDate.getYear()));
 		intitCalendar();
+		ResetColor = Labels.get(0).getStyle().toString();
 		markcurrentDate();
 		// init some test appointments
 		// addAppointment(crMonth = crMonth.plusDays(2), "Termin: Kino um 20:00 Uhr");
@@ -663,7 +673,5 @@ public class CalendarController implements Initializable
 		// 20:00 Uhr");
 		System.out.println("Das Datum lautet = " + crMonth.format(dayFormatter));
 	}
-	
-
 
 }

@@ -4,17 +4,15 @@ import java.io.File;
 import java.io.Serializable;
 import java.nio.file.Files;
 
+/**
+ * 
+ * @author Marc
+ *
+ */
 public abstract class Base implements Serializable {
 	private String title;
-	private String filepath;
-	
-	public String getFilepath() {
-		return filepath;
-	}
 
-	public void setFilepath(String filepath) {
-		this.filepath = filepath;
-	}
+	
 	
 	public Base() {}
 
