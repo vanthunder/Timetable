@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
+import java.util.function.IntBinaryOperator;
 
 import category.Category;
 import event.Event;
@@ -592,5 +593,24 @@ public class Creator implements Serializable {
 		CalendarController.setAppointments(tmpControllerListAppointment);
 
 	}
+<<<<<<< HEAD
 
 }
+=======
+	
+	public static void deleteFromCalendarList(String title) {
+		ArrayList<Integer> deleteIDs = new ArrayList<Integer>();
+		ArrayList<Appointment> tmpCalendarList = Calendar.getCalendarList();
+		for(int i=0; i<tmpCalendarList.size(); i++) {
+			if(tmpCalendarList.get(i).getTitle()==title) {
+				deleteIDs.add(i);
+			}
+		}
+		for(int i=0; i<deleteIDs.size(); i++) {
+			tmpCalendarList.remove(deleteIDs.get(i));
+		}
+		Calendar.setCalendarList(tmpCalendarList);
+		updateCalendarControllerList();
+	}
+}
+>>>>>>> branch 'master' of https://github.com/vanthunder/Timetable

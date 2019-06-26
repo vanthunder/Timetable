@@ -3,11 +3,18 @@
  */
 package category;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import javax.xml.crypto.Data;
+
+import com.sun.javafx.collections.MappingChange;
 
 import calendar.CalendarController;
 import javafx.animation.PauseTransition;
@@ -118,6 +125,7 @@ public class CategoriesController<T> implements Initializable
 	public static void insertCategoryByCreator(TreeItem<String> savePosition, TreeItem<String> newItem)
 	{
 		savePosition.getChildren().addAll(newItem);
+		save(mainCategories);
 	}
 
 	// Method for inserting an Item
@@ -150,8 +158,8 @@ public class CategoriesController<T> implements Initializable
 					
 					TreeItem<String> newCategory = new TreeItem<String>(text, new ImageView(icon));
 					parent.getChildren().add(newCategory);
-					writeMessage("Es wurde eine neue Kategorie mit dem Namen: " + "'"
-							+ newCategory.getValue().toString() + "'" + " erstellt!");
+					writeMessage("Es wurde eine neue Kategorie mit dem Namen: " + "'"+ newCategory.getValue().toString() + "'" + " erstellt!");
+					save(mainCategories);
 					if (!parent.isExpanded())
 					{
 						parent.setExpanded(true);
@@ -396,11 +404,38 @@ public class CategoriesController<T> implements Initializable
 		});
 		wait.play();
 	}
+	public static void save(ArrayList TreeItemnew) {
+	    try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("TreeItems.bin"))) 
+	    {
+	      for (int i = 0; i<mainCategories.size() ;i++)
+	      {
+	    	  out.writeObject(i);
+	      }	  
+
+	      System.out.println("Serialization succeeded");
+	      System.out.println();
+	    } catch (Exception e) 
+	    {
+	      System.out.println("Serialization failed");
+	      System.out.println();
+	    }
+	  }
+	
+	public static void saveTreeItemList() throws IOException 
+	{
+	    ArrayList<TreeItem> TreeITemList = getMainCategories();
+	    FileOutputStream fos = new FileOutputStream("TreeItemSave");
+	    ObjectOutputStream oos = new ObjectOutputStream(fos);
+	    oos.writeObject(TreeITemList);
+	    oos.close();
+	    fos.close();
+	      }
 
 	// Initialize the treeview with all its components
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1)
 	{
 		createTree();
+		save(mainCategories);
 	}
 }
