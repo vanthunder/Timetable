@@ -173,12 +173,6 @@ public class CreatorTests {
 
 	
 	
-		//Tasks 
-		@Test
-		void testTaskregular() throws CloneNotSupportedException {
-		LocalDateTime startpoint = LocalDateTime.of(2002,1,10,0,0);
-		LocalDateTime endpoint = LocalDateTime.of(2002,1,14,0,0);
-
 
 	// Tasks
 	@Test
@@ -201,10 +195,6 @@ public class CreatorTests {
 		LocalDateTime.of(2002,1,20,0,0);
 		int duration =0;
 
-		LocalDateTime feasibleTimeEnd = LocalDateTime.of(2002, 1, 16, 0, 0);
-		LocalDateTime periodEnd = LocalDateTime.of(2002, 1, 20, 0, 0);
-		int duration = 0;
-
 		boolean allDay = false;
 		boolean regularlyOnOff = false;
 		int regularlyType = 0;
@@ -216,7 +206,7 @@ public class CreatorTests {
 		Assertions.assertEquals("Task [toString()=title: awesome Task startpoint: 10.01.2002 00:00 endpoint: 14.01.2002 00:00 allDay: false regularlyOnOff: false regularlyType: 0 regularlyID: 0 description: awesome Description notesPinned: 0 notesLink: [] floating: false, getStartpoint()=2002-01-10T00:00, getEndpoint()=2002-01-14T00:00, getPeriodStart()=null, getPeriodEnd()=null, isAllDay()=false, isRegisRegularlyOnOff()ularlyOnOff()=, getRegularlyType()=0, getRegularlyID()=0, getDescription()=awesome Description, getNotesPinned()=0, getNotesLink()=[], isFloating()=false, getTitle()=awesome Task, getClass()=class task.Task, autoSortOnOff=false, duration=0, done=false, periodStart=null, periodEnd=nullautoSortID=0]",
 				Creator.createTask("awesome Task", null, startpoint, endpoint, allDay, regularlyOnOff,
 						regularlyType, 0, "awesome Description", notesPinned, 
-						notesLink, floating, autoSortOnOff, duration, done));
+						notesLink, floating, autoSortOnOff, duration));
 		
 		}
 		
@@ -248,7 +238,7 @@ public class CreatorTests {
 		Assertions.assertEquals("Task [toString()=title: awesome Task startpoint: 10.01.2002 00:00 endpoint: 14.01.2002 00:00 allDay: false regularlyOnOff: false regularlyType: 0 regularlyID: 0 description: awesome Description notesPinned: 0 notesLink: [] floating: false, getStartpoint()=2002-01-10T00:00, getEndpoint()=2002-01-14T00:00, getPeriodStart()=null, getPeriodEnd()=null, isAllDay()=false, isRegisRegularlyOnOff()ularlyOnOff()=, getRegularlyType()=0, getRegularlyID()=0, getDescription()=awesome Description, getNotesPinned()=0, getNotesLink()=[], isFloating()=false, getTitle()=awesome Task, getClass()=class task.Task, autoSortOnOff=false, duration=0, done=false, periodStart=null, periodEnd=nullautoSortID=0]",
 				Creator.createTask("awesome Task", null, startpoint, endpoint, allDay, regularlyOnOff,
 						regularlyType, 0, "awesome Description", notesPinned, 
-						notesLink, floating, autoSortOnOff, duration, done));
+						notesLink, floating, autoSortOnOff, duration));
 		
 		}
 		

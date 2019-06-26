@@ -3,6 +3,8 @@ package task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
@@ -17,6 +19,9 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import com.sun.javafx.css.converters.StringConverter;
+
+import appointment.Appointment;
 import category.CategoriesController;
 import creator.Creator;
 import javafx.collections.FXCollections;
@@ -44,9 +49,9 @@ public class CreateTaskController implements Initializable {
 	@FXML
 	private TextField description;
 	@FXML
-	private DatePicker pickStart;
+	private DatePicker pickStart = new DatePicker(LocalDate.now());
 	@FXML
-	private DatePicker pickEnd;
+	private DatePicker pickEnd = new DatePicker(LocalDate.now());
 	@FXML
 	private TextField hoursField;
 	@FXML
@@ -110,8 +115,9 @@ public class CreateTaskController implements Initializable {
 
 	boolean regularlyOnOff;
 	boolean autoSort = true;
-	LocalTime endTime = null;
-	LocalTime startTime = null;
+	LocalTime endTime;
+	LocalTime startTime;
+	int regularType = 3;
 
 	Image icon = new Image(getClass().getResourceAsStream("/images/AufgabeIcon.png"));
 
@@ -177,8 +183,44 @@ public class CreateTaskController implements Initializable {
 	}
 
 	// Event Listener on Button[#saveButton].onAction
+
 	@FXML
-	public void saveTask(ActionEvent event) {
+	public void saveTask(ActionEvent event) throws CloneNotSupportedException {
+
+		// set startPoint
+
+		LocalTime startTime = LocalTime.of(startHour.getValueFactory().getValue(),
+				startMinute.getValueFactory().getValue());
+
+		LocalDate startDate = pickStart.getValue();
+		if (startDate == null) {
+			startDate = LocalDate.now();
+		}
+		
+		System.out.println(startTime);
+		System.out.println(startDate);
+
+		// set endpoint
+		LocalTime endTime = LocalTime.of(endHour.getValueFactory().getValue(), endMinute.getValueFactory().getValue());
+		LocalDate endDate = pickEnd.getValue();
+		if (endDate == null) {
+			endDate = LocalDate.now();
+		}
+		System.out.println(endTime);
+		System.out.println(endDate);
+
+//		set allDay 
+		boolean allDay = false;
+
+//		set duration
+		int duration = INIT_VALUE_HOURS;
+
+//		initialize RegularID
+		int regularID = Creator.getRegularlyID();
+
+		ArrayList<Note> notesLinks = null;
+		boolean floating = false;
+		int notesPinned = 0;
 
 //		 This method saves the current Task and it's title as a category if a category
 //		 is choosed in the choice box.
@@ -188,7 +230,27 @@ public class CreateTaskController implements Initializable {
 //			TreeItem<String> savePosition = categoryChooser.getSelectionModel().getSelectedItem();
 //			TreeItem<String> newItem = new TreeItem<String>("Aufgabe: " + title.toString(), new ImageView(icon));
 //			CategoriesController.insertCategoryByCreator(savePosition, newItem);
-//		}
+//
+//		};
+		if (title.getText() != null)
+			if (!autoSort) {
+				Creator.createTask(title.getText(), description.getText(), LocalDateTime.of(startDate, startTime),
+						LocalDateTime.of(endDate, endTime), allDay, regularOnOff.isSelected(), regularType, regularID,
+						description.getText(), notesPinned, notesLinks, floating, autoSort, duration);
+				Task newTask = new Task(title.getText(), LocalDateTime.of(startDate, startTime),
+						LocalDateTime.of(endDate, endTime), allDay, regularOnOff.isSelected(), regularType, regularID,
+						description.getText(), notesPinned, notesLinks, floating, autoSort, duration);
+				Task.WriteObjectToFile(newTask);
+				System.out.println(newTask);
+				
+			} else {
+				Task newTask = new Task(title.getText(), LocalDateTime.of(startDate, startTime),
+						LocalDateTime.of(endDate, endTime), allDay, regularOnOff.isSelected(), regularType, regularID,
+						description.getText(), notesPinned, notesLinks, floating, autoSort, duration);
+				AutoSort.autoSort(newTask);
+				Task.WriteObjectToFile(newTask);
+				System.out.println(newTask);
+			}
 	}
 
 	@Override
@@ -221,6 +283,14 @@ public class CreateTaskController implements Initializable {
 
 		choiceRegular.setItems(regularlyType);
 
+		if (this.choiceRegular.getSelectionModel().getSelectedItem() == "taeglich") {
+			regularType = 0;
+		} else if (this.choiceRegular.getSelectionModel().getSelectedItem() == "woechentlich") {
+			regularType = 1;
+		} else if (this.choiceRegular.getSelectionModel().getSelectedItem() == "monatlich") {
+			regularType = 2;
+		}
+
 		durationHours.setValue(INIT_VALUE_HOURS);
 		durationMinutes.setValue(INIT_VALUE_MINUTES);
 
@@ -247,79 +317,11 @@ public class CreateTaskController implements Initializable {
 
 		autoSortOnOff.setSelected(true);
 
-		int regularType = 3;
-		if (this.choiceRegular.getSelectionModel().getSelectedItem() == "taeglich") {
-			regularType = 0;
-		} else if (this.choiceRegular.getSelectionModel().getSelectedItem() == "woechentlich") {
-			regularType = 1;
-		} else if (this.choiceRegular.getSelectionModel().getSelectedItem() == "monatlich") {
-			regularType = 2;
-		}
-
 		// Inserts the Categories to the choice box.
 		for (int i = 0; i < CategoriesController.getMainCategories().size(); i++) {
 			categoryChooser.getItems().addAll(CategoriesController.getMainCategories().get(i));
 
 		}
-		if (saveButton.isPressed()) {
 
-			// set startPoint
-			LocalTime startTime = LocalTime.of(startHour.getValueFactory().getValue(),
-					startMinute.getValueFactory().getValue());
-			LocalDate startDate = pickStart.getValue();
-			LocalDateTime startpoint = startDate.atTime(startTime);
-
-			// set endpoint
-			LocalTime endTime = LocalTime.of(endHour.getValueFactory().getValue(),
-					endMinute.getValueFactory().getValue());
-			endTime.withHour(endHour.getValueFactory().getValue());
-			LocalDate endDate = pickEnd.getValue();
-			LocalDateTime endpoint = endDate.atTime(endTime);
-
-//			set allDay 
-			boolean allDay = false;
-
-//			set duration
-			int duration = INIT_VALUE_HOURS;
-
-//			initialize RegularID
-			int regularID = Creator.getRegularlyID();
-
-			ArrayList<Note> notesLinks = null;
-			boolean floating = false;
-			int notesPinned = 0;
-			
-			if (!categoryChooser.getSelectionModel().getSelectedItem().equals(null))
-
-			{
-				TreeItem<String> savePosition = categoryChooser.getSelectionModel().getSelectedItem();
-				TreeItem<String> newItem = new TreeItem<String>("Aufgabe: " + title.toString(), new ImageView(icon));
-				CategoriesController.insertCategoryByCreator(savePosition, newItem);
-			
-		}
-			
-			if (!autoSort) {
-
-				try {
-					if (!autoSort) {
-						Creator.createTask(title.getText(), null, startpoint, endpoint, allDay,
-								regularOnOff.isSelected(), regularType, regularID, description.getText(), notesPinned,
-								notesLinks, floating, autoSort, duration);
-					
-					} else if (autoSort) {
-						Task thisTask =new Task(title.getText(), null, startpoint, allDay,
-								regularOnOff.isSelected(), regularType, regularID, description.getText(), notesPinned,
-								notesLinks, floating, autoSort, duration);
-						AutoSort.autoSort(thisTask);
-						System.out.println(thisTask);
-					}
-					
-
-				} catch (CloneNotSupportedException e) {
-					e.printStackTrace();
-				}
-			}
-
-		}
 	}
 }

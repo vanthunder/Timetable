@@ -73,45 +73,44 @@ public class Task extends Appointment implements Comparable {
 		this.autoSortID = autoSortID;
 	}
 
-public static void WriteObjectToFile(Note serObj) {
-		
+	public static void WriteObjectToFile(Appointment serObj) {
+
 		String tmpTitle = serObj.getTitle();
-	
-			String filepath = "tasks/Task " + tmpTitle + ".txt";
+		int counter = 0;
+		boolean created = false;
+
+		do {
+
+			String filepath = "Task " + tmpTitle + counter + ".txt";
 
 			File tmpFilepath = new File(filepath);
-			tmpFilepath.getParentFile().mkdirs();
-		
+
 			boolean exists = tmpFilepath.exists();
-		
-			if(exists) {
-				File file = new File(filepath); 
-        
-				if(file.delete()) 
-			{ 
-				System.out.println("Erfolgreich aktualisiert"); 
-			} 
-			else
-			{ 
-				System.out.println("Fehler beim aktualisieren"); 
-			
+
+			if (exists) {
+				counter++;
+				continue;
 			}
+
+			serObj.setFilepath(filepath);
+
+			try {
+
+				FileOutputStream fileOut = new FileOutputStream(filepath);
+				ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+				objectOut.writeObject(serObj);
+				objectOut.close();
+				System.out.println("Die Aufgabe wurde erfolgreich gespeichert!");
+
+			} catch (Exception ex) {
+				ex.printStackTrace();
 			}
-	
-		serObj.setFilepath(filepath);
-		
-	    try {
-	 
-	            FileOutputStream fileOut = new FileOutputStream(filepath);
-	            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-	            objectOut.writeObject(serObj);
-	            objectOut.close();
-	            System.out.println("Die Aufgabe wurde erfolgreich gespeichert!");
-	 
-	        } catch (Exception ex) {
-	            ex.printStackTrace();
-	            }
-	        }
+
+			created = true;
+
+		} while (!created);
+
+	}
 		
 
 

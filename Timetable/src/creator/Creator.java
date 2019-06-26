@@ -20,6 +20,7 @@ import calendar.Calendar;
 import calendar.CalendarController;
 import note.Note;
 import note.NotesViewController;
+import task.AutoSort;
 import task.Task;
 
 
@@ -332,6 +333,8 @@ public class Creator implements Serializable {
 			if (newTask.getRegularlyType() == 0) {
 				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
+						
+
 						regularlyInnerList.add(newTask);
 
 					} else {
@@ -343,10 +346,8 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
+						
 
-						// has to be transferred to category!!!
-
-						Task.WriteObjectToFile(newTask);
 					}
 				}
 			}
@@ -355,8 +356,9 @@ public class Creator implements Serializable {
 			else if (newTask.getRegularlyType() == 1) {
 				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
+						
 						regularlyInnerList.add(newTask);
-						Task.WriteObjectToFile(newTask);
+
 					} else {
 						Appointment copy = (Appointment) newTask.clone();
 						LocalDateTime tempStartpoint = copy.getStartpoint();
@@ -366,9 +368,8 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
-						// has to be transferred to category!!!
+						
 
-						Task.WriteObjectToFile(newTask);
 
 					}
 				}
@@ -378,8 +379,10 @@ public class Creator implements Serializable {
 			else if (newTask.getRegularlyType() == 2) {
 				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
+						
 						regularlyInnerList.add(newTask);
-						Task.WriteObjectToFile(newTask);
+						
+
 					} else {
 						Appointment copy = (Appointment) newTask.clone();
 						LocalDateTime tempStartpoint = copy.getStartpoint();
@@ -389,9 +392,7 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
-						// has to be transferred to category!!!
-
-						Task.WriteObjectToFile(newTask);
+						
 					}
 				}
 			}
@@ -400,7 +401,6 @@ public class Creator implements Serializable {
 				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
 						regularlyInnerList.add(newTask);
-						Task.WriteObjectToFile(newTask);
 					} else {
 						Appointment copy = (Appointment) newTask.clone();
 						LocalDateTime tempStartpoint = copy.getStartpoint();
@@ -411,9 +411,6 @@ public class Creator implements Serializable {
 
 						tempCalendarList2.add(copy);
 
-						// has to be transferred to category!!!
-
-						Task.WriteObjectToFile(newTask);
 					}
 				}
 			}
