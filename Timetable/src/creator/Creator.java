@@ -335,7 +335,7 @@ public class Creator implements Serializable {
 				description, notesPinned, notesLink, floating, autoSortOnOff, duration, periodStart, periodEnd);
 
 		ArrayList<Appointment> tempCalendarList = Calendar.getCalendarList();
-		tempCalendarList.add(newTask);
+		tempCalendarList.add((Appointment) newTask);
 		// tempCalendarList.sort();
 		Calendar.setCalendarList(tempCalendarList);
 
@@ -353,8 +353,7 @@ public class Creator implements Serializable {
 						
 
 						regularlyInnerList.add(newTask);
-						updateCalendarControllerList();
-						Save.saveCalendarList();
+						
 						
 						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
 							Button btn = new Button();
@@ -400,8 +399,7 @@ public class Creator implements Serializable {
 					if (i == 0) {
 						
 						regularlyInnerList.add(newTask);
-						updateCalendarControllerList();
-						Save.saveCalendarList();
+						
 						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
 							Button btn = new Button();
 							btn.setMinWidth(200);
@@ -422,8 +420,7 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
-						updateCalendarControllerList();
-						Save.saveCalendarList();
+						
 						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
 							Button btn = new Button();
 							btn.setMinWidth(200);
@@ -454,8 +451,7 @@ public class Creator implements Serializable {
 					if (i == 0) {
 						
 						regularlyInnerList.add(newTask);
-						updateCalendarControllerList();
-						Save.saveCalendarList();
+						
 						
 						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
 							Button btn = new Button();
@@ -478,8 +474,7 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
-						updateCalendarControllerList();
-						Save.saveCalendarList();
+						
 						
 						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
 							Button btn = new Button();
@@ -510,8 +505,7 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
-						updateCalendarControllerList();
-						Save.saveCalendarList();
+						
 						
 						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
 							Button btn = new Button();
