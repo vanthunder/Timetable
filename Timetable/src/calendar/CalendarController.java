@@ -591,7 +591,7 @@ public class CalendarController implements Initializable
 				{
 					Labels.get(i).setStyle(Labels.get(1).getStyle());
 					Labels.get(i).setText(Labels.get(i).getText().replace(compare, ""));
-					Creator.deleteFromCalendarList
+					Creator.deleteFromCalendarList(compare);
 					System.out.println("Hey das ist wahr");
 				}
 
