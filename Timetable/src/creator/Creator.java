@@ -19,7 +19,6 @@ import event.Event;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
 import appointment.Appointment;
 import base.Base;
 import calendar.Calendar;
@@ -30,10 +29,14 @@ import save.Save;
 import task.AutoSort;
 import task.Task;
 
+
 public class Creator implements Serializable {
 
+	private static ArrayList<Button> taskButtons;
+
 	public static String createEvent(String title, LocalDateTime startpoint, LocalDateTime endpoint, String description,
-			boolean regularlyOnOff, int regularlyType, int regularlyAmount) throws CloneNotSupportedException {
+			boolean regularlyOnOff, int regularlyType, int regularlyAmount)
+			throws CloneNotSupportedException {
 		// event exists always the whole day
 		startpoint = startpoint.withHour(0).withMinute(0);
 		endpoint = endpoint.withHour(23).withMinute(59);
@@ -173,8 +176,7 @@ public class Creator implements Serializable {
 	 * gave in the appointment creation menu, will be converted and transferred to
 	 * this method. This method creates an appointment out of that data and saves it
 	 * in the chosen category and in the calendar.
-	 * 
-	 * @throws IOException
+	 * @throws IOException 
 	 * 
 	 */
 
@@ -182,7 +184,6 @@ public class Creator implements Serializable {
 			boolean allDay, boolean regularlyOnOff, int regularlyType, int regularlyAmount, String description,
 			int notesPinned, ArrayList<Note> notesLink, boolean floating)
 			throws CloneNotSupportedException, IOException {
-		ArrayList<Button> taskButtons;
 
 		if (allDay) {
 			startpoint = startpoint.withHour(0).withMinute(0);
@@ -314,12 +315,9 @@ public class Creator implements Serializable {
 
 	}
 
-	static ArrayList<Button> taskButtons = null;
-
 	public static String createTask(String title, String filepath, LocalDateTime startpoint, LocalDateTime endpoint,
 			boolean allDay, boolean regularlyOnOff, int regularlyType, int regularlyID, String description,
-			int notesPinned, ArrayList<Note> notesLink, boolean floating, boolean autoSortOnOff, int duration)
-			throws CloneNotSupportedException, IOException {
+			int notesPinned, ArrayList<Note> notesLink, boolean floating, boolean autoSortOnOff, int duration) throws CloneNotSupportedException, IOException {
 
 		floating = false;
 		if (startpoint == endpoint) {
@@ -343,12 +341,12 @@ public class Creator implements Serializable {
 
 			// täglich
 			if (newTask.getRegularlyType() == 0) {
-
 				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
+						
 
 						regularlyInnerList.add(newTask);
-
+						
 						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
 							Button btn = new Button();
 							btn.setMinWidth(200);
@@ -356,7 +354,8 @@ public class Creator implements Serializable {
 							btn.setText(newTask.getTitle() + " Start: " + newTask.getStartpoint() + " Ende: "
 									+ newTask.getEndpoint());
 							taskButtons.add(btn);
-
+							CalendarController.taskList(btn);
+							
 						}
 
 					} else {
@@ -375,8 +374,11 @@ public class Creator implements Serializable {
 							btn.setText(newTask.getTitle() + " Start: " + newTask.getStartpoint() + " Ende: "
 									+ newTask.getEndpoint());
 							taskButtons.add(btn);
-
+							CalendarController.taskList(btn);
+							
 						}
+						
+
 					}
 				}
 			}
@@ -385,7 +387,7 @@ public class Creator implements Serializable {
 			else if (newTask.getRegularlyType() == 1) {
 				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
-
+						
 						regularlyInnerList.add(newTask);
 						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
 							Button btn = new Button();
@@ -394,6 +396,8 @@ public class Creator implements Serializable {
 							btn.setText(newTask.getTitle() + " Start: " + newTask.getStartpoint() + " Ende: "
 									+ newTask.getEndpoint());
 							taskButtons.add(btn);
+							CalendarController.taskList(btn);
+							
 						}
 
 					} else {
@@ -418,8 +422,12 @@ public class Creator implements Serializable {
 								}
 							});
 							taskButtons.add(btn);
-
+							CalendarController.taskList(btn);
+							
 						}
+						
+
+
 					}
 				}
 			}
@@ -428,18 +436,26 @@ public class Creator implements Serializable {
 			else if (newTask.getRegularlyType() == 2) {
 				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
-
+						
 						regularlyInnerList.add(newTask);
-
+						
 						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
 							Button btn = new Button();
 							btn.setMinWidth(200);
 							btn.setMinHeight(50);
 							btn.setText(newTask.getTitle() + " Start: " + newTask.getStartpoint() + " Ende: "
 									+ newTask.getEndpoint());
+							btn.setOnAction(new EventHandler<ActionEvent>() {
+								@Override
+								public void handle(ActionEvent event) {
+									System.out.println(btn.getText());
+								}
+							});
 							taskButtons.add(btn);
-
+							CalendarController.taskList(btn);
+							
 						}
+						
 
 					} else {
 						Appointment copy = (Appointment) newTask.clone();
@@ -450,7 +466,7 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
-
+						
 						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
 							Button btn = new Button();
 							btn.setMinWidth(200);
@@ -458,7 +474,10 @@ public class Creator implements Serializable {
 							btn.setText(newTask.getTitle() + " Start: " + newTask.getStartpoint() + " Ende: "
 									+ newTask.getEndpoint());
 							taskButtons.add(btn);
+							CalendarController.taskList(btn);
+							
 						}
+						
 					}
 				}
 			}
@@ -467,15 +486,6 @@ public class Creator implements Serializable {
 				for (int i = 0; i <= regularlyAmount; i++) {
 					if (i == 0) {
 						regularlyInnerList.add(newTask);
-
-						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
-							Button btn = new Button();
-							btn.setMinWidth(200);
-							btn.setMinHeight(50);
-							btn.setText(newTask.getTitle() + " Start: " + newTask.getStartpoint() + " Ende: "
-									+ newTask.getEndpoint());
-							taskButtons.add(btn);
-						}
 					} else {
 						Appointment copy = (Appointment) newTask.clone();
 						LocalDateTime tempStartpoint = copy.getStartpoint();
@@ -485,7 +495,7 @@ public class Creator implements Serializable {
 						regularlyInnerList.add(copy);
 
 						tempCalendarList2.add(copy);
-
+						
 						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
 							Button btn = new Button();
 							btn.setMinWidth(200);
@@ -493,16 +503,8 @@ public class Creator implements Serializable {
 							btn.setText(newTask.getTitle() + " Start: " + newTask.getStartpoint() + " Ende: "
 									+ newTask.getEndpoint());
 							taskButtons.add(btn);
-						}
-
-						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
-							Button btn = new Button();
-							btn.setMinWidth(200);
-							btn.setMinHeight(50);
-							btn.setText(newTask.getTitle() + " Start: " + newTask.getStartpoint() + " Ende: "
-									+ newTask.getEndpoint());
-							taskButtons.add(btn);
-
+							CalendarController.taskList(btn);
+							
 						}
 
 					}
@@ -523,25 +525,6 @@ public class Creator implements Serializable {
 		return newTask.toString();
 	}
 
-	public void createButton(Task newTask) {
-		HBox hbox = new HBox(); // create new VBox instance
-		hbox.setMinWidth(500); // set minimum width, dont think you'd need this.
-
-		for (int i = 1; taskButtons.length(); i++) {
-			Button btn = new Button();
-			btn.setMinWidth(200);
-			btn.setMinHeight(50);
-			btn.setText(i + ". Aufgabe: " + newTask.getTitle());
-			btn.setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				public void handle(ActionEvent event) {
-					System.out.println(btn.getText());
-				}
-			});
-			hbox.getChildren().add(btn);
-		}
-	}
-
 	/**
 	 * This method is called by createNoteUI() which is located in a Controller.
 	 * createNoteUI opens the note-creation-menu. As soon as the user clicks on
@@ -549,17 +532,21 @@ public class Creator implements Serializable {
 	 * menu, will be converted and transferred to this method. This method creates a
 	 * note out of the data and saves it in the chosen category.
 	 */
-	public static String createNote(String title, ArrayList photoList, String textbox, String filepath,
-			Category chosenCategory) {
+	public static String createNote(String title, ArrayList photoList, String textbox, String filepath,	Category chosenCategory) {
+
+
+		
 
 		Note newNote = new Note("Stupid Note", photoList, "Some stupid text", "Aber");
 
+
 		Note.WriteObjectToFile(newNote);
 		NotesViewController.getNotes().add(Note.noteLoad(newNote));
-
+		
 		return newNote.toString();
 
 	}
+
 
 	public static int getRegularlyID() {
 		int regularlyID = 0;
@@ -576,26 +563,24 @@ public class Creator implements Serializable {
 
 		return regularlyID;
 	}
-
+	
 	public static void updateCalendarControllerList() {
 		ArrayList<Appointment> tmpCalendarList = Calendar.getCalendarList();
 		ArrayList<LocalDate> tmpControllerListAppointment = new ArrayList<LocalDate>();
 		ArrayList<String> tmpControllerListDescription = new ArrayList<String>();
-		for (int i = 0; i < tmpCalendarList.size(); i++) {
+		for(int i=0; i<tmpCalendarList.size(); i++) {
 			tmpControllerListAppointment.add(tmpCalendarList.get(i).getStartpoint().toLocalDate());
-			if (tmpCalendarList.get(i).getEndpoint() != null) {
-				tmpControllerListAppointment.add(tmpCalendarList.get(i).getEndpoint().toLocalDate());
-				tmpControllerListDescription.add(tmpCalendarList.get(i).getTitle());
+			if(tmpCalendarList.get(i).getEndpoint()!=null) {
+			tmpControllerListAppointment.add(tmpCalendarList.get(i).getEndpoint().toLocalDate());
+			tmpControllerListDescription.add(tmpCalendarList.get(i).getTitle());
 			}
 			tmpControllerListDescription.add(tmpCalendarList.get(i).getTitle());
 		}
 		CalendarController.setDescriptions(tmpControllerListDescription);
 		CalendarController.setAppointments(tmpControllerListAppointment);
-
-	}<<<<<<<HEAD
-
-}=======
-
+		
+	}
+	
 	public static void deleteFromCalendarList(String title) {
 		ArrayList<Integer> deleteIDs = new ArrayList<Integer>();
 		ArrayList<Appointment> tmpCalendarList = Calendar.getCalendarList();
@@ -610,6 +595,4 @@ public class Creator implements Serializable {
 		Calendar.setCalendarList(tmpCalendarList);
 		updateCalendarControllerList();
 	}
-}>>>>>>>branch'master'
-
-of https:// github.com/vanthunder/Timetable
+}
