@@ -19,7 +19,7 @@ public class Task extends Appointment implements Comparable {
 
 	public Task(String title, LocalDateTime startpoint, LocalDateTime endpoint, boolean allDay, boolean regularlyOnOff,
 			int regularlyType, int regularlyID, String description, int notesPinned, ArrayList<Note> notesLink,
-			boolean floating, boolean autoSortOnOff, int duration) {
+			boolean floating, boolean autoSortOnOff, int duration, LocalDateTime periodStart, LocalDateTime periodEnd) {
 		super(title, startpoint, endpoint, allDay, regularlyOnOff, regularlyType, regularlyID, description, notesPinned,
 				notesLink, floating);
 	}

@@ -67,6 +67,8 @@ public class AutoSort {
 						tmpCalendarList.add(currentTask);
 						autoSortInnerList.add(currentTask);
 						System.out.println(currentTask.toString());
+						Creator.updateCalendarControllerList();
+						Save.saveCalendarList();
 
 
 						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
@@ -88,6 +90,8 @@ public class AutoSort {
 						// add the new Task to the CalendarList
 						tmpCalendarList.add(copy);
 						autoSortInnerList.add(copy);
+						Creator.updateCalendarControllerList();
+						Save.saveCalendarList();
 
 						
 						for (int i1 = 1; i1 <= taskButtons.size(); i1++) {
@@ -107,8 +111,7 @@ public class AutoSort {
 			}
 		}
 		Calendar.setCalendarList(tmpCalendarList);
-		Creator.updateCalendarControllerList();
-		Save.saveCalendarList();
+
 
 		tmpAutoSortList.put(currentTask.getAutoSortID(), autoSortInnerList);
 		Calendar.setAutosortTaskList(tmpAutoSortList);

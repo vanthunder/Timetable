@@ -264,6 +264,8 @@ public class CreateTaskController implements Initializable {
 				Task newTask = new Task(title.getText(), LocalDateTime.of(startDate, startTime),
 						LocalDateTime.of(endDate, endTime), allDay, regularOnOff.isSelected(), regularType, regularID,
 						description.getText(), notesPinned, notesLinks, floating, autoSort, duration);
+				
+				newTask.setPeriodStart(pickPeriodStart.getValue());
 
 				Creator.createTask(title.getText(), description.getText(), LocalDateTime.of(startDate, startTime),
 						LocalDateTime.of(endDate, endTime), allDay, regularOnOff.isSelected(), regularType, regularID,
@@ -275,6 +277,8 @@ public class CreateTaskController implements Initializable {
 				alert.setTitle("speichern erfolgreich!");
 				alert.setHeaderText("eine neue Aufgabe wurde manuell eingeplant");
 				alert.setContentText("Die aufgabe wurde erfolgreich gespeichert!");
+				
+
 
 //				a new Object by Type Task will be initialized, organized and saved
 
