@@ -53,23 +53,6 @@ public class Creator implements Serializable {
 		// tempCalendarList.sort();
 		Calendar.setEventList(tempEventList);
 
-		// its better to have a method that does that in controller
-		/*
-		 * boolean floating = false; if(startpoint.equals(endpoint)) { floating = true;
-		 * }
-		 */
-
-		// the appointment will be saved in the Category:
-		/*
-		 * chosenCategory.contentlist.add(newAppointment); <- this would be much easier
-		 * than the way I've done it below, but don't work when contentList is private
-		 * ArrayList<Base> tempContentlist = chosenCategory.getContentlist();
-		 * tempContentlist.add(newAppointment);
-		 * chosenCategory.setContentlist(tempContentlist);
-		 */
-
-		// newAppointment is only added to calendar if floating is false
-
 		if (regularlyOnOff) {
 
 			newEvent.setRegularlyID(getRegularlyID());
@@ -239,7 +222,7 @@ public class Creator implements Serializable {
 
 						tempCalendarList2.add(copy);
 
-						// has to be transferred to category!!!
+						
 					}
 				}
 			}
@@ -259,7 +242,7 @@ public class Creator implements Serializable {
 
 						tempCalendarList2.add(copy);
 
-						// has to be transferred to category!!!
+						
 					}
 				}
 			}
@@ -279,7 +262,7 @@ public class Creator implements Serializable {
 
 						tempCalendarList2.add(copy);
 
-						// has to be transferred to category!!!
+						
 					}
 				}
 			}
@@ -298,7 +281,7 @@ public class Creator implements Serializable {
 
 						tempCalendarList2.add(copy);
 
-						// has to be transferred to category!!!
+						
 					}
 				}
 			}
@@ -308,10 +291,6 @@ public class Creator implements Serializable {
 			updateCalendarControllerList();
 			Save.saveCalendarList();
 
-//Save.save(); as soon as the appointment is created, the program will save the data
-
-			// Testreturn to proof if the Appointment object got the data it should have:
-			// return newAppointment.toString();
 
 		}
 		return newAppointment.toString();
