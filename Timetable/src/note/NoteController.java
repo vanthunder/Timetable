@@ -1,6 +1,3 @@
-/**
- * 
- */
 package note;
 
 import java.lang.reflect.Field;
@@ -15,12 +12,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
-
-
 /**
- * @author 
+ * @author Niklas
  *
  */
+
 public class NoteController implements Initializable
 {
 	
@@ -36,13 +32,15 @@ public class NoteController implements Initializable
 	
 	@FXML
 	Button noteInsertImageButton = new Button();
-	//Event for the link button
+	
+	//This button inserts an image into the Note
 	public void noteInsertImageButtonPress(ActionEvent event) 
 	{
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Open Image File");
 		fileChooser.showOpenDialog(noteInsertImageButton.getScene().getWindow());
 	} 
+	
 	//Initialize the NoteView with all its components
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1)

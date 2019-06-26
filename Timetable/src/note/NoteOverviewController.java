@@ -9,6 +9,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+/**
+ * 
+ * @author Niklas 
+ *
+ */
+
 public class NoteOverviewController implements Initializable
 {
 	@FXML
@@ -28,14 +34,12 @@ public class NoteOverviewController implements Initializable
 	
 	public int noteChoosing()
 	{
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
-		// TODO Auto-generated method stub
 		
 	}
 	
