@@ -3,6 +3,7 @@
  */
 package category;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import base.Base;

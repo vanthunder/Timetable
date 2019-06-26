@@ -15,6 +15,8 @@ import category.CategoriesController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -74,10 +76,14 @@ public class NoteCreatorController implements Initializable
 		String description = noteDescription.getText();
 		String filepath = "notes/" + title;
 		
-		Note serObj = new Note(title, 0, null, null, description, filepath);
+		Note serObj = new Note(title, null, description, filepath);
 		NotesViewController.update(title);
 		Note.WriteObjectToFile(serObj);
 		
+		Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Speichern erfolgreich!");
+        alert.setContentText("Die Noitz wurde erfolgreich gespeichert!");
+        
 		//This method saves the current Note and it's title as a category if a category is choosed in the choice box.
 		if(!categoryChooser.getSelectionModel().getSelectedItem().equals(null))
 		 {		
