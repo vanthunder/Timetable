@@ -22,6 +22,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.TextAlignment;
 import DebugCalendar.CalanderLabel;
+import creator.Creator;
 import javafx.fxml.Initializable;
 
 /**
@@ -473,11 +474,8 @@ public class CalendarController implements Initializable
 				if (!(cache == maxlength))
 				{
 					LocalDate betweenweek = start.plusDays(cache);
-					System.out.println("TEST");
-					label.setText("TEST");
 					label.setText(betweenweek.format(dayFormatter));
 					Labels.add(label);
-
 					LeapYearLabel.setVisible(false);
 					System.out.println(betweenweek.getDayOfWeek());
 					cache++;
@@ -593,6 +591,7 @@ public class CalendarController implements Initializable
 				{
 					Labels.get(i).setStyle(Labels.get(1).getStyle());
 					Labels.get(i).setText(Labels.get(i).getText().replace(compare, ""));
+					Creator.deleteFromCalendarList
 					System.out.println("Hey das ist wahr");
 				}
 
@@ -649,6 +648,8 @@ public class CalendarController implements Initializable
 		System.out.println("button created");
 		
 	}
+	
+	
 
 	// Initialize the Calendar with all its components
 	@Override
