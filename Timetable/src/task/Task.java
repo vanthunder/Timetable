@@ -124,7 +124,7 @@ public class Task extends Appointment implements Comparable {
 				+ getDescription() + ", getNotesPinned()=" + getNotesPinned() + ", getNotesLink()=" + getNotesLink()
 				+ ", isFloating()=" + isFloating() + ", getTitle()=" + getTitle() + ", getClass()=" + getClass()
 				+ ", autoSortOnOff=" + autoSortOnOff + ", duration=" + duration + ", done=" + done + ", periodStart="
-				+ periodStart + ", periodEnd=" + periodEnd + "autoSortID=" + autoSortID + "]";
+				+ periodStart + ", periodEnd=" + periodEnd + ", autoSortID=" + autoSortID + "]";
 	}
 
 	@Override

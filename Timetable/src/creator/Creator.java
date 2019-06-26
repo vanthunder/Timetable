@@ -25,11 +25,12 @@ import note.Note;
 import note.NotesViewController;
 import task.AutoSort;
 import task.Task;
+import task.TaskController;
 
 
 public class Creator implements Serializable {
 
-	private static ArrayList<Button> taskButtons;
+
 
 	public static String createEvent(String title, LocalDateTime startpoint, LocalDateTime endpoint, String description,
 			boolean regularlyOnOff, int regularlyType, int regularlyAmount)
@@ -313,6 +314,7 @@ public class Creator implements Serializable {
 	public static String createTask(String title, String filepath, LocalDateTime startpoint, LocalDateTime endpoint,
 			boolean allDay, boolean regularlyOnOff, int regularlyType, int regularlyID, String description,
 			int notesPinned, ArrayList<Note> notesLink, boolean floating, boolean autoSortOnOff, int duration) throws CloneNotSupportedException {
+		ArrayList<Button> taskButtons = TaskController.buttonList;
 
 		floating = false;
 		if (startpoint == endpoint) {
@@ -349,8 +351,7 @@ public class Creator implements Serializable {
 							btn.setText(newTask.getTitle() + " Start: " + newTask.getStartpoint() + " Ende: "
 									+ newTask.getEndpoint());
 							taskButtons.add(btn);
-							CalendarController.taskList(btn);
-							
+							TaskController.buttonList.add(btn);
 						}
 
 					} else {
@@ -369,11 +370,8 @@ public class Creator implements Serializable {
 							btn.setText(newTask.getTitle() + " Start: " + newTask.getStartpoint() + " Ende: "
 									+ newTask.getEndpoint());
 							taskButtons.add(btn);
-							CalendarController.taskList(btn);
-							
-						}
-						
-
+							TaskController.buttonList.add(btn);				
+						}						
 					}
 				}
 			}
@@ -391,8 +389,7 @@ public class Creator implements Serializable {
 							btn.setText(newTask.getTitle() + " Start: " + newTask.getStartpoint() + " Ende: "
 									+ newTask.getEndpoint());
 							taskButtons.add(btn);
-							CalendarController.taskList(btn);
-							
+							TaskController.buttonList.add(btn);					
 						}
 
 					} else {
@@ -417,12 +414,8 @@ public class Creator implements Serializable {
 								}
 							});
 							taskButtons.add(btn);
-							CalendarController.taskList(btn);
-							
+							TaskController.buttonList.add(btn);				
 						}
-						
-
-
 					}
 				}
 			}
@@ -447,7 +440,7 @@ public class Creator implements Serializable {
 								}
 							});
 							taskButtons.add(btn);
-							CalendarController.taskList(btn);
+							TaskController.buttonList.add(btn);
 							
 						}
 						
@@ -469,7 +462,7 @@ public class Creator implements Serializable {
 							btn.setText(newTask.getTitle() + " Start: " + newTask.getStartpoint() + " Ende: "
 									+ newTask.getEndpoint());
 							taskButtons.add(btn);
-							CalendarController.taskList(btn);
+							TaskController.buttonList.add(btn);
 							
 						}
 						
@@ -498,7 +491,7 @@ public class Creator implements Serializable {
 							btn.setText(newTask.getTitle() + " Start: " + newTask.getStartpoint() + " Ende: "
 									+ newTask.getEndpoint());
 							taskButtons.add(btn);
-							CalendarController.taskList(btn);
+							TaskController.buttonList.add(btn);
 							
 						}
 

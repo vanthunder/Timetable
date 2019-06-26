@@ -104,7 +104,7 @@ public class CreateTaskController implements Initializable {
 	@FXML
 	private ChoiceBox<TreeItem<String>> categoryChooser = new ChoiceBox<>();
 
-	ArrayList<Button> taskButtons = new ArrayList<Button>();
+
 
 	private static final int INIT_VALUE_HOURS = 1;
 	private static final int INIT_VALUE_MINUTES = 1;
@@ -272,6 +272,7 @@ public class CreateTaskController implements Initializable {
 
 				Task.WriteObjectToFile(newTask);
 				System.out.println(newTask);
+				
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("speichern erfolgreich!");
 				alert.setHeaderText("eine neue Aufgabe wurde manuell eingeplant");
@@ -283,9 +284,11 @@ public class CreateTaskController implements Initializable {
 				Task newTask = new Task(title.getText(), LocalDateTime.of(startDate, startTime),
 						LocalDateTime.of(endDate, endTime), allDay, regularOnOff.isSelected(), regularType, regularID,
 						description.getText(), notesPinned, notesLinks, floating, autoSort, duration);
+				
 				AutoSort.autoSort(newTask);
 				Task.WriteObjectToFile(newTask);
 				System.out.println(newTask);
+				
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("speichern erfolgreich!");
 				alert.setHeaderText("eine neue Aufgabe wurde mit dem AutoPlaner eingeplant");
@@ -294,8 +297,6 @@ public class CreateTaskController implements Initializable {
 				alert.showAndWait();
 
 			}
-
-
 	}
 
 	@Override

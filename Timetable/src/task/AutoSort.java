@@ -28,7 +28,7 @@ public class AutoSort {
 	 */
 
 	public static void autoSort(Task currentTask) throws CloneNotSupportedException {
-		ArrayList<Button> taskButtons = null;
+		ArrayList<Button> taskButtons = TaskController.buttonList;
 		ArrayList<Long> tmpDuration = splitDuration(currentTask);
 		currentTask.setAutoSortID(getAutosortTaskID());
 		ArrayList<Appointment> tmpCalendarList = Calendar.getCalendarList();
@@ -73,7 +73,7 @@ public class AutoSort {
 							btn.setText(currentTask.getTitle() + " Start: " + currentTask.getStartpoint() + " Ende: "
 									+ currentTask.getEndpoint());
 							taskButtons.add(btn);
-							CalendarController.taskList(btn);
+							TaskController.buttonList.add(btn);
 							
 						}
 						break;
@@ -93,7 +93,7 @@ public class AutoSort {
 							btn.setText(currentTask.getTitle() + " Start: " + currentTask.getStartpoint() + " Ende: "
 									+ currentTask.getEndpoint());
 							taskButtons.add(btn);
-							CalendarController.taskList(btn);
+							TaskController.buttonList.add(btn);
 							
 						}
 						break;

@@ -18,6 +18,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.TextAlignment;
@@ -32,12 +33,7 @@ import javafx.fxml.Initializable;
 
 public class CalendarController implements Initializable
 
-{    
-	@FXML
-    private ScrollPane taskList;
-    @FXML
-    private static HBox taskBox;
-	@FXML
+{ 	@FXML
 	private GridPane Calendar;
 	@FXML
 	private Button upLeftButton;
@@ -643,12 +639,7 @@ public class CalendarController implements Initializable
 		}
 		System.out.println("Hey das ist wahr " + oldName + " " + newName);
 	}
-//	add new Button to Task Tab
-	public static void taskList (Button newbtn) {
-		taskBox.getChildren().add(newbtn);
-		System.out.println("button created");
-		
-	}
+
 
 	// Initialize the Calendar with all its components
 	@Override

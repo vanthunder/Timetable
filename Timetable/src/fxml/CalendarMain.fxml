@@ -41,11 +41,7 @@
                      <children>
                         <ScrollPane fx:id="taskList" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="720.0">
                           <content>
-                            <AnchorPane minWidth="720.0">
-                                 <children>
-                                    <HBox fx:id="taskBox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="710.0" />
-                                 </children>
-                              </AnchorPane>
+                            <AnchorPane fx:id="taskField" minWidth="720.0" />
                           </content>
                         </ScrollPane>
                      </children></AnchorPane>
